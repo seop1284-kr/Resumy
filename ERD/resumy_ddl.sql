@@ -8,6 +8,8 @@ DROP TABLE IF EXISTS `hr_file` CASCADE;
 DROP TABLE IF EXISTS `hr_introduction` CASCADE;
 DROP TABLE IF EXISTS `hr_introduction_c` CASCADE;
 
+-- 김민수
+-- 회원정보 테이블
 CREATE TABLE `hr_member` (
 	`mem_id`	int	NOT NULL AUTO_INCREMENT	PRIMARY KEY COMMENT '일련번호',
 	`mem_userid`	varchar(100)	NOT NULL	COMMENT '회원아이디',
@@ -24,18 +26,7 @@ CREATE TABLE `hr_member` (
 	`mem_level`	boolean	NOT NULL	COMMENT '회원등급 (true:회원  false: 관리자)'
 );
 
-CREATE TABLE `hr_spec_info` (
-	`spec_id`	int(11)	NOT NULL PRIMARY KEY COMMENT '일련번호',
-	`spec_cat_cd`	varchar(10)	NOT NULL	COMMENT '01: 초등학교 02: 중학교 03: 고등학교 04: 대학교.대학원',
-	`spec_name`	varchar(10)	NOT NULL	COMMENT '학교명',
-	`spec_area`	varchar(10)	NOT NULL	COMMENT '지역명',
-	`spec_major`	varchar(10)	NULL	COMMENT '전공명',
-	`spec_university`	varchar(10)	NULL	COMMENT '01: 2,3년제 02: 4년제  03: 대학원(석사) 04: 대학원(박사)',
-	`reg_dtm`	datetime	NOT NULL	DEFAULT now()	COMMENT '등록일시',
-	`mody_dtm`	datetime	NOT NULL	DEFAULT now()	COMMENT '수정일시',
-	`mem_id`	int	NOT NULL
-);
-
+-- 경력사항 테이블
 CREATE TABLE `hr_career` (
 	`cr_id`	int	NOT NULL AUTO_INCREMENT	PRIMARY KEY COMMENT '일련번호',
 	`cr_company`	varchar(20)	NOT NULL	COMMENT '회사명',
@@ -50,6 +41,21 @@ CREATE TABLE `hr_career` (
 	`mem_id`	int	NOT NULL
 );
 
+-- 회원학력사항 테이블
+CREATE TABLE `hr_spec_info` (
+	`spec_id`	int(11)	NOT NULL PRIMARY KEY COMMENT '일련번호',
+	`spec_cat_cd`	varchar(10)	NOT NULL	COMMENT '01: 초등학교 02: 중학교 03: 고등학교 04: 대학교.대학원',
+	`spec_name`	varchar(10)	NOT NULL	COMMENT '학교명',
+	`spec_area`	varchar(10)	NOT NULL	COMMENT '지역명',
+	`spec_major`	varchar(10)	NULL	COMMENT '전공명',
+	`spec_university`	varchar(10)	NULL	COMMENT '01: 2,3년제 02: 4년제  03: 대학원(석사) 04: 대학원(박사)',
+	`reg_dtm`	datetime	NOT NULL	DEFAULT now()	COMMENT '등록일시',
+	`mody_dtm`	datetime	NOT NULL	DEFAULT now()	COMMENT '수정일시',
+	`mem_id`	int	NOT NULL
+);
+
+-- 하병노
+-- 파일 테이블
 CREATE TABLE `hr_file` (
 	`file_id`	int	NOT NULL AUTO_INCREMENT	PRIMARY KEY COMMENT '일련번호',
 	`file_name`	varchar(50)	NOT NULL	COMMENT '첨부파일명',
@@ -59,6 +65,8 @@ CREATE TABLE `hr_file` (
 	`mem_id`	int	NOT NULL
 );
 
+-- 김진섭
+-- 자기소개서 테이블
 CREATE TABLE `hr_introduction` (
 	`intr_id`	int	NOT NULL AUTO_INCREMENT	PRIMARY KEY COMMENT '일련번호',
 	`intr_title`	varchar(100)	NOT NULL	COMMENT '자소서제목',
@@ -69,14 +77,7 @@ CREATE TABLE `hr_introduction` (
 	`mem_id`	int	NOT NULL
 );
 
-CREATE TABLE `hr_qna_q` (
-	`q_id`	int	NOT NULL AUTO_INCREMENT	PRIMARY KEY COMMENT '일련번호',
-	`q_subject`	varchar(50)	NOT NULL	COMMENT '글 제목',
-	`q_content`	text	NOT NULL	COMMENT '글 내용',
-	`q_regdate`	datetime	NOT NULL	DEFAULT now()	COMMENT '글 등록일시',
-	`mem_id`	int	NOT NULL
-);
-
+-- 자기소개서 피드백 게시판
 CREATE TABLE `intr_feedback` (
 	`fb_id`	int	NOT NULL AUTO_INCREMENT	PRIMARY KEY COMMENT '일련번호',
 	`fb_userid`	varchar(20)	NOT NULL	COMMENT '유저아이디',
@@ -85,18 +86,31 @@ CREATE TABLE `intr_feedback` (
 	`intr_id`	int	NOT NULL
 );
 
-CREATE TABLE `hr_qna_a` (
-	`q_id`	int	NOT NULL AUTO_INCREMENT	PRIMARY KEY COMMENT '일련번호',
-	`a_reply`	text	NOT NULL	COMMENT '답글',
-	`a_regdate`	datetime	NOT NULL	DEFAULT now()	COMMENT '답글 등록일시'
-);
-
+-- 자소서컨텐츠 테이블
 CREATE TABLE `hr_introduction_c` (
 	`intr_c_id`	int	NOT NULL AUTO_INCREMENT	PRIMARY KEY COMMENT '일련번호',
 	`intr_question`	varchar(100)	NULL	COMMENT '자소서질문',
 	`intr_content`	text	NULL	COMMENT '자소서내용',
 	`intr_id`	int	NOT NULL	COMMENT '자소서 게시글 일련번호'
 );
+
+-- 노수빈
+-- 고객센터 테이블
+CREATE TABLE `hr_qna_q` (
+	`q_id`	int	NOT NULL AUTO_INCREMENT	PRIMARY KEY COMMENT '일련번호',
+	`q_subject`	varchar(50)	NOT NULL	COMMENT '글 제목',
+	`q_content`	text	NOT NULL	COMMENT '글 내용',
+	`q_regdate`	datetime	NOT NULL	DEFAULT now()	COMMENT '글 등록일시',
+	`mem_id`	int	NOT NULL
+);
+
+-- 고객센터 답글 테이블
+CREATE TABLE `hr_qna_a` (
+	`q_id`	int	NOT NULL AUTO_INCREMENT	PRIMARY KEY COMMENT '일련번호',
+	`a_reply`	text	NOT NULL	COMMENT '답글',
+	`a_regdate`	datetime	NOT NULL	DEFAULT now()	COMMENT '답글 등록일시'
+);
+
 
 ALTER TABLE `hr_qna_a` ADD CONSTRAINT `FK_hr_qna_q_TO_hr_qna_a_1` FOREIGN KEY (
 	`q_id`
