@@ -22,17 +22,17 @@ public class DataBatchMem {
 	public static final String USERID = "userdm"; // DB 사용자 계정 정보
 	public static final String USERPW = "1234";
 	
-	public static final String SQL_WRITE_INSERT = "insert into `hr_member` (mem_userid, mem_pw, mem_name, mem_email, mem_level) values (?, ?, ?, ?, ?)";
+	public static final String SQL_RESUMY_MEM_INSERT = "insert into `hr_member` (mem_userid, mem_pw, mem_name, mem_email, mem_level) values (?, ?, ?, ?, ?)";
 	
 	@Test
 	// 회원정보 테이블
-	void genDataMem() {
+	void genDatafile() {
 		try {
 			Class.forName(DRIVER);
 			conn = DriverManager.getConnection(URL, USERID, USERPW);
 			
 			// 테스트용 dummy 데이터 만들기
-			pstmt = conn.prepareStatement(SQL_WRITE_INSERT);
+			pstmt = conn.prepareStatement(SQL_RESUMY_MEM_INSERT);
 			
 			int num = 10;
 			for(int i = 0; i < num; i++) {

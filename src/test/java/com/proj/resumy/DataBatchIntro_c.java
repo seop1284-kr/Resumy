@@ -8,7 +8,7 @@ import java.sql.Statement;
 
 import org.junit.jupiter.api.Test;
 
-public class DataBatchFile {
+public class DataBatchIntro_c {
 	// JDBC 관련 기본 객체 변수들 선언
 	Connection conn = null;
 	Statement stmt = null;
@@ -22,22 +22,22 @@ public class DataBatchFile {
 	public static final String USERID = "userdm"; // DB 사용자 계정 정보
 	public static final String USERPW = "1234";
 	
-	public static final String SQL_RESUMY_FILE_INSERT = "insert into `hr_file` (file_name, file_volume, mem_id) values (?, ?, ?)";
+	public static final String SQL_RESUMY_INTRO_C_INSERT = "insert into `hr_introduction_c` (intr_question, intr_content, intr_id) values (?, ?, ?)";
 	
 	@Test
 	// 회원정보 테이블
-	void genDataFile() {
+	void genDataIntroC() {
 		try {
 			Class.forName(DRIVER);
 			conn = DriverManager.getConnection(URL, USERID, USERPW);
 			
 			// 테스트용 dummy 데이터 만들기
-			pstmt = conn.prepareStatement(SQL_RESUMY_FILE_INSERT);
+			pstmt = conn.prepareStatement(SQL_RESUMY_INTRO_C_INSERT);
 			
 			int num = 10;
 			for(int i = 0; i < num; i++) {
-				pstmt.setString(1, String.format("file%02d", i));  
-				pstmt.setInt(2, i+500);
+				pstmt.setString(1, String.format("question%02d", i));  
+				pstmt.setString(2, String.format("content%02d", i));  
 				pstmt.setInt(3, i+1);
 				cnt += pstmt.executeUpdate();
 			}
