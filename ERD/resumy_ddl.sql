@@ -1,5 +1,5 @@
 CREATE TABLE `hr_member` (
-	`mem_id`	int	NOT NULL	COMMENT 'PK, auto-increment',
+	`mem_id`	int	NOT NULL AUTO_INCREMENT	COMMENT 'PK',
 	`mem_userid`	varchar(100)	NOT NULL	COMMENT '회원아이디',
 	`mem_pw`	varchar(100)	NOT NULL	COMMENT '회원비밀번호',
 	`mem_name`	varchar(10)	NOT NULL	COMMENT '회원이름',
@@ -27,7 +27,7 @@ CREATE TABLE `hr_spec_info` (
 );
 
 CREATE TABLE `hr_career` (
-	`cr_id`	int	NOT NULL	COMMENT 'PK, auto-increment',
+	`cr_id`	int	NOT NULL AUTO_INCREMENT	COMMENT 'PK',
 	`cr_company`	varchar(20)	NOT NULL	COMMENT '회사명',
 	`cr_hiredate`	datetime	NOT NULL	COMMENT '재직일',
 	`cr_leavedate`	datetime	NOT NULL	COMMENT '퇴사일',
@@ -41,7 +41,7 @@ CREATE TABLE `hr_career` (
 );
 
 CREATE TABLE `hr_file` (
-	`file_id`	int	NOT NULL	COMMENT 'PK, auto-increment',
+	`file_id`	int	NOT NULL AUTO_INCREMENT	COMMENT 'PK',
 	`file_name`	varchar(50)	NOT NULL	COMMENT '첨부파일명',
 	`file_volume`	int	NOT NULL	COMMENT '파일용량',
 	`file_regdate`	datetime	NOT NULL	DEFAULT now()	COMMENT '등록일시',
@@ -50,7 +50,7 @@ CREATE TABLE `hr_file` (
 );
 
 CREATE TABLE `hr_introduction` (
-	`intr_id`	int	NOT NULL	COMMENT 'PK, auto-increment, 자소서 게시글 일련번호',
+	`intr_id`	int	NOT NULL AUTO_INCREMENT	COMMENT 'PK 자소서 게시글 일련번호',
 	`intr_title`	varchar(100)	NOT NULL	COMMENT '자소서제목',
 	`intr_regdate`	datetime	NOT NULL	DEFAULT now()	COMMENT '등록일',
 	`intr_public`	boolean	NOT NULL	DEFAULT false	COMMENT '공개여부 (공개: true, 비공개: false)',
@@ -60,7 +60,7 @@ CREATE TABLE `hr_introduction` (
 );
 
 CREATE TABLE `hr_qna_q` (
-	`q_id`	int	NOT NULL	COMMENT 'PK, auto-increment',
+	`q_id`	int	NOT NULL AUTO_INCREMENT	COMMENT 'PK',
 	`q_subject`	varchar(50)	NOT NULL	COMMENT '글 제목',
 	`q_content`	text	NOT NULL	COMMENT '글 내용',
 	`q_regdate`	datetime	NOT NULL	DEFAULT now()	COMMENT '글 등록일시',
@@ -68,7 +68,7 @@ CREATE TABLE `hr_qna_q` (
 );
 
 CREATE TABLE `intr_feedback` (
-	`fb_id`	int	NOT NULL	COMMENT 'PK, auto-increment',
+	`fb_id`	int	NOT NULL AUTO_INCREMENT	COMMENT 'PK',
 	`fb_userid`	varchar(20)	NOT NULL	COMMENT '유저아이디',
 	`fb_content`	text	NOT NULL	COMMENT '피드백 내용',
 	`fb_regdate`	datetime	NULL	COMMENT '피드백 등록일시',
@@ -76,13 +76,13 @@ CREATE TABLE `intr_feedback` (
 );
 
 CREATE TABLE `hr_qna_a` (
-	`q_id`	int	NOT NULL	COMMENT 'PK, auto-increment',
+	`q_id`	int	NOT NULL AUTO_INCREMENT	COMMENT 'PK',
 	`a_reply`	text	NOT NULL	COMMENT '답글',
 	`a_regdate`	datetime	NOT NULL	DEFAULT now()	COMMENT '답글 등록일시'
 );
 
 CREATE TABLE `hr_introduction_c` (
-	`intr_c_id`	int	NOT NULL	COMMENT 'PK, auto-increment',
+	`intr_c_id`	int	NOT NULL AUTO_INCREMENT	COMMENT 'PK',
 	`intr_question`	varchar(100)	NULL	COMMENT '자소서질문',
 	`intr_content`	text	NULL	COMMENT '자소서내용',
 	`intr_id`	int	NOT NULL	COMMENT '자소서 게시글 일련번호'
