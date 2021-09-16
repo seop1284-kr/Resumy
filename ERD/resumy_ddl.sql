@@ -26,7 +26,22 @@ CREATE TABLE `hr_member` (
 	`mem_level`	boolean	NOT NULL	COMMENT '회원등급 (true:회원  false: 관리자)'
 );
 
+<<<<<<< Updated upstream
 -- 경력사항 테이블
+=======
+CREATE TABLE `hr_spec_info` (
+	`spec_id`	int(11)	NOT NULL AUTO_INCREMENT PRIMARY KEY COMMENT '일련번호',
+	`spec_cat_cd`	varchar(10)	NOT NULL	COMMENT '01: 초등학교 02: 중학교 03: 고등학교 04: 대학교.대학원',
+	`spec_name`	varchar(10)	NOT NULL	COMMENT '학교명',
+	`spec_area`	varchar(10)	NOT NULL	COMMENT '지역명',
+	`spec_major`	varchar(10)	NULL	COMMENT '전공명',
+	`spec_university`	varchar(10)	NULL	COMMENT '01: 2,3년제 02: 4년제  03: 대학원(석사) 04: 대학원(박사)',
+	`reg_dtm`	datetime	NOT NULL	DEFAULT now()	COMMENT '등록일시',
+	`mody_dtm`	datetime	NOT NULL	DEFAULT now()	COMMENT '수정일시',
+	`mem_id`	int	NOT NULL
+);
+
+>>>>>>> Stashed changes
 CREATE TABLE `hr_career` (
 	`cr_id`	int	NOT NULL AUTO_INCREMENT	PRIMARY KEY COMMENT '일련번호',
 	`cr_company`	varchar(20)	NOT NULL	COMMENT '회사명',
@@ -43,7 +58,7 @@ CREATE TABLE `hr_career` (
 
 -- 회원학력사항 테이블
 CREATE TABLE `hr_spec_info` (
-	`spec_id`	int(11)	NOT NULL PRIMARY KEY COMMENT '일련번호',
+	`spec_id`	int(11)	NOT NULL AUTO_INCREMENT PRIMARY KEY COMMENT '일련번호',
 	`spec_cat_cd`	varchar(10)	NOT NULL	COMMENT '01: 초등학교 02: 중학교 03: 고등학교 04: 대학교.대학원',
 	`spec_name`	varchar(10)	NOT NULL	COMMENT '학교명',
 	`spec_area`	varchar(10)	NOT NULL	COMMENT '지역명',
