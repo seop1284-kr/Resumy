@@ -18,7 +18,7 @@ class DataBatch {
 	Statement stmt = null;
 	PreparedStatement pstmt = null;
 	ResultSet rs = null; // executeQuery(), SELECT 결과
-	int cnt = 0; // executeUpdate(), DML 결과
+	//int cnt = 0; // executeUpdate(), DML 결과
 
 	// MySQL
 	public static final String DRIVER = "com.mysql.cj.jdbc.Driver"; // JDBC 드라이버 클래스
@@ -45,9 +45,10 @@ class DataBatch {
 	
 	
 	// 회원정보 테이블
-	@Test
 	@Order(1)
+	@Test
 	void genDataMem() {
+		int cnt = 0; // executeUpdate(), DML 결과
 		try {
 			Class.forName(DRIVER);
 			conn = DriverManager.getConnection(URL, USERID, USERPW);
@@ -64,7 +65,7 @@ class DataBatch {
 				pstmt.setBoolean(5, true);
 				cnt += pstmt.executeUpdate();
 			}
-			System.out.println(cnt + "개 의 데이터가 INSERT 되었습니다");
+			System.out.println(cnt + "개 의 회원정보 데이터가 INSERT 되었습니다");
 			
 		} catch(Exception e) {
 			e.printStackTrace();
@@ -79,9 +80,10 @@ class DataBatch {
 	}
 	
 	// 경력사항 테이블
-	@Test
 	@Order(2)
+	@Test
 	void genDataCar() {
+		int cnt = 0; // executeUpdate(), DML 결과
 		try {
 			Class.forName(DRIVER);
 			conn = DriverManager.getConnection(URL, USERID, USERPW);
@@ -104,7 +106,7 @@ class DataBatch {
 				pstmt.setInt(5, i);
 				cnt += pstmt.executeUpdate();
 				}
-			System.out.println(cnt + "개 의 데이터가 INSERT 되었습니다");
+			System.out.println(cnt + "개 의 경력사항 데이터가 INSERT 되었습니다");
 			
 		} catch(Exception e) {
 			e.printStackTrace();
@@ -119,9 +121,10 @@ class DataBatch {
 	}
 	
 	// 회원학력사항 테이블
-	@Test
 	@Order(3)
+	@Test
 	void genDataSpec() {
+		int cnt = 0; // executeUpdate(), DML 결과
 		try {
 			Class.forName(DRIVER);
 			conn = DriverManager.getConnection(URL, USERID, USERPW);
@@ -144,7 +147,7 @@ class DataBatch {
 				pstmt.setInt(6, i);
 				cnt += pstmt.executeUpdate();
 				}
-			System.out.println(cnt + "개 의 데이터가 INSERT 되었습니다");
+			System.out.println(cnt + "개 의 학력사항 데이터가 INSERT 되었습니다");
 			
 		} catch(Exception e) {
 			e.printStackTrace();
@@ -159,9 +162,10 @@ class DataBatch {
 	}
 	
 	// 파일 테이블
-	@Test
 	@Order(4)
+	@Test
 	void genDataFile() {
+		int cnt = 0; // executeUpdate(), DML 결과
 		try {
 			Class.forName(DRIVER);
 			conn = DriverManager.getConnection(URL, USERID, USERPW);
@@ -176,7 +180,7 @@ class DataBatch {
 				pstmt.setInt(3, i+1);
 				cnt += pstmt.executeUpdate();
 			}
-			System.out.println(cnt + "개 의 데이터가 INSERT 되었습니다");
+			System.out.println(cnt + "개 의 파일 데이터가 INSERT 되었습니다");
 			
 		} catch(Exception e) {
 			e.printStackTrace();
@@ -191,9 +195,10 @@ class DataBatch {
 	}
 	
 	// 자기소개서 테이블
-	@Test
 	@Order(5)
+	@Test
 	void genDataIntro() {
+		int cnt = 0; // executeUpdate(), DML 결과
 		try {
 			Class.forName(DRIVER);
 			conn = DriverManager.getConnection(URL, USERID, USERPW);
@@ -223,9 +228,10 @@ class DataBatch {
 	}
 	
 	// 자소서컨텐츠 테이블
-	@Test
 	@Order(6)
+	@Test
 	void genDataIntroC() {
+		int cnt = 0; // executeUpdate(), DML 결과
 		try {
 			Class.forName(DRIVER);
 			conn = DriverManager.getConnection(URL, USERID, USERPW);
@@ -240,7 +246,7 @@ class DataBatch {
 				pstmt.setInt(3, i+1);
 				cnt += pstmt.executeUpdate();
 			}
-			System.out.println(cnt + "개 의 데이터가 INSERT 되었습니다");
+			System.out.println(cnt + "개 의 자소서컨텐츠 데이터가 INSERT 되었습니다");
 			
 		} catch(Exception e) {
 			e.printStackTrace();
@@ -255,9 +261,10 @@ class DataBatch {
 	}
 	
 	// 자기소개서 피드백 게시판
-	@Test
 	@Order(7)
+	@Test
 	void genDataFed() {
+		int cnt = 0; // executeUpdate(), DML 결과
 		try {
 			Class.forName(DRIVER);
 			conn = DriverManager.getConnection(URL, USERID, USERPW);
@@ -288,9 +295,11 @@ class DataBatch {
 	}
 	
 	// 고객센터 테이블
-	@Test
+	// 고객센터 답글 테이블
 	@Order(8)
-	void genDataQnaQ() {
+	@Test
+	void genDataQna() {
+		int cnt = 0; // executeUpdate(), DML 결과
 		try {
 			Class.forName(DRIVER);
 			conn = DriverManager.getConnection(URL, USERID, USERPW);
@@ -306,7 +315,7 @@ class DataBatch {
 				pstmt.setInt(3, (rand.nextInt(9)+1));
 				cnt += pstmt.executeUpdate();
 			}
-			System.out.println(cnt + "개 의 데이터가 INSERT 되었습니다");
+			System.out.println(cnt + "개의 고객센터 데이터가 INSERT 되었습니다");
 			
 		} catch(Exception e) {
 			e.printStackTrace();
@@ -318,12 +327,8 @@ class DataBatch {
 				e.printStackTrace();
 			}
 		}
-	}
-	
-	// 고객센터 답글 테이블
-	@Test
-	@Order(9)
-	void genDataQnaA() {
+		
+		cnt = 0; // executeUpdate(), DML 결과
 		try {
 			Class.forName(DRIVER);
 			conn = DriverManager.getConnection(URL, USERID, USERPW);
@@ -338,7 +343,7 @@ class DataBatch {
 				pstmt.setString(2, REPLYS[rand.nextInt(REPLYS.length)]);  
 				cnt += pstmt.executeUpdate();
 			}
-			System.out.println(cnt + "개 의 데이터가 INSERT 되었습니다");
+			System.out.println(cnt + "개 의 고객센터 답글 데이터가 INSERT 되었습니다");
 			
 		} catch(Exception e) {
 			e.printStackTrace();
@@ -350,6 +355,8 @@ class DataBatch {
 				e.printStackTrace();
 			}
 		}
+		
+		
 	}
 
 }
