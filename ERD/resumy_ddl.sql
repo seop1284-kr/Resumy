@@ -1,3 +1,21 @@
+DROP TABLE IF EXISTS `hr_member`;
+
+DROP TABLE IF EXISTS `hr_spec_info`;
+
+DROP TABLE IF EXISTS `hr_career`;
+
+DROP TABLE IF EXISTS `hr_file`;
+
+DROP TABLE IF EXISTS `hr_introduction`;
+
+DROP TABLE IF EXISTS `hr_qna_q`;
+
+DROP TABLE IF EXISTS `intr_feedback`;
+
+DROP TABLE IF EXISTS `hr_qna_a`;
+
+DROP TABLE IF EXISTS `hr_introduction_c`;
+
 CREATE TABLE `hr_member` (
 	`mem_id`	int	NOT NULL AUTO_INCREMENT	COMMENT 'PK',
 	`mem_userid`	varchar(100)	NOT NULL	COMMENT '회원아이디',
