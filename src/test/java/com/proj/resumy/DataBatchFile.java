@@ -8,7 +8,7 @@ import java.sql.Statement;
 
 import org.junit.jupiter.api.Test;
 
-public class DataBatch {
+public class DataBatchFile {
 	// JDBC 관련 기본 객체 변수들 선언
 	Connection conn = null;
 	Statement stmt = null;
