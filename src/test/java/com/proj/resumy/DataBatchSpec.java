@@ -27,10 +27,11 @@ public class DataBatchSpec {
 	
 	public static final String SQL_RESUMY_SPEC_INSERT = "insert into `hr_spec_info` (spec_id, spec_cat_cd, spec_name, spec_area, mody_dtm, reg_dtm, mem_id) values (?, ?, ?, ?, ?, ?, ?)";
 	
-	public static final String[] SHCOOL = { "초등학교", "즁학교", "고등학교", "대학교.대학권"};
+	public static final String[] SHCOOL = { "초등학교", "중학교", "고등학교", "대학교.대학권"};
+	
+	// 회원학력사항 테이블
 	@Test
-	// 회원정보 테이블
-	void genDataCar() {
+	void genDataSpec() {
 		try {
 			Class.forName(DRIVER);
 			conn = DriverManager.getConnection(URL, USERID, USERPW);

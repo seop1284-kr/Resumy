@@ -29,8 +29,8 @@ public class DataBatchCareer {
 	
 	public static final String SQL_RESUMY_CAREER_INSERT = "insert into `hr_career` (cr_company, cr_hiredate, cr_leavedate, cr_post, mem_id) values (?, ?, ?, ?, ?)";
 	
+	// 경력사항 테이블
 	@Test
-	// 회원정보 테이블
 	void genDataCar() {
 		try {
 			Class.forName(DRIVER);

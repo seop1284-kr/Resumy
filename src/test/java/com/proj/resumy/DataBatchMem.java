@@ -24,8 +24,8 @@ public class DataBatchMem {
 	
 	public static final String SQL_RESUMY_MEM_INSERT = "insert into `hr_member` (mem_userid, mem_pw, mem_name, mem_email, mem_level) values (?, ?, ?, ?, ?)";
 	
-	@Test
 	// 회원정보 테이블
+	@Test
 	void genDatafile() {
 		try {
 			Class.forName(DRIVER);

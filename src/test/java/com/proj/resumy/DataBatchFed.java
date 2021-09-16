@@ -24,9 +24,9 @@ public class DataBatchFed {
 	
 	public static final String SQL_RESUMY_FED_INSERT = "insert into `intr_feedback` (fb_userid, fb_content, intr_id) values (?, ?, ?)";
 	
+	// 자기소개서 피드백 게시판
 	@Test
-	// 회원정보 테이블
-	void genDataMem() {
+	void genDataFed() {
 		try {
 			Class.forName(DRIVER);
 			conn = DriverManager.getConnection(URL, USERID, USERPW);

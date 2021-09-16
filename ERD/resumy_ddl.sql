@@ -26,9 +26,7 @@ CREATE TABLE `hr_member` (
 	`mem_level`	boolean	NOT NULL	COMMENT '회원등급 (true:회원  false: 관리자)'
 );
 
-<<<<<<< Updated upstream
 -- 경력사항 테이블
-=======
 CREATE TABLE `hr_spec_info` (
 	`spec_id`	int(11)	NOT NULL AUTO_INCREMENT PRIMARY KEY COMMENT '일련번호',
 	`spec_cat_cd`	varchar(10)	NOT NULL	COMMENT '01: 초등학교 02: 중학교 03: 고등학교 04: 대학교.대학원',
@@ -41,7 +39,7 @@ CREATE TABLE `hr_spec_info` (
 	`mem_id`	int	NOT NULL
 );
 
->>>>>>> Stashed changes
+-- 회원학력사항 테이블
 CREATE TABLE `hr_career` (
 	`cr_id`	int	NOT NULL AUTO_INCREMENT	PRIMARY KEY COMMENT '일련번호',
 	`cr_company`	varchar(20)	NOT NULL	COMMENT '회사명',
@@ -53,19 +51,6 @@ CREATE TABLE `hr_career` (
 	`cr_area`	varchar(20)	NULL	COMMENT '지역',
 	`cr_salary`	int	NULL	COMMENT '연봉',
 	`cr_work`	varchar(10)	NULL	COMMENT '담당업무',
-	`mem_id`	int	NOT NULL
-);
-
--- 회원학력사항 테이블
-CREATE TABLE `hr_spec_info` (
-	`spec_id`	int(11)	NOT NULL AUTO_INCREMENT PRIMARY KEY COMMENT '일련번호',
-	`spec_cat_cd`	varchar(10)	NOT NULL	COMMENT '01: 초등학교 02: 중학교 03: 고등학교 04: 대학교.대학원',
-	`spec_name`	varchar(10)	NOT NULL	COMMENT '학교명',
-	`spec_area`	varchar(10)	NOT NULL	COMMENT '지역명',
-	`spec_major`	varchar(10)	NULL	COMMENT '전공명',
-	`spec_university`	varchar(10)	NULL	COMMENT '01: 2,3년제 02: 4년제  03: 대학원(석사) 04: 대학원(박사)',
-	`reg_dtm`	datetime	NOT NULL	DEFAULT now()	COMMENT '등록일시',
-	`mody_dtm`	datetime	NOT NULL	DEFAULT now()	COMMENT '수정일시',
 	`mem_id`	int	NOT NULL
 );
 
@@ -92,6 +77,14 @@ CREATE TABLE `hr_introduction` (
 	`mem_id`	int	NOT NULL
 );
 
+-- 자소서컨텐츠 테이블
+CREATE TABLE `hr_introduction_c` (
+	`intr_c_id`	int	NOT NULL AUTO_INCREMENT	PRIMARY KEY COMMENT '일련번호',
+	`intr_question`	varchar(100)	NULL	COMMENT '자소서질문',
+	`intr_content`	text	NULL	COMMENT '자소서내용',
+	`intr_id`	int	NOT NULL	COMMENT '자소서 게시글 일련번호'
+);
+
 -- 자기소개서 피드백 게시판
 CREATE TABLE `intr_feedback` (
 	`fb_id`	int	NOT NULL AUTO_INCREMENT	PRIMARY KEY COMMENT '일련번호',
@@ -101,13 +94,6 @@ CREATE TABLE `intr_feedback` (
 	`intr_id`	int	NOT NULL
 );
 
--- 자소서컨텐츠 테이블
-CREATE TABLE `hr_introduction_c` (
-	`intr_c_id`	int	NOT NULL AUTO_INCREMENT	PRIMARY KEY COMMENT '일련번호',
-	`intr_question`	varchar(100)	NULL	COMMENT '자소서질문',
-	`intr_content`	text	NULL	COMMENT '자소서내용',
-	`intr_id`	int	NOT NULL	COMMENT '자소서 게시글 일련번호'
-);
 
 -- 노수빈
 -- 고객센터 테이블
@@ -121,7 +107,7 @@ CREATE TABLE `hr_qna_q` (
 
 -- 고객센터 답글 테이블
 CREATE TABLE `hr_qna_a` (
-	`q_id`	int	NOT NULL AUTO_INCREMENT	PRIMARY KEY COMMENT '일련번호',
+	`q_id`	int	NOT NULL /*AUTO_INCREMENT	*/PRIMARY KEY COMMENT '일련번호',
 	`a_reply`	text	NOT NULL	COMMENT '답글',
 	`a_regdate`	datetime	NOT NULL	DEFAULT now()	COMMENT '답글 등록일시'
 );

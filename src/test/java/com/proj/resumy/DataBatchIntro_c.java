@@ -24,8 +24,8 @@ public class DataBatchIntro_c {
 	
 	public static final String SQL_RESUMY_INTRO_C_INSERT = "insert into `hr_introduction_c` (intr_question, intr_content, intr_id) values (?, ?, ?)";
 	
+	// 자소서컨텐츠 테이블
 	@Test
-	// 회원정보 테이블
 	void genDataIntroC() {
 		try {
 			Class.forName(DRIVER);

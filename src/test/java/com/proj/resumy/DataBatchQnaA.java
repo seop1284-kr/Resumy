@@ -23,12 +23,12 @@ public class DataBatchQnaA {
 	public static final String USERID = "userdm"; // DB 사용자 계정 정보
 	public static final String USERPW = "1234";
 	
-	public static final String SQL_RESUMY_QNAA_INSERT = "insert into `hr_qna_a` (a_reply) values (?)";
+	public static final String SQL_RESUMY_QNAA_INSERT = "insert into `hr_qna_a` (q_id, a_reply) values (?, ?)";
 	
 	public static final String[] REPLYS = { "문의 감사드립니다. 빠른 시일 내에 해결하겠습니다", "문의 감사드립니다. 언제나 이용 부탁드립니다", "기각합니다" };
 	
-	@Test
 	// 고객센터 답글 테이블
+	@Test
 	void genDataQnaA() {
 		try {
 			Class.forName(DRIVER);
@@ -40,7 +40,8 @@ public class DataBatchQnaA {
 			int num = 10;
 			Random rand = new Random();
 			for(int i = 0; i < num; i++) {
-				pstmt.setString(1, REPLYS[rand.nextInt(REPLYS.length)]);  
+				pstmt.setInt(1, i+1);
+				pstmt.setString(2, REPLYS[rand.nextInt(REPLYS.length)]);  
 				cnt += pstmt.executeUpdate();
 			}
 			System.out.println(cnt + "개 의 데이터가 INSERT 되었습니다");

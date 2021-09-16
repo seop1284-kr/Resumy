@@ -27,9 +27,9 @@ public class DataBatchQnaQ {
 	
 	public static final String[] SUBJECTS = { "사이트 개선 문의합니다", "이용 문의합니다", "문제있습니다", "안녕하십니까", "회사 정보 보기 불편합니다" };
 	public static final String[] CONTENTS = { "사이트 이용에 문제가 있는 것 같습니다. 개선해주세요.", "내용이 문제가 있습니다", "수업 진행에 있어 동그라미가 많습니다", "부침개는 동그랗지만 포카리는 맛있습니다" };
-	
-	@Test
+
 	// 고객센터 테이블
+	@Test
 	void genDataQnaQ() {
 		try {
 			Class.forName(DRIVER);

@@ -24,9 +24,9 @@ public class DataBatchIntro {
 	
 	public static final String SQL_RESUMY_INTRO_INSERT = "insert into `hr_introduction` (intr_title, mem_id) values (?, ?)";
 	
+	// 자기소개서 테이블
 	@Test
-	// 회원정보 테이블
-	void genDataMem() {
+	void genDataIntro() {
 		try {
 			Class.forName(DRIVER);
 			conn = DriverManager.getConnection(URL, USERID, USERPW);

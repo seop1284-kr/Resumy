@@ -24,8 +24,8 @@ public class DataBatchFile {
 	
 	public static final String SQL_RESUMY_FILE_INSERT = "insert into `hr_file` (file_name, file_volume, mem_id) values (?, ?, ?)";
 	
+	// 파일 테이블
 	@Test
-	// 회원정보 테이블
 	void genDataFile() {
 		try {
 			Class.forName(DRIVER);
