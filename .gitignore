@@ -4,7 +4,6 @@ target/
 !**/src/main/**/target/
 !**/src/test/**/target/
 .dbeaver
-ERD/resumy_test.sql
 
 ### STS ###
 .apt_generated
@@ -33,4 +32,4 @@ build/
 
 ### VS Code ###
 .vscode/
-ERD/resumy_test.sql
+/ERD/resumy_test.sql
