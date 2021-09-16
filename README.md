@@ -9,3 +9,6 @@
 - static\img 폴더생성
 - static\assets 폴더생성
 - ERD 폴더 생성 후 resumy_test.sql 파일생성
+
+
+- test.수빈
