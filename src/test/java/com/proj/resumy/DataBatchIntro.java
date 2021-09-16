@@ -22,7 +22,7 @@ public class DataBatchIntro {
 	public static final String USERID = "userdm"; // DB 사용자 계정 정보
 	public static final String USERPW = "1234";
 	
-	public static final String SQL_RESUMY_FED_INSERT = "insert into `intr_feedback` (fb_userid, fb_content, intr_id) values (?, ?, ?)";
+	public static final String SQL_RESUMY_INTRO_INSERT = "insert into `hr_introduction` (intr_title, mem_id) values (?, ?)";
 	
 	@Test
 	// 회원정보 테이블
@@ -32,12 +32,11 @@ public class DataBatchIntro {
 			conn = DriverManager.getConnection(URL, USERID, USERPW);
 			
 			// 테스트용 dummy 데이터 만들기
-			pstmt = conn.prepareStatement(SQL_RESUMY_FED_INSERT);
+			pstmt = conn.prepareStatement(SQL_RESUMY_INTRO_INSERT);
 			
 			int num = 10;
 			for(int i = 0; i < num; i++) {
-				pstmt.setString(1, String.format("user%02d", i));
-				pstmt.setString(1, String.format("content%02d", i));
+				pstmt.setString(1, String.format("title%02d", i));
 				pstmt.setInt(2, i);
 		
 				cnt += pstmt.executeUpdate();

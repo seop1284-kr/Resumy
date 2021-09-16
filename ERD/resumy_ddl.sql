@@ -81,7 +81,7 @@ CREATE TABLE `intr_feedback` (
 	`fb_id`	int	NOT NULL AUTO_INCREMENT	PRIMARY KEY COMMENT '일련번호',
 	`fb_userid`	varchar(20)	NOT NULL	COMMENT '유저아이디',
 	`fb_content`	text	NOT NULL	COMMENT '피드백 내용',
-	`fb_regdate`	datetime	NULL	COMMENT '피드백 등록일시',
+	`fb_regdate`	datetime	NOT NULL DEFAULT now()	COMMENT '피드백 등록일시',
 	`intr_id`	int	NOT NULL
 );
 
