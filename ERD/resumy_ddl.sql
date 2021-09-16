@@ -1,23 +1,23 @@
-DROP TABLE IF EXISTS `hr_member`;
+DROP TABLE IF EXISTS `hr_member` CASCADE;
 
-DROP TABLE IF EXISTS `hr_spec_info`;
+DROP TABLE IF EXISTS `hr_spec_info` CASCADE;
 
-DROP TABLE IF EXISTS `hr_career`;
+DROP TABLE IF EXISTS `hr_career` CASCADE;
 
-DROP TABLE IF EXISTS `hr_file`;
+DROP TABLE IF EXISTS `hr_file` CASCADE;
 
-DROP TABLE IF EXISTS `hr_introduction`;
+DROP TABLE IF EXISTS `hr_introduction` CASCADE;
 
-DROP TABLE IF EXISTS `hr_qna_q`;
+DROP TABLE IF EXISTS `hr_qna_q` CASCADE;
 
-DROP TABLE IF EXISTS `intr_feedback`;
+DROP TABLE IF EXISTS `intr_feedback` CASCADE;
 
-DROP TABLE IF EXISTS `hr_qna_a`;
+DROP TABLE IF EXISTS `hr_qna_a` CASCADE;
 
-DROP TABLE IF EXISTS `hr_introduction_c`;
+DROP TABLE IF EXISTS `hr_introduction_c` CASCADE;
 
 CREATE TABLE `hr_member` (
-	`mem_id`	int	NOT NULL AUTO_INCREMENT	COMMENT 'PK',
+	`mem_id`	int	NOT NULL AUTO_INCREMENT	PRIMARY KEY COMMENT '일련번호',
 	`mem_userid`	varchar(100)	NOT NULL	COMMENT '회원아이디',
 	`mem_pw`	varchar(100)	NOT NULL	COMMENT '회원비밀번호',
 	`mem_name`	varchar(10)	NOT NULL	COMMENT '회원이름',
@@ -33,7 +33,7 @@ CREATE TABLE `hr_member` (
 );
 
 CREATE TABLE `hr_spec_info` (
-	`spec_id`	int(11)	NOT NULL	COMMENT 'PK',
+	`spec_id`	int(11)	NOT NULL PRIMARY KEY COMMENT '일련번호',
 	`spec_cat_cd`	varchar(10)	NOT NULL	COMMENT '01: 초등학교 02: 중학교 03: 고등학교 04: 대학교.대학원',
 	`spec_name`	varchar(10)	NOT NULL	COMMENT '학교명',
 	`spec_area`	varchar(10)	NOT NULL	COMMENT '지역명',
@@ -45,7 +45,7 @@ CREATE TABLE `hr_spec_info` (
 );
 
 CREATE TABLE `hr_career` (
-	`cr_id`	int	NOT NULL AUTO_INCREMENT	COMMENT 'PK',
+	`cr_id`	int	NOT NULL AUTO_INCREMENT	PRIMARY KEY COMMENT '일련번호',
 	`cr_company`	varchar(20)	NOT NULL	COMMENT '회사명',
 	`cr_hiredate`	datetime	NOT NULL	COMMENT '재직일',
 	`cr_leavedate`	datetime	NOT NULL	COMMENT '퇴사일',
@@ -59,7 +59,7 @@ CREATE TABLE `hr_career` (
 );
 
 CREATE TABLE `hr_file` (
-	`file_id`	int	NOT NULL AUTO_INCREMENT	COMMENT 'PK',
+	`file_id`	int	NOT NULL AUTO_INCREMENT	PRIMARY KEY COMMENT '일련번호',
 	`file_name`	varchar(50)	NOT NULL	COMMENT '첨부파일명',
 	`file_volume`	int	NOT NULL	COMMENT '파일용량',
 	`file_regdate`	datetime	NOT NULL	DEFAULT now()	COMMENT '등록일시',
@@ -68,7 +68,7 @@ CREATE TABLE `hr_file` (
 );
 
 CREATE TABLE `hr_introduction` (
-	`intr_id`	int	NOT NULL AUTO_INCREMENT	COMMENT 'PK 자소서 게시글 일련번호',
+	`intr_id`	int	NOT NULL AUTO_INCREMENT	PRIMARY KEY COMMENT '일련번호',
 	`intr_title`	varchar(100)	NOT NULL	COMMENT '자소서제목',
 	`intr_regdate`	datetime	NOT NULL	DEFAULT now()	COMMENT '등록일',
 	`intr_public`	boolean	NOT NULL	DEFAULT false	COMMENT '공개여부 (공개: true, 비공개: false)',
@@ -78,7 +78,7 @@ CREATE TABLE `hr_introduction` (
 );
 
 CREATE TABLE `hr_qna_q` (
-	`q_id`	int	NOT NULL AUTO_INCREMENT	COMMENT 'PK',
+	`q_id`	int	NOT NULL AUTO_INCREMENT	PRIMARY KEY COMMENT '일련번호',
 	`q_subject`	varchar(50)	NOT NULL	COMMENT '글 제목',
 	`q_content`	text	NOT NULL	COMMENT '글 내용',
 	`q_regdate`	datetime	NOT NULL	DEFAULT now()	COMMENT '글 등록일시',
@@ -86,7 +86,7 @@ CREATE TABLE `hr_qna_q` (
 );
 
 CREATE TABLE `intr_feedback` (
-	`fb_id`	int	NOT NULL AUTO_INCREMENT	COMMENT 'PK',
+	`fb_id`	int	NOT NULL AUTO_INCREMENT	PRIMARY KEY COMMENT '일련번호',
 	`fb_userid`	varchar(20)	NOT NULL	COMMENT '유저아이디',
 	`fb_content`	text	NOT NULL	COMMENT '피드백 내용',
 	`fb_regdate`	datetime	NULL	COMMENT '피드백 등록일시',
@@ -94,52 +94,16 @@ CREATE TABLE `intr_feedback` (
 );
 
 CREATE TABLE `hr_qna_a` (
-	`q_id`	int	NOT NULL AUTO_INCREMENT	COMMENT 'PK',
+	`q_id`	int	NOT NULL AUTO_INCREMENT	PRIMARY KEY COMMENT '일련번호',
 	`a_reply`	text	NOT NULL	COMMENT '답글',
 	`a_regdate`	datetime	NOT NULL	DEFAULT now()	COMMENT '답글 등록일시'
 );
 
 CREATE TABLE `hr_introduction_c` (
-	`intr_c_id`	int	NOT NULL AUTO_INCREMENT	COMMENT 'PK',
+	`intr_c_id`	int	NOT NULL AUTO_INCREMENT	PRIMARY KEY COMMENT '일련번호',
 	`intr_question`	varchar(100)	NULL	COMMENT '자소서질문',
 	`intr_content`	text	NULL	COMMENT '자소서내용',
 	`intr_id`	int	NOT NULL	COMMENT '자소서 게시글 일련번호'
-);
-
-ALTER TABLE `hr_member` ADD CONSTRAINT `PK_HR_MEMBER` PRIMARY KEY (
-	`mem_id`
-);
-
-ALTER TABLE `hr_spec_info` ADD CONSTRAINT `PK_HR_SPEC_INFO` PRIMARY KEY (
-	`spec_id`
-);
-
-ALTER TABLE `hr_career` ADD CONSTRAINT `PK_HR_CAREER` PRIMARY KEY (
-	`cr_id`
-);
-
-ALTER TABLE `hr_file` ADD CONSTRAINT `PK_HR_FILE` PRIMARY KEY (
-	`file_id`
-);
-
-ALTER TABLE `hr_introduction` ADD CONSTRAINT `PK_HR_INTRODUCTION` PRIMARY KEY (
-	`intr_id`
-);
-
-ALTER TABLE `hr_qna_q` ADD CONSTRAINT `PK_HR_QNA_Q` PRIMARY KEY (
-	`q_id`
-);
-
-ALTER TABLE `intr_feedback` ADD CONSTRAINT `PK_INTR_FEEDBACK` PRIMARY KEY (
-	`fb_id`
-);
-
-ALTER TABLE `hr_qna_a` ADD CONSTRAINT `PK_HR_QNA_A` PRIMARY KEY (
-	`q_id`
-);
-
-ALTER TABLE `hr_introduction_c` ADD CONSTRAINT `PK_HR_INTRODUCTION_C` PRIMARY KEY (
-	`intr_c_id`
 );
 
 ALTER TABLE `hr_qna_a` ADD CONSTRAINT `FK_hr_qna_q_TO_hr_qna_a_1` FOREIGN KEY (
