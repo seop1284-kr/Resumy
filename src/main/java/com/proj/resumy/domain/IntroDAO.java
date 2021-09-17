@@ -2,8 +2,9 @@ package com.proj.resumy.domain;
 
 import java.util.List;
 
+//자소서 DAO 인터페이스 김진섭
 public interface IntroDAO {
-	// 전체 자소서 출력 SELECT
+	// 자기 자소서 출력 SELECT
 	public abstract List<IntroDTO> select();
 	
 	// 새 자소서 작성 <-- DTO

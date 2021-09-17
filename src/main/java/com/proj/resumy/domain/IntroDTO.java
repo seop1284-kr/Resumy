@@ -8,6 +8,8 @@ import lombok.Data;
 // DAO 등과 연동하여 데이터를 실어 나르는 객체
 // 필요한 객체(entity) 만큼 작성
 
+
+//자소서 DTO 김진섭
 @Data
 public class IntroDTO {
 	private int id;   				// intr_id

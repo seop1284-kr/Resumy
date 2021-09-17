@@ -31,4 +31,12 @@ public class IntroController {
 //
 //		return "view";
 //	}
+	
+//	@RequestMapping("/write")
+//	public String list(Model model) {
+//		
+//		model.addAttribute("list", introService.list());
+//
+//		return "view";
+//	}
 }
