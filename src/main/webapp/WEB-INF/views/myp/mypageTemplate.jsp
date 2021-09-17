@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang='ko'>
 
@@ -10,7 +12,7 @@
     <link href="css/common.css" rel="stylesheet">
     <link href="css/navbar.css" rel="stylesheet">
     <link href="css/footer.css" rel="stylesheet">
-    <link href="css/home.css" rel="stylesheet">
+    <link href="css/mypageTemplate.css" rel="stylesheet">
     <!-- font-awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <!-- font -->
@@ -38,8 +40,8 @@
     </style>
 </head>
 
-<body>
-    <header class="container-md">
+<body class="container-md">
+    <header>
         <nav class="navbar navbar-expand-md fixed-top">
             <div class="container-md">
                 <a class="navbar-brand" href="index.html">
@@ -56,13 +58,23 @@
     </header>
     <!-- ./navbar -->
 
-    <div class="banner container-fluid">
+    <div class="row">
+        <aside class="col-2">
+            <h4><b>마이페이지</b></h4>
+            <hr>
+            <ul>
+                <li class="active">자기소개서 관리</li>
+                <li>파일 관리</li>
+                <li>이력 관리</li>
+            </ul>
+        </aside>
+        <!-- ./aside -->
 
+        <section class="col">
+            <h4><b>자기소개서 관리</b></h4>
+            <!-- 내용 적는 부분 -->
+        </section>
     </div>
-    <!-- ./배너 -->
-    <section class="container-md">
-        
-    </section>
 
     <footer class="fixed-bottom">
         <div class="row">

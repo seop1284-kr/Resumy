@@ -7,8 +7,16 @@ footer {
     background-color: var(--footer-bgc);
 }
 
-footer .col-2 {
+footer div:first-child {
     padding: 0;
+}
+
+footer div:nth-child(2) {
+    margin-left: 1em;
+}
+
+footer div:last-child {
+    margin-top: 1em;
 }
 
 footer img {
@@ -16,7 +24,6 @@ footer img {
 }
 
 footer div {
-    margin-left: 1em;
     color: rgb(158, 158, 158);
     font-size: 13px;
 }
