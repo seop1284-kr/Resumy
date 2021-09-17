@@ -11,15 +11,17 @@ import lombok.Data;
 @Data
 public class CareerDTO {
 	
-	private int id;   				// spec_id
-	private String cat;				// spec_cat_cd '01: 초등학교 02: 중학교 03: 고등학교 04: 대학교.대학원'
-	private String name;			// spec_name
-	private String area;			// spec_area
-	private String major;			// spec_major
-	private String university;		// spec_university '01: 2,3년제 02: 4년제  03: 대학원(석사) 04: 대학원(박사)'
-	private LocalDateTime regdate;	// reg_dtm
-	private LocalDateTime modydate;	// mody_dtm
-	private int mid;				// mody_dtm
+	private int id;   					// cr_id
+	private String company;				// cr_company
+	private LocalDateTime hiredate;		// cr_hiredate
+	private LocalDateTime leavedate;	// cr_leavedate
+	private String lvreason;			// cr_lvreason
+	private String post;				// cr_post
+	private String dept;				// cr_dept
+	private String area;				// cr_area
+	private int salary;					// cr_salary
+	private String work;				// cr_work
+	private int mid;					// mem_id
 	
 	public CareerDTO() {
 		super();
@@ -27,17 +29,19 @@ public class CareerDTO {
 	}
 
 
-	public CareerDTO(int id,  String cat, String name, String area, String major, String university, LocalDateTime regdate, LocalDateTime modydate, int mid) {
+	public CareerDTO(int id, String company, LocalDateTime hiredate,LocalDateTime leavedate, String lvreason, String post, String dept, String area, int salary, String work, int mid) {
 		super();
 		this.id = id;
-		this.cat = cat;
-		this.name = name;
+		this.company = company;
+		this.hiredate = hiredate;
+		this.leavedate = leavedate;
+		this.lvreason = lvreason;
+		this.post = post;
+		this.dept = dept;
 		this.area = area;
-		this.major = major;
-		this.university = university;
-		this.regdate = regdate;
-		this.modydate = modydate;
+		this.salary = salary;
+		this.work = work;
 		this.mid = mid;
-		System.out.println("Career(toString) 객체 생성");
+		System.out.println("IntroDTO(...) 객체 생성");
 	}
 }
