@@ -1,4 +1,4 @@
-package com.proj.resumy.controller;
+package com.proj.resumy.intro.controller;
 
 import java.util.List;
 
@@ -25,13 +25,27 @@ public class AjaxIntroController {
 		System.out.println("AjaxIntroController() 생성");
 	}
 	
-	@RequestMapping("/jsonlist")
-	public IntroDTO[] list(Model model) {
+	@RequestMapping("/finlist")
+	public IntroDTO[] finlist(Model model) {
 		
-		model.addAttribute("list", introService.list());
-		List<IntroDTO> list = introService.list();
+		//model.addAttribute("finList", introService.selectNotFinResume());
+		
+		// test id가 1일 사람
+		List<IntroDTO> finList = introService.selectFinResume(1);
+		
+		IntroDTO [] arr = new IntroDTO[finList.size()];
+		return finList.toArray(arr);
+	}
+	
+	@RequestMapping("/notfinlist")
+	public IntroDTO[] notfinlist(Model model) {
+		
+		//model.addAttribute("notFinList", introService.selectNotFinResume());
+		
+		// test id가 1일 사람
+		List<IntroDTO> notFinList = introService.selectNotFinResume(1);
 
-		IntroDTO [] arr = new IntroDTO[list.size()];
-		return list.toArray(arr);
+		IntroDTO [] arr = new IntroDTO[notFinList.size()];
+		return notFinList.toArray(arr);
 	}
 }

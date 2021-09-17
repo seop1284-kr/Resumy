@@ -18,8 +18,13 @@ public class IntroDAOImpl implements IntroDAO {
 	}
 	
 	@Override
-	public List<IntroDTO> select() {
-		return mapper.select();
+	public List<IntroDTO> selectNotFinResume(int mid) {
+		return mapper.selectNotFinResume(mid);
+	}
+
+	@Override
+	public List<IntroDTO> selectFinResume(int mid) {
+		return mapper.selectFinResume(mid);
 	}
 
 	@Override

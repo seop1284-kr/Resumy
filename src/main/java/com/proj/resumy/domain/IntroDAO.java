@@ -4,8 +4,11 @@ import java.util.List;
 
 //자소서 DAO 인터페이스 김진섭
 public interface IntroDAO {
-	// 자기 자소서 출력 SELECT
-	public abstract List<IntroDTO> select();
+	// 미완성 자기 자소서 출력 SELECT
+	public abstract List<IntroDTO> selectNotFinResume(int mid);
+	
+	// 완성 자기 자소서 출력 SELECT
+	public abstract List<IntroDTO> selectFinResume(int mid);
 	
 	// 새 자소서 작성 <-- DTO
 	public abstract int insert(IntroDTO dto);

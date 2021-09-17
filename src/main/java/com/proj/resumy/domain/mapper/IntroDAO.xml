@@ -5,7 +5,7 @@
   
 <mapper namespace="com.proj.resumy.domain.IntroDAO">
 	
-	<select id="select" resultType="com.proj.resumy.domain.IntroDTO">
+	<select id="selectNotFinResume" resultType="com.proj.resumy.domain.IntroDTO">
 		SELECT 
 			intr_id "id", 
 			intr_title title, 
@@ -15,7 +15,26 @@
 			mody_dtm modydate,
 			mem_id mid
 		FROM 
-			hr_introduction 
+			hr_introduction
+		WHERE
+			mem_id = #{mid} AND intr_finish = false
+		ORDER BY 
+			intr_id DESC	
+	</select>
+	
+	<select id="selectFinResume" resultType="com.proj.resumy.domain.IntroDTO">
+		SELECT 
+			intr_id "id", 
+			intr_title title, 
+			intr_regdate regdate, 
+			intr_public pub, 
+			intr_finish fin, 
+			mody_dtm modydate,
+			mem_id mid
+		FROM 
+			hr_introduction
+		WHERE
+			mem_id = #{mid} AND intr_finish = true
 		ORDER BY 
 			intr_id DESC	
 	</select>

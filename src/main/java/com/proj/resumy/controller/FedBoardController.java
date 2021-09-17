@@ -25,7 +25,7 @@ public class FedBoardController {
 	// 자소서 피드백 게시판
 	@RequestMapping("/fedboard") 
 	public String fedBoardPage(Model model) {
-		model.addAttribute("list", introService.list());
+		//model.addAttribute("list", introService.list());
 
 		return "resumeBoard"; // 문서 명
 	}

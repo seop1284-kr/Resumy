@@ -16,6 +16,7 @@ import com.proj.resumy.domain.IntroDTO;
 //Spring
 //@Controller -> @Service -> DAO -> JdbcTemplate
 
+// IntroService (자소서 관리 페이지) 김진섭
 @Service
 public class IntroService {
 	IntroDAO dao;
@@ -30,9 +31,14 @@ public class IntroService {
 		
 	}
 
-	public List<IntroDTO> list() {
+	public List<IntroDTO> selectFinResume(int mid) {
 		
-		return dao.select();
+		return dao.selectFinResume(mid);
+	}
+	
+	public List<IntroDTO> selectNotFinResume(int mid) {
+		
+		return dao.selectNotFinResume(mid);
 	}
 
 //	public int write(IntroDTO dto) {
