@@ -13,7 +13,7 @@ import com.proj.resumy.service.CareerService;
 
 // 경력사항 컨트롤러 (김민수)
 @RestController
-@RequestMapping("/myp/Basic")
+@RequestMapping("/myp/history")
 public class AjaxCareerController {
 	private CareerService careerService;
 

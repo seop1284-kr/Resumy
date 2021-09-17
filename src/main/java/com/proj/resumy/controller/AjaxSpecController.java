@@ -13,7 +13,7 @@ import com.proj.resumy.service.SpecService;
 //학력사항 컨트롤러 (김민수)
 
 @RestController
-@RequestMapping("/myp/history")
+@RequestMapping("/myp/basic")
 public class AjaxSpecController {
 	private SpecService specService;
 
