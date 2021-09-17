@@ -9,7 +9,7 @@ import com.proj.resumy.service.IntroService;
 
 // FedBoardController 김진섭
 @Controller
-@RequestMapping("/fedboard")
+@RequestMapping("")	// context path
 public class FedBoardController {
 	private IntroService introService;
 
@@ -23,10 +23,10 @@ public class FedBoardController {
 	}
 	
 	// 자소서 피드백 게시판
-	@RequestMapping("/")
-	public String mainPage(Model model) {
+	@RequestMapping("/fedboard") 
+	public String fedBoardPage(Model model) {
 		model.addAttribute("list", introService.list());
 
-		return "view";
+		return "resumeBoard"; // 문서 명
 	}
 }
