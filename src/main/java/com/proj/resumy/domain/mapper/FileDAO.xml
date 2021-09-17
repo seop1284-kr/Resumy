@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.proj.resumy.domain.FileDAO">
+
+	<select id="select" resultType="com.proj.resumy.domain.FileDAO">
+		SELECT 
+			file_name, 
+			file_volume, 
+			file_regdate, 
+			file_memo 
+		FROM 
+			hr_file
+		ORDER BY 
+			file_id DESC;
+	</select>
+</mapper>
