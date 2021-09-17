@@ -8,6 +8,8 @@ import org.springframework.stereotype.Service;
 import com.proj.resumy.domain.FileDAO;
 import com.proj.resumy.domain.FileDTO;
 
+//AjaxFileController (파일관리) 하병노
+
 @Service
 public class FileService {
 

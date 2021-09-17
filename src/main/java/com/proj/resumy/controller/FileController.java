@@ -7,18 +7,27 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.proj.resumy.service.FileService;
 import com.proj.resumy.service.IntroService;
 
+//AjaxFileController (파일관리) 하병노
+
 @Controller
-@RequestMapping("/myp/file")
+@RequestMapping("/myp")
 public class FileController {
-	private FileService fileService;
 	
-	@Autowired
-	public void setFileService(IntroService introService) {
-		this.fileService = fileService;
+	@RequestMapping("/file")
+	public String file() {
+		return "myp/file";
+		
 	}
-	
-	public FileController() {
-		System.out.println("FileController() 생성");
-	}
+//	
+//	private FileService fileService;
+//	
+//	@Autowired
+//	public void setFileService(FileService fileService) {
+//		this.fileService = fileService;
+//	}
+//	
+//	public FileController() {
+//		System.out.println("FileController() 생성");
+//	}
 	
 }

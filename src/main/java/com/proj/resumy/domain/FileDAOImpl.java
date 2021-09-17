@@ -5,6 +5,8 @@ import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
+//AjaxFileController (파일관리) 하병노
+
 @Repository
 public class FileDAOImpl implements FileDAO {
 

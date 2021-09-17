@@ -2,6 +2,8 @@ package com.proj.resumy.domain;
 
 import java.util.List;
 
+//AjaxFileController (파일관리) 하병노
+
 public interface FileDAO {
 	
 	// 전체 파일 리스트 출력 SELECT
