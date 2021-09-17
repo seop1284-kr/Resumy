@@ -35,7 +35,6 @@ class DataBatch {
 	public static final String SQL_RESUMY_INTRO_C_INSERT = "insert into `hr_introduction_c` (intr_question, intr_content, intr_id) values (?, ?, ?)";
 	public static final String SQL_RESUMY_FED_INSERT = "insert into `intr_feedback` (fb_userid, fb_content, intr_id) values (?, ?, ?)";
 	public static final String SQL_RESUMY_QNAQ_INSERT = "insert into `hr_qna_q` (q_subject, q_content, mem_id) values (?, ?, ?)";
-//	public static final String SQL_RESUMY_QNAA_INSERT = "insert into `hr_qna_a` (a_reply) values (?)";
 	public static final String SQL_RESUMY_QNAA_INSERT = "insert into `hr_qna_a` (q_id, a_reply) values (?, ?)";
 	
 	public static final String[] SHCOOL = { "초등학교", "중학교", "고등학교", "대학교.대학권"};
@@ -66,6 +65,197 @@ class DataBatch {
 				cnt += pstmt.executeUpdate();
 			}
 			System.out.println(cnt + "개 의 회원정보 데이터가 INSERT 되었습니다");
+			
+		} catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(pstmt != null) pstmt.close();
+				if(conn != null) conn.close();
+			} catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
+		// 경력사항 테이블
+		cnt = 0; // executeUpdate(), DML 결과
+		try {
+			Class.forName(DRIVER);
+			conn = DriverManager.getConnection(URL, USERID, USERPW);
+			
+			// 테스트용 dummy 데이터 만들기
+			pstmt = conn.prepareStatement(SQL_RESUMY_CAREER_INSERT);
+			LocalDate now = LocalDate.now();
+			//LocalDate leavedate = LocalDate.now();
+			
+			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+			//SimpleDateFormat transFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+			
+			int num = 10;
+			for(int i = 0; i < num; i++) {
+				
+				pstmt.setString(1, String.format("company%02d", i));  				// 회사명
+				pstmt.setString(2, now.format(formatter));							// 재직일
+				pstmt.setString(3, now.format(formatter));		// 퇴사일 추가 해야함	// 퇴사일
+				pstmt.setString(4, String.format("post%02d", i));					// 직급/직책
+				pstmt.setInt(5, i + 1);
+				cnt += pstmt.executeUpdate();
+				}
+			System.out.println(cnt + "개 의 경력사항 데이터가 INSERT 되었습니다");
+			
+		} catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(pstmt != null) pstmt.close();
+				if(conn != null) conn.close();
+			} catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
+		// 회원학력사항 테이블
+		cnt = 0; // executeUpdate(), DML 결과
+		try {
+			Class.forName(DRIVER);
+			conn = DriverManager.getConnection(URL, USERID, USERPW);
+			
+			// 테스트용 dummy 데이터 만들기
+			pstmt = conn.prepareStatement(SQL_RESUMY_SPEC_INSERT);
+			LocalDate now = LocalDate.now();
+			
+			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+			
+			int num = 10;
+			Random rand = new Random();
+			for(int i = 0; i < num; i++) {
+				
+				pstmt.setString(1, SHCOOL[rand.nextInt(SHCOOL.length)]);  			// '01: 초등학교 02: 중학교 03: 고등학교 04: 대학교.대학원'
+				pstmt.setString(2, String.format("school%02d", i)); 				// 학교명
+				pstmt.setString(3, String.format("area%02d", i)); 					// 지역명
+				pstmt.setString(4, now.format(formatter));							// 등록일시
+				pstmt.setString(5, now.format(formatter));							// 수정일시
+				pstmt.setInt(6, i + 1);
+				cnt += pstmt.executeUpdate();
+				}
+			System.out.println(cnt + "개 의 학력사항 데이터가 INSERT 되었습니다");
+			
+		} catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(pstmt != null) pstmt.close();
+				if(conn != null) conn.close();
+			} catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
+		// 파일 테이블
+		cnt = 0; // executeUpdate(), DML 결과
+		try {
+			Class.forName(DRIVER);
+			conn = DriverManager.getConnection(URL, USERID, USERPW);
+			
+			// 테스트용 dummy 데이터 만들기
+			pstmt = conn.prepareStatement(SQL_RESUMY_FILE_INSERT);
+			
+			int num = 10;
+			for(int i = 0; i < num; i++) {
+				pstmt.setString(1, String.format("file%02d", i));  
+				pstmt.setInt(2, i+500);
+				pstmt.setInt(3, i + 1);
+				cnt += pstmt.executeUpdate();
+			}
+			System.out.println(cnt + "개 의 파일 데이터가 INSERT 되었습니다");
+			
+		} catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(pstmt != null) pstmt.close();
+				if(conn != null) conn.close();
+			} catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
+		// 자기소개서 테이블
+		cnt = 0; // executeUpdate(), DML 결과
+		try {
+			Class.forName(DRIVER);
+			conn = DriverManager.getConnection(URL, USERID, USERPW);
+			
+			// 테스트용 dummy 데이터 만들기
+			pstmt = conn.prepareStatement(SQL_RESUMY_INTRO_INSERT);
+			
+			int num = 10;
+			for(int i = 0; i < num; i++) {
+				pstmt.setString(1, String.format("title%02d", i));
+				pstmt.setInt(2, i + 1);
+		
+				cnt += pstmt.executeUpdate();
+			}
+			System.out.println(cnt + "개 의 자소서 데이터가 INSERT 되었습니다");
+			
+		} catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(pstmt != null) pstmt.close();
+				if(conn != null) conn.close();
+			} catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
+		// 자소서컨텐츠 테이블
+		cnt = 0; // executeUpdate(), DML 결과
+		try {
+			Class.forName(DRIVER);
+			conn = DriverManager.getConnection(URL, USERID, USERPW);
+			
+			// 테스트용 dummy 데이터 만들기
+			pstmt = conn.prepareStatement(SQL_RESUMY_INTRO_C_INSERT);
+			
+			int num = 10;
+			for(int i = 0; i < num; i++) {
+				pstmt.setString(1, String.format("question%02d", i));  
+				pstmt.setString(2, String.format("content%02d", i));  
+				pstmt.setInt(3, i + 1);
+				cnt += pstmt.executeUpdate();
+			}
+			System.out.println(cnt + "개 의 자소서컨텐츠 데이터가 INSERT 되었습니다");
+			
+		} catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(pstmt != null) pstmt.close();
+				if(conn != null) conn.close();
+			} catch(Exception e) {
+				e.printStackTrace();
+			}
+		}		
+		
+		// 자기소개서 피드백 게시판
+		cnt = 0; // executeUpdate(), DML 결과
+		try {
+			Class.forName(DRIVER);
+			conn = DriverManager.getConnection(URL, USERID, USERPW);
+			
+			// 테스트용 dummy 데이터 만들기
+			pstmt = conn.prepareStatement(SQL_RESUMY_FED_INSERT);
+			
+			int num = 10;
+			for(int i = 0; i < num; i++) {
+				pstmt.setString(1, String.format("user%02d", i));
+				pstmt.setString(2, String.format("content%02d", i));
+				pstmt.setInt(3, i + 1);
+		
+				cnt += pstmt.executeUpdate();
+			}
+			System.out.println(cnt + "개 의 피드백 데이터가 INSERT 되었습니다");
 			
 		} catch(Exception e) {
 			e.printStackTrace();
@@ -120,7 +310,7 @@ class DataBatch {
 			int num = 10;
 			Random rand = new Random();
 			for(int i = 0; i < num; i++) {
-				pstmt.setInt(1, i+1);
+				pstmt.setInt(1, i + 1);
 				pstmt.setString(2, REPLYS[rand.nextInt(REPLYS.length)]);  
 				cnt += pstmt.executeUpdate();
 			}
@@ -139,220 +329,9 @@ class DataBatch {
 		
 	}
 	
-	// 경력사항 테이블
-	@Order(2)
-	@Test
-	void genDataCar() {
-		int cnt = 0; // executeUpdate(), DML 결과
-		try {
-			Class.forName(DRIVER);
-			conn = DriverManager.getConnection(URL, USERID, USERPW);
-			
-			// 테스트용 dummy 데이터 만들기
-			pstmt = conn.prepareStatement(SQL_RESUMY_CAREER_INSERT);
-			LocalDate now = LocalDate.now();
-			//LocalDate leavedate = LocalDate.now();
-			
-			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-			//SimpleDateFormat transFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-			
-			int num = 10;
-			for(int i = 0; i < num; i++) {
-				
-				pstmt.setString(1, String.format("company%02d", i));  				// 회사명
-				pstmt.setString(2, now.format(formatter));							// 재직일
-				pstmt.setString(3, now.format(formatter));		// 퇴사일 추가 해야함	// 퇴사일
-				pstmt.setString(4, String.format("post%02d", i));					// 직급/직책
-				pstmt.setInt(5, i);
-				cnt += pstmt.executeUpdate();
-				}
-			System.out.println(cnt + "개 의 경력사항 데이터가 INSERT 되었습니다");
-			
-		} catch(Exception e) {
-			e.printStackTrace();
-		} finally {
-			try {
-				if(pstmt != null) pstmt.close();
-				if(conn != null) conn.close();
-			} catch(Exception e) {
-				e.printStackTrace();
-			}
-		}
-	}
+
 	
-	// 회원학력사항 테이블
-	@Order(3)
-	@Test
-	void genDataSpec() {
-		int cnt = 0; // executeUpdate(), DML 결과
-		try {
-			Class.forName(DRIVER);
-			conn = DriverManager.getConnection(URL, USERID, USERPW);
-			
-			// 테스트용 dummy 데이터 만들기
-			pstmt = conn.prepareStatement(SQL_RESUMY_SPEC_INSERT);
-			LocalDate now = LocalDate.now();
-			
-			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-			
-			int num = 10;
-			Random rand = new Random();
-			for(int i = 0; i < num; i++) {
-				
-				pstmt.setString(1, SHCOOL[rand.nextInt(SHCOOL.length)]);  			// '01: 초등학교 02: 중학교 03: 고등학교 04: 대학교.대학원'
-				pstmt.setString(2, String.format("school%02d", i)); 				// 학교명
-				pstmt.setString(3, String.format("area%02d", i)); 					// 지역명
-				pstmt.setString(4, now.format(formatter));							// 등록일시
-				pstmt.setString(5, now.format(formatter));							// 수정일시
-				pstmt.setInt(6, i);
-				cnt += pstmt.executeUpdate();
-				}
-			System.out.println(cnt + "개 의 학력사항 데이터가 INSERT 되었습니다");
-			
-		} catch(Exception e) {
-			e.printStackTrace();
-		} finally {
-			try {
-				if(pstmt != null) pstmt.close();
-				if(conn != null) conn.close();
-			} catch(Exception e) {
-				e.printStackTrace();
-			}
-		}
-	}
-	
-	// 파일 테이블
-	@Order(4)
-	@Test
-	void genDataFile() {
-		int cnt = 0; // executeUpdate(), DML 결과
-		try {
-			Class.forName(DRIVER);
-			conn = DriverManager.getConnection(URL, USERID, USERPW);
-			
-			// 테스트용 dummy 데이터 만들기
-			pstmt = conn.prepareStatement(SQL_RESUMY_FILE_INSERT);
-			
-			int num = 10;
-			for(int i = 0; i < num; i++) {
-				pstmt.setString(1, String.format("file%02d", i));  
-				pstmt.setInt(2, i+500);
-				pstmt.setInt(3, i+1);
-				cnt += pstmt.executeUpdate();
-			}
-			System.out.println(cnt + "개 의 파일 데이터가 INSERT 되었습니다");
-			
-		} catch(Exception e) {
-			e.printStackTrace();
-		} finally {
-			try {
-				if(pstmt != null) pstmt.close();
-				if(conn != null) conn.close();
-			} catch(Exception e) {
-				e.printStackTrace();
-			}
-		}
-	}
-	
-	// 자기소개서 테이블
-	@Order(5)
-	@Test
-	void genDataIntro() {
-		int cnt = 0; // executeUpdate(), DML 결과
-		try {
-			Class.forName(DRIVER);
-			conn = DriverManager.getConnection(URL, USERID, USERPW);
-			
-			// 테스트용 dummy 데이터 만들기
-			pstmt = conn.prepareStatement(SQL_RESUMY_INTRO_INSERT);
-			
-			int num = 10;
-			for(int i = 0; i < num; i++) {
-				pstmt.setString(1, String.format("title%02d", i));
-				pstmt.setInt(2, i);
-		
-				cnt += pstmt.executeUpdate();
-			}
-			System.out.println(cnt + "개 의 자소서 데이터가 INSERT 되었습니다");
-			
-		} catch(Exception e) {
-			e.printStackTrace();
-		} finally {
-			try {
-				if(pstmt != null) pstmt.close();
-				if(conn != null) conn.close();
-			} catch(Exception e) {
-				e.printStackTrace();
-			}
-		}
-	}
-	
-	// 자소서컨텐츠 테이블
-	@Order(6)
-	@Test
-	void genDataIntroC() {
-		int cnt = 0; // executeUpdate(), DML 결과
-		try {
-			Class.forName(DRIVER);
-			conn = DriverManager.getConnection(URL, USERID, USERPW);
-			
-			// 테스트용 dummy 데이터 만들기
-			pstmt = conn.prepareStatement(SQL_RESUMY_INTRO_C_INSERT);
-			
-			int num = 10;
-			for(int i = 0; i < num; i++) {
-				pstmt.setString(1, String.format("question%02d", i));  
-				pstmt.setString(2, String.format("content%02d", i));  
-				pstmt.setInt(3, i+1);
-				cnt += pstmt.executeUpdate();
-			}
-			System.out.println(cnt + "개 의 자소서컨텐츠 데이터가 INSERT 되었습니다");
-			
-		} catch(Exception e) {
-			e.printStackTrace();
-		} finally {
-			try {
-				if(pstmt != null) pstmt.close();
-				if(conn != null) conn.close();
-			} catch(Exception e) {
-				e.printStackTrace();
-			}
-		}
-	}
-	
-	// 자기소개서 피드백 게시판
-	@Order(7)
-	@Test
-	void genDataFed() {
-		int cnt = 0; // executeUpdate(), DML 결과
-		try {
-			Class.forName(DRIVER);
-			conn = DriverManager.getConnection(URL, USERID, USERPW);
-			
-			// 테스트용 dummy 데이터 만들기
-			pstmt = conn.prepareStatement(SQL_RESUMY_FED_INSERT);
-			
-			int num = 10;
-			for(int i = 0; i < num; i++) {
-				pstmt.setString(1, String.format("user%02d", i));
-				pstmt.setString(2, String.format("content%02d", i));
-				pstmt.setInt(3, i);
-		
-				cnt += pstmt.executeUpdate();
-			}
-			System.out.println(cnt + "개 의 피드백 데이터가 INSERT 되었습니다");
-			
-		} catch(Exception e) {
-			e.printStackTrace();
-		} finally {
-			try {
-				if(pstmt != null) pstmt.close();
-				if(conn != null) conn.close();
-			} catch(Exception e) {
-				e.printStackTrace();
-			}
-		}
-	}
+
 	
 
 }

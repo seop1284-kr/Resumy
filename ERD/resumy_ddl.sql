@@ -1,12 +1,12 @@
 DROP TABLE IF EXISTS `intr_feedback` CASCADE;
 DROP TABLE IF EXISTS `hr_qna_a` CASCADE;
 DROP TABLE IF EXISTS `hr_qna_q` CASCADE;
-DROP TABLE IF EXISTS `hr_member` CASCADE;
 DROP TABLE IF EXISTS `hr_spec_info` CASCADE;
 DROP TABLE IF EXISTS `hr_career` CASCADE;
 DROP TABLE IF EXISTS `hr_file` CASCADE;
-DROP TABLE IF EXISTS `hr_introduction` CASCADE;
 DROP TABLE IF EXISTS `hr_introduction_c` CASCADE;
+DROP TABLE IF EXISTS `hr_introduction` CASCADE;
+DROP TABLE IF EXISTS `hr_member` CASCADE;
 
 -- 김민수
 -- 회원정보 테이블
@@ -36,7 +36,8 @@ CREATE TABLE `hr_spec_info` (
 	`spec_university`	varchar(10)	NULL	COMMENT '01: 2,3년제 02: 4년제  03: 대학원(석사) 04: 대학원(박사)',
 	`reg_dtm`	datetime	NOT NULL	DEFAULT now()	COMMENT '등록일시',
 	`mody_dtm`	datetime	NOT NULL	DEFAULT now()	COMMENT '수정일시',
-	`mem_id`	int	NOT NULL
+	`mem_id`	int	NOT NULL,
+	FOREIGN KEY (mem_id) REFERENCES hr_member(mem_id)
 );
 
 -- 회원학력사항 테이블
@@ -51,7 +52,8 @@ CREATE TABLE `hr_career` (
 	`cr_area`	varchar(20)	NULL	COMMENT '지역',
 	`cr_salary`	int	NULL	COMMENT '연봉',
 	`cr_work`	varchar(10)	NULL	COMMENT '담당업무',
-	`mem_id`	int	NOT NULL
+	`mem_id`	int	NOT NULL,
+	FOREIGN KEY (mem_id) REFERENCES hr_member(mem_id)
 );
 
 -- 하병노
@@ -62,7 +64,8 @@ CREATE TABLE `hr_file` (
 	`file_volume`	int	NOT NULL	COMMENT '파일용량',
 	`file_regdate`	datetime	NOT NULL	DEFAULT now()	COMMENT '등록일시',
 	`file_memo`	varchar(8)	NULL	COMMENT '메모',
-	`mem_id`	int	NOT NULL
+	`mem_id`	int	NOT NULL,
+	FOREIGN KEY (mem_id) REFERENCES hr_member(mem_id)
 );
 
 -- 김진섭
@@ -74,7 +77,8 @@ CREATE TABLE `hr_introduction` (
 	`intr_public`	boolean	NOT NULL	DEFAULT false	COMMENT '공개여부 (공개: true, 비공개: false)',
 	`intr_finish`	boolean	NOT NULL	DEFAULT false	COMMENT '완성 여부 (완성: true, 진행중 : false)',
 	`mody_dtm`	datetime	NOT NULL	DEFAULT now()	COMMENT '수정 일시',
-	`mem_id`	int	NOT NULL
+	`mem_id`	int	NOT NULL,
+	FOREIGN KEY (mem_id) REFERENCES hr_member(mem_id)
 );
 
 -- 자소서컨텐츠 테이블
@@ -82,7 +86,8 @@ CREATE TABLE `hr_introduction_c` (
 	`intr_c_id`	int	NOT NULL AUTO_INCREMENT	PRIMARY KEY COMMENT '일련번호',
 	`intr_question`	varchar(100)	NULL	COMMENT '자소서질문',
 	`intr_content`	text	NULL	COMMENT '자소서내용',
-	`intr_id`	int	NOT NULL	COMMENT '자소서 게시글 일련번호'
+	`intr_id`	int	NOT NULL	COMMENT '자소서 게시글 일련번호',
+	FOREIGN KEY (intr_id) REFERENCES hr_introduction(intr_id)
 );
 
 -- 자기소개서 피드백 게시판
@@ -91,7 +96,8 @@ CREATE TABLE `intr_feedback` (
 	`fb_userid`	varchar(20)	NOT NULL	COMMENT '유저아이디',
 	`fb_content`	text	NOT NULL	COMMENT '피드백 내용',
 	`fb_regdate`	datetime	NOT NULL DEFAULT now()	COMMENT '피드백 등록일시',
-	`intr_id`	int	NOT NULL
+	`intr_id`	int	NOT NULL,
+	FOREIGN KEY (intr_id) REFERENCES hr_introduction(intr_id)
 );
 
 
@@ -102,8 +108,8 @@ CREATE TABLE `hr_qna_q` (
 	`q_subject`	varchar(50)	NOT NULL	COMMENT '글 제목',
 	`q_content`	text	NOT NULL	COMMENT '글 내용',
 	`q_regdate`	datetime	NOT NULL	DEFAULT now()	COMMENT '글 등록일시',
-	`mem_id`	int	NOT NULL/*,
-	FOREIGN KEY (mem_id) REFERENCES hr_member(mem_id)*/
+	`mem_id`	int	NOT NULL,
+	FOREIGN KEY (mem_id) REFERENCES hr_member(mem_id)
 );
 
 -- 고객센터 답글 테이블
@@ -112,14 +118,6 @@ CREATE TABLE `hr_qna_a` (
 	`a_reply`	text	NOT NULL	COMMENT '답글',
 	`a_regdate`	datetime	NOT NULL	DEFAULT now()	COMMENT '답글 등록일시'
 );
-
-ALTER TABLE `hr_qna_q` ADD CONSTRAINT `FK_hr_member_TO_hr_qna_q_1` FOREIGN KEY (
-	`mem_id`
-)
-REFERENCES `hr_member` (
-	`mem_id`
-);
-
 
 ALTER TABLE `hr_qna_a` ADD CONSTRAINT `FK_hr_qna_q_TO_hr_qna_a_1` FOREIGN KEY (
 	`q_id`
