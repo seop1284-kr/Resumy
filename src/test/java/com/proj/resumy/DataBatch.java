@@ -44,10 +44,10 @@ class DataBatch {
 	public static final String[] REPLYS = { "문의 감사드립니다. 빠른 시일 내에 해결하겠습니다", "문의 감사드립니다. 언제나 이용 부탁드립니다", "기각합니다" };
 	
 	
-	// 회원정보 테이블
 	@Order(1)
 	@Test
-	void genDataMem() {
+	void genData() {
+		// 회원정보 테이블
 		int cnt = 0; // executeUpdate(), DML 결과
 		try {
 			Class.forName(DRIVER);
@@ -77,6 +77,66 @@ class DataBatch {
 				e.printStackTrace();
 			}
 		}
+		
+		// 고객센터 테이블
+		cnt = 0; // executeUpdate(), DML 결과
+		try {
+			Class.forName(DRIVER);
+			conn = DriverManager.getConnection(URL, USERID, USERPW);
+			
+			// 테스트용 dummy 데이터 만들기
+			pstmt = conn.prepareStatement(SQL_RESUMY_QNAQ_INSERT);
+
+			int num = 10;
+			Random rand = new Random();
+			for(int i = 0; i < num; i++) {
+				pstmt.setString(1, SUBJECTS[rand.nextInt(SUBJECTS.length)]);  
+				pstmt.setString(2, CONTENTS[rand.nextInt(CONTENTS.length)]);
+				pstmt.setInt(3, (rand.nextInt(9)+1));
+				cnt += pstmt.executeUpdate();
+			}
+			System.out.println(cnt + "개의 고객센터 데이터가 INSERT 되었습니다");
+			
+		} catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(pstmt != null) pstmt.close();
+				if(conn != null) conn.close();
+			} catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
+		// 고객센터 답글 테이블
+		cnt = 0; // executeUpdate(), DML 결과
+		try {
+			Class.forName(DRIVER);
+			conn = DriverManager.getConnection(URL, USERID, USERPW);
+			
+			// 테스트용 dummy 데이터 만들기
+			pstmt = conn.prepareStatement(SQL_RESUMY_QNAA_INSERT);
+			
+			int num = 10;
+			Random rand = new Random();
+			for(int i = 0; i < num; i++) {
+				pstmt.setInt(1, i+1);
+				pstmt.setString(2, REPLYS[rand.nextInt(REPLYS.length)]);  
+				cnt += pstmt.executeUpdate();
+			}
+			System.out.println(cnt + "개 의 고객센터 답글 데이터가 INSERT 되었습니다");
+			
+		} catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(pstmt != null) pstmt.close();
+				if(conn != null) conn.close();
+			} catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
 	}
 	
 	// 경력사항 테이블
@@ -294,69 +354,5 @@ class DataBatch {
 		}
 	}
 	
-	// 고객센터 테이블
-	// 고객센터 답글 테이블
-	@Order(8)
-	@Test
-	void genDataQna() {
-		int cnt = 0; // executeUpdate(), DML 결과
-		try {
-			Class.forName(DRIVER);
-			conn = DriverManager.getConnection(URL, USERID, USERPW);
-			
-			// 테스트용 dummy 데이터 만들기
-			pstmt = conn.prepareStatement(SQL_RESUMY_QNAQ_INSERT);
-
-			int num = 10;
-			Random rand = new Random();
-			for(int i = 0; i < num; i++) {
-				pstmt.setString(1, SUBJECTS[rand.nextInt(SUBJECTS.length)]);  
-				pstmt.setString(2, CONTENTS[rand.nextInt(CONTENTS.length)]);
-				pstmt.setInt(3, (rand.nextInt(9)+1));
-				cnt += pstmt.executeUpdate();
-			}
-			System.out.println(cnt + "개의 고객센터 데이터가 INSERT 되었습니다");
-			
-		} catch(Exception e) {
-			e.printStackTrace();
-		} finally {
-			try {
-				if(pstmt != null) pstmt.close();
-				if(conn != null) conn.close();
-			} catch(Exception e) {
-				e.printStackTrace();
-			}
-		}
-		
-		cnt = 0; // executeUpdate(), DML 결과
-		try {
-			Class.forName(DRIVER);
-			conn = DriverManager.getConnection(URL, USERID, USERPW);
-			
-			// 테스트용 dummy 데이터 만들기
-			pstmt = conn.prepareStatement(SQL_RESUMY_QNAA_INSERT);
-			
-			int num = 10;
-			Random rand = new Random();
-			for(int i = 0; i < num; i++) {
-				pstmt.setInt(1, i+1);
-				pstmt.setString(2, REPLYS[rand.nextInt(REPLYS.length)]);  
-				cnt += pstmt.executeUpdate();
-			}
-			System.out.println(cnt + "개 의 고객센터 답글 데이터가 INSERT 되었습니다");
-			
-		} catch(Exception e) {
-			e.printStackTrace();
-		} finally {
-			try {
-				if(pstmt != null) pstmt.close();
-				if(conn != null) conn.close();
-			} catch(Exception e) {
-				e.printStackTrace();
-			}
-		}
-		
-		
-	}
 
 }

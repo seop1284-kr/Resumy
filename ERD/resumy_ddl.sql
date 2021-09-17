@@ -102,7 +102,8 @@ CREATE TABLE `hr_qna_q` (
 	`q_subject`	varchar(50)	NOT NULL	COMMENT '글 제목',
 	`q_content`	text	NOT NULL	COMMENT '글 내용',
 	`q_regdate`	datetime	NOT NULL	DEFAULT now()	COMMENT '글 등록일시',
-	`mem_id`	int	NOT NULL
+	`mem_id`	int	NOT NULL/*,
+	FOREIGN KEY (mem_id) REFERENCES hr_member(mem_id)*/
 );
 
 -- 고객센터 답글 테이블
@@ -110,6 +111,13 @@ CREATE TABLE `hr_qna_a` (
 	`q_id`	int	NOT NULL /*AUTO_INCREMENT	*/PRIMARY KEY COMMENT '일련번호',
 	`a_reply`	text	NOT NULL	COMMENT '답글',
 	`a_regdate`	datetime	NOT NULL	DEFAULT now()	COMMENT '답글 등록일시'
+);
+
+ALTER TABLE `hr_qna_q` ADD CONSTRAINT `FK_hr_member_TO_hr_qna_q_1` FOREIGN KEY (
+	`mem_id`
+)
+REFERENCES `hr_member` (
+	`mem_id`
 );
 
 
