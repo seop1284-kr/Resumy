@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.proj.resumy.domain.CareerDAO">
+
+	<select id="select" resultType="com.proj.resumy.domain.CareerDAO">
+		SELECT 
+			cr_id "id", 
+			cr_company company, 
+			cr_hiredate hiredate, 
+			cr_leavedate leavedate,
+			cr_lvreason lvreason,
+			cr_post post,
+			cr_dept dept,
+			cr_area area,
+			cr_salary salary,
+			cr_work work
+			mem_id mid
+		FROM 
+			hr_spec_info
+		ORDER BY 
+			cr_id DESC;
+	</select>
+</mapper>

@@ -4,6 +4,8 @@ import java.time.LocalDateTime;
 
 import lombok.Data;
 
+//AjaxFileController (파일관리) 하병노
+
 @Data
 public class FileDTO {
 	private int id; // file_id

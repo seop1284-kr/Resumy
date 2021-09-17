@@ -1,12 +1,16 @@
 package com.proj.resumy.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.proj.resumy.service.IntroService;
+
 @Controller
-@RequestMapping("/")
+@RequestMapping("")
 public class MainController {
+	
 	public MainController() {
 		System.out.println("MainController() 생성");
 	}
@@ -15,7 +19,7 @@ public class MainController {
 	@RequestMapping("/")
 	public String mainPage(Model model) {
 		
-		return "view";
+		return "index";
 	}
 
 }

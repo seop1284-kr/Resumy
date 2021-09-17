@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang='ko'>
 
@@ -47,7 +49,7 @@
                 </a>
                 <ul>
                     <li>기업정보</li>
-                    <li>자소서 게시판</li>
+                    <a href="fedboard"><li>자소서 게시판</li></a>
                     <li>고객센터</li>
                 </ul>
                 <button class="login_btn">로그인</button>
