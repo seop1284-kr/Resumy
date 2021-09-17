@@ -7,12 +7,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>RESUMY - 채용 도우미 사이트</title>
-    <link href="img/fibicon.png" rel="shortcut icon" type="image/x-icon">
-    <link href="assets/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/common.css" rel="stylesheet">
-    <link href="css/navbar.css" rel="stylesheet">
-    <link href="css/footer.css" rel="stylesheet">
-    <link href="css/home.css" rel="stylesheet">
+    <link href="/img/fibicon.png" rel="shortcut icon" type="image/x-icon">
+    <link href="/assets/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/common.css" rel="stylesheet">
+    <link href="/css/navbar.css" rel="stylesheet">
+    <link href="/css/footer.css" rel="stylesheet">
+    <link href="/css/home.css" rel="stylesheet">
     <!-- font-awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <!-- font -->
@@ -45,7 +45,7 @@
         <nav class="navbar navbar-expand-md fixed-top">
             <div class="container-md">
                 <a class="navbar-brand" href="index.html">
-                    <img src="img/logo_main.png">
+                    <img src="/img/logo_main.png">
                 </a>
                 <ul>
                     <li>기업정보</li>
@@ -69,7 +69,7 @@
     <footer class="fixed-bottom">
         <div class="row">
             <div class="col-2">
-                <img src="img/logo_ contrast.png">
+                <img src="/img/logo_ contrast.png">
             </div>
             <div class="col-9">
                 프로젝트명 : 채용 도우미 사이트 Resumy(리주마이)<br>
@@ -82,9 +82,9 @@
         </div>
     </footer>
     
-    <script src="assets/jquery/3.5.1/jquery.min.js.txt"></script>
-    <script src="assets/dist/js/bootstrap.min.js"></script>
-    <script src="js/home.js"></script> <!-- bootrstap 을 따르는 문서 -->
+    <script src="/assets/jquery/3.5.1/jquery.min.js.txt"></script>
+    <script src="/assets/dist/js/bootstrap.min.js"></script>
+    <script src="/js/home.js"></script> <!-- bootrstap 을 따르는 문서 -->
 </body>
 
 </html>
