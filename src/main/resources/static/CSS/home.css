@@ -1,0 +1,6 @@
+/* 배너 */
+.banner {
+    height: 400px;
+    background-color: rgb(230, 222, 185);
+    background-color: var(--banner-color);
+}

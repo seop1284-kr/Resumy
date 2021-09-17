@@ -1,0 +1,46 @@
+/* header {
+    margin-bottom: 7em;
+} */
+
+nav {
+    height: 3em;
+    background-color: #00D3AB;
+    background-color: var(--mint-color);
+}
+
+.navbar-brand > img {
+    width: 100px;
+}
+
+nav ul {
+    transform: translateX(-180px);
+}
+
+nav button.login_btn {
+    width: 70px;
+    height: 2.3em;
+    color: #2f2c33;
+    color: var(--dark-color);
+    font-size: 14px;
+    font-weight: 700;
+    background-color: #fffff3;
+    background-color: var(--light-color);
+    border: none;
+    border-radius: 5em;
+}
+
+nav li {
+    float: left;
+    margin-right: 4em;
+    color: var(--light-color);
+    color: #fffff3;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+/* landscape : 가로가 더 긴 해상도 (ex. PC) */
+@media screen and (orientation: landscape) {
+    .navbar-brand > span:first-child {
+        font-size: 24px;
+    }
+}

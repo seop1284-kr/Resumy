@@ -1,0 +1,22 @@
+footer {
+    display: flex;
+    justify-content: center;
+    padding: 2em 0;
+    clear: both;
+    background-color: #f8f8f8;
+    background-color: var(--footer-bgc);
+}
+
+footer .col-2 {
+    padding: 0;
+}
+
+footer img {
+    width: 180px;
+}
+
+footer div {
+    margin-left: 1em;
+    color: rgb(158, 158, 158);
+    font-size: 13px;
+}

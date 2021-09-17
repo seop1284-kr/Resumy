@@ -1,0 +1,40 @@
+:root {
+    --mint-color : #00D3AB;
+    --light-color : #fffff3;
+    --dark-color : #2f2c33;
+/* 메인페이지 */
+    --banner-color : rgb(230, 222, 185);
+/* 푸터 */
+    --footer-bgc : #F8F8F8;
+}
+
+* {
+    box-sizing: border-box;
+    /* word-break: break-all; */
+}
+
+ul,
+ol,
+li {
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    list-style: none;
+}
+
+a {
+    color: black;
+}
+
+a:hover {
+    text-decoration: none;
+    color: black;
+}
+/*
+body {
+    background-color: #F2F4F7;
+    background-color: var(--body-bg-color);
+}
+*/
