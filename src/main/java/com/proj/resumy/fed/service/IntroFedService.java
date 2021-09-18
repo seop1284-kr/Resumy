@@ -1,4 +1,4 @@
-package com.proj.resumy.service;
+package com.proj.resumy.fed.service;
 
 import java.util.List;
 
