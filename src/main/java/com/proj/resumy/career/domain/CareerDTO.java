@@ -1,4 +1,4 @@
-package com.proj.resumy.career.domin;
+package com.proj.resumy.career.domain;
 
 import java.time.LocalDateTime;
 

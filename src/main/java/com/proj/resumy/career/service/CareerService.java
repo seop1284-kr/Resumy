@@ -5,8 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.proj.resumy.career.domin.CareerDAO;
-import com.proj.resumy.career.domin.CareerDTO;
+import com.proj.resumy.career.domain.CareerDAO;
+import com.proj.resumy.career.domain.CareerDTO;
 
 
 @Service

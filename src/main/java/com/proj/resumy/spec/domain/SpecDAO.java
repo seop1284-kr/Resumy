@@ -1,4 +1,4 @@
-package com.proj.resumy.spec.domin;
+package com.proj.resumy.spec.domain;
 
 import java.util.List;
 

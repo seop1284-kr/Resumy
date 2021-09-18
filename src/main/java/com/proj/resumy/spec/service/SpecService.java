@@ -5,8 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.proj.resumy.spec.domin.SpecDAO;
-import com.proj.resumy.spec.domin.SpecDTO;
+import com.proj.resumy.spec.domain.SpecDAO;
+import com.proj.resumy.spec.domain.SpecDTO;
 
 
 @Service
