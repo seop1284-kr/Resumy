@@ -1,4 +1,4 @@
-package com.proj.resumy.domain;
+package com.proj.resumy.intro.domain;
 
 import java.util.List;
 
@@ -26,16 +26,18 @@ public class IntroDAOImpl implements IntroDAO {
 	public List<IntroDTO> selectFinResume(int mid) {
 		return mapper.selectFinResume(mid);
 	}
-
+	
+	@Override
+	public IntroDTO getIntroById(int id) {
+		return mapper.getIntroById(id);
+	}
+	
 	@Override
 	public int insert(IntroDTO dto) {
 		return mapper.insert(dto);
 	}
 
-	@Override
-	public List<IntroDTO> selectByUid(int id) {
-		return mapper.selectByUid(id);
-	}
+
 
 	@Override
 	public int update(IntroDTO dto) {

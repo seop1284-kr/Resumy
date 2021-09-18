@@ -1,20 +1,20 @@
-package com.proj.resumy.controller;
+package com.proj.resumy.fed.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.proj.resumy.service.IntroService;
+import com.proj.resumy.intro.service.AjaxIntroService;
 
 // FedBoardController 김진섭
 @Controller
 @RequestMapping("")	// context path
 public class FedBoardController {
-	private IntroService introService;
+	private AjaxIntroService introService;
 
 	@Autowired
-	public void setIntroService(IntroService introService) {
+	public void setIntroService(AjaxIntroService introService) {
 		this.introService = introService;
 	}
 	

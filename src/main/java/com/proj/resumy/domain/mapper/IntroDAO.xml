@@ -3,9 +3,9 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
-<mapper namespace="com.proj.resumy.domain.IntroDAO">
+<mapper namespace="com.proj.resumy.intro.domain.IntroDAO">
 	
-	<select id="selectNotFinResume" resultType="com.proj.resumy.domain.IntroDTO">
+	<select id="selectNotFinResume" resultType="com.proj.resumy.intro.domain.IntroDTO">
 		SELECT 
 			intr_id "id", 
 			intr_title title, 
@@ -22,7 +22,7 @@
 			intr_id DESC	
 	</select>
 	
-	<select id="selectFinResume" resultType="com.proj.resumy.domain.IntroDTO">
+	<select id="selectFinResume" resultType="com.proj.resumy.intro.domain.IntroDTO">
 		SELECT 
 			intr_id "id", 
 			intr_title title, 
@@ -37,6 +37,19 @@
 			mem_id = #{mid} AND intr_finish = true
 		ORDER BY 
 			intr_id DESC	
+	</select>
+	
+	<select id="getIntroById" resultType="com.proj.resumy.intro.domain.IntroDTO">
+		SELECT 
+			intr_id "id", 
+			intr_title title, 
+			intr_regdate regdate, 
+			intr_public pub, 
+			intr_finish fin, 
+			mody_dtm modydate,
+			mem_id mid
+		FROM hr_introduction 
+		WHERE intr_id=#{id}
 	</select>
 	
 	

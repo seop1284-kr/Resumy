@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.proj.resumy.domain.MemberDAO">
+
+	<insert id="addUser" parameterType="com.proj.resumy.domain.MemberDTO">
+		INSERT INTO hr_member(mem_userid, mem_pw, mem_name, mem_email, mem_level)
+		VALUES(#{userid}, #{pw}, #{name}, #{email}, #{lev})
+	</insert>
+	
+	<insert id="addAuth">
+		INSERT INTO hr_authority
+		VALUES(#{param1}, #{param2})
+	</insert>
+
+	<delete id="deleteUser" parameterType="com.proj.resumy.domain.MemberDTO">
+		DELETE FROM hr_member
+		WHERE mem_userid = #{userid}
+	</delete>	
+	
+	<delete id="deleteAuth">
+		DELETE FROM hr_authority
+		WHERE mem_userid = #{param1} AND mem_auth = #{param2}
+	</delete>
+
+	<delete id="deleteAuths">
+		DELETE FROM hr_authority
+		WHERE mem_userid = #{param1}
+	</delete>
+
+	<select id="findById" resultType="com.proj.resumy.domain.MemberDTO">
+		SELECT
+			mem_id id,
+			mem_userid userid,
+			mem_pw pw,
+			mem_name name,
+			mem_email email,
+			mem_gender gender,
+			mem_phone phone,
+			mem_birthday birthday,
+			mem_address address,
+			mem_career mem_career,
+			reg_dtm regdtm,
+			mody_dtm doydtm,
+			mem_level lev
+		FROM hr_member
+		WHERE mem_userid = #{userid}	
+	</select>
+
+	<select id="selectAuthoritiesById" resultType="String">
+		SELECT mem_auth
+		FROM hr_authority
+		WHERE mem_userid = #{userid}
+	</select>
+
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

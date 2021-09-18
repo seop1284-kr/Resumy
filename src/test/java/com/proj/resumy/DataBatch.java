@@ -26,7 +26,7 @@ class DataBatch {
 	public static final String USERID = "userdm"; // DB 사용자 계정 정보
 	public static final String USERPW = "1234";
 	
-	public static final String SQL_RESUMY_MEM_INSERT = "insert into `hr_member` (mem_userid, mem_pw, mem_name, mem_email, mem_level) values (?, ?, ?, ?, ?)";
+	public static final String SQL_RESUMY_MEM_INSERT = "insert into `hr_member` (mem_userid, mem_pw, mem_name, mem_email) values (?, ?, ?, ?)";
 	public static final String SQL_RESUMY_CAREER_INSERT = "insert into `hr_career` (cr_company, cr_hiredate, cr_leavedate, cr_post, mem_id) values (?, ?, ?, ?, ?)";
 	public static final String SQL_RESUMY_SPEC_INSERT = "insert into `hr_spec_info` (spec_cat_cd, spec_name, spec_area, mody_dtm, reg_dtm, mem_id) values (?, ?, ?, ?, ?, ?)";
 	
@@ -61,7 +61,6 @@ class DataBatch {
 				pstmt.setString(2, String.format("1234"));
 				pstmt.setString(3, String.format("person%02d", i));
 				pstmt.setString(4, String.format("a@email.com"));
-				pstmt.setBoolean(5, true);
 				cnt += pstmt.executeUpdate();
 			}
 			System.out.println(cnt + "개 의 회원정보 데이터가 INSERT 되었습니다");
