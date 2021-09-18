@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- QnaDAO(고객센터 페이지, 고객센터 답글) 노수빈 -->
+<mapper namespace="com.proj.resumy.domain.QnaDAO">
+
+	<!-- 고객센터 페이지 목록 출력 SELECT -->	
+	<select id="select" resultType="com.proj.resumy.domain.QnaQDTO">
+		SELECT 
+			q_id id, 
+			q_subject subject, 
+			q_content content, 
+			q_regdate regdate, 
+			mem_id mid
+		FROM 
+			hr_qna_q
+		ORDER BY 
+			q_id DESC	
+	</select>
+	
+	<!-- 문의하기 글 작성 ← DTO -->
+	<insert id="insert" flushCache="true" parameterType="com.proj.resumy.domain.QnaQDTO"
+		keyProperty="id" 
+		useGeneratedKeys="true" keyColumn="q_id">
+		<!-- keyProperty 는 parameterType 의 필드를 말함 -->
+		INSERT INTO 
+			hr_qna_q (q_subject, q_content) 	
+		VALUES (#{subject}, #{content}) <!-- <mapper> 의 <select> 의 resultType 에 있는 getter 호출 -->
+	</insert>
+	
+	<!-- 특정 id 문의 내용 읽기 -->
+	<select id="selectByUid" resultType="com.proj.resumy.domain.QnaQDTO">
+		SELECT 
+			q_id id, 
+			q_subject subject, 
+			q_content content, 
+			q_regdate regdate, 
+			mem_id mid
+		FROM 
+			hr_qna_q
+		WHERE
+			q_id = #{id}
+	</select>
+	
+	<!-- 특정 q_id 문의 답글 읽기 -->
+	<select id="selectByQid" resultType="com.proj.resumy.domain.QnaQDTO">
+		SELECT
+			q_id id,
+			a_reply reply,
+			a_regdate regdate,
+		FROM
+			hr_qna_a
+		WHERE
+			q_id = #{id}
+	</select>
+	
+	<!-- 특정 id 문의 글 수정 -->
+	<update id="update" flushCache="true" parameterType="com.proj.resumy.domain.QnaQDTO">
+		UPDATE
+			hr_qna_q
+		SET
+			q_subject = #{subject},
+			q_content #{content},
+		WEHRE
+			q_id = #{id} AND mem_id = #{mid}
+	</update>
+	
+	<!-- 특정 id 문의 글 삭제 -->
+	<delete id="deleteByUid" flushCache="true">
+		DELETE
+		FROM
+			hr_qna_q
+		WHERE
+			q_id = #{id}
+	</delete>
+	
+<!-- QnaDAO(고객센터 관리 페이지) 노수빈 -->
+	<!-- 특정 q_id 문의 답글 삭제 -->
+	<delete id="deleteByQid" flushCache="true">
+		DELETE
+		FROM
+			hr_qna_a
+		WHERE
+			q_id = #{id}
+	</delete>
+	
+</mapper> 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
