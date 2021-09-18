@@ -4,7 +4,7 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <!-- QnaDAO(고객센터 페이지, 고객센터 답글) 노수빈 -->
-<mapper namespace="com.proj.resumy.domain.QnaDAO">
+<mapper namespace="com.proj.resumy.qna.domain.QnaDAO">
 
 	<!-- 고객센터 페이지 목록 출력 SELECT -->	
 	<select id="select" resultType="com.proj.resumy.qna.domain.QnaQDTO">
