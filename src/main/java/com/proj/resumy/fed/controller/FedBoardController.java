@@ -1,4 +1,4 @@
-package com.proj.resumy.controller;
+package com.proj.resumy.fed.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

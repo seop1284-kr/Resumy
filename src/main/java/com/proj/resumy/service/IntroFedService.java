@@ -5,8 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.proj.resumy.domain.IntroFedDAO;
-import com.proj.resumy.domain.IntroFedDTO;
+import com.proj.resumy.fed.domain.IntroFedDAO;
+import com.proj.resumy.fed.domain.IntroFedDTO;
 import com.proj.resumy.intro.domain.IntroDAO;
 import com.proj.resumy.intro.domain.IntroDTO;
 
@@ -28,7 +28,7 @@ public class IntroFedService {
 	}
 	
 	public IntroFedService() {
-		System.out.println("IntroService() 생성");
+		System.out.println("IntroFedService() 생성");
 		
 	}
 

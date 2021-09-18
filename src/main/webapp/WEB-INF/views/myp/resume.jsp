@@ -99,9 +99,9 @@
         </div>
     </footer>
 
-    <script src="/assets/jquery/3.5.1/jquery.min.js.txt"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="/assets/dist/js/bootstrap.min.js"></script>
-    <script src="/js/resume.js"></script> <!-- bootrstap 을 따르는 문서 -->
+    <script src="/JS/resume.js"></script> <!-- bootrstap 을 따르는 문서 -->
 </body>
 
 </html>

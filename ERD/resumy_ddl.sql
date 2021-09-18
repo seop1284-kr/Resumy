@@ -6,13 +6,14 @@ DROP TABLE IF EXISTS `hr_career` CASCADE;
 DROP TABLE IF EXISTS `hr_file` CASCADE;
 DROP TABLE IF EXISTS `hr_introduction_c` CASCADE;
 DROP TABLE IF EXISTS `hr_introduction` CASCADE;
+DROP TABLE IF EXISTS `hr_authority` CASCADE;
 DROP TABLE IF EXISTS `hr_member` CASCADE;
 
 -- 김민수
 -- 회원정보 테이블
 CREATE TABLE `hr_member` (
 	`mem_id`	int	NOT NULL AUTO_INCREMENT	PRIMARY KEY COMMENT '일련번호',
-	`mem_userid`	varchar(100)	NOT NULL	COMMENT '회원아이디',
+	`mem_userid`	varchar(100)	NOT NULL UNIQUE	COMMENT '회원아이디',
 	`mem_pw`	varchar(100)	NOT NULL	COMMENT '회원비밀번호',
 	`mem_name`	varchar(10)	NOT NULL	COMMENT '회원이름',
 	`mem_email`	varchar(50)	NOT NULL	COMMENT '회원이메일',
@@ -23,7 +24,13 @@ CREATE TABLE `hr_member` (
 	`mem_career`	boolean	NULL	COMMENT '경력여부',
 	`reg_dtm`	datetime	NOT NULL	DEFAULT now()	COMMENT '등록일시',
 	`mody_dtm`	datetime	NOT NULL	DEFAULT now()	COMMENT '수정일시',
-	`mem_level`	boolean	NOT NULL	COMMENT '회원등급 (true:회원  false: 관리자)'
+	`mem_level`	boolean	NOT NULL	DEFAULT true	COMMENT '회원등급 (true:회원  false: 관리자)'
+);
+
+CREATE TABLE hr_authority (
+	mem_userid varchar(50) REFERENCES hr_member(mem_userid),
+	mem_auth varchar(50) NOT NULL,        -- 시큐리티의 authority
+	PRIMARY KEY (mem_userid, mem_auth)
 );
 
 -- 경력사항 테이블

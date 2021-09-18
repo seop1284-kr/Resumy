@@ -1,4 +1,4 @@
-package com.proj.resumy.domain;
+package com.proj.resumy.fed.domain;
 
 import java.time.LocalDateTime;
 

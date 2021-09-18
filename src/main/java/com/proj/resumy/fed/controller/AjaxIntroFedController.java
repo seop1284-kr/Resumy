@@ -1,4 +1,4 @@
-package com.proj.resumy.controller;
+package com.proj.resumy.fed.controller;
 
 import java.util.List;
 
@@ -8,7 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.proj.resumy.domain.IntroFedDTO;
+import com.proj.resumy.fed.domain.IntroFedDTO;
 import com.proj.resumy.intro.domain.IntroDTO;
 import com.proj.resumy.intro.service.AjaxIntroService;
 import com.proj.resumy.service.IntroFedService;
