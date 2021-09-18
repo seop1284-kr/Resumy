@@ -104,7 +104,7 @@ function viewResume(data) {
 	var conList = data.conList;
 	var intro = data.intro;
 	
-	result += "<h4><b>자기소개서 관리</b></h4> <h5>" + intro.title + "</h5>";
+	result += "<h4><b>자기소개서</b></h4> <h5>" + intro.title + "</h5>";
 	
 	var count = conList.length;
 	

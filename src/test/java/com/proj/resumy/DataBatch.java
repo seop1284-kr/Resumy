@@ -58,9 +58,9 @@ class DataBatch {
 			int num = 10;
 			for(int i = 0; i < num; i++) {
 				pstmt.setString(1, String.format("mem%02d", i));  
-				pstmt.setString(2, String.format("1234"));
+				pstmt.setString(2, "$2a$10$1iZtb1e1Xb81Wwm2NPcHTOzmbdyZDLLKnh9.wUsorFj/1t6RYsUKy");	// 비밀번호 aa
 				pstmt.setString(3, String.format("person%02d", i));
-				pstmt.setString(4, String.format("a@email.com"));
+				pstmt.setString(4, "a@email.com");
 				cnt += pstmt.executeUpdate();
 			}
 			System.out.println(cnt + "개 의 회원정보 데이터가 INSERT 되었습니다");

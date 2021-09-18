@@ -23,10 +23,11 @@ CREATE TABLE `hr_member` (
 	`mem_address`	varchar(255)	NULL	COMMENT '주소',
 	`mem_career`	boolean	NULL	COMMENT '경력여부',
 	`reg_dtm`	datetime	NOT NULL	DEFAULT now()	COMMENT '등록일시',
-	`mody_dtm`	datetime	NOT NULL	DEFAULT now()	COMMENT '수정일시',
-	`mem_level`	boolean	NOT NULL	DEFAULT true	COMMENT '회원등급 (true:회원  false: 관리자)'
+	`mody_dtm`	datetime	NOT NULL	DEFAULT now()	COMMENT '수정일시'/*,
+	`mem_level`	boolean	NOT NULL	DEFAULT true	COMMENT '회원등급 (true:회원  false: 관리자)'*/
 );
 
+-- 회원권한 테이블(김진섭)
 CREATE TABLE hr_authority (
 	mem_userid varchar(50) REFERENCES hr_member(mem_userid),
 	mem_auth varchar(50) NOT NULL,        -- 시큐리티의 authority
