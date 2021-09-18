@@ -2,23 +2,23 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.proj.resumy.domain.CareerDAO">
+<mapper namespace="com.proj.resumy.career.domain.CareerDAO">
 
-	<select id="select" resultType="com.proj.resumy.domain.CareerDAO">
+	<select id="select" resultType="com.proj.resumy.career.domain.CareerDAO">
 		SELECT 
-			cr_id           crId, 
-			cr_company      crCompany, 
-			cr_hiredate     crHiredate, 
-			cr_leavedate    crLeavedate,
-			cr_lvreason     crLvreason,
-			cr_post         crPost,
-			cr_dept         crDept,
-			cr_area         crArea,
-			cr_salary       crSalary,
-			cr_work         crWork
-			mem_id          memId
-		FROM hr_spec_info
-		where mem_id = #{memId}
+			cr_id           id, 
+			cr_company      company, 
+			cr_hiredate     hiredate, 
+			cr_leavedate    leavedate,
+			cr_lvreason     lvreason,
+			cr_post         post,
+			cr_dept         dept,
+			cr_area         area,
+			cr_salary       salary,
+			cr_work         work
+			mem_id          mid
+		FROM hr_career
+		where mem_id = #{mid}
 		ORDER BY 
 			cr_id DESC;
 	</select>

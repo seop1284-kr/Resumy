@@ -1,12 +1,12 @@
-package com.proj.resumy.service;
+package com.proj.resumy.spec.service;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.proj.resumy.domain.SpecDAO;
-import com.proj.resumy.domain.SpecDTO;
+import com.proj.resumy.spec.domin.SpecDAO;
+import com.proj.resumy.spec.domin.SpecDTO;
 
 
 @Service

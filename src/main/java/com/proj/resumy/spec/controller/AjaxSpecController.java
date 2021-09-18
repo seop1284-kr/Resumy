@@ -1,4 +1,4 @@
-package com.proj.resumy.controller;
+package com.proj.resumy.spec.controller;
 
 import java.util.List;
 
@@ -7,8 +7,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.proj.resumy.domain.SpecDTO;
-import com.proj.resumy.service.SpecService;
+import com.proj.resumy.spec.domin.SpecDTO;
+import com.proj.resumy.spec.service.SpecService;
 
 //학력사항 컨트롤러 (김민수)
 

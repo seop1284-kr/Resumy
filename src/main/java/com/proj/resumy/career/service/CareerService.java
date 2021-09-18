@@ -1,12 +1,12 @@
-package com.proj.resumy.service;
+package com.proj.resumy.career.service;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.proj.resumy.domain.CareerDAO;
-import com.proj.resumy.domain.CareerDTO;
+import com.proj.resumy.career.domin.CareerDAO;
+import com.proj.resumy.career.domin.CareerDTO;
 
 
 @Service

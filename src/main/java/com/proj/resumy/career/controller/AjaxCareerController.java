@@ -1,4 +1,4 @@
-package com.proj.resumy.controller;
+package com.proj.resumy.career.controller;
 
 import java.util.List;
 
@@ -7,8 +7,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.proj.resumy.domain.CareerDTO;
-import com.proj.resumy.service.CareerService;
+import com.proj.resumy.career.domin.CareerDTO;
+import com.proj.resumy.career.service.CareerService;
 
 
 // 경력사항 컨트롤러 (김민수)
