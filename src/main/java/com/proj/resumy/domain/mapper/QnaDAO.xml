@@ -7,7 +7,7 @@
 <mapper namespace="com.proj.resumy.domain.QnaDAO">
 
 	<!-- 고객센터 페이지 목록 출력 SELECT -->	
-	<select id="select" resultType="com.proj.resumy.domain.QnaQDTO">
+	<select id="select" resultType="com.proj.resumy.qna.domain.QnaQDTO">
 		SELECT 
 			q_id id, 
 			q_subject subject, 
@@ -21,7 +21,7 @@
 	</select>
 	
 	<!-- 문의하기 글 작성 ← DTO -->
-	<insert id="insert" flushCache="true" parameterType="com.proj.resumy.domain.QnaQDTO"
+	<insert id="insert" flushCache="true" parameterType="com.proj.resumy.qna.domain.QnaQDTO"
 		keyProperty="id" 
 		useGeneratedKeys="true" keyColumn="q_id">
 		<!-- keyProperty 는 parameterType 의 필드를 말함 -->
@@ -31,7 +31,7 @@
 	</insert>
 	
 	<!-- 특정 id 문의 내용 읽기 -->
-	<select id="selectByUid" resultType="com.proj.resumy.domain.QnaQDTO">
+	<select id="selectByUid" resultType="com.proj.resumy.qna.domain.QnaQDTO">
 		SELECT 
 			q_id id, 
 			q_subject subject, 
@@ -49,7 +49,7 @@
 		SELECT
 			q_id id,
 			a_reply reply,
-			a_regdate regdate,
+			a_regdate regdate
 		FROM
 			hr_qna_a
 		WHERE
