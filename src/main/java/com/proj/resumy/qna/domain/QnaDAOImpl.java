@@ -1,4 +1,4 @@
-package com.proj.resumy.domain;
+package com.proj.resumy.qna.domain;
 
 import java.util.List;
 
