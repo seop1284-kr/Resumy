@@ -20,8 +20,8 @@ public class IntroConDAOImpl implements IntroConDAO {
 	}
 	
 	@Override
-	public List<IntroConDTO> selectByUid(int id) {
-		return mapper.selectByUid(id);
+	public List<IntroConDTO> selectConByIid(int iid) {
+		return mapper.selectConByIid(iid);
 	}
 	
 	@Override
@@ -35,8 +35,8 @@ public class IntroConDAOImpl implements IntroConDAO {
 	}
 
 	@Override
-	public int deleteByUid(int uid) {
-		return mapper.deleteByUid(uid);
+	public int deleteConByIid(int iid) {
+		return mapper.deleteConByIid(iid);
 	}
 
 }

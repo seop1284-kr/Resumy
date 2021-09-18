@@ -5,7 +5,7 @@
   
 <mapper namespace="com.proj.resumy.intro.domain.IntroConDAO">
 	
-	<select id="selectByUid" resultType="com.proj.resumy.intro.domain.IntroConDTO">
+	<select id="selectConByIid" resultType="com.proj.resumy.intro.domain.IntroConDTO">
 		SELECT 
 			intr_c_id "id", 
 			intr_question question,

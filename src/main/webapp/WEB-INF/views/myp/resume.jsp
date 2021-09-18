@@ -74,14 +74,10 @@
         <!-- ./aside -->
 
         <section class="col">
-            <h4><b>자기소개서 관리</b></h4>
-            <!-- 내용 적는 부분 -->
-            <div id="content">
-	            <h5><b>작성 중 자소서</b></h5>
-	            <div id="notfin"></div>
+        	<div id="content">
+	            <!-- 내용 적는 부분 -->
 	            
-	            <h5><b>완성 자소서</b></h5>
-	            <div id="fin"></div>
+	            
 	        </div>    
             
         </section>

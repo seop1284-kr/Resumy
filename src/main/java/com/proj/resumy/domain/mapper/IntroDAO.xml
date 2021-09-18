@@ -39,7 +39,7 @@
 			intr_id DESC	
 	</select>
 	
-	<select id="selectByUid" resultType="com.proj.resumy.intro.domain.IntroDTO">
+	<select id="getIntroById" resultType="com.proj.resumy.intro.domain.IntroDTO">
 		SELECT 
 			intr_id "id", 
 			intr_title title, 

@@ -49,8 +49,12 @@ public class AjaxIntroService {
 		return introDao.selectNotFinResume(mid);
 	}
 	
-	public List<IntroConDTO> selectByUid(int id) {
-		return introConDao.selectByUid(id);
+	public IntroDTO getIntroById(int id) {
+		return introDao.getIntroById(id);
+	}
+	
+	public List<IntroConDTO> selectConByIid(int iid) {
+		return introConDao.selectConByIid(iid);
 	}
 
 //	public int write(IntroDTO dto) {

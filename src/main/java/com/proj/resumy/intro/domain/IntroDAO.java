@@ -11,7 +11,7 @@ public interface IntroDAO {
 	public abstract List<IntroDTO> selectFinResume(int mid);
 	
 	// 특정 id 자소서 내용 읽기,
-	public abstract List<IntroDTO> selectByUid(int uid);
+	public abstract IntroDTO getIntroById(int id);
 	
 	// 새 자소서 작성 <-- DTO
 	public abstract int insert(IntroDTO dto);

@@ -28,8 +28,8 @@ public class IntroDAOImpl implements IntroDAO {
 	}
 	
 	@Override
-	public List<IntroDTO> selectByUid(int id) {
-		return mapper.selectByUid(id);
+	public IntroDTO getIntroById(int id) {
+		return mapper.getIntroById(id);
 	}
 	
 	@Override

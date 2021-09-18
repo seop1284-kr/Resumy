@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.proj.resumy.intro.domain.IntroConDTO;
 import com.proj.resumy.intro.domain.IntroDTO;
+import com.proj.resumy.intro.domain.IntroViewResult;
 import com.proj.resumy.intro.service.AjaxIntroService;
 
 @RestController
@@ -28,12 +29,9 @@ public class AjaxIntroController {
 		System.out.println("AjaxIntroController() 생성");
 	}
 	
-	
 	// 완성된 자소서 목록
 	@RequestMapping("/finlist")
 	public IntroDTO[] finlist(Model model) {
-		
-		//model.addAttribute("finList", introService.selectNotFinResume());
 		
 		// test id가 1일 사람
 		List<IntroDTO> finList = ajaxIntroService.selectFinResume(1);
@@ -45,10 +43,8 @@ public class AjaxIntroController {
 	// 미완성된 자소서 목록
 	@RequestMapping("/notfinlist")
 	public IntroDTO[] notfinlist(Model model) {
-		
-		//model.addAttribute("notFinList", introService.selectNotFinResume());
-		
-		// test id가 1일 사람
+
+		// id가 1인 사람 (temp)
 		List<IntroDTO> notFinList = ajaxIntroService.selectNotFinResume(1);
 
 		IntroDTO [] arr = new IntroDTO[notFinList.size()];
@@ -57,11 +53,17 @@ public class AjaxIntroController {
 	
 	// 특정 id 자소서 읽기
 	@GetMapping("/{iid}")
-	public IntroConDTO[] view(@PathVariable int iid) {
-		List<IntroConDTO> list = ajaxIntroService.selectByUid(iid);
+	public IntroViewResult view(@PathVariable int iid) {
+		IntroDTO intro = ajaxIntroService.getIntroById(iid);
+		List<IntroConDTO> list = ajaxIntroService.selectConByIid(iid);
 		
-		IntroConDTO [] arr = new IntroConDTO[list.size()];
+		//IntroConDTO [] arr = new IntroConDTO[list.size()];
 		
-		return list.toArray(arr);		
+		IntroViewResult introViewResult = new IntroViewResult();
+		introViewResult.setConList(list);
+		introViewResult.setIntro(intro);
+		
+		
+		return introViewResult;		
 	}
 }
