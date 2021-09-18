@@ -48,9 +48,9 @@
                     <img src="/img/logo_main.png">
                 </a>
                 <ul>
-                    <li>기업정보</li>
-                    <li>자소서 게시판</li>
-                    <li>고객센터</li>
+                    <li><a href="companyBoard.do">기업정보</a></li>
+                    <li><a href="fedboard">자소서 게시판</a></li>
+                    <li><a href="qnaBoard.do">고객센터</a></li>
                 </ul>
                 <button class="login_btn">로그인</button>
             </div>

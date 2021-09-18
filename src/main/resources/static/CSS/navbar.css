@@ -1,6 +1,6 @@
-/* header {
+header {
     margin-bottom: 7em;
-} */
+}
 
 nav {
     height: 3em;
@@ -30,12 +30,24 @@ nav button.login_btn {
 }
 
 nav li {
-    float: left;
+    display: flex;
+	float: left;
     margin-right: 4em;
+    padding-top: .7em;
+    height: 3em;
+}
+
+nav li a {
     color: var(--light-color);
     color: #fffff3;
     font-size: 18px;
     font-weight: 700;
+}
+
+nav li a.active, nav li a:hover {
+	color: var(--dark-color);
+    color: #2f2c33;
+    border-bottom: 5px solid var(--dark-color);
 }
 
 /* landscape : 가로가 더 긴 해상도 (ex. PC) */
