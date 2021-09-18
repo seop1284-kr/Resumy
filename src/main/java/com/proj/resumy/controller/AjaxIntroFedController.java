@@ -8,10 +8,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.proj.resumy.domain.IntroDTO;
 import com.proj.resumy.domain.IntroFedDTO;
+import com.proj.resumy.intro.domain.IntroDTO;
+import com.proj.resumy.intro.service.AjaxIntroService;
 import com.proj.resumy.service.IntroFedService;
-import com.proj.resumy.service.IntroService;
 
 @RestController
 @RequestMapping("/mp/fed")

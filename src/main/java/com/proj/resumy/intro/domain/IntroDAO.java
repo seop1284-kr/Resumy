@@ -1,4 +1,4 @@
-package com.proj.resumy.domain;
+package com.proj.resumy.intro.domain;
 
 import java.util.List;
 
@@ -10,12 +10,13 @@ public interface IntroDAO {
 	// 완성 자기 자소서 출력 SELECT
 	public abstract List<IntroDTO> selectFinResume(int mid);
 	
-	// 새 자소서 작성 <-- DTO
-	public abstract int insert(IntroDTO dto);
-	
 	// 특정 id 자소서 내용 읽기,
 	public abstract List<IntroDTO> selectByUid(int uid);
 	
+	// 새 자소서 작성 <-- DTO
+	public abstract int insert(IntroDTO dto);
+	
+
 	// 특정 id 자소서 수정
 	public abstract int update(IntroDTO dto);
 	

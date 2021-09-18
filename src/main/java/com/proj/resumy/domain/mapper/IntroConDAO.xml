@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.proj.resumy.intro.domain.IntroConDAO">
+	
+	<select id="selectByUid" resultType="com.proj.resumy.intro.domain.IntroConDTO">
+		SELECT 
+			intr_c_id "id", 
+			intr_question question,
+			intr_content content,
+			intr_id iid
+		FROM hr_introduction_c
+		WHERE intr_id=#{iid}
+	</select>
+	
+	
+</mapper> 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

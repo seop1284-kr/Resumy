@@ -5,7 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.proj.resumy.service.IntroService;
+import com.proj.resumy.intro.service.AjaxIntroService;
 
 @Controller
 @RequestMapping("")

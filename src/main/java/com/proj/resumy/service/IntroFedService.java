@@ -5,10 +5,10 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.proj.resumy.domain.IntroDAO;
-import com.proj.resumy.domain.IntroDTO;
 import com.proj.resumy.domain.IntroFedDAO;
 import com.proj.resumy.domain.IntroFedDTO;
+import com.proj.resumy.intro.domain.IntroDAO;
+import com.proj.resumy.intro.domain.IntroDTO;
 
 //Service 단.
 //JSP MVC model2 의 Command 역할 비슷
