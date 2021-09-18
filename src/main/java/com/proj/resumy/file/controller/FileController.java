@@ -1,11 +1,7 @@
-package com.proj.resumy.controller;
+package com.proj.resumy.file.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-
-import com.proj.resumy.intro.service.AjaxIntroService;
-import com.proj.resumy.service.FileService;
 
 //AjaxFileController (파일관리) 하병노
 
