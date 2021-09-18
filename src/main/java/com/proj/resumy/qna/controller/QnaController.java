@@ -1,4 +1,4 @@
-package com.proj.resumy.controller;
+package com.proj.resumy.qna.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -6,7 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.proj.resumy.service.QnaService;
+import com.proj.resumy.qna.service.QnaService;
 
 // QnaController(고객센터 페이지) 노수빈
 @Controller

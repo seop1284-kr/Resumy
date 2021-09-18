@@ -1,13 +1,13 @@
-package com.proj.resumy.service;
+package com.proj.resumy.qna.service;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.proj.resumy.domain.QnaADTO;
-import com.proj.resumy.domain.QnaDAO;
-import com.proj.resumy.domain.QnaQDTO;
+import com.proj.resumy.qna.domain.QnaADTO;
+import com.proj.resumy.qna.domain.QnaDAO;
+import com.proj.resumy.qna.domain.QnaQDTO;
 
 //Service 단.
 //JSP MVC model2 의 Command 역할 비슷
@@ -43,13 +43,13 @@ public class QnaService {
 	}
 
 	// 특정 id 문의 내용 읽기
-	public List<QnaQDTO> selectByUid(int uid) {
-		return dao.selectByUid(uid);
+	public List<QnaQDTO> selectByUid(int id) {
+		return dao.selectByUid(id);
 	}
 
 	// 특정 q_id 문의 답글 읽기
-	public List<QnaADTO> selectByQid(int uid) {
-		return dao.selectByQid(uid);
+	public List<QnaADTO> selectByQid(int id) {
+		return dao.selectByQid(id);
 	}
 	
 	// 특정 id 문의 글 수정
@@ -58,13 +58,13 @@ public class QnaService {
 	}
 
 	// 특정 id 문의 글 삭제
-	public int deleteByUid(int uid) {
-		return dao.deleteByUid(uid);
+	public int deleteByUid(int id) {
+		return dao.deleteByUid(id);
 	}
 	
 	// 특정 q_id 문의 답글 삭제
-	public int deleteByQid(int uid) {
-		return dao.deleteByQid(uid);
+	public int deleteByQid(int id) {
+		return dao.deleteByQid(id);
 	}
 
 }

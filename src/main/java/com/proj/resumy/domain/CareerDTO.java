@@ -11,17 +11,17 @@ import lombok.Data;
 @Data
 public class CareerDTO {
 	
-	private int id;   					// cr_id
-	private String company;				// cr_company
-	private LocalDateTime hiredate;		// cr_hiredate
-	private LocalDateTime leavedate;	// cr_leavedate
-	private String lvreason;			// cr_lvreason
-	private String post;				// cr_post
-	private String dept;				// cr_dept
-	private String area;				// cr_area
-	private int salary;					// cr_salary
-	private String work;				// cr_work
-	private int mid;					// mem_id
+	private int crId;   					// cr_crId
+	private String crCompany;				// cr_crCompany
+	private LocalDateTime crHiredate;		// cr_crHiredate
+	private LocalDateTime crLeavedate;	// cr_crLeavedate
+	private String crLvreason;			// cr_crLvreason
+	private String crPost;				// cr_crcrPost
+	private String crDept;				// cr_crDept
+	private String crArea;				// cr_crArea
+	private int crSalary;					// cr_crSalary
+	private String crWork;				// cr_crWork
+	private int memId;					// mem_id
 	
 	public CareerDTO() {
 		super();
@@ -29,19 +29,19 @@ public class CareerDTO {
 	}
 
 
-	public CareerDTO(int id, String company, LocalDateTime hiredate,LocalDateTime leavedate, String lvreason, String post, String dept, String area, int salary, String work, int mid) {
+	public CareerDTO(int crId, String crCompany, LocalDateTime crHiredate,LocalDateTime crLeavedate, String crLvreason, String crPost, String crDept, String crArea, int crSalary, String crWork, int memId) {
 		super();
-		this.id = id;
-		this.company = company;
-		this.hiredate = hiredate;
-		this.leavedate = leavedate;
-		this.lvreason = lvreason;
-		this.post = post;
-		this.dept = dept;
-		this.area = area;
-		this.salary = salary;
-		this.work = work;
-		this.mid = mid;
+		this.crId = crId;
+		this.crCompany = crCompany;
+		this.crHiredate = crHiredate;
+		this.crLeavedate = crLeavedate;
+		this.crLvreason = crLvreason;
+		this.crPost = crPost;
+		this.crDept = crDept;
+		this.crArea = crArea;
+		this.crSalary = crSalary;
+		this.crWork = crWork;
+		this.memId = memId;
 		System.out.println("IntroDTO(...) 객체 생성");
 	}
 }

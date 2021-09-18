@@ -6,19 +6,19 @@
 
 	<select id="select" resultType="com.proj.resumy.domain.CareerDAO">
 		SELECT 
-			cr_id "id", 
-			cr_company company, 
-			cr_hiredate hiredate, 
-			cr_leavedate leavedate,
-			cr_lvreason lvreason,
-			cr_post post,
-			cr_dept dept,
-			cr_area area,
-			cr_salary salary,
-			cr_work work
-			mem_id mid
-		FROM 
-			hr_spec_info
+			cr_id           crId, 
+			cr_company      crCompany, 
+			cr_hiredate     crHiredate, 
+			cr_leavedate    crLeavedate,
+			cr_lvreason     crLvreason,
+			cr_post         crPost,
+			cr_dept         crDept,
+			cr_area         crArea,
+			cr_salary       crSalary,
+			cr_work         crWork
+			mem_id          memId
+		FROM hr_spec_info
+		where mem_id = #{memId}
 		ORDER BY 
 			cr_id DESC;
 	</select>
