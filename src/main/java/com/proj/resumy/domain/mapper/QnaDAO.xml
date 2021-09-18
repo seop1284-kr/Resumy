@@ -45,7 +45,7 @@
 	</select>
 	
 	<!-- 특정 q_id 문의 답글 읽기 -->
-	<select id="selectByQid" resultType="com.proj.resumy.domain.QnaQDTO">
+	<select id="selectByQid" resultType="com.proj.resumy.qna.domain.QnaQDTO">
 		SELECT
 			q_id id,
 			a_reply reply,
@@ -57,12 +57,12 @@
 	</select>
 	
 	<!-- 특정 id 문의 글 수정 -->
-	<update id="update" flushCache="true" parameterType="com.proj.resumy.domain.QnaQDTO">
+	<update id="update" flushCache="true" parameterType="com.proj.resumy.qna.domain.QnaQDTO">
 		UPDATE
 			hr_qna_q
 		SET
 			q_subject = #{subject},
-			q_content #{content},
+			q_content #{content}
 		WEHRE
 			q_id = #{id} AND mem_id = #{mid}
 	</update>
@@ -87,19 +87,3 @@
 	</delete>
 	
 </mapper> 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
