@@ -18,7 +18,6 @@ public class MemberDTO {
 	private boolean career;	// mem_career
 	private LocalDateTime regdtm;	// reg_dtm
 	private LocalDateTime modydtm;	// mody_dtm
-	private boolean lev;			// mem_level
 	
 	public boolean getLev() {
 		return lev;

@@ -3,8 +3,8 @@
 <mapper namespace="com.proj.resumy.domain.MemberDAO">
 
 	<insert id="addUser" parameterType="com.proj.resumy.domain.MemberDTO">
-		INSERT INTO hr_member(mem_userid, mem_pw, mem_name, mem_email, mem_level)
-		VALUES(#{userid}, #{pw}, #{name}, #{email}, #{lev})
+		INSERT INTO hr_member(mem_userid, mem_pw, mem_name, mem_email)
+		VALUES(#{userid}, #{pw}, #{name}, #{email})
 	</insert>
 	
 	<insert id="addAuth">
@@ -40,8 +40,7 @@
 			mem_address address,
 			mem_career mem_career,
 			reg_dtm regdtm,
-			mody_dtm doydtm,
-			mem_level lev
+			mody_dtm doydtm
 		FROM hr_member
 		WHERE mem_userid = #{userid}	
 	</select>
