@@ -3,6 +3,8 @@ package com.proj.resumy.intro.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -31,10 +33,12 @@ public class AjaxIntroController {
 	
 	// 완성된 자소서 목록
 	@RequestMapping("/finlist")
-	public IntroDTO[] finlist(Model model) {
+	public IntroDTO[] finlist(Model model, Authentication authentication) {
 		
-		// test userid가 mem01인 사람
-		List<IntroDTO> finList = ajaxIntroService.selectFinResume("mem01");
+		// 로그인한 사람의 정보를 담은 객체
+		UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+		
+		List<IntroDTO> finList = ajaxIntroService.selectFinResume(userDetails.getUsername());
 		
 		IntroDTO [] arr = new IntroDTO[finList.size()];
 		return finList.toArray(arr);
@@ -42,10 +46,12 @@ public class AjaxIntroController {
 	
 	// 미완성된 자소서 목록
 	@RequestMapping("/notfinlist")
-	public IntroDTO[] notfinlist(Model model) {
+	public IntroDTO[] notfinlist(Model model, Authentication authentication) {
 
-		// userid가 mem01인 사람 (temp)
-		List<IntroDTO> notFinList = ajaxIntroService.selectNotFinResume("mem01");
+		// 로그인한 사람의 정보를 담은 객체
+		UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+				
+		List<IntroDTO> notFinList = ajaxIntroService.selectNotFinResume(userDetails.getUsername());
 
 		IntroDTO [] arr = new IntroDTO[notFinList.size()];
 		return notFinList.toArray(arr);
