@@ -116,8 +116,8 @@ CREATE TABLE `hr_qna_q` (
 	`q_subject`	varchar(50)	NOT NULL	COMMENT '글 제목',
 	`q_content`	text	NOT NULL	COMMENT '글 내용',
 	`q_regdate`	datetime	NOT NULL	DEFAULT now()	COMMENT '글 등록일시',
-	`mem_id`	int	NOT NULL,
-	FOREIGN KEY (mem_id) REFERENCES hr_member(mem_id)
+	`mem_userid`	varchar(100)	NOT NULL,
+	FOREIGN KEY (mem_userid) REFERENCES hr_member(mem_userid)
 );
 
 -- 고객센터 답글 테이블

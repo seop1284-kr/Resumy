@@ -21,6 +21,9 @@ public interface MemberDAO {
 	// 특정 userid (username) 의 사용자 찾기
 	MemberDTO findById(String userid);
 	
+	// 특정 userid를 매개변수로 이용해서 user_name 반환
+	String findNameByUserId(String userid);
+	
 	// 특정 userid (username) 의 권한(들) 뽑기
 	List<String> selectAuthoritiesById(String userid);
 }

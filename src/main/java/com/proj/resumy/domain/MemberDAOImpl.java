@@ -48,6 +48,12 @@ public class MemberDAOImpl implements MemberDAO {
 	public MemberDTO findById(String userid) {
 		return mapper.findById(userid);
 	}
+	
+	// 특정 userid를 매개변수로 이용해서 user_name 반환
+	@Override
+	public String findNameByUserId(String userid) {
+		return mapper.findNameByUserId(userid);
+	}
 
 	@Override
 	public List<String> selectAuthoritiesById(String userid) {

@@ -44,7 +44,17 @@
 		FROM hr_member
 		WHERE mem_userid = #{userid}	
 	</select>
-
+	
+	<!-- 특정 userid를 매개변수로 이용해서 user_name 반환 -->
+	<select id="findNameByUserId" resultType="String">
+		SELECT
+			mem_name name
+		FROM 
+			hr_member
+		WHERE 
+			mem_userid = #{userid}
+	</select>
+	
 	<select id="selectAuthoritiesById" resultType="String">
 		SELECT mem_auth
 		FROM hr_authority

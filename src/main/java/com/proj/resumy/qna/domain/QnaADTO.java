@@ -1,6 +1,7 @@
 package com.proj.resumy.qna.domain;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 import lombok.Data;
 
@@ -13,11 +14,10 @@ import lombok.Data;
 @Data
 public class QnaADTO {
 	private int id;   				// q_id
-	private String subject;			// a_reply
+	private String reply;			// a_reply
 	private LocalDateTime regdate;	// a_regdate
 	
-	public QnaADTO() {
-		super();
-		System.out.println("QnaADTO() 객체 생성");
+	public String getRegdate() {
+		return this.regdate.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
 	}
 }

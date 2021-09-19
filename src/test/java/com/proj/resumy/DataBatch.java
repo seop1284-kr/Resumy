@@ -34,7 +34,7 @@ class DataBatch {
 	public static final String SQL_RESUMY_INTRO_INSERT = "insert into `hr_introduction` (intr_title, mem_id) values (?, ?)";
 	public static final String SQL_RESUMY_INTRO_C_INSERT = "insert into `hr_introduction_c` (intr_question, intr_content, intr_id) values (?, ?, ?)";
 	public static final String SQL_RESUMY_FED_INSERT = "insert into `intr_feedback` (fb_userid, fb_content, intr_id) values (?, ?, ?)";
-	public static final String SQL_RESUMY_QNAQ_INSERT = "insert into `hr_qna_q` (q_subject, q_content, mem_id) values (?, ?, ?)";
+	public static final String SQL_RESUMY_QNAQ_INSERT = "insert into `hr_qna_q` (q_subject, q_content, mem_userid) values (?, ?, ?)";
 	public static final String SQL_RESUMY_QNAA_INSERT = "insert into `hr_qna_a` (q_id, a_reply) values (?, ?)";
 	
 	public static final String[] SHCOOL = { "초등학교", "중학교", "고등학교", "대학교.대학권"};
@@ -281,7 +281,7 @@ class DataBatch {
 			for(int i = 0; i < num; i++) {
 				pstmt.setString(1, SUBJECTS[rand.nextInt(SUBJECTS.length)]);  
 				pstmt.setString(2, CONTENTS[rand.nextInt(CONTENTS.length)]);
-				pstmt.setInt(3, (rand.nextInt(9)+1));
+				pstmt.setString(3, String.format("mem%02d", rand.nextInt(9)+1));
 				cnt += pstmt.executeUpdate();
 			}
 			System.out.println(cnt + "개의 고객센터 데이터가 INSERT 되었습니다");

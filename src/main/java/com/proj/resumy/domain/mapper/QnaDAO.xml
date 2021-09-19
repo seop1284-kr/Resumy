@@ -13,7 +13,7 @@
 			q_subject subject, 
 			q_content content, 
 			q_regdate regdate, 
-			mem_id mid
+			mem_userid userid
 		FROM 
 			hr_qna_q
 		ORDER BY 
@@ -37,7 +37,7 @@
 			q_subject subject, 
 			q_content content, 
 			q_regdate regdate, 
-			mem_id mid
+			mem_userid userid
 		FROM 
 			hr_qna_q
 		WHERE
@@ -45,7 +45,7 @@
 	</select>
 	
 	<!-- 특정 q_id 문의 답글 읽기 -->
-	<select id="selectByQid" resultType="com.proj.resumy.qna.domain.QnaQDTO">
+	<select id="selectByQid" resultType="com.proj.resumy.qna.domain.QnaADTO">
 		SELECT
 			q_id id,
 			a_reply reply,
@@ -64,7 +64,7 @@
 			q_subject = #{subject},
 			q_content #{content}
 		WEHRE
-			q_id = #{id} AND mem_id = #{mid}
+			q_id = #{id} AND mem_userid = #{userid}
 	</update>
 	
 	<!-- 특정 id 문의 글 삭제 -->

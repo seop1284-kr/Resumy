@@ -64,18 +64,17 @@
 			<c:when test="${empty list || fn:length(list) == 0 }">
 			</c:when>
 			<c:otherwise>
-				<c:forEach var="dto" items="${list }">
+				<c:forEach var="dto" items="${list }" varStatus="status">
 					<tr>
 						<td>${dto.id }</td>
 						<td><a href="qnaView.do?id=${dto.id }">${dto.subject }</a></td>
 						<td>답변</td>
-						<td>${dto.mid }</td>
+						<td>${listName[status.index] }</td>
 						<td>${dto.regdate }</td>
 					</tr>
 				</c:forEach>
 			</c:otherwise>
 		</c:choose>
 	</table>
-	<div style="color:red;">**hr_qna_q join hr_member -> mid에 맞는 회원명 가져오기</div>
 </body>
 </html>
