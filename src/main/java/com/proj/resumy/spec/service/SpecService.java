@@ -19,13 +19,19 @@ public class SpecService {
 	}
 	
 	public SpecService() {
-		System.out.println("SpecService() 생성");
-		
+		System.out.println("CareerService() 생성");	
 	}
 
-	public List<SpecDTO> list() {
-		
-		return dao.select();
+	public List<SpecDTO> view(int mid) {
+		return dao.select(mid);
+	}
+	
+	public int write(SpecDTO dto) {
+		return dao.insert(dto); 
+	}
+	
+	public int update(SpecDTO dto) {
+		return dao.update(dto);
 	}
 
 }

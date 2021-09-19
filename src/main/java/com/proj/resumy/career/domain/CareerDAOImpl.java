@@ -18,8 +18,8 @@ public class CareerDAOImpl implements CareerDAO {
 	}
 	
 	@Override
-	public List<CareerDTO> select() {
-		return mapper.select();
+	public List<CareerDTO> select(int mid) {
+		return mapper.select(mid);
 	}
 
 	@Override
@@ -27,10 +27,10 @@ public class CareerDAOImpl implements CareerDAO {
 		return mapper.insert(dto);
 	}
 
-	@Override
-	public List<CareerDTO> selectByUid(int id) {
-		return mapper.selectByUid(id);
-	}
+//	@Override
+//	public List<CareerDTO> selectByUid(int id) {
+//		return mapper.selectByUid(id);
+//	}
 
 	@Override
 	public int update(CareerDTO dto) {
@@ -38,8 +38,8 @@ public class CareerDAOImpl implements CareerDAO {
 	}
 
 	@Override
-	public int deleteByUid(int uid) {
-		return mapper.deleteByUid(uid);
+	public int delete(CareerDTO dto) {
+		return mapper.delete(dto);
 	}
 
 }

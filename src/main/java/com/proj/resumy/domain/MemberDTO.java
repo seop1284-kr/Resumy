@@ -19,9 +19,9 @@ public class MemberDTO {
 	private LocalDateTime regdtm;	// reg_dtm
 	private LocalDateTime modydtm;	// mody_dtm
 	
-	public boolean getLev() {
-		return lev;
-	}
+	//public boolean getLev() {
+	//	return lev;
+	//}
 
 	
 }

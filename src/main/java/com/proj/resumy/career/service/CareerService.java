@@ -19,13 +19,26 @@ public class CareerService {
 	}
 	
 	public CareerService() {
-		System.out.println("CareerService() 생성");
-		
+		System.out.println("CareerService() 생성");	
 	}
 
-	public List<CareerDTO> list() {
-		
-		return dao.select();
+	public List<CareerDTO> view(int mid) {
+		return dao.select(mid);
 	}
+	
+	public int write(CareerDTO dto) {
+		return dao.insert(dto); 
+	}
+	
+	public int update(CareerDTO dto) {
+		return dao.update(dto);
+	}
+	
+	public int delete(CareerDTO dto) {	
+		return dao.delete(dto);
+	}
+	
+
+	
 
 }

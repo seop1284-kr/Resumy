@@ -18,8 +18,8 @@ public class SpecDAOImpl implements SpecDAO {
 	}
 	
 	@Override
-	public List<SpecDTO> select() {
-		return mapper.select();
+	public List<SpecDTO> select(int mid) {
+		return mapper.select(mid);
 	}
 
 	@Override
@@ -27,19 +27,15 @@ public class SpecDAOImpl implements SpecDAO {
 		return mapper.insert(dto);
 	}
 
-	@Override
-	public List<SpecDTO> selectByUid(int id) {
-		return mapper.selectByUid(id);
-	}
+//	@Override
+//	public List<SpecDTO> selectByUid(int id) {
+//		return mapper.selectByUid(id);
+//	}
 
 	@Override
 	public int update(SpecDTO dto) {
 		return mapper.update(dto);
 	}
 
-	@Override
-	public int deleteByUid(int uid) {
-		return mapper.deleteByUid(uid);
-	}
 
 }
