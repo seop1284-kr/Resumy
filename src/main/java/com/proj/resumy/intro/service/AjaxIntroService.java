@@ -39,14 +39,14 @@ public class AjaxIntroService {
 		
 	}
 
-	public List<IntroDTO> selectFinResume(int mid) {
+	public List<IntroDTO> selectFinResume(String userid) {
 		
-		return introDao.selectFinResume(mid);
+		return introDao.selectFinResume(userid);
 	}
 	
-	public List<IntroDTO> selectNotFinResume(int mid) {
+	public List<IntroDTO> selectNotFinResume(String userid) {
 		
-		return introDao.selectNotFinResume(mid);
+		return introDao.selectNotFinResume(userid);
 	}
 	
 	public IntroDTO getIntroById(int id) {

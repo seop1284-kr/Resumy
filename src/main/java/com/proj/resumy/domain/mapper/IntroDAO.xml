@@ -13,11 +13,11 @@
 			intr_public pub, 
 			intr_finish fin, 
 			mody_dtm modydate,
-			mem_id mid
+			mem_userid userid
 		FROM 
 			hr_introduction
 		WHERE
-			mem_id = #{mid} AND intr_finish = false
+			mem_userid = #{userid} AND intr_finish = false
 		ORDER BY 
 			intr_id DESC	
 	</select>
@@ -30,11 +30,11 @@
 			intr_public pub, 
 			intr_finish fin, 
 			mody_dtm modydate,
-			mem_id mid
+			mem_userid userid
 		FROM 
 			hr_introduction
 		WHERE
-			mem_id = #{mid} AND intr_finish = true
+			mem_userid = #{userid} AND intr_finish = true
 		ORDER BY 
 			intr_id DESC	
 	</select>
@@ -47,7 +47,7 @@
 			intr_public pub, 
 			intr_finish fin, 
 			mody_dtm modydate,
-			mem_id mid
+			mem_userid userid
 		FROM hr_introduction 
 		WHERE intr_id=#{id}
 	</select>

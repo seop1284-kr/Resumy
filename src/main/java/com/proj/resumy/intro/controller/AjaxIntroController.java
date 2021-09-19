@@ -33,8 +33,8 @@ public class AjaxIntroController {
 	@RequestMapping("/finlist")
 	public IntroDTO[] finlist(Model model) {
 		
-		// test id가 1일 사람
-		List<IntroDTO> finList = ajaxIntroService.selectFinResume(1);
+		// test userid가 mem01인 사람
+		List<IntroDTO> finList = ajaxIntroService.selectFinResume("mem01");
 		
 		IntroDTO [] arr = new IntroDTO[finList.size()];
 		return finList.toArray(arr);
@@ -44,8 +44,8 @@ public class AjaxIntroController {
 	@RequestMapping("/notfinlist")
 	public IntroDTO[] notfinlist(Model model) {
 
-		// id가 1인 사람 (temp)
-		List<IntroDTO> notFinList = ajaxIntroService.selectNotFinResume(1);
+		// userid가 mem01인 사람 (temp)
+		List<IntroDTO> notFinList = ajaxIntroService.selectNotFinResume("mem01");
 
 		IntroDTO [] arr = new IntroDTO[notFinList.size()];
 		return notFinList.toArray(arr);

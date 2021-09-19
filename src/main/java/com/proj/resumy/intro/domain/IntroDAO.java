@@ -5,10 +5,10 @@ import java.util.List;
 //자소서 DAO 인터페이스 김진섭
 public interface IntroDAO {
 	// 미완성 자기 자소서 출력 SELECT
-	public abstract List<IntroDTO> selectNotFinResume(int mid);
+	public abstract List<IntroDTO> selectNotFinResume(String userid);
 	
 	// 완성 자기 자소서 출력 SELECT
-	public abstract List<IntroDTO> selectFinResume(int mid);
+	public abstract List<IntroDTO> selectFinResume(String userid);
 	
 	// 특정 id 자소서 내용 읽기,
 	public abstract IntroDTO getIntroById(int id);

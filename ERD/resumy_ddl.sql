@@ -28,7 +28,7 @@ CREATE TABLE `hr_member` (
 );
 
 -- 회원권한 테이블(김진섭)
-CREATE TABLE hr_authority (
+CREATE TABLE `hr_authority` (
 	mem_userid varchar(50) REFERENCES hr_member(mem_userid),
 	mem_auth varchar(50) NOT NULL,        -- 시큐리티의 authority
 	PRIMARY KEY (mem_userid, mem_auth)
@@ -36,7 +36,7 @@ CREATE TABLE hr_authority (
 
 -- 경력사항 테이블
 CREATE TABLE `hr_spec_info` (
-	`spec_id`	int(11)	NOT NULL AUTO_INCREMENT PRIMARY KEY COMMENT '일련번호',
+	`spec_id`	int	NOT NULL AUTO_INCREMENT PRIMARY KEY COMMENT '일련번호',
 	`spec_cat_cd`	varchar(10)	NOT NULL	COMMENT '01: 초등학교 02: 중학교 03: 고등학교 04: 대학교.대학원',
 	`spec_name`	varchar(10)	NOT NULL	COMMENT '학교명',
 	`spec_area`	varchar(10)	NOT NULL	COMMENT '지역명',

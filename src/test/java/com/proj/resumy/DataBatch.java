@@ -27,6 +27,7 @@ class DataBatch {
 	public static final String USERPW = "1234";
 	
 	public static final String SQL_RESUMY_MEM_INSERT = "insert into `hr_member` (mem_userid, mem_pw, mem_name, mem_email) values (?, ?, ?, ?)";
+	public static final String SQL_RESUMY_AUTHORITY_INSERT = "insert into `hr_authority` (mem_userid, mem_auth) values (?, ?)";
 	public static final String SQL_RESUMY_CAREER_INSERT = "insert into `hr_career` (cr_company, cr_hiredate, cr_leavedate, cr_post, mem_id) values (?, ?, ?, ?, ?)";
 	public static final String SQL_RESUMY_SPEC_INSERT = "insert into `hr_spec_info` (spec_cat_cd, spec_name, spec_area, mody_dtm, reg_dtm, mem_id) values (?, ?, ?, ?, ?, ?)";
 	
@@ -76,6 +77,36 @@ class DataBatch {
 			}
 		}
 		
+		// 회원권한 테이블
+		cnt = 0; // executeUpdate(), DML 결과
+		try {
+			Class.forName(DRIVER);
+			conn = DriverManager.getConnection(URL, USERID, USERPW);
+			
+			// 테스트용 dummy 데이터 만들기
+			pstmt = conn.prepareStatement(SQL_RESUMY_AUTHORITY_INSERT);
+		
+			int num = 10;
+			for(int i = 0; i < num; i++) {
+				
+				pstmt.setString(1, String.format("mem%02d", i));  				// 회사명
+				pstmt.setString(2, "ROLE_MEMBER");							// 재직일
+				cnt += pstmt.executeUpdate();
+				}
+			System.out.println(cnt + "개 의 경력사항 데이터가 INSERT 되었습니다");
+			
+		} catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(pstmt != null) pstmt.close();
+				if(conn != null) conn.close();
+			} catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+				
+				
 		// 경력사항 테이블
 		cnt = 0; // executeUpdate(), DML 결과
 		try {

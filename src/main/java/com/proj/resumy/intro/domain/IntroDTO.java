@@ -18,7 +18,7 @@ public class IntroDTO {
 	private boolean pub;			// intr_public
 	private boolean fin;			// intr_finish
 	private LocalDateTime modydate;	// mody_dtm
-	private int mid;				// mem_id
+	private String userid;				// mem_userid
 	
 	public IntroDTO() {
 		super();
@@ -26,7 +26,7 @@ public class IntroDTO {
 	}
 
 
-	public IntroDTO(int id, String title, LocalDateTime regdate, boolean pub, boolean fin, LocalDateTime modydate, int mid) {
+	public IntroDTO(int id, String title, LocalDateTime regdate, boolean pub, boolean fin, LocalDateTime modydate, String userid) {
 		super();
 		this.id = id;
 		this.title = title;
@@ -34,7 +34,7 @@ public class IntroDTO {
 		this.pub = pub;
 		this.fin = fin;
 		this.modydate = modydate;
-		this.mid = mid;
+		this.userid = userid;
 		System.out.println("IntroDTO(...) 객체 생성");
 	}
 }
