@@ -3,7 +3,7 @@
 
 <mapper namespace="com.proj.resumy.file.domain.FileDAO">
 
-	<select id="select" resultType="com.proj.resumy.file.domain.FileDAO">
+	<select id="selectByMid" resultType="com.proj.resumy.file.domain.FileDTO">
 		SELECT 
 			file_name, 
 			file_volume, 
@@ -11,7 +11,8 @@
 			file_memo 
 		FROM 
 			hr_file
+		WHERE mem_id = #{mid}
 		ORDER BY 
-			file_id DESC;
+			file_regdate DESC;
 	</select>
 </mapper>

@@ -6,8 +6,11 @@ import java.util.List;
 
 public interface FileDAO {
 	
-	// 전체 파일 리스트 출력 SELECT
-	public abstract List<FileDTO> select();
+	// 특정 회원(mem_id)의 첨부파일들 SELECT
+	public abstract List<FileDTO> selectByMid(int mid);
+	
+	
+
 
 	// 새 파일 업로드
 	public abstract int insert(FileDTO dto);
@@ -18,6 +21,12 @@ public interface FileDAO {
 	// 특정 id 파일 삭제
 
 	public abstract int deleteByUid(int uid);
+
+
+
+
+
+
 
 
 

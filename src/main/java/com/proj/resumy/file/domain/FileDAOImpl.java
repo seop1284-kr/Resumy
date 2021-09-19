@@ -18,8 +18,8 @@ public class FileDAOImpl implements FileDAO {
 	}
 	
 	@Override
-	public List<FileDTO> select() {
-		return mapper.select();
+	public List<FileDTO> selectByMid(int mid) {
+		return mapper.selectByMid(mid);
 	}
 	
 	@Override
@@ -27,11 +27,12 @@ public class FileDAOImpl implements FileDAO {
 		return mapper.insert(dto);
 	}
 
-
 	@Override
 	public int deleteByUid(int uid) {
 		return mapper.deleteByUid(uid);
 	}
+
+
 	
 	
 }
