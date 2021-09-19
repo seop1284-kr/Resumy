@@ -85,8 +85,8 @@ CREATE TABLE `hr_introduction` (
 	`intr_public`	boolean	NOT NULL	DEFAULT false	COMMENT '공개여부 (공개: true, 비공개: false)',
 	`intr_finish`	boolean	NOT NULL	DEFAULT false	COMMENT '완성 여부 (완성: true, 진행중 : false)',
 	`mody_dtm`	datetime	NOT NULL	DEFAULT now()	COMMENT '수정 일시',
-	`mem_id`	int	NOT NULL,
-	FOREIGN KEY (mem_id) REFERENCES hr_member(mem_id)
+	`mem_userid`	varchar(100)	NOT NULL,
+	FOREIGN KEY (mem_userid) REFERENCES hr_member(mem_userid)
 );
 
 -- 자소서컨텐츠 테이블
