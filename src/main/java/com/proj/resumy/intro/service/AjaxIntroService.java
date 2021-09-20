@@ -38,24 +38,35 @@ public class AjaxIntroService {
 		System.out.println("IntroService() 생성");
 		
 	}
+	
+	// 모든 자기 자소서 가져오기
+	public List<IntroDTO> selectResume(String userid) {
+		return introDao.selectResume(userid);
+	}
+	
+	// 특정 id 자소서 가져오기
+	public IntroDTO selectResumeById(int id) {
+		return introDao.selectResumeById(id);
+	}
 
-	public List<IntroDTO> selectFinResume(String userid) {
-		
-		return introDao.selectFinResume(userid);
+	// 특정 id 자소서 삭제
+	public int deleteResumeById(int id) {
+		return introDao.deleteResumeById(id);
 	}
 	
-	public List<IntroDTO> selectNotFinResume(String userid) {
-		
-		return introDao.selectNotFinResume(userid);
+	// 특정 id 자소서 삭제
+	public int updateResumeById(IntroDTO introDto) {
+		return introDao.updateResumeById(introDto);
 	}
 	
-	public IntroDTO getIntroById(int id) {
-		return introDao.getIntroById(id);
-	}
 	
+	// 특정 iid 자소서 내용 가져오기
 	public List<IntroConDTO> selectConByIid(int iid) {
 		return introConDao.selectConByIid(iid);
 	}
+	
+	
+	
 
 //	public int write(IntroDTO dto) {
 //		return dao.insert(dto);

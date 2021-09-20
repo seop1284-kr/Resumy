@@ -25,6 +25,11 @@
     <!-- font-family: 'Gowun Dodum', sans-serif; -->
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap" rel="stylesheet">
     <!-- font-family: 'Roboto Condensed', sans-serif; -->
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="/assets/dist/js/bootstrap.min.js"></script>
+    <script src="/JS/resume.js"></script> <!-- bootrstap 을 따르는 문서 -->
+    
     <style>
         .bd-placeholder-img {
             font-size: 1.125rem;
@@ -74,11 +79,63 @@
         <!-- ./aside -->
 
         <section class="col">
-        	<div id="content">
-	            <!-- 내용 적는 부분 -->
-	            
-	            
-	        </div>    
+        
+        	<!-- 제목 -->
+        	<h4 id="title" style="font-weight: bold"></h4>
+        	
+        	<!-- 자소서 목록 리스트 -->
+        	<div id="content"></div>    
+	               
+	        <%-- 글 작성 / 보기 / 수정 폼 --%>
+	        <form id="frmWrite" name="frmWrite" method="post">
+				<div id="crud_form_box">
+					<div id="content_text_box">
+						<div id="content_text">
+							<input type="text" placeholder="자소서 제목(필수)" name="title" required>
+							<input type="text" placeholder="질문" name="question">
+							<textarea placeholder="내용" name="content"></textarea>					
+						</div>
+					</div>
+			
+					<%-- 하단 버튼 : 글 작성 --%>
+					<div class="d01 btn_group_write">
+						<button type="button" id="plus">추가</button>
+						<button type="button" class="btn info" id="viewUpdate">작성 취소</button>
+						<button type="submit" class="btn success fullbtn">자소서 저장</button>
+					</div>
+					
+					<%-- 하단 버튼 : 글 조회 --%>
+					<div class="d01 btn_group_view">
+						<button type="button" id="plus">추가</button>					
+						<button type="button" class="btn info" id="viewUpdate">목록</button>
+						<button type="button" class="btn danger" id="viewDelete">자소서 삭제</button>
+						<button type="button" class="btn info" id="viewUpdate">자소서 수정</button>
+					</div>
+					
+					<%-- 하단 버튼 : 글 수정 --%>
+					<div class="d01 btn_group_update">
+						<button type="button" id="plus">추가</button>					
+						<button type="button" class="btn info" id="viewUpdate">작성 취소</button>
+						<button type="button" class="btn info" id="viewUpdate">자소서 수정</button>
+					</div>
+				</div>
+			</form>
+	        
+    		<script>
+				$("#plus").click(function(){
+					var content_text = $("#content_text");
+					$("#content_text_box").append(content_text);
+					
+				});
+			</script>
+	        
+	        
+	        
+	        
+	        
+	        
+	        
+	        
             
         </section>
     </div>
@@ -99,9 +156,7 @@
         </div>
     </footer>
 
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="/assets/dist/js/bootstrap.min.js"></script>
-    <script src="/JS/resume.js"></script> <!-- bootrstap 을 따르는 문서 -->
+	
 </body>
 
 </html>

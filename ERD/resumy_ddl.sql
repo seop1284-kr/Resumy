@@ -86,7 +86,7 @@ CREATE TABLE `hr_introduction` (
 	`intr_finish`	boolean	NOT NULL	DEFAULT false	COMMENT '완성 여부 (완성: true, 진행중 : false)',
 	`mody_dtm`	datetime	NOT NULL	DEFAULT now()	COMMENT '수정 일시',
 	`mem_userid`	varchar(100)	NOT NULL,
-	FOREIGN KEY (mem_userid) REFERENCES hr_member(mem_userid)
+	FOREIGN KEY (mem_userid) REFERENCES hr_member(mem_userid) ON DELETE CASCADE
 );
 
 -- 자소서컨텐츠 테이블
@@ -95,7 +95,7 @@ CREATE TABLE `hr_introduction_c` (
 	`intr_question`	varchar(100)	NULL	COMMENT '자소서질문',
 	`intr_content`	text	NULL	COMMENT '자소서내용',
 	`intr_id`	int	NOT NULL	COMMENT '자소서 게시글 일련번호',
-	FOREIGN KEY (intr_id) REFERENCES hr_introduction(intr_id)
+	FOREIGN KEY (intr_id) REFERENCES hr_introduction(intr_id) ON DELETE CASCADE
 );
 
 -- 자기소개서 피드백 게시판
@@ -105,7 +105,7 @@ CREATE TABLE `intr_feedback` (
 	`fb_content`	text	NOT NULL	COMMENT '피드백 내용',
 	`fb_regdate`	datetime	NOT NULL DEFAULT now()	COMMENT '피드백 등록일시',
 	`intr_id`	int	NOT NULL,
-	FOREIGN KEY (intr_id) REFERENCES hr_introduction(intr_id)
+	FOREIGN KEY (intr_id) REFERENCES hr_introduction(intr_id) ON DELETE CASCADE
 );
 
 

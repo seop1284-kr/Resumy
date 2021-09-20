@@ -17,36 +17,30 @@ public class IntroDAOImpl implements IntroDAO {
 		mapper = sqlSession.getMapper(IntroDAO.class);
 	}
 	
-	@Override
-	public List<IntroDTO> selectNotFinResume(String userid) {
-		return mapper.selectNotFinResume(userid);
-	}
 
 	@Override
-	public List<IntroDTO> selectFinResume(String userid) {
-		return mapper.selectFinResume(userid);
+	public List<IntroDTO> selectResume(String userid) {
+		return mapper.selectResume(userid);
 	}
 	
 	@Override
-	public IntroDTO getIntroById(int id) {
-		return mapper.getIntroById(id);
+	public IntroDTO selectResumeById(int id) {
+		return mapper.selectResumeById(id);
+	}
+
+
+	@Override
+	public int deleteResumeById(int id) {
+		return mapper.deleteResumeById(id);
+	}
+
+
+	@Override
+	public int updateResumeById(IntroDTO introDto) {
+		return mapper.updateResumeById(introDto);
 	}
 	
-	@Override
-	public int insert(IntroDTO dto) {
-		return mapper.insert(dto);
-	}
-
-
-
-	@Override
-	public int update(IntroDTO dto) {
-		return mapper.update(dto);
-	}
-
-	@Override
-	public int deleteByUid(int uid) {
-		return mapper.deleteByUid(uid);
-	}
+	
+	
 
 }
