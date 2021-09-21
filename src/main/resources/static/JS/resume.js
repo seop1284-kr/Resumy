@@ -1,18 +1,6 @@
 $(document).ready(function(){
 	
 	loadPage();
-	
-	// 자소서 내용(질문+답변) 폼 추가
-	$("#plus").click(function(){
-		var form = '<div id="content_text"><input type="text" placeholder="자소서 제목(필수)" name="title" required>';
-		form += '<input type="text" placeholder="질문" name="question">';
-		form += '<textarea placeholder="내용" name="content"></textarea>';
-		form += '<Button type="button" onclick="$(this).parent().remove()" id="minus">삭제</Button></div>';
-		$("#minus").click(function(){
-			
-		})
-		$("#content_text_box").append(form);			
-	});
 });
 
 // 자소서 관리 시작 페이지
