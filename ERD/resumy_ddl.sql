@@ -92,7 +92,7 @@ CREATE TABLE `hr_introduction` (
 -- 자소서컨텐츠 테이블
 CREATE TABLE `hr_introduction_c` (
 	`intr_c_id`	int	NOT NULL AUTO_INCREMENT	PRIMARY KEY COMMENT '일련번호',
-	`intr_question`	varchar(100)	NULL	COMMENT '자소서질문',
+	`intr_question`	varchar(100)	NULL DEFAULT ""	COMMENT '자소서질문',
 	`intr_content`	text	NULL	COMMENT '자소서내용',
 	`intr_id`	int	NOT NULL	COMMENT '자소서 게시글 일련번호',
 	FOREIGN KEY (intr_id) REFERENCES hr_introduction(intr_id) ON DELETE CASCADE

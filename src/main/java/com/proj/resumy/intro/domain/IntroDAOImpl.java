@@ -39,6 +39,12 @@ public class IntroDAOImpl implements IntroDAO {
 	public int updateResumeById(IntroDTO introDto) {
 		return mapper.updateResumeById(introDto);
 	}
+
+
+	@Override
+	public int insertResume(IntroDTO introDto) {
+		return mapper.insertResume(introDto);
+	}
 	
 	
 	

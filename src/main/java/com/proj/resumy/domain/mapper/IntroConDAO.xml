@@ -15,6 +15,16 @@
 		WHERE intr_id=#{iid}
 	</select>
 	
+	<!-- 자소서 내용 추가 -->
+	<insert id="insertCon" flushCache="true"
+		parameterType="com.proj.resumy.intro.domain.IntroConDTO">
+		
+		INSERT INTO hr_introduction_c
+			(intr_question, intr_content, intr_id)
+		VALUES
+			(#{question}, #{content}, #{iid})
+	</insert>
+	
 	
 </mapper> 
 

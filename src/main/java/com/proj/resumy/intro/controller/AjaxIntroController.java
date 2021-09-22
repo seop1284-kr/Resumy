@@ -75,45 +75,21 @@ public class AjaxIntroController {
 		return result;
 	}
 	
-	// 특정 id 자소서 수정 (update)
-	// 글 수정
-	@PutMapping("")
-	public String update(IntroDTO introDto, IntroConDTO introConDto) {
-		String result = "fail";
-		int count = 0;
-		count += ajaxIntroService.updateResumeById(introDto);
-
-		if (count == 1) {
-			result = "success";
-		}
-		
-		return result;
-	}
-	
-	
 	// 자소서 작성
-//	@PostMapping("")
-//	public IntroResult writeOk(IntroConDTO introConDTO) {
-//		int count = 0;
-//				
-//		// message 
-//		StringBuffer message = new StringBuffer();
-//		String status = "FAIL";
-//		
-//		try {
-//			count = ajaxIntroService.write(introConDTO);
-//			if(count == 0) {
-//				message.append("[트랜잭션 실패 : 0 insert]");
-//			} else {
-//				status = "OK";
-//			}
-//		} catch(Exception e) {
-//			e.printStackTrace();
-//			message.append("[트랜잭션 에러: " + e.getMessage() + "]");
-//		}
-//		
-//		IntroResult result = new IntroResult();
-//
-//		return result;
-//	}
+	// 자소서 수정(삭제 후 새로 저장)(수정 구현 귀찮)
+	@PostMapping("")
+	public int write(String title, String[] question, String[] content, Authentication authentication) {
+		int iid = 0;
+			
+		// 로그인한 사람의 정보를 담은 객체
+		UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+				
+		IntroDTO resume = new IntroDTO();
+		resume.setTitle(title);
+		resume.setUserid(userDetails.getUsername());
+		iid = ajaxIntroService.writeResume(resume, question, content);
+
+		return iid;
+	}
+
 }

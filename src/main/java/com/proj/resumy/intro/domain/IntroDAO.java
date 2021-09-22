@@ -13,6 +13,11 @@ public interface IntroDAO {
 	// 특정 id 자소서 삭제
 	public abstract int deleteResumeById(int id);
 
+	// 자소서 추가
+	public abstract int insertResume(IntroDTO introDto);
+	
 	// 자소서 수정
 	public abstract int updateResumeById(IntroDTO introDto);
+	
+	
 }

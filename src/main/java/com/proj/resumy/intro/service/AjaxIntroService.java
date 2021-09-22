@@ -9,6 +9,7 @@ import com.proj.resumy.intro.domain.IntroConDAO;
 import com.proj.resumy.intro.domain.IntroConDTO;
 import com.proj.resumy.intro.domain.IntroDAO;
 import com.proj.resumy.intro.domain.IntroDTO;
+import com.proj.resumy.intro.domain.IntroResult;
 
 //Service 단.
 //JSP MVC model2 의 Command 역할 비슷
@@ -59,18 +60,37 @@ public class AjaxIntroService {
 		return introDao.updateResumeById(introDto);
 	}
 	
-	
 	// 특정 iid 자소서 내용 가져오기
 	public List<IntroConDTO> selectConByIid(int iid) {
 		return introConDao.selectConByIid(iid);
 	}
 	
-	
-	
+	// 자소서 쓰기
+	public int writeResume(IntroDTO introDto, String[] question, String[] content) {
+		introDao.insertResume(introDto);
+		
+		// 첫 질문을 채우지 않으면 데이터가 넘어오지 않음(이유 모름)
+		if (question.length == 0) {
+			IntroConDTO conDto = new IntroConDTO();
+			conDto.setQuestion("");
+			conDto.setContent("");
+			conDto.setIid(introDto.getId());
+			introConDao.insertCon(conDto);
+		}
 
-//	public int write(IntroDTO dto) {
-//		return dao.insert(dto);
-//	}
+		for (int i = 0; i < question.length; i++) {
+			IntroConDTO conDto = new IntroConDTO();
+			conDto.setQuestion(question[i]);
+			conDto.setContent(content[i]);
+			conDto.setIid(introDto.getId());
+			introConDao.insertCon(conDto);
+		}
+		
+		return introDto.getId();
+		
+	}
+	
+	
 //
 //	public List<IntroDTO> selectByUid(int uid) {
 //		return dao.selectByUid(uid);

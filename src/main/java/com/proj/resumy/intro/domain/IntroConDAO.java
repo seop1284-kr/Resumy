@@ -7,8 +7,8 @@ public interface IntroConDAO {
 	// 특정 id 자소서의 내용 선택
 	public abstract List<IntroConDTO> selectConByIid(int iid);
 	
-	// 새 자소서 작성 <-- DTO
-	public abstract int insert(IntroConDTO dto);
+	// 새 자소서 내용 작성 <-- DTO
+	public abstract int insertCon(IntroConDTO dto);
 	
 	// 특정 id 자소서 수정
 	public abstract int update(IntroConDTO dto);

@@ -42,6 +42,17 @@
 		DELETE FROM hr_introduction WHERE intr_id = #{id}
 	</delete>
 	
+	<!-- 자소서 추가 -->
+	<insert id="insertResume" flushCache="true"
+		parameterType="com.proj.resumy.intro.domain.IntroDTO"
+		useGeneratedKeys="true" keyProperty="id">
+		
+		INSERT INTO hr_introduction
+			(intr_title, mem_userid)
+		VALUES
+			(#{title}, #{userid})
+	</insert>
+	
 	<!-- 자소서 수정 -->
 	<update id="updateResumeById" flushCache="true"
 		parameterType="com.proj.resumy.intro.domain.IntroDTO">

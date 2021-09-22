@@ -87,56 +87,43 @@
         	<div id="content"></div>    
 	               
 	        <%-- 글 작성 / 보기 / 수정 폼 --%>
-	        <form id="frmWrite" name="frmWrite" method="post">
+	        <form id="frmWrite" name="frmWrite" method="post" target="iframe1">
+	        	<%-- submit 후 이동 막는 방안 --%>
+	        	
+	       		<iframe id="iframe1" name="iframe1" style="display:none"></iframe>
 				<div id="crud_form_box">
 					<div id="content_text_box">
 						<div id="content_text">
 							<input type="text" placeholder="자소서 제목(필수)" name="title" required>
-							<input type="text" placeholder="질문" name="question">
-							<textarea placeholder="내용" name="content"></textarea>					
+							<input type="text" placeholder="질문" name="question" value="">
+							<textarea placeholder="내용" name="content"  value=""></textarea>					
 						</div>
+						<div id="content_text_plus"></div>
 					</div>
 			
-					<%-- 하단 버튼 : 글 작성 --%>
-					<div class="d01 btn_group_write">
-						<button type="button" id="plus">추가</button>
-						<button type="button" class="btn info" id="viewUpdate">작성 취소</button>
-						<button type="submit" class="btn success fullbtn">자소서 저장</button>
-					</div>
-					
 					<%-- 하단 버튼 : 글 조회 --%>
 					<div class="d01 btn_group_view">
-						<button type="button" id="plus">추가</button>					
-						<button type="button" class="btn info" id="viewUpdate">목록</button>
-						<button type="button" class="btn danger" id="viewDelete">자소서 삭제</button>
-						<button type="button" class="btn info" id="viewUpdate">자소서 수정</button>
+						<button type="button" class="listBtn">목록</button>
+						<button type="button" class="deleteBtn">자소서 삭제</button>
+						<button type="button" class="updateBtn">자소서 수정</button>
+					</div>
+					
+					<%-- 하단 버튼 : 글 작성 --%>
+					<div class="d01 btn_group_write">
+						<button type="button" class="plusBtn">추가</button>					
+						<button type="button" class="listBtn">목록</button>
+						<button type="submit" >자소서 저장</button>
 					</div>
 					
 					<%-- 하단 버튼 : 글 수정 --%>
 					<div class="d01 btn_group_update">
-						<button type="button" id="plus">추가</button>					
-						<button type="button" class="btn info" id="viewUpdate">작성 취소</button>
-						<button type="button" class="btn info" id="viewUpdate">자소서 수정</button>
+						<button type="button" class="plusBtn">추가</button>					
+						<button type="button" class="updateCancelBtn">수정 취소</button>
+						<button type="submit">자소서 저장</button>
 					</div>
 				</div>
 			</form>
-	        
-    		<script>
-				$("#plus").click(function(){
-					var content_text = $("#content_text");
-					$("#content_text_box").append(content_text);
-					
-				});
-			</script>
-	        
-	        
-	        
-	        
-	        
-	        
-	        
-	        
-            
+
         </section>
     </div>
 

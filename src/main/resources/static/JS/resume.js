@@ -1,11 +1,114 @@
+var curResumeId = -1;	// -1이면 현재 어떤 자소서도 선택하지 않음
+
 $(document).ready(function(){
 	
 	loadPage();
+	
+	// 자소서 질문 추가 버튼
+	$(".plusBtn").click(function(){
+		makeContentForm();
+	});
+	
+	// 목록 버튼(자소서 메인 페이지(목록)로 이동)
+	$(".listBtn").click(function(){
+		loadPage();	
+	});
+	
+	// 수정 취소 버튼(작성 페이지로 이동)
+	$(".updateCancelBtn").click(function() {
+		makePage(curResumeId, "view");
+	});
+	
+	// 삭제 버튼(삭제 시 자소서 메인 페이지(목록)로 이동)
+	$(".deleteBtn").click(function() {
+		if(!confirm(curResumeId + "글을 삭제하시겠습니까?")) return false;	
+		deleteResume();
+		loadPage();  // 현재 페이지 리로딩
+		
+
+	});
+	
+	// 자소서 수정 버튼(수정 페이지로 이동)
+	$(".updateBtn").click(function(){
+		makePage(curResumeId, "update");
+	});
+		
+	// 자소서 저장 버튼(성공 시 뷰 페이지로 이동)
+	// 글 작성 폼 submit 되면
+	$("#frmWrite").submit(function(){
+		if (curResumeId == -1) {
+			writeResume();  // 새글 등록 submit
+		} else {
+			deleteResume();	// 글 지우고
+			writeResume();  // 새글 등록 submit
+		}
+		makePage(curResumeId, "view");
+	});
+	
+	
 });
+
+// 새글 등록 처리
+function writeResume(){
+	
+	// 특정 form 의 name 달린 form element 들의 value 들을 string 으로 묶기
+	// ex) name=aaa&subject=bbb&content=ccc   <-- string 타입이다
+	var serialData = $("#frmWrite").serialize();
+	$.ajax({
+		url : "/resumeAjax",  // url : /board
+		type : "POST",
+		cache : false,
+		data : serialData,  // POST 로 ajax request 할 경우 data 에 parameter 넘기기
+		async: false,
+		success : function(data, status){
+			if(status == "success"){
+				alert("INSERT 성공 " + data);
+				curResumeId = data;
+			}
+		}
+	});
+	
+} // end chkWrite()
+
+
+function deleteResume() {
+	
+	// DELETE 방식
+	$.ajax({
+		url : "/resumeAjax",  // URL : /board
+		type : "DELETE",
+		data : "id=" + curResumeId,
+		cache : false,
+        async: false,
+
+
+		success : function(data, status){
+			if(status == "success"){
+				//alert("DELETE성공"); 
+				
+			}
+		}
+	});
+}
+
+
+function makeContentForm() {
+	var content_text = '<div id="content_text_plus"><hr><input type="text" placeholder="질문" name="question">';
+	content_text += '<textarea placeholder="내용" name="content"></textarea>';
+	content_text += '<button class="minus" onclick="$(this).parent().remove()">삭제</button></div>'
+	$('#content_text_plus').append(content_text);
+}
 
 // 자소서 관리 시작 페이지
 function loadPage(){
+	
+	// 자소서 목록 보이기, crud 폼 숨기기, 추가 질문 비우기, curResumeId = -1 로 설정
 	$("#crud_form_box").hide();
+	$("#content").show();
+	$("#content_text_plus").empty();
+
+	curResumeId = -1;
+	
 	$.ajax({
 		url : "/resumeAjax/list",
 		type : "GET",
@@ -61,29 +164,33 @@ function addViewEvent(){
 	
 	// 자소서 박스 누르면 자소서 내용 읽어오는 이벤트
 	$("#content .box").click(function(){
-	
-		// 읽어오기
-		$.ajax({
-			url : "/resumeAjax/" + $(this).attr('data-id'),
-			type : "GET",
-			cache : false,
-			success : function(data, status){
-				if(status == "success"){
-					setPage("view");
-					setData(data);
-				}
-			}
-		});		
+		curResumeId = $(this).attr('data-id');
+		makePage(curResumeId, "view");
+		
+
 	});
 } // end addViewEvent()
 
+
+function makePage(id, set) {
+	// 읽어오기
+	$.ajax({
+		url : "/resumeAjax/" + id,
+		type : "GET",
+		cache : false,
+		success : function(data, status){
+			if(status == "success"){				
+				setData(data);
+				setPage(set);
+			}
+		}
+	});	
+}
+
 // 글 쓰기 / 읽기 / 수정
 function setPage(mode){
-	
-	// 자소서 목록 숨기기
+	// 자소서 목록 숨기기, crud 폼 보이기
 	$("#content").hide();
-
-	// 폼 보이기
 	$("#crud_form_box").show();
 	
 	// 글 작성
@@ -94,6 +201,7 @@ function setPage(mode){
 		$("#frmWrite .btn_group_write").show();
 		$("#frmWrite .btn_group_view").hide();
 		$("#frmWrite .btn_group_update").hide();
+		$("#frmWrite .minus").show();
 		
 		
 		$("#frmWrite input[name='title']").attr("readonly", false);
@@ -113,7 +221,8 @@ function setPage(mode){
 		$("#frmWrite .btn_group_write").hide();
 		$("#frmWrite .btn_group_view").show();
 		$("#frmWrite .btn_group_update").hide();
-		
+		$("#frmWrite .minus").hide();
+
 		//$("#frmWrite input[name='uid']").val(viewItem.uid);   // 나중에 삭제나 수정을 위해 필요
 		
 		
@@ -135,11 +244,11 @@ function setPage(mode){
 		
 		$("#title").text("자기소개서 수정");
 		
-		$("#frmWrite .btn_group_header").show();
 		$("#frmWrite .btn_group_write").hide();
 		$("#frmWrite .btn_group_view").hide();
 		$("#frmWrite .btn_group_update").show();
-		
+		$("#frmWrite .minus").show();
+
 		
 		$("#frmWrite input[name='title']").attr("readonly", false);
 		$("#frmWrite input[name='title']").css("border", "1px solid #ccc");
@@ -155,31 +264,25 @@ function setPage(mode){
 } // end setPopup()
 
 function setData(data) {
-	
-	var result = "";  // 최종 결과
-	
+	$("#content_text_plus").empty();
 	var conList = data.conList;
 	var intro = data.intro;
-	
 	var count = conList.length;
 	
-	result += "<h5>" + intro.title + "</h5>";
-	result += "<table>";
-	
-	for (var i = 0; i < count; i++){
-		result += "<tr class='box' data-id=" + conList[i].id + ">\n";
-		result += "<td>" + conList[i].question + "</td>\n";
-		result += "<td>" + conList[i].content + "</td>\n";
 
-		result += "</tr>\n";
+	$("#frmWrite input[name='title']").val(intro.title)
+		
+	$("#frmWrite input[name='question']").eq(0).val(conList[0].question)
+	$("#frmWrite textarea[name='content']").eq(0).val(conList[0].content);
+
+
+	for (var i = 1; i < count; i++){
+		makeContentForm();
+		$("#frmWrite input[name='question']").eq(i).val(conList[i].question)
+		$("#frmWrite textarea[name='content']").eq(i).val(conList[i].content);
+
 	}
-	
-	result += "</table>";
-	
-	
-	$('#content').html(result);
 
-	return true;
 }
 
 

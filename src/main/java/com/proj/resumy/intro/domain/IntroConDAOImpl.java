@@ -25,8 +25,8 @@ public class IntroConDAOImpl implements IntroConDAO {
 	}
 	
 	@Override
-	public int insert(IntroConDTO dto) {
-		return mapper.insert(dto);
+	public int insertCon(IntroConDTO dto) {
+		return mapper.insertCon(dto);
 	}
 
 	@Override
