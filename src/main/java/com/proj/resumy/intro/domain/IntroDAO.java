@@ -4,22 +4,20 @@ import java.util.List;
 
 //자소서 DAO 인터페이스 김진섭
 public interface IntroDAO {
-	// 미완성 자기 자소서 출력 SELECT
-	public abstract List<IntroDTO> selectNotFinResume(int mid);
+	// 자기 자소서 SELECT
+	public abstract List<IntroDTO> selectResume(String userid);
 	
-	// 완성 자기 자소서 출력 SELECT
-	public abstract List<IntroDTO> selectFinResume(int mid);
+	// 특정 id 자소서 내용 읽기
+	public abstract IntroDTO selectResumeById(int id);
 	
-	// 특정 id 자소서 내용 읽기,
-	public abstract IntroDTO getIntroById(int id);
-	
-	// 새 자소서 작성 <-- DTO
-	public abstract int insert(IntroDTO dto);
-	
+	// 특정 id 자소서 삭제
+	public abstract int deleteResumeById(int id);
 
-	// 특정 id 자소서 수정
-	public abstract int update(IntroDTO dto);
+	// 자소서 추가
+	public abstract int insertResume(IntroDTO introDto);
 	
-	// 특정 id 자소서 삭제하기
-	public abstract int deleteByUid(int uid);
+	// 자소서 수정
+	public abstract int updateResumeById(IntroDTO introDto);
+	
+	
 }

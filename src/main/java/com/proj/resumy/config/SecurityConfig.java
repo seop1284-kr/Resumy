@@ -33,7 +33,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 			//.antMatchers("/myp/**").authenticated()
 		
 			// ↓ /myp/** 주소로 들어오는 요청은 '인증' 뿐 아니라 ROLE_MEMBER 나 ROLE_ADMIN 권한을 갖고 있어야 한다 ('인가')
-//			.antMatchers("/myp/**").access("hasRole('ROLE_MEMBER') or hasRole('ROLE_ADMIN')")
+			.antMatchers("/myp/**").access("hasRole('ROLE_MEMBER') or hasRole('ROLE_ADMIN')")
 			
 			// ↓ /sample/admin/**  주소로 들어오는 요청은 '인증' 뿐 아니라 ROLE_ADMIN 권한을 갖고 있어야 한다 ('인가')
 			//.antMatchers("/sample/admin/**").access("hasRole('ROLE_ADMIN')")

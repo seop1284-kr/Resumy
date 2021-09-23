@@ -9,7 +9,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class IntroViewResult {
+public class IntroResult {
 	IntroDTO intro;				// 선택 자소서 정보
 	List<IntroConDTO> conList;  // 선택 자소서 내용 리스트
 	

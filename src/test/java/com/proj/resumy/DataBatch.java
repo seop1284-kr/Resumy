@@ -11,6 +11,7 @@ import java.util.Random;
 
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 class DataBatch {
 	// JDBC 관련 기본 객체 변수들 선언
@@ -27,14 +28,15 @@ class DataBatch {
 	public static final String USERPW = "1234";
 	
 	public static final String SQL_RESUMY_MEM_INSERT = "insert into `hr_member` (mem_userid, mem_pw, mem_name, mem_email) values (?, ?, ?, ?)";
+	public static final String SQL_RESUMY_AUTHORITY_INSERT = "insert into `hr_authority` (mem_userid, mem_auth) values (?, ?)";
 	public static final String SQL_RESUMY_CAREER_INSERT = "insert into `hr_career` (cr_company, cr_hiredate, cr_leavedate, cr_post, mem_id) values (?, ?, ?, ?, ?)";
 	public static final String SQL_RESUMY_SPEC_INSERT = "insert into `hr_spec_info` (spec_cat_cd, spec_name, spec_area, mody_dtm, reg_dtm, mem_id) values (?, ?, ?, ?, ?, ?)";
 	
 	public static final String SQL_RESUMY_FILE_INSERT = "insert into `hr_file` (file_name, file_volume, mem_id) values (?, ?, ?)";
-	public static final String SQL_RESUMY_INTRO_INSERT = "insert into `hr_introduction` (intr_title, mem_id) values (?, ?)";
+	public static final String SQL_RESUMY_INTRO_INSERT = "insert into `hr_introduction` (intr_title, mem_userid) values (?, ?)";
 	public static final String SQL_RESUMY_INTRO_C_INSERT = "insert into `hr_introduction_c` (intr_question, intr_content, intr_id) values (?, ?, ?)";
 	public static final String SQL_RESUMY_FED_INSERT = "insert into `intr_feedback` (fb_userid, fb_content, intr_id) values (?, ?, ?)";
-	public static final String SQL_RESUMY_QNAQ_INSERT = "insert into `hr_qna_q` (q_subject, q_content, mem_id) values (?, ?, ?)";
+	public static final String SQL_RESUMY_QNAQ_INSERT = "insert into `hr_qna_q` (q_subject, q_content, mem_userid) values (?, ?, ?)";
 	public static final String SQL_RESUMY_QNAA_INSERT = "insert into `hr_qna_a` (q_id, a_reply) values (?, ?)";
 	
 	public static final String[] SHCOOL = { "초등학교", "중학교", "고등학교", "대학교.대학권"};
@@ -55,10 +57,12 @@ class DataBatch {
 			// 테스트용 dummy 데이터 만들기
 			pstmt = conn.prepareStatement(SQL_RESUMY_MEM_INSERT);
 			
+			BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+			
 			int num = 10;
 			for(int i = 0; i < num; i++) {
 				pstmt.setString(1, String.format("mem%02d", i));  
-				pstmt.setString(2, "$2a$10$1iZtb1e1Xb81Wwm2NPcHTOzmbdyZDLLKnh9.wUsorFj/1t6RYsUKy");	// 비밀번호 aa
+				pstmt.setString(2, encoder.encode("aa"));	// 비밀번호 aa
 				pstmt.setString(3, String.format("person%02d", i));
 				pstmt.setString(4, "a@email.com");
 				cnt += pstmt.executeUpdate();
@@ -76,6 +80,36 @@ class DataBatch {
 			}
 		}
 		
+		// 회원권한 테이블
+		cnt = 0; // executeUpdate(), DML 결과
+		try {
+			Class.forName(DRIVER);
+			conn = DriverManager.getConnection(URL, USERID, USERPW);
+			
+			// 테스트용 dummy 데이터 만들기
+			pstmt = conn.prepareStatement(SQL_RESUMY_AUTHORITY_INSERT);
+		
+			int num = 10;
+			for(int i = 0; i < num; i++) {
+				
+				pstmt.setString(1, String.format("mem%02d", i));  				// 회사명
+				pstmt.setString(2, "ROLE_MEMBER");							// 재직일
+				cnt += pstmt.executeUpdate();
+				}
+			System.out.println(cnt + "개 의 경력사항 데이터가 INSERT 되었습니다");
+			
+		} catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(pstmt != null) pstmt.close();
+				if(conn != null) conn.close();
+			} catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+				
+				
 		// 경력사항 테이블
 		cnt = 0; // executeUpdate(), DML 결과
 		try {
@@ -191,7 +225,7 @@ class DataBatch {
 			int num = 10;
 			for(int i = 0; i < num; i++) {
 				pstmt.setString(1, String.format("title%02d", i));
-				pstmt.setInt(2, i + 1);
+				pstmt.setString(2, "mem01");
 		
 				cnt += pstmt.executeUpdate();
 			}
@@ -281,7 +315,7 @@ class DataBatch {
 			for(int i = 0; i < num; i++) {
 				pstmt.setString(1, SUBJECTS[rand.nextInt(SUBJECTS.length)]);  
 				pstmt.setString(2, CONTENTS[rand.nextInt(CONTENTS.length)]);
-				pstmt.setInt(3, (rand.nextInt(9)+1));
+				pstmt.setString(3, String.format("mem%02d", rand.nextInt(9)+1));
 				cnt += pstmt.executeUpdate();
 			}
 			System.out.println(cnt + "개의 고객센터 데이터가 INSERT 되었습니다");

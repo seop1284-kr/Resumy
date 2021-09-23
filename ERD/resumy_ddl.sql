@@ -28,7 +28,7 @@ CREATE TABLE `hr_member` (
 );
 
 -- 회원권한 테이블(김진섭)
-CREATE TABLE hr_authority (
+CREATE TABLE `hr_authority` (
 	mem_userid varchar(50) REFERENCES hr_member(mem_userid),
 	mem_auth varchar(50) NOT NULL,        -- 시큐리티의 authority
 	PRIMARY KEY (mem_userid, mem_auth)
@@ -36,7 +36,7 @@ CREATE TABLE hr_authority (
 
 -- 경력사항 테이블
 CREATE TABLE `hr_spec_info` (
-	`spec_id`	int(11)	NOT NULL AUTO_INCREMENT PRIMARY KEY COMMENT '일련번호',
+	`spec_id`	int	NOT NULL AUTO_INCREMENT PRIMARY KEY COMMENT '일련번호',
 	`spec_cat_cd`	varchar(10)	NOT NULL	COMMENT '01: 초등학교 02: 중학교 03: 고등학교 04: 대학교.대학원',
 	`spec_name`	varchar(10)	NOT NULL	COMMENT '학교명',
 	`spec_area`	varchar(10)	NOT NULL	COMMENT '지역명',
@@ -85,17 +85,17 @@ CREATE TABLE `hr_introduction` (
 	`intr_public`	boolean	NOT NULL	DEFAULT false	COMMENT '공개여부 (공개: true, 비공개: false)',
 	`intr_finish`	boolean	NOT NULL	DEFAULT false	COMMENT '완성 여부 (완성: true, 진행중 : false)',
 	`mody_dtm`	datetime	NOT NULL	DEFAULT now()	COMMENT '수정 일시',
-	`mem_id`	int	NOT NULL,
-	FOREIGN KEY (mem_id) REFERENCES hr_member(mem_id)
+	`mem_userid`	varchar(100)	NOT NULL,
+	FOREIGN KEY (mem_userid) REFERENCES hr_member(mem_userid) ON DELETE CASCADE
 );
 
 -- 자소서컨텐츠 테이블
 CREATE TABLE `hr_introduction_c` (
 	`intr_c_id`	int	NOT NULL AUTO_INCREMENT	PRIMARY KEY COMMENT '일련번호',
-	`intr_question`	varchar(100)	NULL	COMMENT '자소서질문',
+	`intr_question`	varchar(100)	NULL DEFAULT ""	COMMENT '자소서질문',
 	`intr_content`	text	NULL	COMMENT '자소서내용',
 	`intr_id`	int	NOT NULL	COMMENT '자소서 게시글 일련번호',
-	FOREIGN KEY (intr_id) REFERENCES hr_introduction(intr_id)
+	FOREIGN KEY (intr_id) REFERENCES hr_introduction(intr_id) ON DELETE CASCADE
 );
 
 -- 자기소개서 피드백 게시판
@@ -105,7 +105,7 @@ CREATE TABLE `intr_feedback` (
 	`fb_content`	text	NOT NULL	COMMENT '피드백 내용',
 	`fb_regdate`	datetime	NOT NULL DEFAULT now()	COMMENT '피드백 등록일시',
 	`intr_id`	int	NOT NULL,
-	FOREIGN KEY (intr_id) REFERENCES hr_introduction(intr_id)
+	FOREIGN KEY (intr_id) REFERENCES hr_introduction(intr_id) ON DELETE CASCADE
 );
 
 
@@ -116,8 +116,8 @@ CREATE TABLE `hr_qna_q` (
 	`q_subject`	varchar(50)	NOT NULL	COMMENT '글 제목',
 	`q_content`	text	NOT NULL	COMMENT '글 내용',
 	`q_regdate`	datetime	NOT NULL	DEFAULT now()	COMMENT '글 등록일시',
-	`mem_id`	int	NOT NULL,
-	FOREIGN KEY (mem_id) REFERENCES hr_member(mem_id)
+	`mem_userid`	varchar(100)	NOT NULL,
+	FOREIGN KEY (mem_userid) REFERENCES hr_member(mem_userid)
 );
 
 -- 고객센터 답글 테이블

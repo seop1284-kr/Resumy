@@ -9,6 +9,7 @@ import com.proj.resumy.intro.domain.IntroConDAO;
 import com.proj.resumy.intro.domain.IntroConDTO;
 import com.proj.resumy.intro.domain.IntroDAO;
 import com.proj.resumy.intro.domain.IntroDTO;
+import com.proj.resumy.intro.domain.IntroResult;
 
 //Service 단.
 //JSP MVC model2 의 Command 역할 비슷
@@ -38,28 +39,58 @@ public class AjaxIntroService {
 		System.out.println("IntroService() 생성");
 		
 	}
+	
+	// 모든 자기 자소서 가져오기
+	public List<IntroDTO> selectResume(String userid) {
+		return introDao.selectResume(userid);
+	}
+	
+	// 특정 id 자소서 가져오기
+	public IntroDTO selectResumeById(int id) {
+		return introDao.selectResumeById(id);
+	}
 
-	public List<IntroDTO> selectFinResume(int mid) {
-		
-		return introDao.selectFinResume(mid);
+	// 특정 id 자소서 삭제
+	public int deleteResumeById(int id) {
+		return introDao.deleteResumeById(id);
 	}
 	
-	public List<IntroDTO> selectNotFinResume(int mid) {
-		
-		return introDao.selectNotFinResume(mid);
+	// 특정 id 자소서 삭제
+	public int updateResumeById(IntroDTO introDto) {
+		return introDao.updateResumeById(introDto);
 	}
 	
-	public IntroDTO getIntroById(int id) {
-		return introDao.getIntroById(id);
-	}
-	
+	// 특정 iid 자소서 내용 가져오기
 	public List<IntroConDTO> selectConByIid(int iid) {
 		return introConDao.selectConByIid(iid);
 	}
+	
+	// 자소서 쓰기
+	public int writeResume(IntroDTO introDto, String[] question, String[] content) {
+		introDao.insertResume(introDto);
+		
+		// 첫 질문을 채우지 않으면 데이터가 넘어오지 않음(이유 모름)
+		if (question.length == 0) {
+			IntroConDTO conDto = new IntroConDTO();
+			conDto.setQuestion("");
+			conDto.setContent("");
+			conDto.setIid(introDto.getId());
+			introConDao.insertCon(conDto);
+		}
 
-//	public int write(IntroDTO dto) {
-//		return dao.insert(dto);
-//	}
+		for (int i = 0; i < question.length; i++) {
+			IntroConDTO conDto = new IntroConDTO();
+			conDto.setQuestion(question[i]);
+			conDto.setContent(content[i]);
+			conDto.setIid(introDto.getId());
+			introConDao.insertCon(conDto);
+		}
+		
+		return introDto.getId();
+		
+	}
+	
+	
 //
 //	public List<IntroDTO> selectByUid(int uid) {
 //		return dao.selectByUid(uid);

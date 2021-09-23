@@ -5,7 +5,7 @@
   
 <mapper namespace="com.proj.resumy.intro.domain.IntroDAO">
 	
-	<select id="selectNotFinResume" resultType="com.proj.resumy.intro.domain.IntroDTO">
+	<select id="selectResume" resultType="com.proj.resumy.intro.domain.IntroDTO">
 		SELECT 
 			intr_id "id", 
 			intr_title title, 
@@ -13,16 +13,17 @@
 			intr_public pub, 
 			intr_finish fin, 
 			mody_dtm modydate,
-			mem_id mid
+			mem_userid userid
 		FROM 
 			hr_introduction
 		WHERE
-			mem_id = #{mid} AND intr_finish = false
+			mem_userid = #{userid}
 		ORDER BY 
 			intr_id DESC	
 	</select>
 	
-	<select id="selectFinResume" resultType="com.proj.resumy.intro.domain.IntroDTO">
+	<!-- 자소서 select -->
+	<select id="selectResumeById" resultType="com.proj.resumy.intro.domain.IntroDTO">
 		SELECT 
 			intr_id "id", 
 			intr_title title, 
@@ -30,28 +31,41 @@
 			intr_public pub, 
 			intr_finish fin, 
 			mody_dtm modydate,
-			mem_id mid
-		FROM 
-			hr_introduction
-		WHERE
-			mem_id = #{mid} AND intr_finish = true
-		ORDER BY 
-			intr_id DESC	
-	</select>
-	
-	<select id="getIntroById" resultType="com.proj.resumy.intro.domain.IntroDTO">
-		SELECT 
-			intr_id "id", 
-			intr_title title, 
-			intr_regdate regdate, 
-			intr_public pub, 
-			intr_finish fin, 
-			mody_dtm modydate,
-			mem_id mid
+			mem_userid userid
 		FROM hr_introduction 
 		WHERE intr_id=#{id}
 	</select>
 	
+	
+	<!-- 자소서 삭제 -->
+	<delete id="deleteResumeById" flushCache="true">
+		DELETE FROM hr_introduction WHERE intr_id = #{id}
+	</delete>
+	
+	<!-- 자소서 추가 -->
+	<insert id="insertResume" flushCache="true"
+		parameterType="com.proj.resumy.intro.domain.IntroDTO"
+		useGeneratedKeys="true" keyProperty="id">
+		
+		INSERT INTO hr_introduction
+			(intr_title, mem_userid)
+		VALUES
+			(#{title}, #{userid})
+	</insert>
+	
+	<!-- 자소서 수정 -->
+	<update id="updateResumeById" flushCache="true"
+		parameterType="com.proj.resumy.intro.domain.IntroDTO">
+		
+		UPDATE hr_introduction
+		SET 
+			intr_title = #{title}, 
+			intr_public = #{pub},
+			intr_finish = #{fin},
+			mody_dtm = #{modydtm}
+		WHERE intr_id = #{id}
+				
+	</update>
 	
 </mapper> 
 
