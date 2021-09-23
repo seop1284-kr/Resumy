@@ -17,22 +17,39 @@ public class FileDAOImpl implements FileDAO {
 		mapper = sqlSession.getMapper(FileDAO.class);
 	}
 	
+	// 특정 회원(mem_id)의  첨부파일들 SELECT
 	@Override
 	public List<FileDTO> selectByMid(int mid) {
 		return mapper.selectByMid(mid);
 	}
 	
+	// 특정 회원(mem_id)의 새파일 업로드
 	@Override
-	public int insert(FileDTO dto) {
-		return mapper.insert(dto);
+	public int insertByMid(FileDTO dto) {
+		return mapper.insertByMid(dto);
 	}
 
+	// 특정 file_id 파일 삭제
 	@Override
-	public int deleteByUid(int uid) {
-		return mapper.deleteByUid(uid);
+	public int deleteById(int id) {
+		return mapper.deleteById(id);
+	}
+	
+	// 특정 file_id들 파일 삭제
+	@Override
+	public int deleteByIds(int id) {
+		// TODO Auto-generated method stub
+		return mapper.deleteByIds(id);
 	}
 
+	// 특정 파일(file_id) 다운로드 ? 이걸 구현할 수 있나?
+	@Override
+	public int download() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 
+	
 	
 	
 }

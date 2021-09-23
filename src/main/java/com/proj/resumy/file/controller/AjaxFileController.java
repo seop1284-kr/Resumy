@@ -33,7 +33,7 @@ public class AjaxFileController {
 		
 		// test용 id가 1인 사람
 		List<FileDTO> filelist  = ajaxFileService.selectByMid(1);
-		
+		System.out.println("파일리스트출력" + filelist);
 		FileDTO [] arr = new FileDTO[filelist.size()];
 		
 		return filelist.toArray(arr);
