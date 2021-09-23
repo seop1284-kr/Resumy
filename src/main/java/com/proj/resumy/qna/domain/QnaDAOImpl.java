@@ -28,12 +28,12 @@ public class QnaDAOImpl implements QnaDAO {
 	}
 
 	@Override
-	public List<QnaQDTO> selectByUid(int uid) {
+	public QnaQDTO selectByUid(int uid) {
 		return mapper.selectByUid(uid);
 	}
 
 	@Override
-	public List<QnaADTO> selectByQid(int uid) {
+	public QnaADTO selectByQid(int uid) {
 		return mapper.selectByQid(uid);
 	}
 
@@ -44,7 +44,7 @@ public class QnaDAOImpl implements QnaDAO {
 
 	@Override
 	public int deleteByUid(int uid) {
-		return mapper.deleteByQid(uid);
+		return mapper.deleteByUid(uid);
 	}
 
 	@Override

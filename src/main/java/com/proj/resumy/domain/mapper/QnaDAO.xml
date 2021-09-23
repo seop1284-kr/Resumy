@@ -61,10 +61,9 @@
 		UPDATE
 			hr_qna_q
 		SET
-			q_subject = #{subject},
-			q_content #{content}
+			q_content = #{content}
 		WEHRE
-			q_id = #{id} AND mem_userid = #{userid}
+			q_id = #{id}
 	</update>
 	
 	<!-- 특정 id 문의 글 삭제 -->

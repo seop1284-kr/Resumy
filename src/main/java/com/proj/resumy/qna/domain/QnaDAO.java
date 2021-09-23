@@ -13,10 +13,10 @@ public interface QnaDAO {
 	public abstract int insert(QnaQDTO dto);
 	
 	// 특정 id 문의 내용 읽기
-	public abstract List<QnaQDTO> selectByUid(int id);
+	public abstract QnaQDTO selectByUid(int id);
 	
 	// 특정 q_id 문의 답글 읽기
-	public abstract List<QnaADTO> selectByQid(int id);
+	public abstract QnaADTO selectByQid(int id);
 	
 	// 특정 id 문의 글 수정
 	public abstract int update(QnaQDTO dto);

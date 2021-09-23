@@ -3,7 +3,6 @@ package com.proj.resumy;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.Statement;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -18,7 +17,7 @@ class DataBatch {
 	Connection conn = null;
 	Statement stmt = null;
 	PreparedStatement pstmt = null;
-	ResultSet rs = null; // executeQuery(), SELECT 결과
+//	ResultSet rs = null; // executeQuery(), SELECT 결과
 	//int cnt = 0; // executeUpdate(), DML 결과
 
 	// MySQL
@@ -42,7 +41,7 @@ class DataBatch {
 	public static final String[] SHCOOL = { "초등학교", "중학교", "고등학교", "대학교.대학권"};
 	public static final String[] SUBJECTS = { "사이트 개선 문의합니다", "이용 문의합니다", "문제있습니다", "안녕하십니까", "회사 정보 보기 불편합니다" };
 	public static final String[] CONTENTS = { "사이트 이용에 문제가 있는 것 같습니다. 개선해주세요.", "내용이 문제가 있습니다", "수업 진행에 있어 동그라미가 많습니다", "부침개는 동그랗지만 포카리는 맛있습니다" };
-	public static final String[] REPLYS = { "문의 감사드립니다. 빠른 시일 내에 해결하겠습니다", "문의 감사드립니다. 언제나 이용 부탁드립니다", "기각합니다" };
+	public static final String[] REPLYS = { "문의 감사드립니다. 빠른 시일 내에 해결하겠습니다", "문의 감사드립니다. 언제나 이용 부탁드립니다", "기각합니다", "" };
 	
 	
 	@Order(1)
@@ -91,11 +90,10 @@ class DataBatch {
 		
 			int num = 10;
 			for(int i = 0; i < num; i++) {
-				
-				pstmt.setString(1, String.format("mem%02d", i));  				// 회사명
-				pstmt.setString(2, "ROLE_MEMBER");							// 재직일
+				pstmt.setString(1, String.format("mem%02d", i));
+				pstmt.setString(2, "ROLE_MEMBER");
 				cnt += pstmt.executeUpdate();
-				}
+			}
 			System.out.println(cnt + "개 의 경력사항 데이터가 INSERT 되었습니다");
 			
 		} catch(Exception e) {
@@ -318,7 +316,7 @@ class DataBatch {
 				pstmt.setString(3, String.format("mem%02d", rand.nextInt(9)+1));
 				cnt += pstmt.executeUpdate();
 			}
-			System.out.println(cnt + "개의 고객센터 데이터가 INSERT 되었습니다");
+			System.out.println(cnt + "개 의 고객센터 데이터가 INSERT 되었습니다");
 			
 		} catch(Exception e) {
 			e.printStackTrace();
@@ -362,9 +360,4 @@ class DataBatch {
 		
 	}
 	
-
-	
-
-	
-
 }

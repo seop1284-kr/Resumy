@@ -7,76 +7,92 @@
 <head>
 <meta charset="UTF-8">
 <title>고객센터 문의글 수정 - RESUMY</title>
-    <link href="/img/fibicon.png" rel="shortcut icon" type="image/x-icon">
-    <link href="/assets/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="/css/common.css" rel="stylesheet">
-    <link href="/css/navbar.css" rel="stylesheet">
-    <link href="/css/footer.css" rel="stylesheet">
-    <!-- font-awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <!-- font -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap" rel="stylesheet">
-    <!-- font-family: 'Gowun Dodum', sans-serif; -->
-    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap" rel="stylesheet">
-    <!-- font-family: 'Roboto Condensed', sans-serif; -->
-    <style>
-        .bd-placeholder-img {
-            font-size: 1.125rem;
-            text-anchor: middle;
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            -ms-user-select: none;
-            user-select: none;
-        }
+<link href="/img/fibicon.png" rel="shortcut icon" type="image/x-icon">
+<link href="/assets/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="/css/common.css" rel="stylesheet">
+<link href="/css/navbar.css" rel="stylesheet">
+<link href="/css/footer.css" rel="stylesheet">
+<!-- font-awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+<!-- font -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap" rel="stylesheet">
+<!-- font-family: 'Gowun Dodum', sans-serif; -->
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap" rel="stylesheet">
+<!-- font-family: 'Roboto Condensed', sans-serif; -->
+<style>
+    .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+    }
 
-        @media (min-width: 768px) {
-            .bd-placeholder-img-lg {
-                font-size: 3.5rem;
-            }
+    @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+            font-size: 3.5rem;
         }
-    </style>
+    }
+</style>
 </head>
 
-<body>
-    <header class="container-md">
-        <nav class="navbar navbar-expand-md fixed-top">
-            <div class="container-md">
-                <a class="navbar-brand" href="index.html">
-                    <img src="/img/logo_main.png">
-                </a>
-                <ul>
-                    <li><a href="companyBoard.do">기업정보</a></li>
-                    <li><a href="fedboard">자소서 게시판</a></li>
-                    <li><a href="qnaBoard.do" class="active">고객센터</a></li>
-                </ul>
-                <button class="login_btn">로그인</button>
-            </div>
-        </nav>
-    </header>
-    <!-- ./navbar -->
+<%-- 
+	result == 0 의미 : 1 또는 2 만족
+	1) 현재 로그인한 계정 != 문의글 작성한 계정
+	2) 문의글에 답글 있음
+--%> 
+<c:choose>
+	<%-- 경고창 팝업만 띄움 --%>
+	<c:when test="${result != 0 }">
+		<script>
+			alert("현재 글을 수정할 수 있는 권한이 없습니다.");
+			history.back();
+		</script>
+	</c:when>
 	
-	<c:choose>
-		<c:when test="${empty qlist || fn:length(qlist) == 0 }">
-		</c:when>
-		<c:otherwise>
+	<%-- 글 수정 페이지 보여줌 --%>
+	<c:otherwise>
+		<body>
+		    <header class="container-md">
+		        <nav class="navbar navbar-expand-md fixed-top">
+		            <div class="container-md">
+		                <a class="navbar-brand" href="index.html">
+		                    <img src="/img/logo_main.png">
+		                </a>
+		                <ul>
+		                    <li><a href="companyBoard.do">기업정보</a></li>
+		                    <li><a href="fedboard">자소서 게시판</a></li>
+		                    <li><a href="qnaBoard.do" class="active">고객센터</a></li>
+		                </ul>
+		                <button class="login_btn">로그인</button>
+		            </div>
+		        </nav>
+		    </header>
+		    <!-- ./navbar -->
+			
 			<table>
 				<tr>
-					<td colspan="4">${qlist[0].subject }</td>
+					<td colspan="4">${qdto.subject }</td>
 				</tr>
 				<tr>
 					<td>작성일</td>
-					<td>${qlist[0].regdate }</td>
+					<td>${qdto.regdate }</td>
 					<td>작성자</td>
 					<td>${userName }</td>
 				</tr>
 			</table>
-			
-			<input type="text" value="${qlist[0].content }" style="display: block; width:90vh"/>
-		</c:otherwise>
-	</c:choose>
-	
-	<button onClick="location.href='qnaView.do?id=${qlist[0].id }'">등록하기</button>
-</body>
+			<form name="frm" action="qnaUpdateOk.do" method="post">
+				<input type="text" value="${qdto.id }" disabled style="font-size: 2em; color: red;">
+				<p style="color:red;">**에러 수정하면 위에 코드에서 input type="hidden"으로 바꾸기</p>
+				<input type="text" value="${qdto.content }" style="display: block; width:90vh"/>
+				<button type="submit">수정완료</button>
+			</form>
+		</body>
+	</c:otherwise>
+</c:choose>
+
 </html>
+
