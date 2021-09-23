@@ -93,7 +93,11 @@ public class QnaController {
 
 	// 고객센터 페이지 - 글 수정 사항 DB에 반영하기
 	@PostMapping("/qnaUpdateOk.do")
-	public String updateOk(QnaQDTO dto, Model model) {
+	public String updateOk(String id, String content, Model model) {
+		QnaQDTO dto = new QnaQDTO();
+		dto.setId(Integer.parseInt(id));
+		dto.setContent(content);
+		
 		model.addAttribute("result", qnaService.update(dto));
 		return "mainBoard/qna/qnaUpdateOk";
 	}

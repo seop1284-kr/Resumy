@@ -62,7 +62,7 @@
 			hr_qna_q
 		SET
 			q_content = #{content}
-		WEHRE
+		WHERE
 			q_id = #{id}
 	</update>
 	

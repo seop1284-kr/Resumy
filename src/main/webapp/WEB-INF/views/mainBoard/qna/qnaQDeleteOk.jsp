@@ -5,7 +5,7 @@
 <c:choose>
 	<c:when test="${result < 0 }">
 		<script>
-			alert("글을 삭제할 권한이 없습니다.");
+			alert("다른 사용자의 문의글은 삭제할 수 없습니다.");
 			location.href = "qnaView.do?id=${param.id}";
 		</script>
 	</c:when>
@@ -13,6 +13,7 @@
 		<script>
 			alert("삭제 완료");
 			location.href = "qnaBoard.do";
+			<%-- 여유될 때 Board 1페이지로 돌아가는 게 아닌, 보고있던 페이지의 Board 로 돌아가게 코드 수정 --%>
 		</script>
 	</c:otherwise>
 </c:choose>

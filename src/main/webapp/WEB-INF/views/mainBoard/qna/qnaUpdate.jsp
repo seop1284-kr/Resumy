@@ -48,7 +48,7 @@
 	<%-- 경고창 팝업만 띄움 --%>
 	<c:when test="${result != 0 }">
 		<script>
-			alert("현재 글을 수정할 수 있는 권한이 없습니다.");
+			alert("다른 사용자의 문의글이나 답변이 달린 문의글은 수정할 수 없습니다.");
 			history.back();
 		</script>
 	</c:when>
@@ -85,9 +85,8 @@
 				</tr>
 			</table>
 			<form name="frm" action="qnaUpdateOk.do" method="post">
-				<input type="text" value="${qdto.id }" disabled style="font-size: 2em; color: red;">
-				<p style="color:red;">**에러 수정하면 위에 코드에서 input type="hidden"으로 바꾸기</p>
-				<input type="text" value="${qdto.content }" style="display: block; width:90vh"/>
+				<input type="hidden" name="id" value="${qdto.id }">
+				<input type="text" name="content" value="${qdto.content }" style="display: block; width:90vh"/>
 				<button type="submit">수정완료</button>
 			</form>
 		</body>
