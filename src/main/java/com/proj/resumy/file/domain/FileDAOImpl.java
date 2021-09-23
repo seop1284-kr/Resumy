@@ -19,14 +19,20 @@ public class FileDAOImpl implements FileDAO {
 	
 	// 특정 회원(mem_id)의  첨부파일들 SELECT
 	@Override
-	public List<FileDTO> selectByMid(int mid) {
-		return mapper.selectByMid(mid);
+	public List<FileDTO> selectByUserID(String userid) {
+		return mapper.selectByUserID(userid);
 	}
 	
-	// 특정 회원(mem_id)의 새파일 업로드
+	// 특정 파일 한개의 정보
 	@Override
-	public int insertByMid(FileDTO dto) {
-		return mapper.insertByMid(dto);
+	public int selectByFid(int id) {
+		return mapper.selectByFid(id);
+	}
+	
+	// 새파일 업로드
+	@Override
+	public int insert(FileDTO dto) {
+		return mapper.insert(dto);
 	}
 
 	// 특정 file_id 파일 삭제
@@ -35,10 +41,9 @@ public class FileDAOImpl implements FileDAO {
 		return mapper.deleteById(id);
 	}
 	
-	// 특정 file_id들 파일 삭제
+	// 특정 file_id 파일들 삭제
 	@Override
 	public int deleteByIds(int id) {
-		// TODO Auto-generated method stub
 		return mapper.deleteByIds(id);
 	}
 

@@ -73,12 +73,13 @@
         </aside>
         <!-- ./aside -->
 
+		
+	
         <section class="col">
-        	<div id="content">
-	            <!-- 내용 적는 부분 -->
-	            
-	            
-	        </div>    
+        	<h4 id="title" style="font-weight: bold">나의 파일 관리</h4>
+        
+        	<div id="content"><!-- 데이터베이스 출력 --></div>    
+            
             
         </section>
     </div>

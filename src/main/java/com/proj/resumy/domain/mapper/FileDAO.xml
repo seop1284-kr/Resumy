@@ -3,7 +3,7 @@
 
 <mapper namespace="com.proj.resumy.file.domain.FileDAO">
 
-	<select id="selectByMid" resultType="com.proj.resumy.file.domain.FileDTO">
+	<select id="selectByUserID" resultType="com.proj.resumy.file.domain.FileDTO">
 		SELECT 
 			file_name name, 
 			file_volume volume, 
@@ -11,17 +11,19 @@
 			file_memo memo 
 		FROM 
 			hr_file
-		WHERE mem_id = #{mid}
+		WHERE mem_userid = #{userid}
 		ORDER BY 
 			file_regdate DESC;
 	</select>
 	
 	<insert id="insert">
 		INSERT INTO hr_file 
-			(file_name, file_volume, file_memo, mem_id)
+			(file_name, file_volume, file_memo, mem_userid)
 		VALUES 
-			(#{name}, #{volume}, #{memo}, #{mid});
+			(#{name}, #{volume}, #{memo}, #{userid});
 	</insert>
+	
+	
 	
 	<delete id="deleteById">
 		DELETE FROM hr_file 

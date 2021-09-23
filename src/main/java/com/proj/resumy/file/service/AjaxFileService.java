@@ -33,8 +33,29 @@ public class AjaxFileService {
 		System.out.println("FileService() 생성");	
 	}
 	
-	public List<FileDTO> selectByMid(int mid) {
-		return filedao.selectByMid(mid);
+	// 특정 회원(mem_id)의  첨부파일들
+	public List<FileDTO> selectByUserID(String userid) {
+		return filedao.selectByUserID(userid);
+	}
+	
+	// 특정 파일 한개의 정보
+	public int selectByFid(int id) {
+		return filedao.selectByFid(id);
+	}
+	
+	// 새파일 업로드
+	public int insert(FileDTO dto) {
+		return filedao.insert(dto);
+	}
+	
+	// 특정 file_id 파일 삭제
+	public int deleteById(int id) {
+		return filedao.deleteById(id);
+	}
+	
+	// 특정 file_id 파일들 삭제
+	public int deleteByIds(int id) {
+		return filedao.deleteByIds(id);
 	}
 	
 }
