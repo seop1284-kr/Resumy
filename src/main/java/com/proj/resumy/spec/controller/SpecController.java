@@ -16,13 +16,13 @@ import com.proj.resumy.spec.domain.SpecResult;
 import com.proj.resumy.spec.service.SpecService;
 
 @Controller
-@RequestMapping("/myp/history/spec")
+@RequestMapping("/myp/history")
 public class SpecController {
 	@Autowired
 	SpecService specService;
 	
 	// 특정 mid 글 읽기
-	@GetMapping("/{mid}")   // URI:  /myp/history/{mid}
+	@GetMapping("/{mid}")   // URI:  /myp/history
 	public SpecList view(@PathVariable int mid) {
 		List<SpecDTO> list = null;
 		
