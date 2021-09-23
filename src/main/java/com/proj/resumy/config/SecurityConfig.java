@@ -29,6 +29,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 		http.authorizeRequests()
 			// 인증에대한 세팅
 		
+			// ↓ /qnaView.do 로 들어오는 요청은 인증이 필요.
+			.antMatchers("/qnaView.do").authenticated()
+		
 			// ↓ /myp/** 주소로 들어오는 요청은 인증이 필요.
 			//.antMatchers("/myp/**").authenticated()
 		

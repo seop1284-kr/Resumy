@@ -20,6 +20,22 @@
 					"enabledTLSProtocols": "TLSv1,TLSv1.1,TLSv1.2",
 					"allowPublicKeyRetrieval": "TRUE"
 				},
+				"auth-model": "native"
+			}
+		},
+		"mysql8-17bf95b45a3-47e571e09f5b6270": {
+			"provider": "mysql",
+			"driver": "mysql8",
+			"name": "resumy 2",
+			"save-password": true,
+			"read-only": false,
+			"configuration": {
+				"host": "localhost",
+				"port": "3306",
+				"database": "resumy",
+				"url": "jdbc:mysql://localhost:3306/resumy",
+				"home": "C:\\Program Files\\MySQL\\MySQL Router 8.0",
+				"type": "dev",
 				"auth-model": "native",
 				"handlers": {}
 			}

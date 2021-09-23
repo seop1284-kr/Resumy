@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>    
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -58,39 +59,47 @@
     <!-- ./navbar -->
     
 	<c:choose>
-		<c:when test="${empty qlist || fn:length(qlist) == 0 }">
+		<c:when test="${empty qdto }">
 		</c:when>
 		<c:otherwise>
 			<table>
 				<tr>
-					<td colspan="4">${qlist[0].subject }</td>
+					<td colspan="4">${qdto.subject }</td>
 				</tr>
 				<tr>
 					<td>작성일</td>
-					<td>${qlist[0].regdate }</td>
+					<td>${qdto.regdate }</td>
 					<td>작성자</td>
 					<td>${userName }</td>
 				</tr>
 			</table>
 			
-			<div>${qlist[0].content }</div>
-			
+			<div>${qdto.content }</div>
+		</c:otherwise>
+	</c:choose>
+	<!-- 문의글 -->
+	
+	<c:choose>
+		<c:when test="${empty adto }">
+		</c:when>
+		<c:otherwise>
 			<h2>답변</h2>
 			<table>
 				<tr>
 					<td>아이콘</td>
 					<td>admin</td>
-					<td>${alist[0].regdate }</td>
+					<td>${adto.regdate }</td>
 				</tr>
 				<tr>
-					<td colspan="3">${alist[0].reply }</td>
+					<td colspan="3">${adto.reply }</td>
 				</tr>
 			</table>
 		</c:otherwise>
 	</c:choose>
+	<!-- 답변 -->
 	
-	<button >삭제</button>
-	<button onClick="location.href='qnaUpdate.do?id=${qlist[0].id }'">수정</button>
+	<button onClick="location.href='qnaQDeleteOk.do?id=${qdto.id }'">삭제</button>
+	<button onClick="location.href='qnaUpdate.do?id=${qdto.id }'">수정</button>
 	<button onClick="location.href='qnaBoard.do'">목록</button>
 	
 	<div style="color:red">**삭제 js 구현 : 1) 문의글 id와 현 계정 id가 일치하지 않으면 팝업</div>

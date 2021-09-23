@@ -1,0 +1,31 @@
+body [class*=col] { /* col 을 포함하는 클래스 */
+    padding: 0;
+    width : 100%;
+}
+
+aside hr {
+    float: left;
+    width: 9em;
+    border: 1px solid rgb(168, 168, 168);
+}
+
+aside ul {
+    margin-left: 1em;
+    clear: both;
+    list-style: none;
+}
+
+aside li {
+    margin-bottom: 1em;
+    font-size: 15px;
+}
+
+aside li.active {
+    font-weight: 700;
+}
+
+.topListBtn{
+	float: right; 
+}
+
+

@@ -51,12 +51,12 @@ public class QnaService {
 	}
 
 	// 특정 id 문의 내용 읽기
-	public List<QnaQDTO> selectByUid(int id) {
+	public QnaQDTO selectByUid(int id) {
 		return dao.selectByUid(id);
 	}
 
 	// 특정 q_id 문의 답글 읽기
-	public List<QnaADTO> selectByQid(int id) {
+	public QnaADTO selectByQid(int id) {
 		return dao.selectByQid(id);
 	}
 	
