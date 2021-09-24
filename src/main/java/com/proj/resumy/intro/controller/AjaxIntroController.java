@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.proj.resumy.intro.domain.IntroConDTO;
@@ -78,15 +79,22 @@ public class AjaxIntroController {
 	// 자소서 작성
 	// 자소서 수정(삭제 후 새로 저장)(수정 구현 귀찮)
 	@PostMapping("")
-	public int write(String title, String[] question, String[] content, Authentication authentication) {
+	public int write(
+			@RequestParam(value = "pub", defaultValue = "false") boolean pub, 
+			@RequestParam(value = "fin", defaultValue = "false")boolean fin, 
+			String title, String[] question, String[] content, Authentication authentication) {
 		int iid = 0;
-			
+		System.out.println(pub + " / " + fin);
 		// 로그인한 사람의 정보를 담은 객체
 		UserDetails userDetails = (UserDetails) authentication.getPrincipal();
 				
 		IntroDTO resume = new IntroDTO();
 		resume.setTitle(title);
 		resume.setUserid(userDetails.getUsername());
+		resume.setPub(pub);
+		resume.setFin(fin);
+		System.out.println(resume);
+
 		iid = ajaxIntroService.writeResume(resume, question, content);
 
 		return iid;

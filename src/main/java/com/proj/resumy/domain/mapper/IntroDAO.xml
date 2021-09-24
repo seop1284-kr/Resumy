@@ -36,7 +36,7 @@
 		FROM 
 			hr_introduction
 		WHERE
-			intr_public = false
+			intr_public = true
 		ORDER BY 
 			mody_dtm DESC	
 	</select>
@@ -77,13 +77,16 @@
 		FROM hr_introduction 
 		
 		<if test="iidSet!=null and iidSet.size!=0">
-		WHERE intr_id IN
-		<foreach collection="iidSet" item="item" index="index" open="(" close=")" separator=",">
- 			${item}
- 		</foreach>
- 		</if>
- 		<if test="iidSet==null or iidSet.size==0">
- 		WHERE intr_id = -1
+		WHERE 
+			
+			intr_id IN
+			<foreach collection="iidSet" item="item" index="index" open="(" close=")" separator=",">
+	 			${item}
+	 		</foreach>
+	 		AND intr_public = true
+	 	</if>
+	 	<if test="iidSet==null or iidSet.size==0">
+	 	WHERE intr_id = -1
  		</if>
 		
 		ORDER BY
@@ -101,9 +104,9 @@
 		useGeneratedKeys="true" keyProperty="id">
 		
 		INSERT INTO hr_introduction
-			(intr_title, mem_userid)
+			(intr_title, mem_userid, intr_public, intr_finish)
 		VALUES
-			(#{title}, #{userid})
+			(#{title}, #{userid}, #{pub}, #{fin})
 	</insert>
 	
 	

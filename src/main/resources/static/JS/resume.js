@@ -14,7 +14,7 @@ $(document).ready(function(){
 		loadPage();	
 	});
 	
-	// 수정 취소 버튼(작성 페이지로 이동)
+	// 수정 취소 버튼(뷰 페이지로 이동)
 	$(".updateCancelBtn").click(function() {
 		makePage(curResumeId, "view");
 	});
@@ -62,7 +62,7 @@ function writeResume(){
 		async: false,
 		success : function(data, status){
 			if(status == "success"){
-				alert("INSERT 성공 " + data);
+				//alert("INSERT 성공 " + data);
 				curResumeId = data;
 			}
 		}
@@ -203,6 +203,13 @@ function setPage(mode){
 		$("#frmWrite .btn_group_update").hide();
 		$("#frmWrite .minus").show();
 		
+		$("#frmWrite input[name='pub']").attr("checked", false);		
+		$("#frmWrite input[name='pub']").attr("disabled", false);
+		$("#frmWrite input[name='pub']").css("border", "1px solid #ccc");
+		$("#frmWrite input[name='fin']").attr("checked", false);				
+		$("#frmWrite input[name='fin']").attr("disabled", false);
+		$("#frmWrite input[name='fin']").css("border", "1px solid #ccc");
+		
 		
 		$("#frmWrite input[name='title']").attr("readonly", false);
 		$("#frmWrite input[name='title']").css("border", "1px solid #ccc");
@@ -217,6 +224,13 @@ function setPage(mode){
 	// 글 읽기
 	if(mode == "view"){
 		$("#title").text("자기소개서");
+		
+		$("#frmWrite input[name='pub']").attr("disabled", true);
+		$("#frmWrite input[name='pub']").css("border", "none");
+		$("#frmWrite input[name='fin']").attr("disabled", true);
+		$("#frmWrite input[name='fin']").css("border", "none");
+		
+		
 
 		$("#frmWrite .btn_group_write").hide();
 		$("#frmWrite .btn_group_view").show();
@@ -249,6 +263,10 @@ function setPage(mode){
 		$("#frmWrite .btn_group_update").show();
 		$("#frmWrite .minus").show();
 
+		$("#frmWrite input[name='pub']").attr("disabled", false);
+		$("#frmWrite input[name='pub']").css("border", "1px solid #ccc");
+		$("#frmWrite input[name='fin']").attr("disabled", false);
+		$("#frmWrite input[name='fin']").css("border", "1px solid #ccc");
 		
 		$("#frmWrite input[name='title']").attr("readonly", false);
 		$("#frmWrite input[name='title']").css("border", "1px solid #ccc");
@@ -275,6 +293,10 @@ function setData(data) {
 	$("#frmWrite input[name='question']").eq(0).val(conList[0].question)
 	$("#frmWrite textarea[name='content']").eq(0).val(conList[0].content);
 
+	
+	$("#frmWrite input[name='pub']").prop("checked", intro.pub);		
+	$("#frmWrite input[name='fin']").prop("checked", intro.fin);		
+		
 
 	for (var i = 1; i < count; i++){
 		makeContentForm();
