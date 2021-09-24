@@ -1,18 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>    
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>	
 <!DOCTYPE html>
 <html lang='ko'>
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>RESUMY - 채용 도우미 사이트</title>
+    <title>고객센터 - RESUMY</title>
     <link href="/img/fibicon.png" rel="shortcut icon" type="image/x-icon">
     <link href="/assets/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="/css/common.css" rel="stylesheet">
     <link href="/css/navbar.css" rel="stylesheet">
     <link href="/css/footer.css" rel="stylesheet">
-    <link href="/css/home.css" rel="stylesheet">
     <!-- font-awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <!-- font -->
@@ -30,7 +31,6 @@
             -moz-user-select: none;
             -ms-user-select: none;
             user-select: none;
-            
         }
 
         @media (min-width: 768px) {
@@ -51,41 +51,41 @@
                 <ul>
                     <li><a href="companyBoard.do">기업정보</a></li>
                     <li><a href="fedBoard">자소서 게시판</a></li>
-                    <li><a href="qnaBoard.do">고객센터</a></li>
+                    <li><a href="qnaBoard.do" class="active">고객센터</a></li>
                 </ul>
                 <button class="login_btn">로그인</button>
             </div>
         </nav>
     </header>
     <!-- ./navbar -->
-
-    <div class="banner container-fluid">
-
-    </div>
-    <!-- ./배너 -->
-    <section class="container-md">
-        
-    </section>
-
-    <footer class="fixed-bottom">
-        <div class="row">
-            <div class="col-2">
-                <img src="/img/logo_ contrast.png">
-            </div>
-            <div class="col-9">
-                프로젝트명 : 채용 도우미 사이트 Resumy(리주마이)<br>
-                팀명 : 간개다모 (김진섭 팀장, 김민수, 노수빈, 하병노)<br>
-                이메일 : seop1284@gmail.com (김진섭), kimpkoiw@gmail.com (김민수), binigy97@gmail.com (노수빈), hahbr88@gmail.com (하병노)
-            </div>
-            <div class="col">
-                CopyrightⓒGangeadamo 2021-09-07 ~ 2021-10-15
-            </div>
-        </div>
-    </footer>
     
-    <script src="/assets/jquery/3.5.1/jquery.min.js.txt"></script>
-    <script src="/assets/dist/js/bootstrap.min.js"></script>
-    <script src="/js/home.js"></script> <!-- bootrstap 을 따르는 문서 -->
+    <form name="frm" action="fedSearch" method="get">
+		<input type="text" name="keyword" style=" width:50vh"/>
+		<button type="submit">검색</button>
+	</form>
+	<!-- 검색 -->
+    
+    
+    <table>
+		<c:choose>
+			<c:when test="${empty list || fn:length(list) == 0 }">
+			</c:when>
+			<c:otherwise>
+				<c:forEach var="introResult" items="${list }" varStatus="status">
+					<table>
+						<tr>
+							
+							<td><a href="fedView?id=${introResult.intro.id }">
+							${introResult.intro.title }</a></td>
+							<td>${introResult.conList[0].question }</td>
+							<td>${introResult.conList[0].content }</td>
+							<td>${introResult.intro.modydate }</td>
+							
+						</tr>
+					</table>
+				</c:forEach>
+			</c:otherwise>
+		</c:choose>
+	</table>
 </body>
-
 </html>

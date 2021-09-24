@@ -7,13 +7,29 @@
 	
 	<select id="select" resultType="com.proj.resumy.fed.domain.IntroFedDTO">
 		SELECT 
-			fb_id "id", 
-			fb_userid title, 
-			fb_content regdate, 
-			fb_regdate pub, 
-			intr_id fin
+			fb_id "id",
+			fb_userid userid, 
+			fb_content content, 
+			fb_regdate regdate, 
+			intr_id iid
 		FROM 
 			intr_feedback 
+		ORDER BY 
+			fb_content DESC	
+	</select>
+	
+	<!-- 특정 id의 자소서 피드백 가져오기 -->
+	<select id="selectById" resultType="com.proj.resumy.fed.domain.IntroFedDTO">
+		SELECT 
+			fb_id "id",
+			fb_userid userid, 
+			fb_content content, 
+			fb_regdate regdate, 
+			intr_id iid
+		FROM 
+			intr_feedback 
+		WHERE
+			fb_id = #{id}
 		ORDER BY 
 			fb_content DESC	
 	</select>

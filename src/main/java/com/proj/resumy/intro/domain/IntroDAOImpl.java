@@ -1,5 +1,6 @@
 package com.proj.resumy.intro.domain;
 
+import java.util.HashSet;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -23,18 +24,33 @@ public class IntroDAOImpl implements IntroDAO {
 		return mapper.selectResume(userid);
 	}
 	
+
+	@Override
+	public List<IntroDTO> selectResumeInPublic() {
+		return mapper.selectResumeInPublic();
+	}
+	
+	
 	@Override
 	public IntroDTO selectResumeById(int id) {
 		return mapper.selectResumeById(id);
 	}
-
+	
+	@Override
+	public List<IntroDTO> selectResumesById(HashSet<Integer> iidSet) {
+		return mapper.selectResumesById(iidSet);
+	}
 
 	@Override
 	public int deleteResumeById(int id) {
 		return mapper.deleteResumeById(id);
 	}
 
-
+	@Override
+	public List<IntroDTO> selectResumeByKeyword(String keyword) {
+		return mapper.selectResumeByKeyword(keyword);
+	}
+	
 	@Override
 	public int updateResumeById(IntroDTO introDto) {
 		return mapper.updateResumeById(introDto);
@@ -45,7 +61,14 @@ public class IntroDAOImpl implements IntroDAO {
 	public int insertResume(IntroDTO introDto) {
 		return mapper.insertResume(introDto);
 	}
+
+
 	
+
+
+
+
+
 	
 	
 
