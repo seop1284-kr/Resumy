@@ -30,13 +30,8 @@ public class IntroConDAOImpl implements IntroConDAO {
 	}
 
 	@Override
-	public int update(IntroConDTO dto) {
-		return mapper.update(dto);
-	}
-
-	@Override
-	public int deleteConByIid(int iid) {
-		return mapper.deleteConByIid(iid);
+	public List<IntroConDTO> selectConByKeyword(String keyword) {
+		return mapper.selectConByKeyword(keyword);
 	}
 
 }

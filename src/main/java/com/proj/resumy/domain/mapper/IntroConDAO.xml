@@ -25,6 +25,17 @@
 			(#{question}, #{content}, #{iid})
 	</insert>
 	
+	<!-- 자소서 내용 키워드 검색 -->
+	<select id="selectConByKeyword" resultType="com.proj.resumy.intro.domain.IntroConDTO">
+		SELECT 
+			intr_c_id "id", 
+			intr_question question,
+			intr_content content,
+			intr_id iid
+		FROM hr_introduction_c
+		WHERE intr_content like CONCAT('%',#{keyword},'%') || intr_question like CONCAT('%',#{keyword},'%')
+	</select>
+	
 	
 </mapper> 
 

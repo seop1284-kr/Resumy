@@ -9,22 +9,22 @@ import lombok.Data;
 public class IntroFedDTO {
 	private int id;						// fb_id
 	private String userid;				// fb_userid
-	private String fb_content;			// fb_content
-	private LocalDateTime fb_regdate;	// fb_regdate
-	private int intr_id;				// intr_id
+	private String content;			// fb_content
+	private LocalDateTime regdate;	// fb_regdate
+	private int iid;				// intr_id
 	
 	public IntroFedDTO() {
 		super();
 		System.out.println("IntroFedDTO() 객체 생성");
 	}
 
-	public IntroFedDTO(int id, String userid, String fb_content, LocalDateTime fb_regdate, int intr_id) {
+	public IntroFedDTO(int id, String userid, String content, LocalDateTime regdate, int iid) {
 		super();
 		this.id = id;
 		this.userid = userid;
-		this.fb_content = fb_content;
-		this.fb_regdate = fb_regdate;
-		this.intr_id = intr_id;
+		this.content = content;
+		this.regdate = regdate;
+		this.iid = iid;
 		System.out.println("IntroFedDTO(...) 객체 생성");
 
 	}

@@ -5,6 +5,7 @@
   
 <mapper namespace="com.proj.resumy.intro.domain.IntroDAO">
 	
+	<!-- 로그인한 userid의 자소서 select -->
 	<select id="selectResume" resultType="com.proj.resumy.intro.domain.IntroDTO">
 		SELECT 
 			intr_id "id", 
@@ -22,7 +23,25 @@
 			intr_id DESC	
 	</select>
 	
-	<!-- 자소서 select -->
+	<!-- 공개로 설정된 자소서 select -->
+	<select id="selectResumeInPublic" resultType="com.proj.resumy.intro.domain.IntroDTO">
+		SELECT 
+			intr_id "id", 
+			intr_title title, 
+			intr_regdate regdate, 
+			intr_public pub, 
+			intr_finish fin, 
+			mody_dtm modydate,
+			mem_userid userid
+		FROM 
+			hr_introduction
+		WHERE
+			intr_public = true
+		ORDER BY 
+			mody_dtm DESC	
+	</select>
+	
+	<!-- 특정 자소서 id의 자소서 select -->
 	<select id="selectResumeById" resultType="com.proj.resumy.intro.domain.IntroDTO">
 		SELECT 
 			intr_id "id", 
@@ -36,6 +55,43 @@
 		WHERE intr_id=#{id}
 	</select>
 	
+	<!-- 배열을 파라미터로 받는 경우
+ 		collection : 전달받은 인자값 이름(변수 이름)
+ 			* 배열을 파라미터로 받을때 collection 에 꼭! array 로!!
+		item : foreach 문 안에서 사용할 매개변수 이름
+		separator : foreach 문이 한번 돌고 다음번 돌때의 구분자
+		open : 시작 문자열
+		close : 종료 문자열					
+ 	 -->
+	
+	<!-- 여러 특정 자소서 id의 자소서 select -->
+	<select id="selectResumesById" resultType="com.proj.resumy.intro.domain.IntroDTO">
+		SELECT 
+			intr_id "id", 
+			intr_title title, 
+			intr_regdate regdate, 
+			intr_public pub, 
+			intr_finish fin, 
+			mody_dtm modydate,
+			mem_userid userid
+		FROM hr_introduction 
+		
+		<if test="iidSet!=null and iidSet.size!=0">
+		WHERE 
+			
+			intr_id IN
+			<foreach collection="iidSet" item="item" index="index" open="(" close=")" separator=",">
+	 			${item}
+	 		</foreach>
+	 		AND intr_public = true
+	 	</if>
+	 	<if test="iidSet==null or iidSet.size==0">
+	 	WHERE intr_id = -1
+ 		</if>
+		
+		ORDER BY
+			mody_dtm DESC
+	</select>
 	
 	<!-- 자소서 삭제 -->
 	<delete id="deleteResumeById" flushCache="true">
@@ -48,10 +104,27 @@
 		useGeneratedKeys="true" keyProperty="id">
 		
 		INSERT INTO hr_introduction
-			(intr_title, mem_userid)
+			(intr_title, mem_userid, intr_public, intr_finish)
 		VALUES
-			(#{title}, #{userid})
+			(#{title}, #{userid}, #{pub}, #{fin})
 	</insert>
+	
+	
+	<!-- 자소서 타이틀 키워드 검색 -->
+	<select id="selectResumeByKeyword" resultType="com.proj.resumy.intro.domain.IntroDTO">
+		SELECT 
+			intr_id "id", 
+			intr_title title, 
+			intr_regdate regdate, 
+			intr_public pub, 
+			intr_finish fin, 
+			mody_dtm modydate,
+			mem_userid userid
+		FROM hr_introduction
+		WHERE intr_title like CONCAT('%',#{keyword},'%')
+	</select>
+	
+	
 	
 	<!-- 자소서 수정 -->
 	<update id="updateResumeById" flushCache="true"

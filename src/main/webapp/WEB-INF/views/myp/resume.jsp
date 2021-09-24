@@ -89,9 +89,13 @@
 	        <%-- 글 작성 / 보기 / 수정 폼 --%>
 	        <form id="frmWrite" name="frmWrite" method="post" target="iframe1">
 	        	<%-- submit 후 이동 막는 방안 --%>
-	        	
 	       		<iframe id="iframe1" name="iframe1" style="display:none"></iframe>
+				
+				
 				<div id="crud_form_box">
+					<input class="checkBox" type="checkbox" name="pub" value="true">공개<br>
+					<input class="checkBox" type="checkbox" name="fin" value="true">작성완료<br>
+				
 					<div id="content_text_box">
 						<div id="content_text">
 							<input type="text" placeholder="자소서 제목(필수)" name="title" required>

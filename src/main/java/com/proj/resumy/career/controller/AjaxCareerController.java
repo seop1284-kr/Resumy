@@ -5,26 +5,26 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.stereotype.Controller;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.proj.resumy.career.domain.CareerDTO;
-import com.proj.resumy.career.domain.CareerList;
 import com.proj.resumy.career.domain.CareerResult;
 import com.proj.resumy.career.service.CareerService;
-import com.proj.resumy.intro.domain.IntroDTO;
+import com.proj.resumy.intro.service.AjaxIntroService;
 
-@Controller
+@RestController
 @RequestMapping("/careerAjax")
 public class AjaxCareerController {
 	@Autowired
 	CareerService careerService;
-	
+	Authentication authentication;
 	
 	// 자소서 목록 (list)
 	@GetMapping("/list/{mid}")
@@ -32,10 +32,11 @@ public class AjaxCareerController {
 		
 		// 로그인한 사람의 정보를 담은 객체
 		//UserDetails userDetails = (UserDetails) authentication.getPrincipal();
-		//List<IntroDTO> list = new ArrayList<>();
+		//System.out.println("" + userDetails.get);
 		List<CareerDTO> list = new ArrayList<>();
 		list = careerService.view(mid);
 		System.out.println("list : " +  list.get(0));
+		
 
 		return list;
 	}

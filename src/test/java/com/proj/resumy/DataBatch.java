@@ -28,8 +28,8 @@ class DataBatch {
 	
 	public static final String SQL_RESUMY_MEM_INSERT = "insert into `hr_member` (mem_userid, mem_pw, mem_name, mem_email) values (?, ?, ?, ?)";
 	public static final String SQL_RESUMY_AUTHORITY_INSERT = "insert into `hr_authority` (mem_userid, mem_auth) values (?, ?)";
-	public static final String SQL_RESUMY_CAREER_INSERT = "insert into `hr_career` (cr_company, cr_hiredate, cr_leavedate, cr_post, mem_id) values (?, ?, ?, ?, ?)";
-	public static final String SQL_RESUMY_SPEC_INSERT = "insert into `hr_spec_info` (spec_cat_cd, spec_name, spec_area, mody_dtm, reg_dtm, mem_id) values (?, ?, ?, ?, ?, ?)";
+	public static final String SQL_RESUMY_CAREER_INSERT = "insert into `hr_career` (cr_company, cr_hiredate, cr_leavedate, cr_post,mem_userid) values (?, ?, ?, ?, ?)";
+	public static final String SQL_RESUMY_SPEC_INSERT = "insert into `hr_spec_info` (spec_cat_cd, spec_name, spec_area, mody_dtm, reg_dtm, mem_userid) values (?, ?, ?, ?, ?, ?)";
 	
 	public static final String SQL_RESUMY_FILE_INSERT = "insert into `hr_file` (file_name, file_volume, mem_userid) values (?, ?, ?)";
 	public static final String SQL_RESUMY_INTRO_INSERT = "insert into `hr_introduction` (intr_title, mem_userid) values (?, ?)";
@@ -129,7 +129,7 @@ class DataBatch {
 				pstmt.setString(2, now.format(formatter));							// 재직일
 				pstmt.setString(3, now.format(formatter));		// 퇴사일 추가 해야함	// 퇴사일
 				pstmt.setString(4, String.format("post%02d", i));					// 직급/직책
-				pstmt.setInt(5, i + 1);
+				pstmt.setString(5, "mem01");
 				cnt += pstmt.executeUpdate();
 				}
 			System.out.println(cnt + "개 의 경력사항 데이터가 INSERT 되었습니다");
@@ -166,7 +166,7 @@ class DataBatch {
 				pstmt.setString(3, String.format("area%02d", i)); 					// 지역명
 				pstmt.setString(4, now.format(formatter));							// 등록일시
 				pstmt.setString(5, now.format(formatter));							// 수정일시
-				pstmt.setInt(6, i + 1);
+				pstmt.setString(6, "mem01");
 				cnt += pstmt.executeUpdate();
 				}
 			System.out.println(cnt + "개 의 학력사항 데이터가 INSERT 되었습니다");

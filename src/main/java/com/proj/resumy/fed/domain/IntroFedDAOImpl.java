@@ -21,16 +21,19 @@ public class IntroFedDAOImpl implements IntroFedDAO {
 	public List<IntroFedDTO> select() {
 		return mapper.select();
 	}
+	
+	// 특정 id의 자소서 피드백 가져오기
+	@Override
+	public List<IntroFedDTO> selectById(int id) {
+		return mapper.selectById(id);
+	}
+
 
 	@Override
 	public int insert(IntroFedDTO dto) {
 		return mapper.insert(dto);
 	}
 
-	@Override
-	public List<IntroFedDTO> selectByUid(int id) {
-		return mapper.selectByUid(id);
-	}
 
 	@Override
 	public int update(IntroFedDTO dto) {

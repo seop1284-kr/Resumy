@@ -44,8 +44,8 @@ CREATE TABLE `hr_spec_info` (
 	`spec_university`	varchar(10)	NULL	COMMENT '01: 2,3년제 02: 4년제  03: 대학원(석사) 04: 대학원(박사)',
 	`reg_dtm`	datetime	NOT NULL	DEFAULT now()	COMMENT '등록일시',
 	`mody_dtm`	datetime	NOT NULL	DEFAULT now()	COMMENT '수정일시',
-	`mem_id`	int	NOT NULL,
-	FOREIGN KEY (mem_id) REFERENCES hr_member(mem_id)
+	`mem_userid` varchar(100) NOT NULL,
+	FOREIGN KEY (mem_userid) REFERENCES hr_member(mem_userid) ON DELETE CASCADE
 );
 
 -- 회원학력사항 테이블
@@ -60,8 +60,8 @@ CREATE TABLE `hr_career` (
 	`cr_area`	varchar(20)	NULL	COMMENT '지역',
 	`cr_salary`	int	NULL	COMMENT '연봉',
 	`cr_work`	varchar(10)	NULL	COMMENT '담당업무',
-	`mem_id`	int	NOT NULL,
-	FOREIGN KEY (mem_id) REFERENCES hr_member(mem_id)
+	`mem_userid` varchar(100) NOT NULL,
+	FOREIGN KEY (mem_userid) REFERENCES hr_member(mem_userid) ON DELETE CASCADE
 );
 
 -- 하병노
@@ -117,20 +117,13 @@ CREATE TABLE `hr_qna_q` (
 	`q_content`	text	NOT NULL	COMMENT '글 내용',
 	`q_regdate`	datetime	NOT NULL	DEFAULT now()	COMMENT '글 등록일시',
 	`mem_userid`	varchar(100)	NOT NULL,
-	FOREIGN KEY (mem_userid) REFERENCES hr_member(mem_userid)
+	FOREIGN KEY (mem_userid) REFERENCES hr_member(mem_userid)  ON DELETE CASCADE
 );
 
 -- 고객센터 답글 테이블
 CREATE TABLE `hr_qna_a` (
-	`q_id`	int	NOT NULL /*AUTO_INCREMENT	*/PRIMARY KEY COMMENT '일련번호',
+	`q_id`	int	NOT NULL PRIMARY KEY COMMENT '일련번호',
 	`a_reply`	text	NOT NULL	COMMENT '답글',
-	`a_regdate`	datetime	NOT NULL	DEFAULT now()	COMMENT '답글 등록일시'
+	`a_regdate`	datetime	NOT NULL	DEFAULT now()	COMMENT '답글 등록일시',
+	FOREIGN KEY (q_id) REFERENCES hr_qna_q(q_id)  ON DELETE CASCADE
 );
-
-ALTER TABLE `hr_qna_a` ADD CONSTRAINT `FK_hr_qna_q_TO_hr_qna_a_1` FOREIGN KEY (
-	`q_id`
-)
-REFERENCES `hr_qna_q` (
-	`q_id`
-);
-

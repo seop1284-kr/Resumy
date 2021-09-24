@@ -10,9 +10,6 @@ public interface IntroConDAO {
 	// 새 자소서 내용 작성 <-- DTO
 	public abstract int insertCon(IntroConDTO dto);
 	
-	// 특정 id 자소서 수정
-	public abstract int update(IntroConDTO dto);
-	
-	// 특정 id 자소서 삭제하기
-	public abstract int deleteConByIid(int iid);
+	// 키워드로 자소서 내용 검색
+	public abstract List<IntroConDTO> selectConByKeyword(String keyword);
 }
