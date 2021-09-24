@@ -41,10 +41,16 @@ function updateList(items) {
 		return false;
 	}
 
-	result += "<table>";
-	for (var i = 0; i < count; i++) {
+	result += "<table class='fileList'>";
+		result += "<th><input type='checkbox' value='선택'></th>\n";
+		result += "<th>첨부파일명</th>\n";
+		result += "<th>용량</th>\n";
+		result += "<th>등록일</th>\n";
+		result += "<th>MEMO</th>\n";
+	
+	for (var i = 0; i < count; i++) {	
 		result += "<tr class='box' data-id=" + items[i].id + ">\n";
-
+		result += "<td><input type='checkbox' value='선택'>" + "</td>\n";
 		result += "<td>" + items[i].name + "</td>\n";
 		result += "<td>" + items[i].volume + "</td>\n";
 		result += "<td>" + items[i].regdate + "</td>\n";
@@ -59,4 +65,50 @@ function updateList(items) {
 	return true;
 
 } // end updateList()
+
+
+
+
+// 업로드 버튼 누르면 모달 팝업
+	$("#uploadBtn").click(function(){
+		setPopup("upload");
+		$("#dlg_file").show();
+	});
+	
+// 모달 대화상자 취소 버튼 누르면
+	$(".modal .close").click(function(){
+		$(this).parents(".modal").hide();
+	});
+	
+// 모달 대화상자 업로드 버튼 누르면	
+	$("#frmWrite").submit(function(){
+		$(this).parents(".modal").hide();
+		
+		return chkWrite();  // 새글 등록 submit
+	});
+
+// 다운로드 버튼
+
+// 삭제 버튼
+
+
+
+// 파일 업로드 대화상자 세팅
+	function setPopup(mode){
+		
+		if(mode == "upload"){
+		$('#frmFile')[0].reset();  // form 내의 기존 내용 reset
+		$("#dlg_write .btn_group_header").hide();
+		$("#dlg_file .btn_group_file").show();
+		$("#dlg_write .btn_group_view").hide();
+		$("#dlg_write .btn_group_update").hide();
+		
+		$("#dlg_file input[name='file']").attr("readonly", false);
+		$("#dlg_file input[name='file']").css("border", "1px solid #ccc");
+		$("#dlg_file input[name='memo']").attr("readonly", false);
+		$("#dlg_file input[name='memo']").css("border", "1px solid #ccc");
+	}
+	} // end setPopup()
+		
+
 

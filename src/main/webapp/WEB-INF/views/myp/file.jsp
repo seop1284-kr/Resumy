@@ -15,6 +15,7 @@
     <link href="/css/common.css" rel="stylesheet">
     <link href="/css/navbar.css" rel="stylesheet">
     <link href="/css/footer.css" rel="stylesheet">
+    <link href="/css/file.css" rel="stylesheet">
     <link href="/css/mypageTemplate.css" rel="stylesheet">    
     <!-- font-awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
@@ -66,9 +67,9 @@
             <h4><b>마이페이지</b></h4>
             <hr>
             <ul>
-                <li>자기소개서 관리</li>
-                <li class="active">파일 관리</li>
-                <li>이력 관리</li>
+                <li><a href="resume.jsp">자기소개서 관리</a></li>
+                <li class="active"><a href="file.jsp">파일 관리</a></li>
+                <li><a href="historyMng.jsp">이력 관리</a></li>
             </ul>
         </aside>
         <!-- ./aside -->
@@ -76,13 +77,51 @@
 		
 	
         <section class="col">
-        	<h4 id="title" style="font-weight: bold">나의 파일 관리</h4>
         
+        	<h4 id="title" style="font-weight: bold">나의 파일 관리</h4>
+        	
+        	<form id="frmFile" name="frmFile" method="post" >
+				
+				
+        	
+        	</form>
+        	
+        	<%-- 우상단 버튼들 --%>
+        	<div>
+        		<button type="button" id="uploadBtn" class="uploadBtn">업로드</button>
+        		<button type="button" id="downloadBtn" class="downloadBtn">다운로드</button>
+        		<button type="button" id="deleteBtn" class="deleteBtn">삭제</button>
+        	</div>
+        	
+        	
         	<div id="content"><!-- 데이터베이스 출력 --></div>    
             
             
         </section>
     </div>
+
+<%-- 파일 업로드 모달 --%>
+<div id="dlg_file" class="modal">
+	<form class="modal-content animate" id="frmFile" name="frmFile" method="post">
+		<div class="container">
+			<div>파일업로드</div>
+			
+			<input type="hidden" name="fid" value="0"> <%-- 읽기, 삭제, 수정을 위해 필요 --%>
+			
+			<label for="file"><b>파일 업로드</b></label>
+			<input type="file" name="file" required>
+			
+			<label for="memo"><b>작성자</b></label>
+			<input type="text" placeholder="8글자 이내" name="memo">
+			
+			<div class="d01 btn_group_file">
+				<button type="button" class="btn exit">취소</button>
+				<button type="submit" class="btn success">작성</button>
+			</div>
+		</div>
+	</form>
+</div>
+
 
     <footer class="fixed-bottom">
         <div class="row">
