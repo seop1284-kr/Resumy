@@ -83,8 +83,15 @@
         	<!-- 제목 -->
         	<h4 id="title" style="font-weight: bold"></h4>
         	
+        	<!-- 검색 -->
+        	<div id="searchBox">
+	        	<input type="text" id="keyword" style=" width:50vh"/>
+				<button type="button" class="searchBtn">검색</button>
+			</div>
+        	
         	<!-- 자소서 목록 리스트 -->
-        	<div id="content"></div>    
+        	<div id="content"></div>
+       		
 	               
 	        <%-- 글 작성 / 보기 / 수정 폼 --%>
 	        <form id="frmWrite" name="frmWrite" method="post" target="iframe1">

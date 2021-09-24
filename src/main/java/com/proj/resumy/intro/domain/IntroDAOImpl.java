@@ -40,6 +40,11 @@ public class IntroDAOImpl implements IntroDAO {
 	public List<IntroDTO> selectResumesById(HashSet<Integer> iidSet) {
 		return mapper.selectResumesById(iidSet);
 	}
+	
+	@Override
+	public List<IntroDTO> selectMyResumesById(HashSet<Integer> iidSet, String userid) {
+		return mapper.selectMyResumesById(iidSet, userid);
+	}
 
 	@Override
 	public int deleteResumeById(int id) {

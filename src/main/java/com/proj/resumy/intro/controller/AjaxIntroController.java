@@ -99,5 +99,18 @@ public class AjaxIntroController {
 
 		return iid;
 	}
+	
+	// 특정 userid의 키워드로 검색한 자소서 가져오기
+	@GetMapping("/list/{keyword}")
+	public List<IntroDTO> search(@PathVariable String keyword, Model model, Authentication authentication) {
+		// 로그인한 사람의 정보를 담은 객체
+		UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+				
+		List<IntroDTO> list = new ArrayList<>();
+		System.out.println("aaa" + keyword);
+		list = ajaxIntroService.selectMyResumeByKeyword(keyword, userDetails.getUsername());
+		
+		return  list;// 문서 명
+	}
 
 }

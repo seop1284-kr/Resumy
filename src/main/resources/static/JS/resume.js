@@ -1,8 +1,13 @@
 var curResumeId = -1;	// -1이면 현재 어떤 자소서도 선택하지 않음
-
+var keyword = "";		// "" 이면 어떤 키워드도 넣지 않음
 $(document).ready(function(){
 	
 	loadPage();
+	// 자소서 검색 버튼
+	$(".searchBtn").click(function(){
+		keyword = $("#keyword").val();
+		loadPage();
+	});
 	
 	// 자소서 질문 추가 버튼
 	$(".plusBtn").click(function(){
@@ -102,27 +107,47 @@ function makeContentForm() {
 // 자소서 관리 시작 페이지
 function loadPage(){
 	
-	// 자소서 목록 보이기, crud 폼 숨기기, 추가 질문 비우기, curResumeId = -1 로 설정
+	// 자소서 목록 보이기, crud 폼 숨기기, 추가 질문 비우기, curResumeId = -1 로 설정, searchBox 보이기
 	$("#crud_form_box").hide();
 	$("#content").show();
 	$("#content_text_plus").empty();
+	$("#searchBox").show();
 
 	curResumeId = -1;
-	
-	$.ajax({
-		url : "/resumeAjax/list",
-		type : "GET",
-		cache : false,
-		success : function(data, status){
-			if(status == "success"){
-				$("#title").text("자기소개서 관리");
-				updateList(data)
-				addViewEvent();  
-			} else {
-				alert("잘못된 접근");
+	if (keyword == "") {
+		$.ajax({
+			url : "/resumeAjax/list",
+			type : "GET",
+			cache : false,
+			success : function(data, status){
+				if(status == "success"){
+					$("#title").text("자기소개서 관리");
+					updateList(data)
+					addViewEvent();  
+				} else {
+					alert("잘못된 접근");
+				}
 			}
-		}
-	}); 		
+		}); 
+	} else {
+		//alert("keyword" + $("#keyword").val());
+
+		$.ajax({
+			url : "/resumeAjax/list/" + keyword,
+			type : "GET",
+			cache : false,
+			success : function(data, status){
+				if(status == "success"){
+					$("#title").text("자기소개서 관리");
+					updateList(data)
+					addViewEvent();  
+				} else {
+					alert("잘못된 접근");
+				}
+			}
+		}); 
+	}
+			
 	
 } // end loadPage()
 
@@ -189,9 +214,10 @@ function makePage(id, set) {
 
 // 글 쓰기 / 읽기 / 수정
 function setPage(mode){
-	// 자소서 목록 숨기기, crud 폼 보이기
+	// 자소서 목록 숨기기, crud 폼 보이기, searchBox 숨기기
 	$("#content").hide();
 	$("#crud_form_box").show();
+	$("#searchBox").hide();
 	
 	// 글 작성
 	if(mode == "write"){

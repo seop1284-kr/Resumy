@@ -1,5 +1,7 @@
 package com.proj.resumy.intro.service;
 
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -88,6 +90,27 @@ public class AjaxIntroService {
 		
 		return introDto.getId();
 		
+	}
+	
+	// 특정 userid의 키워드로 검색한 자소서 가져오기
+	public List<IntroDTO> selectMyResumeByKeyword(String keyword, String userid) {
+		List<IntroDTO> resumes = introDao.selectResumeByKeyword(keyword);
+		List<IntroConDTO> conList = introConDao.selectConByKeyword(keyword);
+		
+		if (conList == null) {
+			return null;
+		}
+		
+		HashSet<Integer> iidSet = new HashSet<Integer>();
+		for (int i = 0; i < conList.size(); i++) {
+			iidSet.add(conList.get(i).getIid());
+		}
+		for (int i = 0; i < resumes.size(); i++) {
+			iidSet.add(resumes.get(i).getId());
+		}
+		
+		List<IntroDTO> introList = introDao.selectMyResumesById(iidSet, userid);					
+		return introList;
 	}
 	
 	

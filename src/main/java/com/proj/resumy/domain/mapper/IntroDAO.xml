@@ -64,7 +64,7 @@
 		close : 종료 문자열					
  	 -->
 	
-	<!-- 여러 특정 자소서 id의 자소서 select -->
+	<!-- public으로 된 여러 특정 자소서 id의 자소서 select -->
 	<select id="selectResumesById" resultType="com.proj.resumy.intro.domain.IntroDTO">
 		SELECT 
 			intr_id "id", 
@@ -77,8 +77,7 @@
 		FROM hr_introduction 
 		
 		<if test="iidSet!=null and iidSet.size!=0">
-		WHERE 
-			
+		WHERE
 			intr_id IN
 			<foreach collection="iidSet" item="item" index="index" open="(" close=")" separator=",">
 	 			${item}
@@ -89,6 +88,34 @@
 	 	WHERE intr_id = -1
  		</if>
 		
+		ORDER BY
+			mody_dtm DESC
+	</select>
+	
+	<!-- 특정 userid의 여러 특정 자소서 id의 자소서 select -->
+	<select id="selectMyResumesById" resultType="com.proj.resumy.intro.domain.IntroDTO">
+		SELECT 
+			intr_id "id", 
+			intr_title title, 
+			intr_regdate regdate, 
+			intr_public pub, 
+			intr_finish fin, 
+			mody_dtm modydate,
+			mem_userid userid
+		FROM hr_introduction 
+		
+		<if test="iidSet!=null and iidSet.size!=0">
+		WHERE
+			intr_id IN
+			<foreach collection="iidSet" item="item" index="index" open="(" close=")" separator=",">
+	 			${item}
+	 		</foreach>
+	 		AND mem_userid = #{userid}
+	 	</if>
+	 	<if test="iidSet==null or iidSet.size==0">
+	 	WHERE intr_id = -1
+ 		</if>
+ 			
 		ORDER BY
 			mody_dtm DESC
 	</select>

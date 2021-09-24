@@ -33,9 +33,6 @@ public class FedBoardController {
 	// 자소서 피드백 게시판
 	@RequestMapping("/fedBoard") 
 	public String fedBoardPage(Model model) {
-		System.out.println("fedBoard");
-
-		//model.addAttribute("list", introService.list());
 		model.addAttribute("list", introFedService.selectResumeInPublic());
 		return "mainBoard/fed/fedBoard"; // 문서 명
 	}
@@ -43,7 +40,6 @@ public class FedBoardController {
 	// 자소서 피드백 뷰
 	@RequestMapping("/fedView") 
 	public String view(int id, Model model) {
-		System.out.println("fedView");
 		model.addAttribute("introResult", introFedService.selectFed(id));
 		return "mainBoard/fed/fedView"; // 문서 명
 	}
@@ -51,7 +47,6 @@ public class FedBoardController {
 	// 검색된 자소서 피드백 게시판
 	@GetMapping("/fedSearch") 
 	public String search(String keyword, Model model) {
-		System.out.println("fedView");
 		model.addAttribute("list", introFedService.selectResumeByKeyword(keyword));
 		return "mainBoard/fed/fedSearch"; // 문서 명
 	}

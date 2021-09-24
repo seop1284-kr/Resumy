@@ -14,8 +14,12 @@ public interface IntroDAO {
 	// 특정 id 자소서 select
 	public abstract IntroDTO selectResumeById(int id);
 	
-	// 여러 특정 id 자소서 select
+	// public으로 된 여러 특정 id 자소서 select
 	public abstract List<IntroDTO> selectResumesById(HashSet<Integer> iidSet);
+	
+	// 특정 userid의 여러 특정 id 자소서 select
+	public abstract List<IntroDTO> selectMyResumesById(HashSet<Integer> iidSet, String userid);
+		
 	
 	// 특정 id 자소서 삭제
 	public abstract int deleteResumeById(int id);

@@ -78,7 +78,7 @@ public class IntroFedService {
 		return introResult;
 	}
 	
-	// 키워드로 검색한 자소서 가져오기
+	// public으로 된 키워드로 검색한 자소서 가져오기
 	public List<IntroResult> selectResumeByKeyword(String keyword) {
 		List<IntroResult> introResultList = new ArrayList<IntroResult>();
 		List<IntroDTO> resumes = introDao.selectResumeByKeyword(keyword);
