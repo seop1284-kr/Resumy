@@ -18,8 +18,8 @@ public class CareerDAOImpl implements CareerDAO {
 	}
 	
 	@Override
-	public List<CareerDTO> select(int mid) {
-		return mapper.select(mid);
+	public List<CareerDTO> select(String userid) {
+		return mapper.select(userid);
 	}
 
 	@Override

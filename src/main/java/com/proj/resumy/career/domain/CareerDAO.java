@@ -4,7 +4,7 @@ import java.util.List;
 
 public interface CareerDAO {
 	// 전체 학력사항 출력 SELECT
-	public abstract List<CareerDTO> select(int mid);
+	public abstract List<CareerDTO> select(String userid);
 	
 	// 새 학력사항 작성 <-- DTO 
 	public abstract int insert(CareerDTO dto);

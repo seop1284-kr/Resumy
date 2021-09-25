@@ -129,7 +129,7 @@ class DataBatch {
 				pstmt.setString(2, now.format(formatter));							// 재직일
 				pstmt.setString(3, now.format(formatter));		// 퇴사일 추가 해야함	// 퇴사일
 				pstmt.setString(4, String.format("post%02d", i));					// 직급/직책
-				pstmt.setString(5, "mem01");
+				pstmt.setString(5, String.format("mem%02d", i));
 				cnt += pstmt.executeUpdate();
 				}
 			System.out.println(cnt + "개 의 경력사항 데이터가 INSERT 되었습니다");

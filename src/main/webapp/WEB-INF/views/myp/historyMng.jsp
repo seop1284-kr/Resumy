@@ -285,67 +285,18 @@
 				<!-- 제목 -->
 				<h4 id="title" style="font-weight: bold"></h4>
 
-				<!-- 자소서 목록 리스트 -->
+				<!-- 경력사항 선택 -->
 				<div id="content3"></div>
 
 				<table width="100%">
 					<tr>
-						<td width="25%"><button type="button" class="">신입</button></td>
-						<td width="25%"><button type="button" class="">경력</button></td>
+						<td width="25%"><button type="button" class="" id="btnNewcomer">신입</button></td>
+						<td width="25%"><button type="button" class="" id="btnCareer">경력</button></td>
 					</tr>
 				</table>
 				<hr>
-				<%-- 초등학교 정보 --%>
-				<table id="spec01" width="100%">
-					<tr>
-						<td width="20%">회사명</td>
-						<td width="60%"><input type="text" name="company" value="" placeholder="회사명을 입력하세요"></td>
-						<td width="20%"></td>
-					</tr>
-					<tr>
-						<td width="20%">재직기간</td>
-						<td width="70%"><input type="text" name="hiredate" value="">  ~  <input type="text" name="leavedate" value=""> <input type="text" name="now" value="" placeholder="퇴사&재직중 입력하세요"> </td>
-						<td width="10%"></td>
-					</tr>
-					<tr>
-						<td width="20%">퇴사사유</td>
-						<td width="60%"><input type="text" name="lvreason" value="" placeholder="퇴사사유 입력하세요"></td>
-						<td width="20%"></td>
-					</tr>
-					<tr>
-						<td width="20%">직급/직책</td>
-						<td width="60%"><input type="text" name="post" value=""></td>
-						<td width="20%"></td>
-					</tr>
-					<tr>
-						<td width="20%">근무부서</td>
-						<td width="60%"><input type="text" name="dept" value=""></td>
-						<td width="20%"></td>
-					</tr>
-					<tr>
-						<td width="20%">지역</td>
-						<td width="60%"><input type="text" name="area" value=""></td>
-						<td width="20%"></td>
-					</tr>
-					<tr>
-						<td width="20%">연봉</td>
-						<td width="60%"><input type="text" name="salary" value=""> <input type="text" name="manwon" value="만원"></td>
-						<td width="20%"></td>
-					</tr>
-					<tr>
-						<td width="20%">담당업무</td>
-						<td width="60%"><input type="text" name="work" value=""></td>
-						<td width="20%"></td>
-					</tr>
-					<tr>
-						<td colspan="3"><hr></td>
-					</tr>
-					<tr>
-						<td width="20%"></td>
-						<td width="60%"></td>
-						<td width="20%"><button type="button" class="">경력추가+</button></td>
-					</tr>
-				</table>
+				<%-- 경력정보 --%>
+				<div id="careerContent"></div>
 				
 			</article>
 		</section>

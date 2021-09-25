@@ -16,11 +16,11 @@
 			b.cr_area         area,
 			b.cr_salary       salary,
 			b.cr_work         work,
-			a.mem_id          mid
+			a.mem_userid          userid
 		FROM hr_member a
 		left join hr_career b
-		on a.mem_id = b.mem_id
-		where a.mem_id = #{mid}
+		on a.mem_userid = b.mem_userid
+		where a.mem_userid = #{userid}
 		ORDER BY 
 			b.cr_id DESC;
 	</select>
@@ -38,7 +38,7 @@
 		,cr_area      
 		,cr_salary    
 		,cr_work      
-		,mem_id
+		,mem_userid
 		)
 		values
 		(
@@ -51,7 +51,7 @@
 		,#{area}
 		,#{salary}
 		,#{work}
-		,#{mid}
+		,#{userid}
 		)  
 	</insert>
 
@@ -67,14 +67,14 @@
 			cr_area = #{area},
 			cr_salary = #{salary},
 			cr_work  = #{work}
-		WHERE mem_id = #{mid} 
+		WHERE mem_userid = #{userid} 
 		and cr_id = #{id}
 	</update>
 	
 	<!-- 글삭제 -->
 	<delete id="delete" flushCache="true">
 		DELETE FROM hr_career
-		WHERE mem_id = #{mid} 
+		WHERE mem_userid = #{userid} 
 		and cr_id = #{id}
 	</delete>
 

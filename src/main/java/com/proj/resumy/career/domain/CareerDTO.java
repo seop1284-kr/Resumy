@@ -21,7 +21,7 @@ public class CareerDTO {
 	private String area;				    // cr_crArea
 	private int salary;					// cr_crSalary
 	private String work;				    // cr_crWork
-	private int mid;					    // mem_id
+	private String userid;					    // mem_userid
 	
 	public CareerDTO() {
 		super();
@@ -29,7 +29,7 @@ public class CareerDTO {
 	}
 
 
-	public CareerDTO(int id, String company, LocalDateTime hiredate,LocalDateTime leavedate, String lvreason, String post, String dept, String area, int salary, String work, int mid) {
+	public CareerDTO(int id, String company, LocalDateTime hiredate,LocalDateTime leavedate, String lvreason, String post, String dept, String area, int salary, String work, String userid) {
 		super();
 		this.id = id;
 		this.company = company;
@@ -41,7 +41,7 @@ public class CareerDTO {
 		this.area = area;
 		this.salary = salary;
 		this.work = work;
-		this.mid = mid;
+		this.userid = userid;
 		System.out.println("IntroDTO(...) 객체 생성");
 	}
 }
