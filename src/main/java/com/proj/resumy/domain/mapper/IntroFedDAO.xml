@@ -18,7 +18,7 @@
 			fb_content DESC	
 	</select>
 	
-	<!-- 특정 id의 자소서 피드백 가져오기 -->
+	<!-- 특정 자소서 id의 자소서 피드백 가져오기 -->
 	<select id="selectById" resultType="com.proj.resumy.fed.domain.IntroFedDTO">
 		SELECT 
 			fb_id "id",
@@ -29,10 +29,21 @@
 		FROM 
 			intr_feedback 
 		WHERE
-			fb_id = #{id}
+			intr_id = #{iid}
 		ORDER BY 
-			fb_content DESC	
+			fb_regdate DESC	
 	</select>
+	
+	<!-- 자소서 피드백 댓글 추가 -->
+	<insert id="insertFed" flushCache="true"
+		parameterType="com.proj.resumy.fed.domain.IntroFedDTO"
+		useGeneratedKeys="true" keyProperty="id">
+		
+		INSERT INTO intr_feedback
+			(fb_userid, fb_content, intr_id)
+		VALUES
+			(#{userid}, #{content}, #{iid})
+	</insert>
 	
 	
 </mapper> 

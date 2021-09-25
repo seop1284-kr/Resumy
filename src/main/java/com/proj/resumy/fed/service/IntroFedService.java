@@ -110,6 +110,13 @@ public class IntroFedService {
 		return introResultList;
 	}
 	
+	// 피드백 작성
+	public int insertFed(IntroFedDTO fedDto) {
+		return introFedDao.insertFed(fedDto);
+	}
+	
+	
+	
 	
 
 

@@ -95,6 +95,15 @@
 	</c:choose>
 	<!-- 문의글 -->
 	
+	
+	<form name="frm" action="fedCommentOk" method="post">
+		<input type="hidden" name="iid" value="${introResult.intro.id }">
+		<input type="text" name="content" style="display: block; width:90vh"/>
+		<button type="submit">댓글 작성</button>
+	</form>
+	<!-- 댓글 달기 -->
+	
+	
 	<h5>댓글</h5>
 	<c:choose>
 		<c:when test="${empty introResult.fedList || fn:length(introResult.fedList) == 0 }">
@@ -108,15 +117,16 @@
 						<td>${fed.userid }</td>
 						<td>/ 답변날짜</td>
 						<td >${fed.regdate }</td>
-						<hr>
+						<br>
 					</tr>
 					<tr>
 						
-						<br>
+						
 						<td>내용</td>
 						<td >${fed.content }</td>
 					</tr>
 					<hr>
+					<br>
 				</c:forEach>
 				
 			</c:otherwise>
