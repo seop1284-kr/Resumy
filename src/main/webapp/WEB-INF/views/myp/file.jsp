@@ -104,26 +104,26 @@
 <div id="dlg_file" class="modal">
 	<form class="modal-content animate" id="frmFile" name="frmFile" method="post">
 		<div class="container">
-			<div>파일업로드</div>
+			
 			
 			<input type="hidden" name="fid" value="0"> <%-- 읽기, 삭제, 수정을 위해 필요 --%>
 			
-			<label for="file"><b>파일 업로드</b></label>
+			<label for="file">파일 업로드</label>
 			<input type="file" name="file" required>
-			
-			<label for="memo"><b>작성자</b></label>
-			<input type="text" placeholder="8글자 이내" name="memo">
-			
-			<div class="d01 btn_group_file">
-				<button type="button" class="btn exit">취소</button>
-				<button type="submit" class="btn success">작성</button>
+			<br>
+			<label for="memo">작성자</label>
+			<input type="text" placeholder="8글자 이내" name="memo">			
+			<br>
+			<div class="btn_group_file">
+				<button type="button" class="btn_cancel">취소</button>
+				<button type="submit" class="btn_upload">업로드</button>
 			</div>
 		</div>
 	</form>
 </div>
 
 
-    <footer class="fixed-bottom">
+    <footer>
         <div class="row">
             <div class="col-2">
                 <img src="/img/logo_ contrast.png">

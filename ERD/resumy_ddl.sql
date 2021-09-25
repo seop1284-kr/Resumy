@@ -71,7 +71,7 @@ CREATE TABLE `hr_file` (
 	`file_name`	varchar(50)	NOT NULL	COMMENT '첨부파일명',
 	`file_volume`	int	NOT NULL	COMMENT '파일용량',
 	`file_regdate`	datetime	NOT NULL	DEFAULT now()	COMMENT '등록일시',
-	`file_memo`	varchar(8)	NULL	COMMENT '메모',
+	`file_memo`	varchar(8)	NULL  DEFAULT ''	COMMENT '메모',
 	`mem_userid`	varchar(100)	NOT NULL,
 	FOREIGN KEY (mem_userid) REFERENCES hr_member(mem_userid) #ON DELETE CASCADE #참조하는 부모(mem_id)가 삭제되면 같이 삭제
 );

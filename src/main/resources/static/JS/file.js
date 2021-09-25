@@ -76,7 +76,7 @@ function updateList(items) {
 	});
 	
 // 모달 대화상자 취소 버튼 누르면
-	$(".modal .close").click(function(){
+	$(".modal .btn_group_file .btn_cancel").click(function(){
 		$(this).parents(".modal").hide();
 	});
 	
@@ -89,7 +89,10 @@ function updateList(items) {
 
 // 다운로드 버튼
 
-// 삭제 버튼
+// 삭제 버튼 누르면
+	$("#deleteBtn").click(function(){
+		chkDelete();
+	});
 
 
 
@@ -98,17 +101,57 @@ function updateList(items) {
 		
 		if(mode == "upload"){
 		$('#frmFile')[0].reset();  // form 내의 기존 내용 reset
-		$("#dlg_write .btn_group_header").hide();
+		//$("#dlg_write .btn_group_header").hide();
 		$("#dlg_file .btn_group_file").show();
-		$("#dlg_write .btn_group_view").hide();
-		$("#dlg_write .btn_group_update").hide();
+		//$("#dlg_write .btn_group_view").hide();
+		//$("#dlg_write .btn_group_update").hide();
 		
 		$("#dlg_file input[name='file']").attr("readonly", false);
 		$("#dlg_file input[name='file']").css("border", "1px solid #ccc");
 		$("#dlg_file input[name='memo']").attr("readonly", false);
 		$("#dlg_file input[name='memo']").css("border", "1px solid #ccc");
 	}
-	} // end setPopup()
+} // end setPopup()
 		
 
+// check 된 uid 의 게시글들만 삭제 하기
+function chkDelete(){
+	
+	var uids = [];  // check 된 uid 들을 담을 배열
+	$("#list tbody input[name=uid]").each(function(){
+		if($(this).is(":checked")){   // jQuery 에서 check 여부 확인 함수
+			uids.push(parseInt($(this).val()));  // uids 배열에 check 된 uid 값 추가
+		}
+	});
+	
+	//alert(uids);
+	
+	if(uids.length == 0){
+		alert("삭제할 글을 체크해주세요");
+	} else {
+		if(!confirm(uids.length + "개의 글을 삭제하시겠습니까?")) return false;
+		
+		var data = $("#frmList").serialize();
+		
+		// DELETE 방식
+		$.ajax({
+			url: ".", // URL : /board
+			type: "DELETE",
+			data : data,
+			cache : false,
+			success : function(data, status){
+				if(status == "success"){  // 200
+					if(data.status == "OK"){
+						alert("DELETE 성공 : " + data.count + "개")
+						loadPage(window.page);   // 현재 페이지 목록 리로딩
+					} else {
+						alert("DELETE 실패 " + data.message);
+						return false;
+					}
+				}
+			}
+		});
+	}
+	
+} // end chkDelete()
 

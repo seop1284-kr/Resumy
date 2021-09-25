@@ -24,3 +24,43 @@
 	
 	/*display: none;*/
 }
+
+.modal .modal-content {
+	background-color: #fefefe;
+	top: 85px;
+	width: 400px;
+	margin: 5% auto 15% auto;
+	border: 1px solid #888;
+	
+}
+
+.modal .modal-content .container {
+	padding-top: 40px; 
+	padding-bottom: 30px;
+	padding-left: 20px;  
+	padding-right: 20px;
+}
+
+.modal .modal-content .container input {
+	display: block;
+	width: 100%;
+	
+}
+
+	
+.btn_group_file {
+	width: 100%;
+}
+
+.btn_group_file .btn_cancel {
+	
+	text-align: left;
+	left: 0;
+}
+
+.btn_group_file .btn_upload {
+	
+	text-align: right;
+	right: 0;
+}
+	
