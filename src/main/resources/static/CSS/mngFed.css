@@ -1,0 +1,178 @@
+@charset "UTF-8";
+/* 기본버튼 */
+.btn {
+	border: none;
+	color: white;
+	padding: 14px 28px;
+	font-size: 16px;
+	cursor: pointer;
+}
+
+.success {background-color: #4CAF50;} /* Green */
+.success:hover {background-color: #46a049;}
+
+.info {background-color: #2196F3;} /* Blue */
+.info:hover {background: #0b7dda;}
+
+.warning {background-color: #ff9800;} /* Orange */
+.warning:hover {background: #e68a00;}
+
+.danger {background-color: #f44336;} /* Red */ 
+.danger:hover {background: #da190b;}
+
+.default {background-color: #e7e7e7; color: black;} /* Gray */ 
+.default:hover {background: #ddd;}
+
+/* 글 목록 */
+#list table {width: 100%;}
+#list table, #list th, #list td {
+	border: 1px solid black;
+	border-collapse: collapse;
+}
+
+#list td, #list th {
+	padding: 10px;
+}
+
+.clear {
+	clear: both;
+}
+
+.left {
+	float: left;
+}
+
+.right {
+	float: right;
+}
+
+#list .subject:hover { /* 글 제목 위에 커서 올라간 경우 */
+	text-decoration: underline;
+	color: orange;
+	cursor: pointer;
+}
+
+/* [페이징] */
+.center {
+	text-align: center;
+}
+
+ul.pagination{
+	list-style-type: none;
+}
+
+ul.pagination li{
+	display: inline-block;
+}
+
+ul.pagination a {
+	color: black;
+	float: left;
+	padding: 4px 8px;
+	text-decoration: none;
+	transition: background-color .3s;
+	margin: 0px;
+}
+
+ul.pagination a.active {
+	background-color: #4CAF50;
+	color: white;
+	border: 1px solid #4CAF50;
+}
+
+ul.pagination a:hover:not(.active) {background-color: #ddd;}
+
+/* 모달 팝업 */
+/* 참조: https://www.w3schools.com/howto/howto_css_login_form.asp */
+.modal {  /* 모달 전체 적용 */
+	background-color: rgba(0, 0, 0, 0.4);
+	position: fixed;
+	top: 0;
+	left: 0;
+	
+	width: 100%;
+	height: 100%;
+	
+	z-index: 1;
+	padding-top: 40px;
+	overflow: auto;
+	
+	display: none; /* 기본적으로 안보이기 */
+	
+}
+
+.modal .modal-content {
+	background-color: #fefefe;
+	width: 80%;   
+	margin: 5% auto 15% auto;
+	border: 1px solid #888;
+}
+
+.modal .container {
+	padding: 16px;
+	position: relative;  /* 아래 있는 요소들 absolute로 동작시키기 위해 */
+}
+
+.modal .close { /* 닫기(x) 버튼 */
+	font-size: 35px;
+	font-weight: bold;
+	color: #000;
+	position: absolute;
+	right: 25px;
+	top: 0px;
+}
+
+.modal .close:hover,
+.modal .close:focus {
+	color: red;
+	cursor: pointer;
+}
+
+.modal input[type=text]{
+	width: 100%;
+	border: 1px solid #ccc;
+	margin: 8px 0;
+	padding: 12px 20px;
+	display: inline-block;
+	box-sizing: border-box;
+}
+
+.modal textarea {
+	width: 100%;
+	border: 1px solid #ccc;
+}
+
+.modal .fullbtn {
+	width: 100%;
+	cursor: pointer;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
