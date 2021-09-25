@@ -30,7 +30,7 @@ function loadPage(page){
 				// response 가 application/json 이면 이미 parse된 결과가 data 에 담겨 있다.
 				
 				 if(updateList(data)){
-					// 업데이트된 list 에 view 동작 이벤트 가동. 글제목(subject) 를 클릭하면 '글읽기' 팝업 띄우기 위해
+					// 업데이트된 list 에 view 동작 이벤트 가동. 글제목(title)
 					addViewEvent();  
 				}
 			
@@ -56,10 +56,12 @@ function updateList(jsonObj){
 		var items = jsonObj.data;  // 배열
 		for(var i = 0; i < count; i++){
 			result += "<tr>\n";
-		
+			//<a href='fedView?id=${introResult.intro.id }'>
+			// result += "<td><a href='fedView?id=${introResult.intro.id }'">+ items[i].introDto.title + "</a></td>\n";
+
 			result += "<td><input type='checkbox' name='uid' value='" + items[i].fedDto.id + "'></td>\n";
 			result += "<td>" + items[i].introDto.id + "</td>\n";
-			result += "<td><span class='title' data-uid='" + items[i].introDto.id +"'>" + items[i].introDto.title + "</span></td>\n";
+			result += "<td> <a href='/fedView?id=" + items[i].introDto.id + "'>" + items[i].introDto.title + "</a></td>\n";
 			result += "<td>" + items[i].fedDto.content + "</td>\n";
 			result += "<td>" + items[i].fedDto.regdate + "</td>\n";
 
@@ -191,10 +193,10 @@ function chkDelete(){
 
 
 // 현재 글 목록 list 에 대해 이벤트 등록
-// - 제목(subject) 클릭하면 view 팝업 화면 뜰수 있게 하기
+// - 제목(title) 클릭하면 view 팝업 화면 뜰수 있게 하기
 function addViewEvent(){
 	
-	$("#list .subject").click(function(){
+	$("#list .title").click(function(){
 		// 제목을 클릭했는데,  그 uid 값을 어케 가져올까????
 		//alert($(this).text() + " : " + $(this).attr('data-uid'));
 		
