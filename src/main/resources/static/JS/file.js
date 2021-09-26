@@ -50,7 +50,7 @@ function updateList(items) {
 	
 	for (var i = 0; i < count; i++) {	
 		result += "<tr class='box' data-id=" + items[i].id + ">\n";
-		result += "<td><input type='checkbox' value='선택'>" + "</td>\n";
+		result += "<td><input type='checkbox' name='id' value='" + items[i].id + "'></td>\n";
 		result += "<td>" + items[i].name + "</td>\n";
 		result += "<td>" + items[i].volume + "</td>\n";
 		result += "<td>" + items[i].regdate + "</td>\n";
@@ -119,7 +119,7 @@ function chkWrite(){
 	
 	// 특정 form 의 name 달린 form element 들의 value 들을 string 으로 묶기
 	// ex) name=aaa&subject=bbb&content=ccc   <-- string 타입이다
-	var data = $("#frmFile").serialize();
+	var data = new FormData($("#frmFile")[0]);
 	//alert(data);
 	
 	$.ajax({
@@ -127,7 +127,9 @@ function chkWrite(){
 		type : "POST",
 		cache : false,
 		data : data,  // POST 로 ajax request 할 경우 data 에 parameter 넘기기
-		
+		// multipart를 위한 옵션
+     	processData: false,
+      	contentType: false,
 		success : function(data, status){
 			if(status == "success"){
 				loadPage();
@@ -143,25 +145,25 @@ function chkWrite(){
 // check 된 uid 의 게시글들만 삭제 하기
 function chkDelete(){
 	
-	var uids = [];  // check 된 uid 들을 담을 배열
-	$("#list tbody input[name=uid]").each(function(){
+	var ids = [];  // check 된 파일의 id 들을 담을 배열
+	$("#content td input[name=id]").each(function(){
 		if($(this).is(":checked")){   // jQuery 에서 check 여부 확인 함수
-			uids.push(parseInt($(this).val()));  // uids 배열에 check 된 uid 값 추가
+			ids.push(parseInt($(this).val()));  // ids 배열에 check 된 id 값 추가
 		}
 	});
 	
-	//alert(uids);
+	alert(ids);
 	
-	if(uids.length == 0){
+	if(ids.length == 0){
 		alert("삭제할 글을 체크해주세요");
 	} else {
-		if(!confirm(uids.length + "개의 글을 삭제하시겠습니까?")) return false;
+		if(!confirm(fids.length + "개의 체크한 파일을 삭제하시겠습니까?")) return false;
 		
-		var data = $("#frmList").serialize();
+		var data = $("#frmFile").serialize();
 		
 		// DELETE 방식
 		$.ajax({
-			url: ".", // URL : /board
+			url: "/fileAjax",
 			type: "DELETE",
 			data : data,
 			cache : false,

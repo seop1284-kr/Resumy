@@ -97,7 +97,7 @@
 
 <%-- 파일 업로드 모달 --%>
 <div id="dlg_file" class="modal">
-	<form class="modal-content animate" id="frmFile" name="frmFile" method="post">
+	<form class="modal-content animate" id="frmFile" name="frmFile" method="post" enctype="multipart/form-data">
 		<div class="container">
 			
 			
@@ -105,9 +105,7 @@
 			
 			<label for="file">파일 업로드</label>
 			<input type="file" name="file" required>
-			<br>
-			<input type="text" name="name">			
-			
+			<br>		
 			<label for="memo">MEMO</label>
 			<input type="text" placeholder="8글자 이내" name="memo">			
 			<br>

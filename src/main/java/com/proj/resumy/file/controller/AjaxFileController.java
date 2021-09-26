@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.proj.resumy.file.domain.FileDTO;
 import com.proj.resumy.file.service.AjaxFileService;
@@ -66,14 +67,14 @@ public class AjaxFileController {
 
 	// 특정 회원(mem_id)의 새파일 업로드
 	@PostMapping("")
-	public int write(String name, File file, String memo, Authentication authentication) {
+	public int write(MultipartFile file, String memo, Authentication authentication) {
 		int result = 0;
 		
 		// 로그인한 사람의 정보를 담은 객체
 		UserDetails userDetails = (UserDetails) authentication.getPrincipal();
 		FileDTO fileDTO = new FileDTO();
-		fileDTO.setName(name);
-		fileDTO.setVolume(2000);
+		fileDTO.setName(file.getOriginalFilename());
+		fileDTO.setVolume((int)file.getSize());
 		fileDTO.setMemo(memo);
 		fileDTO.setUserid(userDetails.getUsername());
 		result = ajaxFileService.insert(fileDTO);		
@@ -98,4 +99,6 @@ public class AjaxFileController {
 	// 복수개의 특정 파일(file_id)들 삭제
 	// TODO
 
+	
+	
 }
