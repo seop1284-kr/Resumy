@@ -126,8 +126,8 @@ class DataBatch {
 			for(int i = 0; i < num; i++) {
 				
 				pstmt.setString(1, String.format("company%02d", i));  				// 회사명
-				pstmt.setString(2, now.format(formatter));							// 재직일
-				pstmt.setString(3, now.format(formatter));		// 퇴사일 추가 해야함	// 퇴사일
+				pstmt.setString(2, String.format("start%02d", i));							// 재직일
+				pstmt.setString(3, String.format("end%02d", i));		// 퇴사일 추가 해야함	// 퇴사일
 				pstmt.setString(4, String.format("post%02d", i));					// 직급/직책
 				pstmt.setString(5, String.format("mem%02d", i));
 				cnt += pstmt.executeUpdate();

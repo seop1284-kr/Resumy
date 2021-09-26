@@ -16,7 +16,7 @@
 			b.cr_area         area,
 			b.cr_salary       salary,
 			b.cr_work         work,
-			a.mem_userid          userid
+			a.mem_userid      userid
 		FROM hr_member a
 		left join hr_career b
 		on a.mem_userid = b.mem_userid
@@ -26,7 +26,8 @@
 	</select>
 	
 	<!-- 글작성 -->
-	<insert id="insert" flushCache="true">
+		<insert id="insert" flushCache="true" parameterType="com.proj.resumy.career.domain.CareerDTO"
+		useGeneratedKeys="true" keyProperty="id">
 		INSERT INTO hr_career
 		(      
 		cr_company 

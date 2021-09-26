@@ -11,16 +11,16 @@ import lombok.Data;
 @Data
 public class CareerDTO {
 	
-	private int id;   					// cr_id
 	private String company;				// cr_company
-	private LocalDateTime hiredate;		// cr_crHiredate
-	private LocalDateTime leavedate;	    // cr_crLeavedate
+	private String hiredate;		// cr_crHiredate
+	private String leavedate;	    // cr_crLeavedate
 	private String lvreason;			    // cr_crLvreason
 	private String post;				    // cr_crcrPost
 	private String dept;				    // cr_crDept
 	private String area;				    // cr_crArea
 	private int salary;					// cr_crSalary
 	private String work;				    // cr_crWork
+	private int id;   					// cr_id
 	private String userid;					    // mem_userid
 	
 	public CareerDTO() {
@@ -29,9 +29,8 @@ public class CareerDTO {
 	}
 
 
-	public CareerDTO(int id, String company, LocalDateTime hiredate,LocalDateTime leavedate, String lvreason, String post, String dept, String area, int salary, String work, String userid) {
+	public CareerDTO(String company, String hiredate,String leavedate, String lvreason, String post, String dept, String area, int salary, String work, int id, String userid) {
 		super();
-		this.id = id;
 		this.company = company;
 		this.hiredate = hiredate;
 		this.leavedate = leavedate;
@@ -41,6 +40,7 @@ public class CareerDTO {
 		this.area = area;
 		this.salary = salary;
 		this.work = work;
+		this.id = id;
 		this.userid = userid;
 		System.out.println("IntroDTO(...) 객체 생성");
 	}

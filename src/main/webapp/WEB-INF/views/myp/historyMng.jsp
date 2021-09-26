@@ -297,7 +297,8 @@
 				<hr>
 				<%-- 경력정보 --%>
 				<div id="careerContent"></div>
-				
+				<div id="careerPuls"></div>
+				<button type="button" class="" id="btnCareerPuls">경력추가+</button>
 			</article>
 		</section>
 

@@ -33,8 +33,8 @@ CREATE TABLE `hr_authority` (
 	mem_auth varchar(50) NOT NULL,        -- 시큐리티의 authority
 	PRIMARY KEY (mem_userid, mem_auth)
 );
-
--- 경력사항 테이블
+-- 김민수
+-- 회원학력사항 테이블
 CREATE TABLE `hr_spec_info` (
 	`spec_id`	int	NOT NULL AUTO_INCREMENT PRIMARY KEY COMMENT '일련번호',
 	`spec_cat_cd`	varchar(10)	NOT NULL	COMMENT '01: 초등학교 02: 중학교 03: 고등학교 04: 대학교.대학원',
@@ -48,12 +48,12 @@ CREATE TABLE `hr_spec_info` (
 	FOREIGN KEY (mem_userid) REFERENCES hr_member(mem_userid) ON DELETE CASCADE
 );
 
--- 회원학력사항 테이블
+-- 경력사항 테이블
 CREATE TABLE `hr_career` (
 	`cr_id`	int	NOT NULL AUTO_INCREMENT	PRIMARY KEY COMMENT '일련번호',
 	`cr_company`	varchar(20)	NOT NULL	COMMENT '회사명',
-	`cr_hiredate`	datetime	NOT NULL	COMMENT '재직일',
-	`cr_leavedate`	datetime	NOT NULL	COMMENT '퇴사일',
+	`cr_hiredate`	varchar(8)	NOT NULL	COMMENT '재직일',
+	`cr_leavedate`	varchar(8)	NOT NULL	COMMENT '퇴사일',
 	`cr_lvreason`	varchar(20)	NULL	COMMENT '퇴사사유',
 	`cr_post`	varchar(10)	NOT NULL	COMMENT '직급/직책',
 	`cr_dept`	varchar(20)	NULL	COMMENT '근무부서',

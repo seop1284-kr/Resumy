@@ -93,6 +93,7 @@ public class AjaxCareerController {
 			String status = "FAIL";
 			
 			try {
+				System.out.println("$$ insert dto Userid : "+ dto.getUserid());
 				count = careerService.write(dto);
 				if(count == 0) {
 					message.append("[트랜잭션 실패 : 0 insert]");
@@ -149,7 +150,7 @@ public class AjaxCareerController {
 			String status = "FAIL";
 			
 			try {
-				
+				System.out.println("$$ delete dto Userid : "+ dto.getUserid());
 				if(dto != null) {
 					count = careerService.delete(dto);
 					status = "OK";
