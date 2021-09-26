@@ -49,7 +49,7 @@ function updateList(items) {
 		result += "<th>MEMO</th>\n";
 	
 	for (var i = 0; i < count; i++) {	
-		result += "<tr class='box' data-id=" + items[i].id + ">\n";
+		result += "<tr>\n";
 		result += "<td><input type='checkbox' name='id' value='" + items[i].id + "'></td>\n";
 		result += "<td>" + items[i].name + "</td>\n";
 		result += "<td>" + items[i].volume + "</td>\n";
@@ -152,15 +152,15 @@ function chkDelete(){
 		}
 	});
 	
-	alert(ids);
+	//alert(ids);
 	
 	if(ids.length == 0){
 		alert("삭제할 글을 체크해주세요");
 	} else {
-		if(!confirm(fids.length + "개의 체크한 파일을 삭제하시겠습니까?")) return false;
+		if(!confirm(ids.length + "개의 체크한 파일을 삭제하시겠습니까?")) return false;
 		
-		var data = $("#frmFile").serialize();
-		
+		var data = $("#fileList").serialize();
+		//alert(data);
 		// DELETE 방식
 		$.ajax({
 			url: "/fileAjax",
@@ -169,13 +169,8 @@ function chkDelete(){
 			cache : false,
 			success : function(data, status){
 				if(status == "success"){  // 200
-					if(data.status == "OK"){
-						alert("DELETE 성공 : " + data.count + "개")
-						loadPage(window.page);   // 현재 페이지 목록 리로딩
-					} else {
-						alert("DELETE 실패 " + data.message);
-						return false;
-					}
+					loadPage();   
+
 				}
 			}
 		});

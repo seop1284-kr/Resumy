@@ -22,7 +22,7 @@ public interface FileDAO {
 	public abstract int deleteById(int id);
 
 	// 복수개의 특정 파일(file_id)들 삭제
-	public abstract int deleteByIds(int id);
+	public abstract int deleteByIds(int[] id);
 
 	
 

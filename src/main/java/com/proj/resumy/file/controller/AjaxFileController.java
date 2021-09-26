@@ -17,6 +17,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.proj.resumy.file.domain.FileDTO;
 import com.proj.resumy.file.service.AjaxFileService;
+import com.proj.resumy.file.service.FileService;
 import com.proj.resumy.intro.domain.IntroDTO;
 
 // AjaxFileController (파일관리) 하병노
@@ -29,6 +30,13 @@ public class AjaxFileController {
 	@Autowired
 	public void setAjaxFileService(AjaxFileService ajaxFileService) {
 		this.ajaxFileService = ajaxFileService;
+	}
+	
+	private FileService fileService;
+
+	@Autowired
+	public void setFileService(FileService fileService) {
+		this.fileService = fileService;
 	}
 
 	public AjaxFileController() {
@@ -77,6 +85,8 @@ public class AjaxFileController {
 		fileDTO.setVolume((int)file.getSize());
 		fileDTO.setMemo(memo);
 		fileDTO.setUserid(userDetails.getUsername());
+		
+		fileService.fileUpload(file);
 		result = ajaxFileService.insert(fileDTO);		
 		
 		return result;
@@ -84,11 +94,11 @@ public class AjaxFileController {
 
 	// 특정 파일(file_id) 삭제
 	@DeleteMapping("")
-	public String delete(int id) {
+	public String delete(int[] id) {
 		String result = "fail";
 		int count = 0;
-		count = ajaxFileService.deleteById(id);
-		
+		count = ajaxFileService.deleteByIds(id);
+		System.out.println(id);
 		if (count == 1) {
 			result = "success";
 		}

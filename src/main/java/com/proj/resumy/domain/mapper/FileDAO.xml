@@ -4,7 +4,8 @@
 <mapper namespace="com.proj.resumy.file.domain.FileDAO">
 
 	<select id="selectByUserID" resultType="com.proj.resumy.file.domain.FileDTO">
-		SELECT 
+		SELECT
+			file_id id,
 			file_name name, 
 			file_volume volume, 
 			file_regdate regdate, 
@@ -29,5 +30,15 @@
 		DELETE FROM hr_file 
 		WHERE file_id = #{id};
 	</delete>
+	
+ 	 <delete id="deleteByIds" flushCache="true"
+ 	 	parameterType="java.util.ArrayList">
+ 	 	DELETE FROM hr_file
+ 	 	WHERE file_id in (
+ 	 		<foreach collection="array" item="item" index="index" separator=",">
+ 	 			${item}
+ 	 		</foreach>
+ 	 	) 	 
+ 	 </delete>
 	
 </mapper>

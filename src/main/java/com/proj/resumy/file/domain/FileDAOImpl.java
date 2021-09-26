@@ -43,7 +43,7 @@ public class FileDAOImpl implements FileDAO {
 	
 	// 특정 file_id 파일들 삭제
 	@Override
-	public int deleteByIds(int id) {
+	public int deleteByIds(int[] id) {
 		return mapper.deleteByIds(id);
 	}
 

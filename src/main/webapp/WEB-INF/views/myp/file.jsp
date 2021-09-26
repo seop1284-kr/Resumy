@@ -88,9 +88,9 @@
         		<button type="button" id="deleteBtn" class="deleteBtn">삭제</button>
         	</div>
         	
-        	
+        	<form id="fileList">
         	<div id="content"><!-- 데이터베이스 출력 --></div>    
-            
+            </form>
             
         </section>
     </div>
