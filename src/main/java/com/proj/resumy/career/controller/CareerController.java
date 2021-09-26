@@ -14,7 +14,7 @@ public class CareerController {
 	}
 	
 	
-	@RequestMapping("/{mid}")
+	@RequestMapping("/{userid}")
 	public String resume(Model model) {
 		return "/myp/historyMng";
 	}

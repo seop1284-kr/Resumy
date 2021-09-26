@@ -22,8 +22,8 @@ public class CareerService {
 		System.out.println("CareerService() 생성");	
 	}
 
-	public List<CareerDTO> view(int mid) {
-		return dao.select(mid);
+	public List<CareerDTO> view(String userid) {
+		return dao.select(userid);
 	}
 	
 	public int write(CareerDTO dto) {

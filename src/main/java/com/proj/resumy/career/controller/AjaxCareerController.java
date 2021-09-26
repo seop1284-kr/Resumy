@@ -27,14 +27,14 @@ public class AjaxCareerController {
 	Authentication authentication;
 	
 	// 자소서 목록 (list)
-	@GetMapping("/list/{mid}")
-	public List<CareerDTO> view(@PathVariable int mid) {
+	@GetMapping("/list/{userid}")
+	public List<CareerDTO> view(@PathVariable String userid) {
 		
 		// 로그인한 사람의 정보를 담은 객체
 		//UserDetails userDetails = (UserDetails) authentication.getPrincipal();
 		//System.out.println("" + userDetails.get);
 		List<CareerDTO> list = new ArrayList<>();
-		list = careerService.view(mid);
+		list = careerService.view(userid);
 		System.out.println("list : " +  list.get(0));
 		
 
