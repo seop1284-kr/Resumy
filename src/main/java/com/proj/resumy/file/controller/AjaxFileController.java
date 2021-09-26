@@ -1,5 +1,6 @@
 package com.proj.resumy.file.controller;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -65,17 +66,17 @@ public class AjaxFileController {
 
 	// 특정 회원(mem_id)의 새파일 업로드
 	@PostMapping("")
-	public int write(String name, int volume, String memo, Authentication authentication) {
+	public int write(String name, File file, String memo, Authentication authentication) {
 		int result = 0;
 		
 		// 로그인한 사람의 정보를 담은 객체
 		UserDetails userDetails = (UserDetails) authentication.getPrincipal();
-		FileDTO file = new FileDTO();
-		file.setName(name);
-		file.setVolume(volume);
-		file.setMemo(memo);
-		file.setUserid(userDetails.getUsername());
-		result = ajaxFileService.insert(file);		
+		FileDTO fileDTO = new FileDTO();
+		fileDTO.setName(name);
+		fileDTO.setVolume(2000);
+		fileDTO.setMemo(memo);
+		fileDTO.setUserid(userDetails.getUsername());
+		result = ajaxFileService.insert(fileDTO);		
 		
 		return result;
 	}

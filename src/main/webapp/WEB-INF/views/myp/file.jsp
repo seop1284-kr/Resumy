@@ -80,11 +80,6 @@
         
         	<h4 id="title" style="font-weight: bold">나의 파일 관리</h4>
         	
-        	<form id="frmFile" name="frmFile" method="post" >
-				
-				
-        	
-        	</form>
         	
         	<%-- 우상단 버튼들 --%>
         	<div>
@@ -111,7 +106,9 @@
 			<label for="file">파일 업로드</label>
 			<input type="file" name="file" required>
 			<br>
-			<label for="memo">작성자</label>
+			<input type="text" name="name">			
+			
+			<label for="memo">MEMO</label>
 			<input type="text" placeholder="8글자 이내" name="memo">			
 			<br>
 			<div class="btn_group_file">

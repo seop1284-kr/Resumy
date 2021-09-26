@@ -16,7 +16,7 @@ function loadPage() {
 				//alert("목록 가져오기 성공");
 				// response 가 application/json 이면 이미 parse된 결과가 data 에 담겨 있다.
 				if (updateList(data)) {
-					addViewEvent();
+					//addViewEvent();
 				} else {
 					alert("목록 가져오기 0개")
 				}
@@ -81,7 +81,7 @@ function updateList(items) {
 	});
 	
 // 모달 대화상자 업로드 버튼 누르면	
-	$("#frmWrite").submit(function(){
+	$("#frmFile").submit(function(){
 		$(this).parents(".modal").hide();
 		
 		return chkWrite();  // 새글 등록 submit
@@ -112,6 +112,32 @@ function updateList(items) {
 		$("#dlg_file input[name='memo']").css("border", "1px solid #ccc");
 	}
 } // end setPopup()
+		
+
+// 새글 등록 처리
+function chkWrite(){
+	
+	// 특정 form 의 name 달린 form element 들의 value 들을 string 으로 묶기
+	// ex) name=aaa&subject=bbb&content=ccc   <-- string 타입이다
+	var data = $("#frmFile").serialize();
+	//alert(data);
+	
+	$.ajax({
+		url : "/fileAjax",  // url : /myp/file
+		type : "POST",
+		cache : false,
+		data : data,  // POST 로 ajax request 할 경우 data 에 parameter 넘기기
+		
+		success : function(data, status){
+			if(status == "success"){
+				loadPage();
+			}
+		}
+	});
+	
+	return false;
+	
+} // end chkWrite()		
 		
 
 // check 된 uid 의 게시글들만 삭제 하기
