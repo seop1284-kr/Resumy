@@ -21,15 +21,15 @@ public class MypageController {
 		return "myp/resume";
 	}
 	
-//	// 파일 관리 페이지
-//	@RequestMapping("/file")
-//	public String file(Model model) {
-//		return "myp/file";
-//	}
-//	
-//	// 이력 관리 페이지
-//	@RequestMapping("/career")
-//	public String career(Model model) {
-//		return "myp/career";
-//	}
+	// 파일 관리 페이지
+	@RequestMapping("/file")
+	public String file(Model model) {
+		return "myp/file";
+	}
+	
+	// 이력 관리 페이지
+	@RequestMapping("/historyMng")
+	public String career(Model model) {
+		return "myp/historyMng";
+	}
 }
