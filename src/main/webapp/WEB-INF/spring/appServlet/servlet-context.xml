@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans:bean id="multipartResolver" 
+			class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+	<beans:property name="maxUploadSize" value="5242880" />
+	<beans:property name="maxInMemorySize" value="100000" />
+	<beans:property name="defaultEncoding" value="utf-8" />
+
+</beans:bean>
+

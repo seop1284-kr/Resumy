@@ -67,9 +67,9 @@
             <h4><b>마이페이지</b></h4>
             <hr>
             <ul>
-                <li><a href="resume.jsp">자기소개서 관리</a></li>
+                <li><a href="/myp/resume">자기소개서 관리</a></li>
                 <li class="active"><a href="file.jsp">파일 관리</a></li>
-                <li><a href="historyMng.jsp">이력 관리</a></li>
+                <li><a href="/myp/historyMng">이력 관리</a></li>
             </ul>
         </aside>
         <!-- ./aside -->
