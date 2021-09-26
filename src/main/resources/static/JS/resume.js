@@ -50,7 +50,6 @@ $(document).ready(function(){
 		makePage(curResumeId, "view");
 	});
 	
-	
 });
 
 // 새글 등록 처리
