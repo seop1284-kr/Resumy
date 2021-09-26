@@ -81,12 +81,9 @@ public class AjaxFileController {
 		// 로그인한 사람의 정보를 담은 객체
 		UserDetails userDetails = (UserDetails) authentication.getPrincipal();
 		FileDTO fileDTO = new FileDTO();
-		fileDTO.setName(file.getOriginalFilename());
-		fileDTO.setVolume((int)file.getSize());
-		fileDTO.setMemo(memo);
-		fileDTO.setUserid(userDetails.getUsername());
 		
-		fileService.fileUpload(file);
+		
+		fileDTO = fileService.fileUpload(file, userDetails, memo);
 		result = ajaxFileService.insert(fileDTO);		
 		
 		return result;
