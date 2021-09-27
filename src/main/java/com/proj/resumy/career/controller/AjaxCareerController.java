@@ -85,10 +85,12 @@ public class AjaxCareerController {
 	
 	// 글 작성
 		@PostMapping("")  // URI: /myp/history
-		public CareerResult writeOk(CareerDTO dto) {
+		public CareerResult writeOk(CareerDTO dto, Authentication authentication) {
 			int count = 0;
-					
-			// message 
+			// 로그인한 사람의 정보를 담은 객체
+			UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+			dto.setUserid(userDetails.getUsername());
+			// message
 			StringBuffer message = new StringBuffer();
 			String status = "FAIL";
 			
@@ -114,8 +116,11 @@ public class AjaxCareerController {
 		
 		// 글 수정
 		@PutMapping("")  // URI: /myp/history
-		public CareerResult updateOk(CareerDTO dto) {
+		public CareerResult updateOk(CareerDTO dto, Authentication authentication) {
 			int count = 0;
+			// 로그인한 사람의 정보를 담은 객체
+			UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+			dto.setUserid(userDetails.getUsername());
 				
 			// message 
 			StringBuffer message = new StringBuffer();

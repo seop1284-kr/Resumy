@@ -180,13 +180,13 @@
 				<div id="content2"></div>
 				<table width="100%">
 					<tr>
-						<td width="25%"><button type="button" class="">초등학교
+						<td width="25%"><button type="button" class="" id="eleSchool">초등학교
 								졸업</button></td>
-						<td width="25%"><button type="button" class="">중학교
+						<td width="25%"><button type="button" class="" id="midSchool">중학교
 								졸업</button></td>
-						<td width="25%"><button type="button" class="">고등학교
+						<td width="25%"><button type="button" class="" id="higSchool">고등학교
 								졸업</button></td>
-						<td width="25%"><button type="button" class="">대학/대학원
+						<td width="25%"><button type="button" class="" id="university">대학/대학원
 								이상 졸업</button></td>
 					</tr>
 				</table>

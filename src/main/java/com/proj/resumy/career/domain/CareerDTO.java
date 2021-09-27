@@ -17,7 +17,7 @@ public class CareerDTO {
 	private String lvreason;			    // cr_crLvreason
 	private String post;				    // cr_crcrPost
 	private String dept;				    // cr_crDept
-	private String area;				    // cr_crArea
+	private String companyArea;				    // cr_crArea
 	private int salary;					// cr_crSalary
 	private String work;				    // cr_crWork
 	private int id;   					// cr_id
@@ -29,7 +29,7 @@ public class CareerDTO {
 	}
 
 
-	public CareerDTO(String company, String hiredate,String leavedate, String lvreason, String post, String dept, String area, int salary, String work, int id, String userid) {
+	public CareerDTO(String company, String hiredate,String leavedate, String lvreason, String post, String dept, String companyArea, int salary, String work, int id, String userid) {
 		super();
 		this.company = company;
 		this.hiredate = hiredate;
@@ -37,7 +37,7 @@ public class CareerDTO {
 		this.lvreason = lvreason;
 		this.post = post;
 		this.dept = dept;
-		this.area = area;
+		this.companyArea = companyArea;
 		this.salary = salary;
 		this.work = work;
 		this.id = id;

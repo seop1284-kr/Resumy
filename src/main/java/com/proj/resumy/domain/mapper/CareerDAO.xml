@@ -13,7 +13,7 @@
 			b.cr_lvreason     lvreason,
 			b.cr_post         post,
 			b.cr_dept         dept,
-			b.cr_area         area,
+			b.cr_area         companyArea,
 			b.cr_salary       salary,
 			b.cr_work         work,
 			a.mem_userid      userid
@@ -49,7 +49,7 @@
 		,#{lvreason}
 		,#{post}
 		,#{dept}
-		,#{area}
+		,#{companyArea}
 		,#{salary}
 		,#{work}
 		,#{userid}
@@ -57,15 +57,16 @@
 	</insert>
 
 	<!-- 글수정 -->
-	<update id="update" flushCache="true">
+	<update id="update" flushCache="true" parameterType="com.proj.resumy.career.domain.CareerDTO"
+		useGeneratedKeys="true" keyProperty="id">
 		UPDATE hr_career 
 		SET cr_company = #{company},
 			cr_hiredate = #{hiredate},
 			cr_leavedate = #{leavedate},
-			cr_lvreason = ##{lvreason},
+			cr_lvreason = #{lvreason},
 			cr_post = #{post},
 			cr_dept = #{dept},
-			cr_area = #{area},
+			cr_area = #{companyArea},
 			cr_salary = #{salary},
 			cr_work  = #{work}
 		WHERE mem_userid = #{userid} 

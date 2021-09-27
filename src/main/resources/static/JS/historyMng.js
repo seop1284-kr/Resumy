@@ -9,8 +9,8 @@ $(document).ready(function(){
 		$("#careerContent").show();
 		$("#btnCareer").css("background-color", "skyblue");
 		$("#btnNewcomer").css("background-color", "#EFEFEF");
-		$('#careerContent').append(careerContent);
 		$("#careerPlus").remove();
+		makeCareerContentPuls(0);
 	});//경력 버튼 end
 	
 	//신입 버튼 클릭시 백그라운 색상 변경
@@ -61,11 +61,12 @@ function selectCareerList(){
 						$("input[name='lvreason']").eq(i).val(data[i].lvreason);
 						$("input[name='post']").eq(i).val(data[i].post);
 						$("input[name='dept']").eq(i).val(data[i].dept);
-						$("input[name='companyArea']").eq(i).val(data[i].area);
+						$("input[name='companyArea']").eq(i).val(data[i].companyArea);
 						$("input[name='salary']").eq(i).val(data[i].salary);
 						$("input[name='work']").eq(i).val(data[i].work);
 						$("input[name='userid']").eq(i).val(data[i].userid);
 						$("input[name='id']").eq(i).val(data[i].id);
+						
 					}
 				}	
 			} else {
@@ -75,12 +76,12 @@ function selectCareerList(){
 	}); 		
 	
 } // end selectCareerList()
-
+//경력사항 추가
 function writeCareer(formId){	
 	
 	var serialData = $("#"+formId).serialize();
 	
-	console.log("!!! serialData : "+serialData);
+	//console.log("!!! serialData : "+serialData);
 	
 	$.ajax({
 		url : "/careerAjax",  // url : /board
@@ -90,13 +91,31 @@ function writeCareer(formId){
 		async: false,
 		success : function(data, status){
 			if(status == "success"){
-				alert("insert 성공 " + data );
+				alert("insert 성공 ");
 				loadPage();
 			}
 		}
 	});	
 	
-}
+}//writeCareer() end
+//경력사항 수정
+function updateCareer(formId){
+		var serialData = $("#"+formId).serialize();
+			//alert(formId);
+	$.ajax({
+		url : "/careerAjax",  // url : /board
+		type : "PUT",
+		cache : false,
+		data : serialData,  // POST 로 ajax request 할 경우 data 에 parameter 넘기기
+		async: false,
+		success : function(data, status){
+			if(status == "success"){
+				alert("update 성공 ");
+				loadPage();
+			}
+		}
+	});
+}//updateCareer end()
 
 //경력사항 삭제
 function deleteCareer(formId){	
@@ -119,7 +138,7 @@ function deleteCareer(formId){
 		}
 	});	
 	
-}
+}//deleteCareer end
 
 
 //경력사항 보유시 해당 페이지 들어오면 출력
@@ -128,7 +147,8 @@ function makeCareerContent(data){
 	for(var i = 0; i < data.length; i++){				
 		var careerContent ="<form name='career"+ i +"' id='career"+ i +"' action='' method='post'>";
 		careerContent +='<table width="100%"><tr><td width="10%">회사명</td><td width="50%"><input type="text" name="company" value="" placeholder="회사명을 입력하세요"></td>';
-		careerContent +='<td width="30%"><span><button type="button" class="">수정</button> ';
+		careerContent +='<td width="30%">';
+		careerContent +="<span><button type='button' class=''onclick='updateCareer(\"career"+i+"\")'>수정</button>";
 		careerContent +="<button type='button' name='btnCareerDelete' onclick='deleteCareer(\"career"+i+"\")' >삭제</button></span></td></tr>";
 		careerContent +='<tr><td width="10%">재직기간</td><td width="70%"><input type="text" name="hiredate" value="">  ~  <input type="text" name="leavedate" value=""></td><td width="10%"></td></tr>';
 		careerContent +='<tr><td width="10%">퇴사사유</td><td width="60%"><input type="text" name="lvreason" value="" placeholder="퇴사사유 입력하세요"></td><td width="20%"></td></tr>';
@@ -163,7 +183,7 @@ function makeCareerContentPuls(careerIdNo){
 		careerContent +='<tr><td width="10%">담당업무</td><td width="60%"><input type="text" name="work" value=""></td><td width="20%"></td></tr><tr><td colspan="3"><hr></td></tr></tr>';
 		/* hidden setting */
 		//careerContent +='<input type="hidden" id="id" name="id" value="">';
-		careerContent +='<input type="hidden"  name="userid" value="CareerDTO.getUserId">';
+		careerContent +='<input type="hidden"  name="userid" value= CareerDTO.getUserId>';
 		careerContent +='</table></form>';
 		
 //		careerContent +='<tr><td width="10%"></td><td width="60%"></td><td width="20%"><button type="button" class="">경력추가+</button></td></tr>';
