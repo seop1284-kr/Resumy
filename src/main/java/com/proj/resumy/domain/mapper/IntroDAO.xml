@@ -41,6 +41,37 @@
 			mody_dtm DESC	
 	</select>
 	
+	<!-- 공개로 설정된 자소서 select (페이징) -->
+	<select id="selectResumeInPublicFromRow"
+		resultType="com.proj.resumy.intro.domain.IntroDTO">
+		<![CDATA[    
+		SELECT
+			intr_id "id", 
+			intr_title title, 
+			intr_regdate regdate, 
+			intr_public pub, 
+			intr_finish fin, 
+			mody_dtm modydate,
+			mem_userid userid
+		FROM 
+			hr_introduction
+		WHERE
+			intr_public = true
+		ORDER BY 
+			mody_dtm DESC
+		LIMIT #{from}, #{pageRows}
+		]]>
+	</select>
+	
+	<!-- SELECT 쿼리문인데, 단일값 int 값 받고 싶으면 어쩌나?
+ 	resultType="java.lang.Integer" 혹은 resultType="int" 
+	-->
+	<select id="countAllResumeInPublic" resultType="int">
+		SELECT count(*) FROM hr_introduction
+		WHERE
+			intr_public = true
+	</select>
+	
 	<!-- 특정 자소서 id의 자소서 select -->
 	<select id="selectResumeById" resultType="com.proj.resumy.intro.domain.IntroDTO">
 		SELECT 
@@ -91,6 +122,38 @@
 		ORDER BY
 			mody_dtm DESC
 	</select>
+	
+	<!-- public으로 된 여러 특정 자소서 id의 자소서 select(페이징) -->
+	<select id="selectResumesByIdFromRow" resultType="com.proj.resumy.intro.domain.IntroDTO">
+		SELECT 
+			intr_id "id", 
+			intr_title title, 
+			intr_regdate regdate, 
+			intr_public pub, 
+			intr_finish fin, 
+			mody_dtm modydate,
+			mem_userid userid
+		FROM hr_introduction 
+		
+		<if test="iidSet!=null and iidSet.size!=0">
+		WHERE
+			intr_id IN
+			<foreach collection="iidSet" item="item" index="index" open="(" close=")" separator=",">
+	 			${item}
+	 		</foreach>
+	 		AND intr_public = true
+	 	</if>
+	 	<if test="iidSet==null or iidSet.size==0">
+	 	WHERE intr_id = -1
+ 		</if>
+		
+		ORDER BY
+			mody_dtm DESC
+		LIMIT #{from}, #{pageRows}
+	</select>
+	
+	
+	
 	
 	<!-- 특정 userid의 여러 특정 자소서 id의 자소서 select -->
 	<select id="selectMyResumesById" resultType="com.proj.resumy.intro.domain.IntroDTO">

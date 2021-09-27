@@ -30,11 +30,11 @@
 		<form id="frmList" name="frmList">
 			<table>
 				<thead>
-					<th>#</th>
 					<th>게시물 번호</th>
 					<th>자소서 제목</th>
 					<th>피드백 내용</th>
 					<th>피드백 업로드</th>
+					<th>#</th>
 				</thead>
 				<tbody>
 				</tbody>

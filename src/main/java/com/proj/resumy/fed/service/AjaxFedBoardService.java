@@ -1,7 +1,6 @@
 package com.proj.resumy.fed.service;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 
@@ -15,23 +14,15 @@ import com.proj.resumy.intro.domain.IntroConDTO;
 import com.proj.resumy.intro.domain.IntroDAO;
 import com.proj.resumy.intro.domain.IntroDTO;
 import com.proj.resumy.intro.domain.IntroResult;
+import com.proj.resumy.mng.fed.domain.MngFedResult;
 
-//Service 단.
-//JSP MVC model2 의 Command 역할 비슷
-//  Controller -> Commmand -> DAO
-
-//- Transaction 담당
-//Spring
-//@Controller -> @Service -> DAO -> JdbcTemplate
-
-//IntroFedService (자소서 피드백 페이지) 김진섭
 @Service
-public class IntroFedService {
+public class AjaxFedBoardService {
 	
 	IntroFedDAO introFedDao;
 	IntroDAO introDao;
 	IntroConDAO introConDao;
-
+	
 	@Autowired
 	public void setIntroFedDao(IntroFedDAO introFedDao) {
 		this.introFedDao = introFedDao;
@@ -47,14 +38,10 @@ public class IntroFedService {
 		this.introConDao = introConDao;
 	}
 	
-	public IntroFedService() {
-		System.out.println("IntroFedService() 생성");
-	}
 	
-	// public으로 설정된 자소서 가져오기(자소서, 내용)
-	public List<IntroResult> selectResumeInPublic() {
+	public List<IntroResult> list(int from, int pageRows) {
 		List<IntroResult> introResultList = new ArrayList<IntroResult>();
-		List<IntroDTO> introList = introDao.selectResumeInPublic();
+		List<IntroDTO> introList = introDao.selectResumeInPublicFromRow(from, pageRows);
 		
 		for (int i = 0; i < introList.size(); i++) {
 			IntroResult introResult = new IntroResult();
@@ -66,27 +53,10 @@ public class IntroFedService {
 		return introResultList;
 	}
 	
-	// 자소서 내용과 피드백 내용 가져오기(자소서, 내용, 피드백)
-	public IntroResult selectFed(int id) {
-		IntroResult introResult = new IntroResult();
-		IntroDTO intro = introDao.selectResumeById(id);
-		
-		introResult.setIntro(intro);
-		introResult.setConList(introConDao.selectConByIid(intro.getId()));
-		introResult.setFedList(introFedDao.selectById(intro.getId()));
-
-		return introResult;
-	}
-	
-	// public으로 된 키워드로 검색한 자소서 가져오기
-	public List<IntroResult> selectResumeByKeyword(String keyword) {
+	public List<IntroResult> listWithKeyword(int from, int pageRows, String keyword) {
 		List<IntroResult> introResultList = new ArrayList<IntroResult>();
 		List<IntroDTO> resumes = introDao.selectResumeByKeyword(keyword);
 		List<IntroConDTO> conList = introConDao.selectConByKeyword(keyword);
-		
-		if (conList == null) {
-			return null;
-		}
 		
 		HashSet<Integer> iidSet = new HashSet<Integer>();
 		for (int i = 0; i < conList.size(); i++) {
@@ -96,8 +66,9 @@ public class IntroFedService {
 			iidSet.add(resumes.get(i).getId());
 		}
 		
-		// selectResumesById : public으로 된 여러 특정 자소서 id의 자소서 select
-		List<IntroDTO> introList = introDao.selectResumesById(iidSet);
+		
+		// selectResumesByIdFromRow : public으로 된 여러 특정 자소서 id의 자소서 select(페이징)
+		List<IntroDTO> introList = introDao.selectResumesByIdFromRow(from, pageRows, iidSet);					
 		for (int i = 0; i < introList.size(); i++) {
 			IntroResult introResult = new IntroResult();
 			introResult.setIntro(introList.get(i));
@@ -105,20 +76,26 @@ public class IntroFedService {
 			introResultList.add(introResult);
 			
 		}	
-		
-		
 		return introResultList;
 	}
 	
-	// 피드백 작성
-	public int insertFed(IntroFedDTO fedDto) {
-		return introFedDao.insertFed(fedDto);
+	public int count() {
+		return introDao.countAllResumeInPublic();
 	}
 	
-	
-	
-	
-
-
+	public int countWithKeyword(String keyword) {
+		List<IntroDTO> resumes = introDao.selectResumeByKeyword(keyword);
+		List<IntroConDTO> conList = introConDao.selectConByKeyword(keyword);
+		
+		HashSet<Integer> iidSet = new HashSet<Integer>();
+		for (int i = 0; i < conList.size(); i++) {
+			iidSet.add(conList.get(i).getIid());
+		}
+		for (int i = 0; i < resumes.size(); i++) {
+			iidSet.add(resumes.get(i).getId());
+		}
+		
+		return iidSet.size();
+	}
 	
 }
