@@ -10,6 +10,7 @@ import lombok.Data;
 public class FileDTO {
 	private int id; // file_id
 	private String name; // file_name
+	private String cname; // file_cname
 	private int volume; // file_volume
 	private LocalDateTime regdate; // file_regdate
 	private String memo; // file_memo
@@ -24,10 +25,11 @@ public class FileDTO {
 
 
 
-	public FileDTO(int id, String name, int volume, LocalDateTime regdate, String memo, String userid) {
+	public FileDTO(int id, String name, String cname, int volume, LocalDateTime regdate, String memo, String userid) {
 		super();
 		this.id = id;
 		this.name = name;
+		this.name = cname;
 		this.volume = volume;
 		this.regdate = regdate;
 		this.memo = memo;

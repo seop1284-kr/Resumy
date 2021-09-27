@@ -1,14 +1,20 @@
 package com.proj.resumy.file.controller;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.Resource;
+import org.springframework.core.io.ResourceLoader;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,7 +24,6 @@ import org.springframework.web.multipart.MultipartFile;
 import com.proj.resumy.file.domain.FileDTO;
 import com.proj.resumy.file.service.AjaxFileService;
 import com.proj.resumy.file.service.FileService;
-import com.proj.resumy.intro.domain.IntroDTO;
 
 // AjaxFileController (파일관리) 하병노
 
@@ -78,6 +83,8 @@ public class AjaxFileController {
 	public int write(MultipartFile file, String memo, Authentication authentication) {
 		int result = 0;
 		
+
+		
 		// 로그인한 사람의 정보를 담은 객체
 		UserDetails userDetails = (UserDetails) authentication.getPrincipal();
 		FileDTO fileDTO = new FileDTO();
@@ -88,6 +95,32 @@ public class AjaxFileController {
 		
 		return result;
 	}
+	
+	// 특정 파일(file_id) 다운로드?
+//	@Autowired
+//    private ResourceLoader resourceLoader;
+// 
+//    @GetMapping("/files/{filename}")
+//    public ResponseEntity<Resource> fileDownload(@PathVariable String filename) throws IOException {
+//        Resource resource = resourceLoader.getResource("classpath:" + filename);
+//        File file = resource.getFile();
+// 
+//        Tika tika = new Tika();
+//        String mediaType = tika.detect(file);
+// 
+//        return ResponseEntity.ok()
+//                .header(HttpHeaders.CONTENT_DISPOSITION,
+//                        "attachment;filename=\"" + resource.getFilename() + "\"")
+//                .header(HttpHeaders.CONTENT_TYPE, mediaType)
+//                .header(HttpHeaders.CONTENT_LENGTH, file.length() + "")
+//                .body(resource);
+//    }
+	
+	
+	
+ 
+
+	
 
 	// 특정 파일(file_id) 삭제
 	@DeleteMapping("")

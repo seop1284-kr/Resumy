@@ -42,7 +42,7 @@ function updateList(items) {
 	}
 
 	result += "<table class='fileList'>";
-		result += "<th><input type='checkbox' value='선택'></th>\n";
+		result += "<th><input type='checkbox' name='id' value='selectAll' onclick='selectAll(this)'/></th>\n";
 		result += "<th>첨부파일명</th>\n";
 		result += "<th>용량</th>\n";
 		result += "<th>등록일</th>\n";
@@ -52,7 +52,7 @@ function updateList(items) {
 		result += "<tr>\n";
 		result += "<td><input type='checkbox' name='id' value='" + items[i].id + "'></td>\n";
 		result += "<td>" + items[i].name + "</td>\n";
-		result += "<td>" + items[i].volume + "</td>\n";
+		result += "<td>" + (items[i].volume/(1024*1024)).toFixed(2)+ " mb" + "</td>\n";
 		result += "<td>" + items[i].regdate + "</td>\n";
 		result += "<td>" + items[i].memo + "</td>\n";
 
@@ -66,6 +66,14 @@ function updateList(items) {
 
 } // end updateList()
 
+function selectAll(selectAll)  {
+  const checkboxes 
+       = document.getElementsByName('id');
+  
+  checkboxes.forEach((checkbox) => {
+    checkbox.checked = selectAll.checked;
+  })
+}
 
 
 
@@ -114,7 +122,7 @@ function updateList(items) {
 } // end setPopup()
 		
 
-// 새글 등록 처리
+// 파일 업로드 처리
 function chkWrite(){
 	
 	// 특정 form 의 name 달린 form element 들의 value 들을 string 으로 묶기

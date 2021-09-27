@@ -25,6 +25,7 @@ public class FileService {
 		// File.seperator 는 OS종속적이다.
 		// Spring에서 제공하는 cleanPath()를 통해서 ../ 내부 점들에 대해서 사용을 억제한다
 
+		
 		// 사용자 파일 저장 디렉토리
 		Path userDir = Paths
 				.get(uploadDir + File.separator + userDetails.getUsername());
@@ -52,6 +53,7 @@ public class FileService {
 			// copy의 옵션은 기존에 존재하면 REPLACE(대체한다), 오버라이딩 한다
 			Files.copy(multipartFile.getInputStream(), copyOfLocation);
 			fileDTO.setName(originalName);
+			fileDTO.setCname(fileSystemName);
 			fileDTO.setVolume((int) multipartFile.getSize());
 			fileDTO.setMemo(memo);
 			fileDTO.setUserid(userDetails.getUsername());

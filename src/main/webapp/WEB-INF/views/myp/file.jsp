@@ -97,7 +97,7 @@
 
 <%-- 파일 업로드 모달 --%>
 <div id="dlg_file" class="modal">
-	<form class="modal-content animate" id="frmFile" name="frmFile" method="post" enctype="multipart/form-data">
+	<form action="file.jsp" class="modal-content animate" id="frmFile" name="frmFile" method="post" enctype="Multipart/form-data">
 		<div class="container">
 			
 			
@@ -116,6 +116,9 @@
 		</div>
 	</form>
 </div>
+
+
+
 
 
     <footer>

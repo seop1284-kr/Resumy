@@ -31,7 +31,7 @@ class DataBatch {
 	public static final String SQL_RESUMY_CAREER_INSERT = "insert into `hr_career` (cr_company, cr_hiredate, cr_leavedate, cr_post,mem_userid) values (?, ?, ?, ?, ?)";
 	public static final String SQL_RESUMY_SPEC_INSERT = "insert into `hr_spec_info` (spec_cat_cd, spec_name, spec_area, mody_dtm, reg_dtm, mem_userid) values (?, ?, ?, ?, ?, ?)";
 	
-	public static final String SQL_RESUMY_FILE_INSERT = "insert into `hr_file` (file_name, file_volume, mem_userid) values (?, ?, ?)";
+	public static final String SQL_RESUMY_FILE_INSERT = "insert into `hr_file` (file_name, file_cname, file_volume, mem_userid) values (?, ?, ?, ?)";
 	public static final String SQL_RESUMY_INTRO_INSERT = "insert into `hr_introduction` (intr_title, mem_userid) values (?, ?)";
 	public static final String SQL_RESUMY_INTRO_C_INSERT = "insert into `hr_introduction_c` (intr_question, intr_content, intr_id) values (?, ?, ?)";
 	public static final String SQL_RESUMY_FED_INSERT = "insert into `intr_feedback` (fb_userid, fb_content, intr_id) values (?, ?, ?)";
@@ -194,8 +194,9 @@ class DataBatch {
 			int num = 10;
 			for(int i = 0; i < num; i++) {
 				pstmt.setString(1, String.format("file%02d", i));  
-				pstmt.setInt(2, i+500);
-				pstmt.setString(3, "mem01");
+				pstmt.setString(2, String.format("changed%02d", i));  
+				pstmt.setInt(3, i+500);
+				pstmt.setString(4, "mem01");
 				cnt += pstmt.executeUpdate();
 			}
 			System.out.println(cnt + "개 의 파일 데이터가 INSERT 되었습니다");

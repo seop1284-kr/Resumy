@@ -68,7 +68,8 @@ CREATE TABLE `hr_career` (
 -- 파일 테이블
 CREATE TABLE `hr_file` (
 	`file_id`	int	NOT NULL AUTO_INCREMENT	PRIMARY KEY COMMENT '일련번호',
-	`file_name`	varchar(50)	NOT NULL	COMMENT '첨부파일명',
+	`file_name`	varchar(255)	NOT NULL	COMMENT '첨부파일명(원본이름)',
+	`file_cname`	varchar(255)	NOT NULL	COMMENT '바뀐 파일 이름',
 	`file_volume`	int	NOT NULL	COMMENT '파일용량',
 	`file_regdate`	datetime	NOT NULL	DEFAULT now()	COMMENT '등록일시',
 	`file_memo`	varchar(8)	NULL  DEFAULT ''	COMMENT '메모',

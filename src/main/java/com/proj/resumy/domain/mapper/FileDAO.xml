@@ -6,7 +6,7 @@
 	<select id="selectByUserID" resultType="com.proj.resumy.file.domain.FileDTO">
 		SELECT
 			file_id id,
-			file_name name, 
+			file_name name,
 			file_volume volume, 
 			file_regdate regdate, 
 			file_memo memo 
@@ -19,9 +19,9 @@
 	
 	<insert id="insert">
 		INSERT INTO hr_file 
-			(file_name, file_volume, file_memo, mem_userid)
+			(file_name, file_cname, file_volume, file_memo, mem_userid)
 		VALUES 
-			(#{name}, #{volume}, #{memo}, #{userid});
+			(#{name}, #{cname}, #{volume}, #{memo}, #{userid});
 	</insert>
 	
 	
