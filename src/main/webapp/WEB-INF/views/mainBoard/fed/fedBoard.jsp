@@ -8,7 +8,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
     <title>고객센터 - RESUMY</title>
+   
     <link href="/img/fibicon.png" rel="shortcut icon" type="image/x-icon">
     <link href="/assets/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="/css/common.css" rel="stylesheet">
@@ -23,6 +25,14 @@
     <!-- font-family: 'Gowun Dodum', sans-serif; -->
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap" rel="stylesheet">
     <!-- font-family: 'Roboto Condensed', sans-serif; -->
+    
+    <!-- 스타일, js 라이브러리 -->
+	<link rel="stylesheet" type="text/css" href="/CSS/mngFed.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<script src="https://kit.fontawesome.com/bb29575d31.js"></script>
+	<script src="/JS/fedBoard.js"></script>
+    
+    
     <style>
         .bd-placeholder-img {
             font-size: 1.125rem;
@@ -59,13 +69,37 @@
     </header>
     <!-- ./navbar -->
     
-    <form name="frm" action="fedSearch" method="get">
-		<input type="text" name="keyword" style=" width:50vh"/>
-		<button type="submit">검색</button>
+    
+    <!-- 검색 -->
+    <form id="frmKeyword" name="frmKeyword">
+		<input type="text" id="keyword" name="keyword" style=" width:50vh"/>
+		<button type="button" id="searchBtn">검색</button>
 	</form>
-	<!-- 검색 -->
+	
+	<%-- 글 목록 --%>
+	<div id="list">
+		<%-- header 헤더 --%>
+		<div class="d01">
+			<div class="left" id="pageinfo"></div>
+			<div class="right" id="pageRows"></div>
+		</div>
+		<div class="clear"></div>
+		<%-- 목록 --%>
+		<form id="frmList" name="frmList">
+			<table>
+				<thead>
+					<th>자소서 제목</th>
+					<th>내용</th>
+					<th>공개 날짜</th>
+				</thead>
+				<tbody>
+				</tbody>
+			</table>
+		</form>
+    </div>
     
     
+    <!--
     <table>
 		<c:choose>
 			<c:when test="${empty list || fn:length(list) == 0 }">
@@ -87,5 +121,15 @@
 			</c:otherwise>
 		</c:choose>
 	</table>
+	-->
+	
+	
+	</div>
+	<div class="clear"></div>
+	
+	<%-- [페이징] --%>
+	<div class="center">
+		<ul class="pagination" id="pagination"></ul>
+	</div>
 </body>
 </html>

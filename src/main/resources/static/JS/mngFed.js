@@ -59,11 +59,11 @@ function updateList(jsonObj){
 			//<a href='fedView?id=${introResult.intro.id }'>
 			// result += "<td><a href='fedView?id=${introResult.intro.id }'">+ items[i].introDto.title + "</a></td>\n";
 
-			result += "<td><input type='checkbox' name='uid' value='" + items[i].fedDto.id + "'></td>\n";
 			result += "<td>" + items[i].introDto.id + "</td>\n";
 			result += "<td> <a href='/fedView?id=" + items[i].introDto.id + "'>" + items[i].introDto.title + "</a></td>\n";
 			result += "<td>" + items[i].fedDto.content + "</td>\n";
 			result += "<td>" + items[i].fedDto.regdate + "</td>\n";
+			result += "<td><input type='checkbox' name='uid' value='" + items[i].fedDto.id + "'></td>\n";
 
 			result += "</tr>\n";
 		}

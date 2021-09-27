@@ -68,6 +68,24 @@ public class IntroDAOImpl implements IntroDAO {
 	}
 
 
+	@Override
+	public List<IntroDTO> selectResumeInPublicFromRow(int from, int pageRows) {
+		return mapper.selectResumeInPublicFromRow(from, pageRows);
+	}
+
+
+	@Override
+	public int countAllResumeInPublic() {
+		return mapper.countAllResumeInPublic();
+	}
+
+
+	@Override
+	public List<IntroDTO> selectResumesByIdFromRow(int from, int pageRows, HashSet<Integer> iidSet) {
+		return mapper.selectResumesByIdFromRow(from, pageRows, iidSet);
+	}
+
+
 	
 
 

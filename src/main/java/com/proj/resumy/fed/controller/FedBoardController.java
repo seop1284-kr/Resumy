@@ -49,11 +49,11 @@ public class FedBoardController {
 	}
 	
 	// 검색된 자소서 피드백 게시판
-	@GetMapping("/fedSearch") 
-	public String search(String keyword, Model model) {
-		model.addAttribute("list", introFedService.selectResumeByKeyword(keyword));
-		return "mainBoard/fed/fedSearch"; // 문서 명
-	}
+//	@GetMapping("/fedSearch") 
+//	public String search(String keyword, Model model) {
+//		model.addAttribute("list", introFedService.selectResumeByKeyword(keyword));
+//		return "mainBoard/fed/fedSearch"; // 문서 명
+//	}
 	
 	// 피드백 댓글 작성
 	@PostMapping("/fedCommentOk")
