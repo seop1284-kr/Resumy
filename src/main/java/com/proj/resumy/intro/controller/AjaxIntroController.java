@@ -77,14 +77,12 @@ public class AjaxIntroController {
 	}
 	
 	// 자소서 작성
-	// 자소서 수정(삭제 후 새로 저장)(수정 구현 귀찮)
 	@PostMapping("")
 	public int write(
 			@RequestParam(value = "pub", defaultValue = "false") boolean pub, 
 			@RequestParam(value = "fin", defaultValue = "false")boolean fin, 
 			String title, String[] question, String[] content, Authentication authentication) {
 		int iid = 0;
-		System.out.println(pub + " / " + fin);
 		// 로그인한 사람의 정보를 담은 객체
 		UserDetails userDetails = (UserDetails) authentication.getPrincipal();
 				
@@ -98,6 +96,24 @@ public class AjaxIntroController {
 		iid = ajaxIntroService.writeResume(resume, question, content);
 
 		return iid;
+	}
+	// 자소서 수정
+	@PutMapping("")
+	public int update(
+			@RequestParam(value = "pub", defaultValue = "false") boolean pub, 
+			@RequestParam(value = "fin", defaultValue = "false")boolean fin, 
+			String title, int id, String[] question, String[] content) {
+		int iid = 0;
+		
+		IntroDTO resume = new IntroDTO();
+		resume.setId(id);
+		resume.setTitle(title);
+		resume.setPub(pub);
+		resume.setFin(fin);
+		iid = ajaxIntroService.update(resume, question, content);
+		
+		return iid;
+		
 	}
 	
 	// 특정 userid의 키워드로 검색한 자소서 가져오기

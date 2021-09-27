@@ -36,6 +36,35 @@
 		WHERE intr_content like CONCAT('%',#{keyword},'%') || intr_question like CONCAT('%',#{keyword},'%')
 	</select>
 	
+	<!-- 자소서 내용 수정 -->
+	<update id="updateConById" flushCache="true"
+		parameterType="com.proj.resumy.intro.domain.IntroConDTO"
+		useGeneratedKeys="true" keyProperty="id">
+		
+		UPDATE hr_introduction_c
+		SET 
+			intr_question = #{question}, 
+			intr_content = #{content},
+			intr_id = #{iid}
+		WHERE intr_c_id = #{id}	
+	</update>
+	
+	<!-- 자소서 내용 키워드 검색 -->
+	<select id="selectConById" resultType="com.proj.resumy.intro.domain.IntroConDTO">
+		SELECT 
+			intr_c_id "id", 
+			intr_question question,
+			intr_content content,
+			intr_id iid
+		FROM hr_introduction_c
+		WHERE intr_c_id = #{id}	
+	</select>
+	
+	
+	<!-- 특정 iid 자소서 내용 삭제 -->
+	<delete id="deleteConById" flushCache="true">
+		DELETE FROM hr_introduction_c WHERE intr_id = #{iid}
+	</delete>
 	
 </mapper> 
 

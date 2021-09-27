@@ -218,14 +218,15 @@
 	
 	<!-- 자소서 수정 -->
 	<update id="updateResumeById" flushCache="true"
-		parameterType="com.proj.resumy.intro.domain.IntroDTO">
+		parameterType="com.proj.resumy.intro.domain.IntroDTO"
+		useGeneratedKeys="true" keyProperty="id">
 		
 		UPDATE hr_introduction
 		SET 
 			intr_title = #{title}, 
 			intr_public = #{pub},
 			intr_finish = #{fin},
-			mody_dtm = #{modydtm}
+			mody_dtm = NOW()
 		WHERE intr_id = #{id}
 				
 	</update>

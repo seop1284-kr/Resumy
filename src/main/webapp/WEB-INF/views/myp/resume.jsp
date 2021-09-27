@@ -97,6 +97,7 @@
 	        <form id="frmWrite" name="frmWrite" method="post" target="iframe1">
 	        	<%-- submit 후 이동 막는 방안 --%>
 	       		<iframe id="iframe1" name="iframe1" style="display:none"></iframe>
+				<input type="hidden" name="id">
 				
 				
 				<div id="crud_form_box">

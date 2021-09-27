@@ -44,8 +44,7 @@ $(document).ready(function(){
 		if (curResumeId == -1) {
 			writeResume();  // 새글 등록 submit
 		} else {
-			deleteResume();	// 글 지우고
-			writeResume();  // 새글 등록 submit
+			updateResume();  // 글 수정 submit
 		}
 		makePage(curResumeId, "view");
 	});
@@ -72,7 +71,31 @@ function writeResume(){
 		}
 	});
 	
-} // end chkWrite()
+} // end writeResume()
+
+// 글 수정 처리
+function updateResume(){
+	
+	// 특정 form 의 name 달린 form element 들의 value 들을 string 으로 묶기
+	// ex) name=aaa&subject=bbb&content=ccc   <-- string 타입이다
+	var serialData = $("#frmWrite").serialize();
+	alert(serialData);
+	$.ajax({
+		url : "/resumeAjax",  // url : /board
+		type : "PUT",
+		cache : false,
+		data : serialData,  // POST 로 ajax request 할 경우 data 에 parameter 넘기기
+		async: false,
+		success : function(data, status){
+			if(status == "success"){
+				//alert("INSERT 성공 " + data);
+				curResumeId = data;
+			}
+		}
+	});
+	
+} // end updateResume()
+
 
 
 function deleteResume() {
@@ -163,7 +186,7 @@ function updateList(items){
 		row += "<tr class='box' data-id=" + items[i].id + ">\n";
 		row += "<td>" + items[i].id + "</td>\n";
 		row += "<td>" + items[i].title + "</td>\n";
-		row += "<td>" + items[i].regdate + "</td>\n";
+		row += "<td>" + items[i].modydate + "</td>\n";
 		row += "</tr>\n";
 		if (items[i].fin) {
 			$("#fin").append(row);
@@ -313,9 +336,10 @@ function setData(data) {
 	var count = conList.length;
 	
 
-	$("#frmWrite input[name='title']").val(intro.title)
+	$("#frmWrite input[name='title']").val(intro.title);
+	$("#frmWrite input[name='id']").val(intro.id);
 		
-	$("#frmWrite input[name='question']").eq(0).val(conList[0].question)
+	$("#frmWrite input[name='question']").eq(0).val(conList[0].question);
 	$("#frmWrite textarea[name='content']").eq(0).val(conList[0].content);
 
 	
@@ -325,7 +349,7 @@ function setData(data) {
 
 	for (var i = 1; i < count; i++){
 		makeContentForm();
-		$("#frmWrite input[name='question']").eq(i).val(conList[i].question)
+		$("#frmWrite input[name='question']").eq(i).val(conList[i].question);
 		$("#frmWrite textarea[name='content']").eq(i).val(conList[i].content);
 
 	}

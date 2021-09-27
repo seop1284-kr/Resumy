@@ -12,4 +12,10 @@ public interface IntroConDAO {
 	
 	// 키워드로 자소서 내용 검색
 	public abstract List<IntroConDTO> selectConByKeyword(String keyword);
+
+	// 특정 id 자소서 내용 수정
+	public abstract int updateConById(IntroConDTO dto);
+	
+	//  특정 iid 자소서 내용 삭제
+	public abstract int deleteConById(int iid);
 }

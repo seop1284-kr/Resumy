@@ -57,10 +57,6 @@ public class AjaxIntroService {
 		return introDao.deleteResumeById(id);
 	}
 	
-	// 특정 id 자소서 삭제
-	public int updateResumeById(IntroDTO introDto) {
-		return introDao.updateResumeById(introDto);
-	}
 	
 	// 특정 iid 자소서 내용 가져오기
 	public List<IntroConDTO> selectConByIid(int iid) {
@@ -114,14 +110,40 @@ public class AjaxIntroService {
 	}
 	
 	
+	public int update(IntroDTO introDto, String[] question, String[] content) {		
+		introDao.updateResumeById(introDto);
+		// 질문은 삭제 후 다시 생성
+		introConDao.deleteConById(introDto.getId());
+		
+		// 첫 질문을 채우지 않으면 데이터가 넘어오지 않음(이유 모름)
+		if (question.length == 0) {
+			IntroConDTO conDto = new IntroConDTO();
+			conDto.setQuestion("");
+			conDto.setContent("");
+			conDto.setIid(introDto.getId());
+			introConDao.insertCon(conDto);
+		}
+
+		for (int i = 0; i < question.length; i++) {
+			
+			IntroConDTO conDto = new IntroConDTO();
+			conDto.setQuestion(question[i]);
+			conDto.setContent(content[i]);
+			conDto.setIid(introDto.getId());
+			introConDao.insertCon(conDto);
+		}
+		
+		return introDto.getId();
+	}
+	
+	
+	
 //
 //	public List<IntroDTO> selectByUid(int uid) {
 //		return dao.selectByUid(uid);
 //	}
 //
-//	public int update(IntroDTO dto) {
-//		return dao.update(dto);
-//	}
+
 //
 //	public int deleteByUid(int uid) {
 //		return dao.deleteByUid(uid);
