@@ -1,12 +1,12 @@
 package com.proj.resumy.qna.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.proj.resumy.domain.MemberDAO;
-import com.proj.resumy.domain.MemberDTO;
 import com.proj.resumy.qna.domain.QnaADTO;
 import com.proj.resumy.qna.domain.QnaDAO;
 import com.proj.resumy.qna.domain.QnaQDTO;
@@ -36,18 +36,28 @@ public class QnaService {
 	}
 
 	public QnaService() {
-		System.out.println("QnaService() 생성");
-
+		;
 	}
 
-	// 고객센터 페이지 목록 출력 SELECT
-	public List<QnaQDTO> list() {
-		return dao.select();
+	// 고객센터 테이블 목록 출력 SELECT
+	public List<QnaQDTO> listQnaQ() {
+		return dao.selectQnaQ();
+	}
+	
+	// 고객센터 관리 테이블 목록 출력 SELECT
+	public List<QnaADTO> listQnaA() {
+		return dao.selectQnaA();
 	}
 	
 	// 문의하기 글 작성 <-- DTO
-	public int write(QnaQDTO dto) {
-		return dao.insert(dto);
+	public int insertQnaQ(QnaQDTO dto) {
+		return dao.insertQnaQ(dto);
+	}
+	
+	// 답변 작성 <-- DTO
+	// (controller 의 /mng/qna/updateOk.do 에 코드 위치)
+	public int insertQnaA(QnaADTO dto) {
+		return dao.insertQnaA(dto);
 	}
 
 	// 특정 id 문의 내용 읽기
@@ -61,8 +71,18 @@ public class QnaService {
 	}
 	
 	// 특정 id 문의 글 수정
-	public int update(QnaQDTO dto) {
-		return dao.update(dto);
+	public int updateQnaQ(QnaQDTO dto) {
+		return dao.updateQnaQ(dto);
+	}
+	
+	// 특정 id 문의 답변 수정
+	public int updateQnaA(QnaADTO dto) {
+		return dao.updateQnaA(dto);
+	}
+
+	// 특정 q_id 게시물의 답변 상태 수정
+	public boolean updateReplyState(QnaQDTO dto) {
+		return dao.updateReplyState(dto);
 	}
 
 	// 특정 id 문의 글 삭제
@@ -74,10 +94,9 @@ public class QnaService {
 	public int deleteByQid(int id) {
 		return dao.deleteByQid(id);
 	}
-
-	// 특정 userid 를 이용해서 회원정보 가져오기
+	
+	// 특정 userid 의 작성자 이름 뽑기
 	public String findNameByUserId(String userid) {
 		return memberDao.findNameByUserId(userid);
 	}
-
 }

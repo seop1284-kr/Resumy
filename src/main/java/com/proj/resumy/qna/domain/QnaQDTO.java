@@ -18,6 +18,11 @@ public class QnaQDTO {
 	private String content;			// q_content
 	private LocalDateTime regdate;	// q_regdate
 	private String userid;			// mem_userid
+	private boolean replyState; 	// q_replyState
+	
+	public QnaQDTO() {
+		;
+	}
 	
 	public String getRegdate() {
 		return this.regdate.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));

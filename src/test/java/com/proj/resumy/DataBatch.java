@@ -37,12 +37,12 @@ class DataBatch {
 	public static final String SQL_RESUMY_FED_INSERT = "insert into `intr_feedback` (fb_userid, fb_content, intr_id) values (?, ?, ?)";
 	public static final String SQL_RESUMY_QNAQ_INSERT = "insert into `hr_qna_q` (q_subject, q_content, mem_userid) values (?, ?, ?)";
 	public static final String SQL_RESUMY_QNAA_INSERT = "insert into `hr_qna_a` (q_id, a_reply) values (?, ?)";
+	public static final String SQL_RESUMY_QNAQ_UPDATE = "UPDATE `hr_qna_q` SET `q_replyState` = true WHERE `q_id` = ?";
 	
 	public static final String[] SHCOOL = { "초등학교", "중학교", "고등학교", "대학교.대학권"};
 	public static final String[] SUBJECTS = { "사이트 개선 문의합니다", "이용 문의합니다", "문제있습니다", "안녕하십니까", "회사 정보 보기 불편합니다" };
 	public static final String[] CONTENTS = { "사이트 이용에 문제가 있는 것 같습니다. 개선해주세요.", "내용이 문제가 있습니다", "수업 진행에 있어 동그라미가 많습니다", "부침개는 동그랗지만 포카리는 맛있습니다" };
-	public static final String[] REPLYS = { "문의 감사드립니다. 빠른 시일 내에 해결하겠습니다", "문의 감사드립니다. 언제나 이용 부탁드립니다", "기각합니다", "" };
-	
+	public static final String[] REPLYS = { "문의 감사드립니다. 빠른 시일 내에 해결하겠습니다", "문의 감사드립니다. 언제나 이용 부탁드립니다", "기각합니다" };
 	
 	@Order(1)
 	@Test
@@ -340,12 +340,39 @@ class DataBatch {
 			
 			int num = 10;
 			Random rand = new Random();
-			for(int i = 0; i < num; i++) {
-				pstmt.setInt(1, i + 1);
+			for(int i = 1; i < num; i = i + 2) {
+				pstmt.setInt(1, i);
 				pstmt.setString(2, REPLYS[rand.nextInt(REPLYS.length)]);  
 				cnt += pstmt.executeUpdate();
 			}
 			System.out.println(cnt + "개 의 고객센터 답글 데이터가 INSERT 되었습니다");
+			
+		} catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(pstmt != null) pstmt.close();
+				if(conn != null) conn.close();
+			} catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
+		// 고객센터 테이블 (노수빈) : 답변 상태 업데이트
+		cnt = 0;
+		try {
+			Class.forName(DRIVER);
+			conn = DriverManager.getConnection(URL, USERID, USERPW);
+			
+			// 테스트용 dummy 데이터 만들기
+			pstmt = conn.prepareStatement(SQL_RESUMY_QNAQ_UPDATE);
+			
+			int num = 10;
+			for(int i = 1; i < num; i = i + 2) {
+				pstmt.setInt(1, i);
+				cnt += pstmt.executeUpdate();
+			}
+			System.out.println(cnt + "개 의 고객센터 데이터가 UPDATE 되었습니다");
 			
 		} catch(Exception e) {
 			e.printStackTrace();

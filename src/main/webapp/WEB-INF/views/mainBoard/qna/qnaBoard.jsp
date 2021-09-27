@@ -51,13 +51,15 @@
                 <ul>
                     <li><a href="companyBoard.do">기업정보</a></li>
                     <li><a href="fedboard">자소서 게시판</a></li>
-                    <li><a href="qnaBoard.do" class="active">고객센터</a></li>
+                    <li><a href="/main/qna/board.do" class="active">고객센터</a></li>
                 </ul>
                 <button class="login_btn">로그인</button>
             </div>
         </nav>
     </header>
     <!-- ./navbar -->
+    
+    <div>현재 <span style="color:orange;">${fn:length(list) }건</span>의 게시물이 있습니다</div>
     
     <table>
 		<c:choose>
@@ -67,8 +69,18 @@
 				<c:forEach var="dto" items="${list }" varStatus="status">
 					<tr>
 						<td>${dto.id }</td>
-						<td><a href="qnaView.do?id=${dto.id }">${dto.subject }</a></td>
-						<td>답변</td>
+						<td><a href="view.do?id=${dto.id }">${dto.subject }</a></td>
+						<td>
+							<c:choose>
+								<c:when test="${dto.replyState eq false }">
+								</c:when>
+								<c:otherwise>
+									<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chat-left-fill" viewBox="0 0 16 16">
+									  <path d="M2 0a2 2 0 0 0-2 2v12.793a.5.5 0 0 0 .854.353l2.853-2.853A1 1 0 0 1 4.414 12H14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
+									</svg>1
+								</c:otherwise>
+							</c:choose>
+						</td>
 						<td>${listName[status.index] }</td>
 						<td>${dto.regdate }</td>
 					</tr>
@@ -76,5 +88,7 @@
 			</c:otherwise>
 		</c:choose>
 	</table>
+	
+	<button type="button" onclick="location.href='write.do'">문의하기</button>
 </body>
 </html>

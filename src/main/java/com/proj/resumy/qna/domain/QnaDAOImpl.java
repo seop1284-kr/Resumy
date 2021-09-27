@@ -1,5 +1,6 @@
 package com.proj.resumy.qna.domain;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -13,18 +14,28 @@ public class QnaDAOImpl implements QnaDAO {
 	
 	@Autowired
 	public QnaDAOImpl(SqlSession sqlSession) {
-		System.out.println("QnaDAOImpl() 생성");
 		mapper = sqlSession.getMapper(QnaDAO.class);
 	}
 	
 	@Override
-	public List<QnaQDTO> select() {
-		return mapper.select();
+	public List<QnaQDTO> selectQnaQ() {
+		return mapper.selectQnaQ();
+	}
+	
+	@Override
+	public List<QnaADTO> selectQnaA() {
+		return mapper.selectQnaA();
 	}
 
 	@Override
-	public int insert(QnaQDTO dto) {
-		return mapper.insert(dto);
+	public int insertQnaQ(QnaQDTO dto) {
+		return mapper.insertQnaQ(dto);
+	}
+
+	// (controller 의 /mng/qna/updateOk.do 에 코드 위치)
+	@Override
+	public int insertQnaA(QnaADTO dto) {
+		return mapper.insertQnaA(dto);
 	}
 
 	@Override
@@ -38,8 +49,18 @@ public class QnaDAOImpl implements QnaDAO {
 	}
 
 	@Override
-	public int update(QnaQDTO dto) {
-		return mapper.update(dto);
+	public int updateQnaQ(QnaQDTO dto) {
+		return mapper.updateQnaQ(dto);
+	}
+	
+	@Override
+	public int updateQnaA(QnaADTO dto) {
+		return mapper.updateQnaA(dto);
+	}
+	
+	@Override
+	public boolean updateReplyState(QnaQDTO dto) {
+		return mapper.updateReplyState(dto);
 	}
 
 	@Override
@@ -51,5 +72,4 @@ public class QnaDAOImpl implements QnaDAO {
 	public int deleteByQid(int uid) {
 		return mapper.deleteByQid(uid);
 	}
-
 }

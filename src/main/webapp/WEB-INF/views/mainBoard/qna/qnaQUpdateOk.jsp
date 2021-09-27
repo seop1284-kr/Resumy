@@ -12,7 +12,7 @@
 	<c:otherwise>
 		<script>
 			alert("수정 성공");
-			location.href = "qnaView.do?id=${param.id}"; <%-- 수정 성공하면 view 로 이동하여 제대로 수정되었는지 보여주는게 좋다--%>
+			location.href = "view.do?id=${param.id}"; <%-- 수정 성공하면 view 로 이동하여 제대로 수정되었는지 보여주는게 좋다--%>
 		</script>
 	</c:otherwise>
 </c:choose>

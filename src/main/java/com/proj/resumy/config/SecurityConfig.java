@@ -30,7 +30,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 			// 인증에대한 세팅
 		
 			// ↓ /qnaView.do 로 들어오는 요청은 인증이 필요.
-			.antMatchers("/qnaView.do").authenticated()
+			.antMatchers("/main/qna/view.do").authenticated()
+			
+			// ↓ /qnaWrtie.do 로 들어오는 요청은 인증이 필요.
+			.antMatchers("/main/qna/write.do").authenticated()
 			
 			// ↓ /fedView 로 들어오는 요청은 인증이 필요.
 			.antMatchers("/fedView").authenticated()

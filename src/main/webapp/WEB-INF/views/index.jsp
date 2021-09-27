@@ -51,7 +51,7 @@
                 <ul>
                     <li><a href="companyBoard.do">기업정보</a></li>
                     <li><a href="fedBoard">자소서 게시판</a></li>
-                    <li><a href="qnaBoard.do">고객센터</a></li>
+                    <li><a href="/main/qna/board.do">고객센터</a></li>
                 </ul>
                 <button class="login_btn">로그인</button>
             </div>

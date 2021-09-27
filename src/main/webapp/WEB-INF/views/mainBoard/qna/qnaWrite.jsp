@@ -1,13 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>    
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>	
 
 <!DOCTYPE html>
-<html lang="ko">
+<html lang='ko'>
+
 <head>
-<meta charset="UTF-8">
-<title>고객센터 문의글 읽기 - RESUMY</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>고객센터 문의글 작성 - RESUMY</title>
     <link href="/img/fibicon.png" rel="shortcut icon" type="image/x-icon">
     <link href="/assets/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="/css/common.css" rel="stylesheet">
@@ -58,48 +60,11 @@
     </header>
     <!-- ./navbar -->
     
-	<c:choose>
-		<c:when test="${empty qdto }">
-		</c:when>
-		<c:otherwise>
-			<table>
-				<tr>
-					<td colspan="4">${qdto.subject }</td>
-				</tr>
-				<tr>
-					<td>작성일</td>
-					<td>${qdto.regdate }</td>
-					<td>작성자</td>
-					<td>${userName }</td>
-				</tr>
-			</table>
-			
-			<div>${qdto.content }</div>
-		</c:otherwise>
-	</c:choose>
-	<!-- 문의글 -->
-	
-	<c:choose>
-		<c:when test="${empty adto }">
-		</c:when>
-		<c:otherwise>
-			<h2>답변</h2>
-			<table>
-				<tr>
-					<td>아이콘</td>
-					<td>admin</td>
-					<td>${adto.regdate }</td>
-				</tr>
-				<tr>
-					<td colspan="3">${adto.reply }</td>
-				</tr>
-			</table>
-		</c:otherwise>
-	</c:choose>
-	<!-- 답변 -->
-	
-	<button onClick="location.href='deleteOk.do?id=${qdto.id }'">삭제</button>
-	<button onClick="location.href='update.do?id=${qdto.id }'">수정</button>
-	<button onClick="location.href='board.do'">목록</button>
+    <form name="frm" id="frm" action="writeOk.do"  method="post">
+	    <input type="text" name="subject" placeholder="제목을 입력해주세요.">
+	    <input type="text" name="content" placeholder="내용을 입력해주세요.">
+	    <button type="submit" id="btn_submit">등록하기</button>
+    </form>
+
 </body>
 </html>

@@ -65,7 +65,7 @@
 		                <ul>
 		                    <li><a href="companyBoard.do">기업정보</a></li>
 		                    <li><a href="fedboard">자소서 게시판</a></li>
-		                    <li><a href="qnaBoard.do" class="active">고객센터</a></li>
+		                    <li><a href="/main/qna/board.do" class="active">고객센터</a></li>
 		                </ul>
 		                <button class="login_btn">로그인</button>
 		            </div>
@@ -84,7 +84,7 @@
 					<td>${userName }</td>
 				</tr>
 			</table>
-			<form name="frm" action="qnaUpdateOk.do" method="post">
+			<form name="frm" action="updateOk.do" method="post">
 				<input type="hidden" name="id" value="${qdto.id }">
 				<input type="text" name="content" value="${qdto.content }" style="display: block; width:90vh"/>
 				<button type="submit">수정완료</button>
