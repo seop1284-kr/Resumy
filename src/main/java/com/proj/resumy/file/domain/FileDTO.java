@@ -16,7 +16,16 @@ public class FileDTO {
 	private String memo; // file_memo
 	private String userid; // mem_userid
 
-	
+	// 사이즈 정형화
+	public String size2String() {
+        Integer unit = 1024;
+        if (volume < unit) {
+            return String.format("(%d B)", volume);
+        }
+        int exp = (int) (Math.log(volume) / Math.log(unit));
+ 
+        return String.format("(%.0f %s)", volume / Math.pow(unit, exp), "KMGTPE".charAt(exp - 1));
+    }
 	
 	public FileDTO() {
 		super();

@@ -45,36 +45,6 @@
 </head>
 
 <body class="container-md">
-    <header>
-        <nav class="navbar navbar-expand-md fixed-top">
-            <div class="container-md">
-                <a class="navbar-brand" href="index.html">
-                    <img src="/img/logo_main.png">
-                </a>
-                <ul>
-                    <li>기업정보</li>
-                    <li>자소서 게시판</li>
-                    <li>고객센터</li>
-                </ul>
-                <button class="login_btn">로그인</button>
-            </div>
-        </nav>
-    </header>
-    <!-- ./navbar -->
-
-    <div class="row">
-        <aside class="col-2">
-            <h4><b>마이페이지</b></h4>
-            <hr>
-            <ul>
-                <li><a href="/myp/resume">자기소개서 관리</a></li>
-                <li class="active"><a href="file.jsp">파일 관리</a></li>
-                <li><a href="/myp/historyMng">이력 관리</a></li>
-            </ul>
-        </aside>
-        <!-- ./aside -->
-
-		
 	
         <section class="col">
         
@@ -94,8 +64,6 @@
             
         </section>
     </div>
-
-
 
 
 
@@ -122,24 +90,6 @@
 </div>
 
 
-
-
-
-    <footer>
-        <div class="row">
-            <div class="col-2">
-                <img src="/img/logo_ contrast.png">
-            </div>
-            <div class="col-9">
-                프로젝트명 : 채용 도우미 사이트 Resumy(리주마이)<br>
-                팀명 : 간개다모 (김진섭 팀장, 김민수, 노수빈, 하병노)<br>
-                이메일 : seop1284@gmail.com (김진섭), kimpkoiw@gmail.com (김민수), binigy97@gmail.com (노수빈), hahbr88@gmail.com (하병노)
-            </div>
-            <div class="col">
-                CopyrightⓒGangeadamo 2021-09-07 ~ 2021-10-15
-            </div>
-        </div>
-    </footer>
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="/assets/dist/js/bootstrap.min.js"></script>
