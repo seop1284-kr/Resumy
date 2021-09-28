@@ -25,7 +25,7 @@ public class FileDAOImpl implements FileDAO {
 	
 	// 특정 파일 한개의 정보
 	@Override
-	public int selectByFid(int id) {
+	public FileDTO selectByFid(int id) {
 		return mapper.selectByFid(id);
 	}
 	

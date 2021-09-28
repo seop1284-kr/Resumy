@@ -24,7 +24,18 @@
 			(#{name}, #{cname}, #{volume}, #{memo}, #{userid});
 	</insert>
 	
-	
+	<select id="selectByFid" resultType="com.proj.resumy.file.domain.FileDTO">
+		SELECT
+			file_id id,
+			file_name name,
+			file_cname cname,
+			file_volume volume, 
+			file_regdate regdate, 
+			file_memo memo 
+		FROM 
+			hr_file
+		WHERE file_id = #{id}
+	</select>
 	
 	<delete id="deleteById">
 		DELETE FROM hr_file 

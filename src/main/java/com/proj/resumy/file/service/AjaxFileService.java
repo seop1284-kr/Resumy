@@ -39,7 +39,7 @@ public class AjaxFileService {
 	}
 	
 	// 특정 파일 한개의 정보
-	public int selectByFid(int id) {
+	public FileDTO selectByFid(int id) {
 		return filedao.selectByFid(id);
 	}
 	

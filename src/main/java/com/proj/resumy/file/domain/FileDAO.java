@@ -10,7 +10,7 @@ public interface FileDAO {
 	public abstract List<FileDTO> selectByUserID(String userid);
 	
 	// 특정 첨부파일 (file_id) 한개 SELECT
-	public abstract int selectByFid(int id);
+	public abstract FileDTO selectByFid(int id);
 	
 	// 새파일 업로드
 	public abstract int insert(FileDTO dto);

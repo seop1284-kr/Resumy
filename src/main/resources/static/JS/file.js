@@ -95,7 +95,11 @@ function selectAll(selectAll)  {
 		return chkWrite();  // 새글 등록 submit
 	});
 
-// 다운로드 버튼
+// 다운로드 버튼 누르면
+	$("#downloadBtn").click(function(){
+		chkDownload();
+		
+	});
 
 // 삭제 버튼 누르면
 	$("#deleteBtn").click(function(){
@@ -148,6 +152,35 @@ function chkWrite(){
 	return false;
 	
 } // end chkWrite()		
+		
+// 파일 다운로드 처리
+function chkDownload(){
+	
+	
+	var ids = [];  // check 된 파일의 id 들을 담을 배열
+	$("#content td input[name=id]").each(function(){
+		if($(this).is(":checked")){   // jQuery 에서 check 여부 확인 함수
+			ids.push(parseInt($(this).val()));  // ids 배열에 check 된 id 값 추가
+		}
+	});
+	
+	var data = $("#fileList").serialize();
+	$.ajax({
+		url : "/fileAjax",  // url : /myp/file
+		type : "GET",
+		cache : false,
+		data : data, 
+		// multipart를 위한 옵션
+     	processData: false,
+      	contentType: false,
+		success : function(data, status){
+			if(status == "success"){
+				loadPage();
+			}
+		}
+	});
+	
+}		
 		
 
 // check 된 uid 의 게시글들만 삭제 하기

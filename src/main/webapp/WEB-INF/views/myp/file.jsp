@@ -84,7 +84,7 @@
         	<%-- 우상단 버튼들 --%>
         	<div>
         		<button type="button" id="uploadBtn" class="uploadBtn">업로드</button>
-        		<button type="button" id="downloadBtn" class="downloadBtn">다운로드</button>
+        		<button type="button" id="downloadBtn" name="filename" class="downloadBtn" value="${fileName}">다운로드</button>
         		<button type="button" id="deleteBtn" class="deleteBtn">삭제</button>
         	</div>
         	
@@ -95,13 +95,17 @@
         </section>
     </div>
 
+
+
+
+
 <%-- 파일 업로드 모달 --%>
 <div id="dlg_file" class="modal">
 	<form action="file.jsp" class="modal-content animate" id="frmFile" name="frmFile" method="post" enctype="Multipart/form-data">
 		<div class="container">
 			
 			
-			<input type="hidden" name="fid" value="0"> <%-- 읽기, 삭제, 수정을 위해 필요 --%>
+			<input type="hidden" name="fid" value="0"> 
 			
 			<label for="file">파일 업로드</label>
 			<input type="file" name="file" required>

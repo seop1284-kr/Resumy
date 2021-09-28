@@ -5,7 +5,10 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.ResourceLoader;
 import org.springframework.http.HttpHeaders;
@@ -13,11 +16,14 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.ui.Model;
+import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -83,7 +89,6 @@ public class AjaxFileController {
 	public int write(MultipartFile file, String memo, Authentication authentication) {
 		int result = 0;
 		
-
 		
 		// 로그인한 사람의 정보를 담은 객체
 		UserDetails userDetails = (UserDetails) authentication.getPrincipal();
@@ -97,27 +102,27 @@ public class AjaxFileController {
 	}
 	
 	// 특정 파일(file_id) 다운로드?
-//	@Autowired
-//    private ResourceLoader resourceLoader;
-// 
-//    @GetMapping("/files/{filename}")
-//    public ResponseEntity<Resource> fileDownload(@PathVariable String filename) throws IOException {
-//        Resource resource = resourceLoader.getResource("classpath:" + filename);
-//        File file = resource.getFile();
-// 
-//        Tika tika = new Tika();
-//        String mediaType = tika.detect(file);
-// 
-//        return ResponseEntity.ok()
-//                .header(HttpHeaders.CONTENT_DISPOSITION,
-//                        "attachment;filename=\"" + resource.getFilename() + "\"")
-//                .header(HttpHeaders.CONTENT_TYPE, mediaType)
-//                .header(HttpHeaders.CONTENT_LENGTH, file.length() + "")
-//                .body(resource);
-//    }
 	
+	@Value("${app.upload.dir:${user.home}}")
+	private String uploadDir;
 	
-	
+	@RequestMapping("")
+	@ResponseBody
+	public byte[] download(HttpServletResponse response, Authentication authentication,
+			      int[] id) throws IOException{
+		UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+		File file = new File(uploadDir + File.separator + userDetails.getUsername(), 
+				ajaxFileService.selectByFid(id[0]).getCname());
+		
+		byte[] bytes = FileCopyUtils.copyToByteArray(file);
+		
+		String fn = new String(file.getName().getBytes(), "utf-8");
+		response.setHeader("Content-Disposition", "attachment;filename=\"" + fn + "\"");
+		response.setContentLength(bytes.length);
+		
+		return bytes;
+	}
+
  
 
 	
