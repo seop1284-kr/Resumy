@@ -166,15 +166,15 @@ function chkDownload(){
 	
 	var data = $("#fileList").serialize();
 	$.ajax({
-		url : "/fileAjax",  // url : /myp/file
+		url : "/fileAjax/download/" + ids,  // url : /myp/file
 		type : "GET",
 		cache : false,
-		data : data, 
 		// multipart를 위한 옵션
      	processData: false,
       	contentType: false,
 		success : function(data, status){
 			if(status == "success"){
+				window.location = '/fileAjax/download/' + ids;
 				loadPage();
 			}
 		}

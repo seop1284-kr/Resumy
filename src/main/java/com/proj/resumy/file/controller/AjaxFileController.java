@@ -1,18 +1,27 @@
 package com.proj.resumy.file.controller;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.OutputStream;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.tomcat.util.digester.DocumentProperties.Charset;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.ResourceLoader;
+import org.springframework.core.io.UrlResource;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.http.converter.StringHttpMessageConverter;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.ui.Model;
@@ -106,21 +115,41 @@ public class AjaxFileController {
 	@Value("${app.upload.dir:${user.home}}")
 	private String uploadDir;
 	
-	@RequestMapping("")
-	@ResponseBody
-	public byte[] download(HttpServletResponse response, Authentication authentication,
-			      int[] id) throws IOException{
+	@GetMapping("/download/{ids}")
+	public ResponseEntity<Resource> download(
+			HttpServletRequest request,
+			Authentication authentication,
+			@PathVariable int[] ids) throws IOException {
+		
+		// 사용자 정보
 		UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+		
+		// 파일 정보
+		FileDTO fileDto = ajaxFileService.selectByFid(ids[0]);
+		
 		File file = new File(uploadDir + File.separator + userDetails.getUsername(), 
-				ajaxFileService.selectByFid(id[0]).getCname());
+				fileDto.getCname());
 		
-		byte[] bytes = FileCopyUtils.copyToByteArray(file);
+		Resource resource = new UrlResource(file.toURI());
 		
-		String fn = new String(file.getName().getBytes(), "utf-8");
-		response.setHeader("Content-Disposition", "attachment;filename=\"" + fn + "\"");
-		response.setContentLength(bytes.length);
+		String contentType = null;
 		
-		return bytes;
+		try {
+			contentType = request.getServletContext().getMimeType(
+				resource.getFile().getAbsolutePath()
+			);
+		}
+		catch (IOException ex) {
+			contentType = "application/octet-stream";
+		}
+		
+		return ResponseEntity.ok()
+				.contentType(MediaType.parseMediaType(contentType))
+				.header(
+						HttpHeaders.CONTENT_DISPOSITION,
+						"attachment; filename=\"" + fileDto.getName() + "\""
+				)
+				.body(resource);
 	}
 
  
