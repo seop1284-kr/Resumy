@@ -17,19 +17,42 @@ public class MypageController {
 	
 	// 자소서 관리 페이지
 	@RequestMapping("/resume")
-	public String resume(Model model) {
-		return "myp/resume";
+	public String resume(boolean access, Model model) {
+		if (access) {
+			return "myp/resume";
+		}
+		return "errorPage";
 	}
 	
 	// 파일 관리 페이지
 	@RequestMapping("/file")
-	public String file(Model model) {
-		return "myp/file";
+	public String file(boolean access, Model model) {
+		if (access) {
+			return "myp/file";
+		}
+		return "errorPage";
+		
 	}
 	
 	// 이력 관리 페이지
 	@RequestMapping("/historyMng")
-	public String career(Model model) {
-		return "myp/historyMng";
+	public String career(boolean access, Model model) {
+		if (access) {
+			return "myp/historyMng";
+		}
+		return "errorPage";
+		
+	}
+	
+	
+	// 마이페이지
+	@RequestMapping("")
+	public String test(String menu, Model model) {
+		if (menu == null) {
+			model.addAttribute("menu", "resume");
+		} else {
+			model.addAttribute("menu", menu);
+		}
+		return "myp/mypage";
 	}
 }

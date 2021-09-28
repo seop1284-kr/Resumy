@@ -28,8 +28,12 @@ public class MainController {
 	
 	// main page
 	@RequestMapping("/")
-	public String mainPage(Model model) {
-		
+	public String mainPage(String headerMenu, Model model) {
+		if (headerMenu == null) {
+			model.addAttribute("headerMenu", "resume");
+		} else {
+			model.addAttribute("headerMenu", headerMenu);
+		}
 		return "index";
 	}
 	
