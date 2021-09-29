@@ -5,7 +5,6 @@ $(document).ready(function() {
 // 파일 관리 리스트
 function loadPage() {
 
-	$('#content').html('<h4><b>나의 파일 관리</b></h4>');
 
 	$.ajax({
 		url: "/fileAjax/filelist",
@@ -38,7 +37,7 @@ function updateList(items) {
 	}
 
 	result += "<table class='fileList'>";
-		result += "<th><input type='checkbox' name='id' value='selectAll' onclick='selectAll(this)'/></th>\n";
+		result += "<th><input type='checkbox' value='selectAll' onclick='selectAll(this)'/></th>\n";
 		result += "<th>첨부파일명</th>\n";
 		result += "<th>용량</th>\n";
 		result += "<th>등록일</th>\n";
@@ -53,7 +52,7 @@ function updateList(items) {
 		result += "<td>" + items[i].memo + "</td>\n";
 		result += "</tr>\n";
 	}
-	result += "</table>";
+	result += "</table><br><br><br>";
 
 	$("#content").html(result);
 

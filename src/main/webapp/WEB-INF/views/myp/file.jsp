@@ -85,15 +85,14 @@
 			<label for="memo">MEMO</label>
 			<input type="text" placeholder="8글자 이내" name="memo">			
 			<br>
-			<div class="btn_group_file">
-				<button type="button" class="btn_cancel">취소</button>
-				<button type="submit" class="btn_upload">업로드</button>
-			</div>
+			
+		</div>
+		<div class="btn_group_file">
+			<button type="button" class="btn_cancel">취소</button>
+			<button type="submit" class="btn_upload">업로드</button>
 		</div>
 	</form>
 </div>
-
-
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="/assets/dist/js/bootstrap.min.js"></script>

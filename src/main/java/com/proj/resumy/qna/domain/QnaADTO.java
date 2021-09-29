@@ -18,6 +18,6 @@ public class QnaADTO {
 	private LocalDateTime regdate;	// a_regdate
 	
 	public String getRegdate() {
-		return this.regdate.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+		return this.regdate.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
 	}
 }

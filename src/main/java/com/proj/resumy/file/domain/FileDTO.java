@@ -1,6 +1,9 @@
 package com.proj.resumy.file.domain;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 import lombok.Data;
 
@@ -16,6 +19,10 @@ public class FileDTO {
 	private String memo; // file_memo
 	private String userid; // mem_userid
 
+	public String getRegdate() {
+		return this.regdate.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+	}
+	
 	// 사이즈 정형화
 	public String size2String() {
         Integer unit = 1024;
