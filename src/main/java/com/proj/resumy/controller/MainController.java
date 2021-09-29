@@ -27,7 +27,7 @@ public class MainController {
 	}
 	
 	// main page
-	@RequestMapping("/")
+	@RequestMapping("")
 	public String mainPage(String content, String headerMenu, Model model) {
 		if (headerMenu == null) {
 			model.addAttribute("headerMenu", "main");

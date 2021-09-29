@@ -31,12 +31,12 @@
 			<div class="row">
 
 				<!-- 사이드 바 -->
-				<c:import url="../layout/mypage_sidebar.jsp">
+				<c:import url="../layout/mngpage_sidebar.jsp">
 					<c:param name="menu" value="${menu }" />
 				</c:import>
 
 				<!-- 콘텐츠 -->
-				<c:import url="/myp/${menu }">
+				<c:import url="/mng/fed">
 					<c:param name="access" value="true" />
 				</c:import>
 

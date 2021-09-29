@@ -1,6 +1,7 @@
 package com.proj.resumy.intro.domain;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 import lombok.Data;
 
@@ -36,5 +37,13 @@ public class IntroDTO {
 		this.modydate = modydate;
 		this.userid = userid;
 		System.out.println("IntroDTO(...) 객체 생성");
+	}
+	
+	public String getRegdate() {
+		return this.regdate.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+	}
+	
+	public String getModydate() {
+		return this.regdate.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
 	}
 }

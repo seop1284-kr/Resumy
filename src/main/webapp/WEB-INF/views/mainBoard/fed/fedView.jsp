@@ -2,12 +2,15 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-
+<%@ taglib prefix="sec"
+	uri="http://www.springframework.org/security/tags"%>
 
 
 <meta charset="UTF-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+
 <body>
 
 	<div class="container" style="margin-top: 100px">
@@ -50,48 +53,62 @@
 			<!-- 문의글 -->
 
 
-			<form name="frm" action="fedCommentOk" method="post">
-				<input type="hidden" name="iid" value="${introResult.intro.id }">
-				<input type="text" name="content"
-					style="display: block; width: 90vh" />
-				<button type="submit">댓글 작성</button>
-			</form>
-			<!-- 댓글 달기 -->
+			<!-- 비로그인 -->
+			<sec:authorize access="isAnonymous()">
+				<p> 회원만 볼 수 있습니다. </p>
+			</sec:authorize>
+
+			<!-- 로그인 했을 때 피드백 보기 및 댓글 달기 -->
+			<sec:authorize access="isAuthenticated()">
+
+				
 
 
-			<h5>댓글</h5>
-			<c:choose>
-				<c:when
-					test="${empty introResult.fedList || fn:length(introResult.fedList) == 0 }">
-				</c:when>
-				<c:otherwise>
+				<!-- 댓글 달기 -->
+				<form name="frm" action="fedCommentOk" method="post">
+					<input type="hidden" name="iid" value="${introResult.intro.id }">
+					<input type="text" name="content"
+						style="display: block; width: 90vh" />
+					<button type="submit">댓글 작성</button>
+				</form>
 
-					<c:forEach var="fed" items="${introResult.fedList }"
-						varStatus="status">
 
-						<tr>
-							<td>이름</td>
-							<td>${fed.userid }</td>
-							<td>/ 답변날짜</td>
-							<td>${fed.regdate }</td>
+				<!-- 피드백 답변 -->
+				<h5>댓글</h5>
+				<c:choose>
+					<c:when
+						test="${empty introResult.fedList || fn:length(introResult.fedList) == 0 }">
+					</c:when>
+					<c:otherwise>
+
+						<c:forEach var="fed" items="${introResult.fedList }"
+							varStatus="status">
+
+							<tr>
+								<td>이름</td>
+								<td>${fed.userid }</td>
+								<td>/ 답변날짜</td>
+								<td>${fed.regdate }</td>
+								<br>
+							</tr>
+							<tr>
+
+
+								<td>내용</td>
+								<td>${fed.content }</td>
+							</tr>
+							<hr>
 							<br>
-						</tr>
-						<tr>
+						</c:forEach>
 
+					</c:otherwise>
+				</c:choose>
+			</sec:authorize>
 
-							<td>내용</td>
-							<td>${fed.content }</td>
-						</tr>
-						<hr>
-						<br>
-					</c:forEach>
-
-				</c:otherwise>
-			</c:choose>
-			<!-- 답변 -->
 			<form name=form1 action="/" method=post>
 				<input type=hidden name="headerMenu" value="fed">
 				<input type=hidden name="content" value="fedBoard">
+				
 				<button type=submit>목록</button>
 			</form>
 		</div>

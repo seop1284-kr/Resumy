@@ -2,9 +2,8 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-		
-<script src="/JS/resume.js"></script>
 
+<script src="/JS/resume.js"></script>
 <body class="container-md">
 
 
@@ -39,7 +38,7 @@
 					<div id="content_text_box">
 						<div id="content_text">
 							<input type="text" placeholder="자소서 제목(필수)" name="title" required>
-							<input type="text" placeholder="질문" name="question" value="">
+							<input type="text" placeholder="질문" name="question" value="" required>
 							<textarea placeholder="내용" name="content" value=""></textarea>
 						</div>
 						<div id="content_text_plus"></div>

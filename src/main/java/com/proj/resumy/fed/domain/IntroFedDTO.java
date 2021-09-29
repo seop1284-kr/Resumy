@@ -1,6 +1,7 @@
 package com.proj.resumy.fed.domain;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 import lombok.Data;
 
@@ -28,7 +29,10 @@ public class IntroFedDTO {
 		System.out.println("IntroFedDTO(...) 객체 생성");
 
 	}
-
-
+	
+	public String getRegdate() {
+		return this.regdate.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+	}
+	
 
 }

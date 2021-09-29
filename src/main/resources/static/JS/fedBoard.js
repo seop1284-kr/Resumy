@@ -90,17 +90,24 @@ function updateList(jsonObj) {
 } // end updateList()
 
 function addViewEvent() {
-
+	
 	// 자소서 박스 누르면 자소서 내용 읽어오는 이벤트
 	$(".box").click(function() {
 		var form = document.createElement('form');
 		var contentObj;
-		var content = "fedView?id=" + $(this).attr('data-id');
+		var content = "fedView";
 		contentObj = document.createElement('input');
 		contentObj.setAttribute('type', 'hidden');
 		contentObj.setAttribute('name', 'content');
 		contentObj.setAttribute('value', content);
 		form.appendChild(contentObj);
+		
+		var viewIdObj;
+		viewIdObj = document.createElement('input');
+		viewIdObj.setAttribute('type', 'hidden');
+		viewIdObj.setAttribute('name', 'id');
+		viewIdObj.setAttribute('value', $(this).attr('data-id'));
+		form.appendChild(viewIdObj);
 		
 		var headerMenuObj;
 		headerMenuObj = document.createElement('input');

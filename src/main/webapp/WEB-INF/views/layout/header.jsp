@@ -75,7 +75,7 @@ if (header_menu_param != null) {
 	<input type=hidden name="headerMenu" value="fed"> <input
 		type=hidden name="content" value="fedBoard">
 </form>
-<form name=form3 action="/" method=post id="qna">
+<form name=form3 action="/main/qna/board.do" method=post id="qna">
 	<input type=hidden name="headerMenu" value="qna"> <input
 		type=hidden name="content" value="main/qna/board.do">
 
@@ -98,15 +98,18 @@ if (header_menu_param != null) {
 				<li><a class="<%=(headerMenu.equals("qna")) ? "active" : ""%>"
 					onclick="qna.submit()">고객센터</a></li>
 			</ul>
-			
+
 			<!-- 비로그인 -->
 			<sec:authorize access="isAnonymous()">
 				<button class="login_btn" onclick="location.href='login'">로그인</button>
 			</sec:authorize>
-			
+
 			<!-- 로그인 -->
-			<sec:authorize access="isAuthenticated()">				
-				<button class="login_btn" onclick="location.href='logout'">로그아웃</button>
+			<sec:authorize access="isAuthenticated()">
+
+				<button class="login_btn" onclick="location.href='myp'">
+					<sec:authentication property="principal.username" />
+				</button>
 			</sec:authorize>
 
 
