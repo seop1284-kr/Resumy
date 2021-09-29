@@ -2,7 +2,7 @@ $(document).ready(function() {
 	loadPage();
 });
 
-// 자소서 관리 시작 페이지
+// 파일 관리 리스트
 function loadPage() {
 
 	$('#content').html('<h4><b>나의 파일 관리</b></h4>');
@@ -22,11 +22,7 @@ function loadPage() {
 				}
 			}
 		}
-
 	});
-
-
-
 } // end loadPage()
 
 
@@ -50,12 +46,11 @@ function updateList(items) {
 	
 	for (var i = 0; i < count; i++) {	
 		result += "<tr>\n";
-		result += "<td><input type='checkbox' name='id' value='" + items[i].id + "'></td>\n";
+		result += "<td style='text-align: center;'><input type='checkbox' name='id' value='" + items[i].id + "'></td>\n";
 		result += "<td>" + items[i].name + "</td>\n";
-		result += "<td>" + (items[i].volume/(1024*1024)).toFixed(2)+ " mb" + "</td>\n";
-		result += "<td>" + items[i].regdate + "</td>\n";
+		result += "<td style='text-align: center;'>" + (items[i].volume/(1024*1024)).toFixed(2)+ " mb" + "</td>\n";
+		result += "<td style='text-align: center;'>" + items[i].regdate + "</td>\n";
 		result += "<td>" + items[i].memo + "</td>\n";
-
 		result += "</tr>\n";
 	}
 	result += "</table>";
@@ -73,7 +68,7 @@ function selectAll(selectAll)  {
   checkboxes.forEach((checkbox) => {
     checkbox.checked = selectAll.checked;
   })
-}
+} //end selectAll()
 
 
 
@@ -92,7 +87,7 @@ function selectAll(selectAll)  {
 	$("#frmFile").submit(function(){
 		$(this).parents(".modal").hide();
 		
-		return chkWrite();  // 새글 등록 submit
+		return chkUpload();  // 새글 등록 submit
 	});
 
 // 다운로드 버튼 누르면
@@ -113,11 +108,8 @@ function selectAll(selectAll)  {
 		
 		if(mode == "upload"){
 		$('#frmFile')[0].reset();  // form 내의 기존 내용 reset
-		//$("#dlg_write .btn_group_header").hide();
 		$("#dlg_file .btn_group_file").show();
-		//$("#dlg_write .btn_group_view").hide();
-		//$("#dlg_write .btn_group_update").hide();
-		
+
 		$("#dlg_file input[name='file']").attr("readonly", false);
 		$("#dlg_file input[name='file']").css("border", "1px solid #ccc");
 		$("#dlg_file input[name='memo']").attr("readonly", false);
@@ -127,7 +119,7 @@ function selectAll(selectAll)  {
 		
 
 // 파일 업로드 처리
-function chkWrite(){
+function chkUpload(){
 	
 	// 특정 form 의 name 달린 form element 들의 value 들을 string 으로 묶기
 	// ex) name=aaa&subject=bbb&content=ccc   <-- string 타입이다
@@ -151,7 +143,7 @@ function chkWrite(){
 	
 	return false;
 	
-} // end chkWrite()		
+} // end chkUpload()		
 		
 // 파일 다운로드 처리
 function chkDownload(){

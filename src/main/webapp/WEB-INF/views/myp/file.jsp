@@ -26,6 +26,10 @@
     <!-- font-family: 'Gowun Dodum', sans-serif; -->
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap" rel="stylesheet">
     <!-- font-family: 'Roboto Condensed', sans-serif; -->
+   	<link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
+    <!-- font-family: 'Jua', sans-serif; -->
+
+   
     <style>
         .bd-placeholder-img {
             font-size: 1.125rem;
@@ -48,11 +52,11 @@
 	
         <section class="col">
         
-        	<h4 id="title" style="font-weight: bold">나의 파일 관리</h4>
+        	<h4 id="title">나의 파일 관리</h4>
         	
         	
         	<%-- 우상단 버튼들 --%>
-        	<div>
+        	<div class="btn_group_list">
         		<button type="button" id="uploadBtn" class="uploadBtn">업로드</button>
         		<button type="button" id="downloadBtn" name="filename" class="downloadBtn" value="${fileName}">다운로드</button>
         		<button type="button" id="deleteBtn" class="deleteBtn">삭제</button>
@@ -76,7 +80,7 @@
 			<input type="hidden" name="fid" value="0"> 
 			
 			<label for="file">파일 업로드</label>
-			<input type="file" name="file" required>
+			<input type="file" name="file" accept="image/*" required>
 			<br>		
 			<label for="memo">MEMO</label>
 			<input type="text" placeholder="8글자 이내" name="memo">			

@@ -1,13 +1,67 @@
-.fileList td,th {
-	border: 1px solid black;
-	border-collapse: collapse;
-	padding: 10px;
+#title {
+	font-weight: bold
 }
 
+body {
+	font-family: 'Jua', sans-serif;
+}
+
+/* 기본 색상 */
+:root {
+    --resumy-blue: #4876EF;
+    --resumy-gray: #B4C0D3;
+    --resumy-green: #00D3AB;
+    --resumy-black: #2F2C33;
+    --resumy-white: #FFFFF3;
+    }
+    
 .fileList {
 	margin-top: 10px;
 	width: 100%;
 }
+
+.fileList th {
+	border-top: 2px solid var(--resumy-gray);
+	border-bottom: 1px solid var(--resumy-gray);
+	background-color: var(--resumy-green);
+	text-align: center;
+}
+
+.fileList td,th {
+	border-left: none;
+	border-right: none;
+	border-collapse: collapse;
+	padding: 10px;
+}
+
+.fileList tr {
+	border-bottom: 1px solid var(--resumy-gray);
+}
+
+.lastRow {
+	border-bottom: 2px solid var(--resumy-gray);	
+}
+
+
+
+.btn_group_list {
+	text-align: right;
+}
+
+.uploadBtn, .downloadBtn, .deleteBtn{
+	border-radius: 4px;
+	border: none;
+	background-color: var(--resumy-gray);
+	padding: 5px;
+	padding-left: 10px;
+	padding-right: 10px;
+	
+}
+
+.btn_group_list .uploadBtn, .downloadBtn {
+	margin-right: 10px;
+}
+
 
 /*모달 팝업*/ 
 .modal {
