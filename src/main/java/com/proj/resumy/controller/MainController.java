@@ -28,11 +28,13 @@ public class MainController {
 	
 	// main page
 	@RequestMapping("/")
-	public String mainPage(String headerMenu, Model model) {
+	public String mainPage(String content, String headerMenu, Model model) {
 		if (headerMenu == null) {
-			model.addAttribute("headerMenu", "resume");
+			model.addAttribute("headerMenu", "main");
+			model.addAttribute("content", "main");
 		} else {
 			model.addAttribute("headerMenu", headerMenu);
+			model.addAttribute("content", content);
 		}
 		return "index";
 	}

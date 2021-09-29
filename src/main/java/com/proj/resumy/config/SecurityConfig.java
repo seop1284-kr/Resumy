@@ -51,7 +51,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 			
 			// ↓ 그 밖의 다른 요청은 모두 permit!
 			.anyRequest().permitAll()
-		
+			
+			// 로그아웃 처리 로그아웃 후 메인페이지로
+			.and()
+			.logout()
+			.logoutSuccessUrl("/")
+
+			
 			// 접근오류(권한오류) 발생시 /login 으로 이동시키기 
 			.and()
 			.formLogin()

@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>    
-    
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
+<body></body>
 <c:choose>
 	<c:when test="${result == 0 }">
 		<script>
@@ -11,8 +12,31 @@
 	</c:when>
 	<c:otherwise>
 		<script>
-			alert("댓글 등록 성공");
-			location.href = "fedView?id=${param.iid}"; <%-- 수정 성공하면 view 로 이동하여 제대로 수정되었는지 보여주는게 좋다--%>
+			var form = document.createElement('form');
+			var contentObj;
+			var content = "fedView?id=" + ${param.iid};
+			contentObj = document.createElement('input');
+			contentObj.setAttribute('type', 'hidden');
+			contentObj.setAttribute('name', 'content');
+			contentObj.setAttribute('value', content);
+			form.appendChild(contentObj);
+
+			var headerMenuObj;
+			headerMenuObj = document.createElement('input');
+			headerMenuObj.setAttribute('type', 'hidden');
+			headerMenuObj.setAttribute('name', 'headerMenu');
+			headerMenuObj.setAttribute('value', "fed");
+			form.appendChild(headerMenuObj);
+
+			form.setAttribute('method', 'post');
+			form.setAttribute('action', "/");
+
+			document.body.appendChild(form);
+
+			form.submit();
+			//location.href = "fedView?id=${param.iid}";
+		<%-- 수정 성공하면 view 로 이동하여 제대로 수정되었는지 보여주는게 좋다--%>
+			
 		</script>
 	</c:otherwise>
 </c:choose>

@@ -2,67 +2,16 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-
-<!DOCTYPE html>
-<html lang='ko'>
-
-<head>
-<meta charset="UTF-8">
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>RESUMY - 채용 도우미 사이트</title>
-<link href="/img/fibicon.png" rel="shortcut icon" type="image/x-icon">
-<link href="/assets/dist/css/bootstrap.min.css" rel="stylesheet">
-<link href="/css/common.css" rel="stylesheet">
-<link href="/css/mypageTemplate.css" rel="stylesheet">
-<!-- font-awesome -->
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-<!-- font -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link
-	href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap"
-	rel="stylesheet">
-<!-- font-family: 'Gowun Dodum', sans-serif; -->
-<link
-	href="https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap"
-	rel="stylesheet">
-<!-- font-family: 'Roboto Condensed', sans-serif; -->
-
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script src="/assets/dist/js/bootstrap.min.js"></script>
+		
 <script src="/JS/resume.js"></script>
-<!-- bootrstap 을 따르는 문서 -->
-
-<style>
-.bd-placeholder-img {
-	font-size: 1.125rem;
-	text-anchor: middle;
-	-webkit-user-select: none;
-	-moz-user-select: none;
-	-ms-user-select: none;
-	user-select: none;
-}
-
-@media ( min-width : 768px) {
-	.bd-placeholder-img-lg {
-		font-size: 3.5rem;
-	}
-}
-</style>
-</head>
 
 <body class="container-md">
-	
-	<!-- ./navbar -->
+
 
 	<div class="row">
-		
-
+	
 		<section class="col">
-
+			
 			<!-- 제목 -->
 			<h4 id="title" style="font-weight: bold"></h4>
 
@@ -122,9 +71,4 @@
 		</section>
 	</div>
 
-
-
-
 </body>
-
-</html>
