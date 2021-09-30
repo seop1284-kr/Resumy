@@ -40,7 +40,7 @@
 			mem_address address,
 			mem_career mem_career,
 			reg_dtm regdtm,
-			mody_dtm doydtm
+			mody_dtm modydtm
 		FROM hr_member
 		WHERE mem_userid = #{userid}	
 	</select>

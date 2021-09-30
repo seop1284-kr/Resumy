@@ -15,19 +15,23 @@ public class MngpageController {
 	
 	// 자소서 피드백 관리자 페이지
 	@RequestMapping("fed")
-	public String resume(Model model) {
+	public String mngFed(Model model) {
 		return "mng/mngFed";
+	}
+	
+	// 회원 관리자 페이지
+	@RequestMapping("member")
+	public String mngMember(Model model) {
+		return "mng/mngMember";
 	}
 	
 	// mng page
 	@RequestMapping("")
-	public String mngPage(String content, String headerMenu, Model model) {
-		if (headerMenu == null) {
-			model.addAttribute("headerMenu", "main");
-			model.addAttribute("content", "main");
+	public String mngPage(String menu, Model model) {
+		if (menu == null) {
+			model.addAttribute("menu", "fed");
 		} else {
-			model.addAttribute("headerMenu", headerMenu);
-			model.addAttribute("content", content);
+			model.addAttribute("menu", menu);
 		}
 		return "mng/mngpage";
 	}

@@ -36,7 +36,7 @@
 				</c:import>
 
 				<!-- 콘텐츠 -->
-				<c:import url="/mng/fed">
+				<c:import url="/mng/${menu }">
 					<c:param name="access" value="true" />
 				</c:import>
 

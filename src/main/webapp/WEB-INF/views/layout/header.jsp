@@ -69,7 +69,7 @@ if (header_menu_param != null) {
 <!-- a tag post -->
 <form name=form1 action="/" method=post id="company">
 	<input type=hidden name="headerMenu" value="company"> <input
-		type=hidden name="content" value="company">
+		type=hidden name="content" value="companyBoard">
 </form>
 <form name=form2 action="/" method=post id="fed">
 	<input type=hidden name="headerMenu" value="fed"> <input
