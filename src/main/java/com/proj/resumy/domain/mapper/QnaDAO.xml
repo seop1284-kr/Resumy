@@ -6,6 +6,30 @@
 <!-- QnaDAO(고객센터 페이지, 고객센터 답글) 노수빈 -->
 <mapper namespace="com.proj.resumy.qna.domain.QnaDAO">
 
+	<!-- 글 목록 (페이징) -->
+	<select id="selectFromRow" resultType="com.proj.resumy.qna.domain.QnaQDTO">
+		SELECT 
+			q_id id, 
+			q_subject subject, 
+			q_content content, 
+			q_regdate regdate, 
+			q_replyState replyState,
+			mem_userid userid
+		FROM 
+			hr_qna_q
+		ORDER BY 
+			q_id DESC
+		LIMIT #{from}, #{pageRows}
+	</select>
+	
+	<!-- 전체 글 개수 -->
+	<select id="countAll" resultType="int">
+		SELECT
+			count(*)
+		FROM
+			hr_qna_q
+	</select>
+	
 	<!-- 고객센터 테이블 목록 출력 SELECT -->	
 	<select id="selectQnaQ" resultType="com.proj.resumy.qna.domain.QnaQDTO">
 		SELECT 

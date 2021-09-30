@@ -17,8 +17,6 @@ class DataBatch {
    Connection conn = null;
    Statement stmt = null;
    PreparedStatement pstmt = null;
-//   ResultSet rs = null; // executeQuery(), SELECT 결과
-   //int cnt = 0; // executeUpdate(), DML 결과
 
    // MySQL
    public static final String DRIVER = "com.mysql.cj.jdbc.Driver"; // JDBC 드라이버 클래스
@@ -30,8 +28,9 @@ class DataBatch {
    
    public static final String SQL_RESUMY_MEM_INSERT = "insert into `hr_member` (mem_userid, mem_pw, mem_name, mem_email) values (?, ?, ?, ?)";
    public static final String SQL_RESUMY_AUTHORITY_INSERT = "insert into `hr_authority` (mem_userid, mem_auth) values (?, ?)";
+   public static final String SQL_RESUMY_ADMIN_INSERT = "INSERT INTO `hr_member` (mem_userid, mem_pw, mem_name, mem_email) VALUES ('admin', '$2a$10$1iZtb1e1Xb81Wwm2NPcHTOzmbdyZDLLKnh9.wUsorFj/1t6RYsUKy', 'admin', 'admin@admin')";
    public static final String SQL_RESUMY_CAREER_INSERT = "insert into `hr_career` (cr_company, cr_hiredate, cr_leavedate, cr_post,mem_userid) values (?, ?, ?, ?, ?)";
-   public static final String SQL_RESUMY_SPEC_INSERT = "insert into `hr_spec_info` (spec_cat_cd, spec_name, spec_area, mody_dtm, reg_dtm, mem_userid) values (?, ?, ?, ?, ?, ?)";
+   public static final String SQL_RESUMY_SPEC_INSERT = "insert into `hr_spec_info` (spec_cat_cd, spec_name, spec_area, mem_userid) values (?, ?, ?, ?)";
    
    public static final String SQL_RESUMY_FILE_INSERT = "insert into `hr_file` (file_name, file_cname, file_volume, mem_userid) values (?, ?, ?, ?)";
    public static final String SQL_RESUMY_INTRO_INSERT = "insert into `hr_introduction` (intr_title, mem_userid, intr_public) values (?, ?, true)";
@@ -108,7 +107,38 @@ class DataBatch {
             e.printStackTrace();
          }
       }
-            
+      
+      // (관리자 계정)
+      try {
+    	  Class.forName(DRIVER);
+	      conn = DriverManager.getConnection(URL, USERID, USERPW);
+	      
+	      // 관리자 계정 생성
+	      stmt = conn.createStatement();
+	      cnt = stmt.executeUpdate(SQL_RESUMY_ADMIN_INSERT);
+	      
+	      // 관리자 권한 부여
+	      pstmt = conn.prepareStatement(SQL_RESUMY_AUTHORITY_INSERT);
+	      String[] auth = {"ROLE_ADMIN", "ROLE_MEMBER"};
+	      
+	      for(int i = 0; i < auth.length; i++) {
+	    	  pstmt.setString(1, "admin");
+	    	  pstmt.setString(2, auth[i]);
+	    	  pstmt.executeUpdate();
+	      }
+	      System.out.println(cnt + "개 의 관리자 계정이 INSERT 되었습니다.");
+	      
+      } catch(Exception e) {
+    	  e.printStackTrace();
+      } finally {
+          try {
+              if(pstmt != null) pstmt.close();
+              if(stmt != null) stmt.close();
+              if(conn != null) conn.close();
+           } catch(Exception e) {
+              e.printStackTrace();
+           }
+        }
             
       // 경력사항 테이블
       cnt = 0; // executeUpdate(), DML 결과
@@ -166,9 +196,7 @@ class DataBatch {
             pstmt.setString(1, SHCOOL[rand.nextInt(SHCOOL.length)]);           // '01: 초등학교 02: 중학교 03: 고등학교 04: 대학교.대학원'
             pstmt.setString(2, String.format("school%02d", i));             // 학교명
             pstmt.setString(3, String.format("area%02d", i));                // 지역명
-            pstmt.setString(4, now.format(formatter));                     // 등록일시
-            pstmt.setString(5, now.format(formatter));                     // 수정일시
-            pstmt.setString(6, "mem01");
+            pstmt.setString(4, "mem01");
             cnt += pstmt.executeUpdate();
             }
          System.out.println(cnt + "개 의 학력사항 데이터가 INSERT 되었습니다");
