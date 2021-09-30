@@ -16,9 +16,7 @@ function loadPage() {
 				// response 가 application/json 이면 이미 parse된 결과가 data 에 담겨 있다.
 				if (updateList(data)) {
 					//addViewEvent();
-				} else {
-					alert("목록 가져오기 0개")
-				}
+				} 
 			}
 		}
 	});
@@ -209,4 +207,19 @@ function chkDelete(){
 	}
 	
 } // end chkDelete()
+
+
+function chkSubmit(){
+	var input = document.getElementsByClassName('')
+	
+	var form = document.forms['frmFile'];
+	var memoContent = form.memo.value.trim();
+	
+	var memoPat = /^.{0,8}$/;
+	if(!memoPat.test()){
+		alert("메모는 8글자 이하로 입력해야합니다.")
+		form.memoContent.focus();
+	}
+	
+}
 

@@ -80,7 +80,7 @@
 			<input type="hidden" name="fid" value="0"> 
 			
 			<label for="file">파일 업로드</label>
-			<input type="file" name="file" accept="image/*" required>
+			<input type="file" name="file" accept="" required>
 			<br>		
 			<label for="memo">MEMO</label>
 			<input type="text" placeholder="8글자 이내" name="memo">			
@@ -89,7 +89,7 @@
 		</div>
 		<div class="btn_group_file">
 			<button type="button" class="btn_cancel">취소</button>
-			<button type="submit" class="btn_upload">업로드</button>
+			<button type="submit" class="btn_upload" onclick="chkSubmit()">업로드</button>
 		</div>
 	</form>
 </div>

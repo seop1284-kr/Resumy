@@ -15,11 +15,11 @@ public interface FileDAO {
 	// 새파일 업로드
 	public abstract int insert(FileDTO dto);
 
-	// 특정 파일(file_id) 다운로드 ??? 여기다 하는게 맞나?
+	// 특정 파일(file_id)들
 	public abstract int download();
 	
 	// 특정 파일(file_id) 삭제
-	public abstract int deleteById(int id);
+//	public abstract int deleteById(int id);
 
 	// 복수개의 특정 파일(file_id)들 삭제
 	public abstract int deleteByIds(int[] id);

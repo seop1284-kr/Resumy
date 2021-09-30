@@ -1,38 +1,34 @@
 package com.proj.resumy.file.controller;
 
+import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.OutputStream;
-import java.nio.file.Path;
-import java.nio.file.Paths;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipOutputStream;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.tomcat.util.digester.DocumentProperties.Charset;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.Resource;
-import org.springframework.core.io.ResourceLoader;
 import org.springframework.core.io.UrlResource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.http.converter.StringHttpMessageConverter;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.ui.Model;
-import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -116,42 +112,61 @@ public class AjaxFileController {
 	private String uploadDir;
 	
 	@GetMapping("/download/{ids}")
-	public ResponseEntity<Resource> download(
+	public void download(
 			HttpServletRequest request,
+			HttpServletResponse response,
 			Authentication authentication,
 			@PathVariable int[] ids) throws IOException {
 		
 		// 사용자 정보
 		UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+		int bufferSize = 1024 * 2;
+		String ouputName = URLEncoder.encode((userDetails.getUsername() + "_첨부파일"), "utf-8");
+		ZipOutputStream zos = null;
 		
-		// 파일 정보
-		FileDTO fileDto = ajaxFileService.selectByFid(ids[0]);
-		
-		File file = new File(uploadDir + File.separator + userDetails.getUsername(), 
-				fileDto.getCname());
-		
-		Resource resource = new UrlResource(file.toURI());
-		
-		String contentType = null;
 		
 		try {
-			contentType = request.getServletContext().getMimeType(
-				resource.getFile().getAbsolutePath()
-			);
+			if (request.getHeader("User-Agent").indexOf("MSIE 5.5") > -1) {
+				response.setHeader("Content-Disposition", "filename=" + ouputName + ".zip" + ";");
+			} else {
+				response.setHeader("Content-Disposition", "attachment; filename=" + ouputName + ".zip" + ";");
+			}
+			
+			response.setHeader("Content-Transfer-Encoding", "binary");
+			
+		    OutputStream os = response.getOutputStream();
+		    zos = new ZipOutputStream(os); // ZipOutputStream
+		    zos.setLevel(8); // 압축 레벨 - 최대 압축률은 9, 디폴트 8
+		    BufferedInputStream bis = null;
+		    
+		    for(int i = 0; i <ids.length ; i++ ) {
+		    	FileDTO fileDto = ajaxFileService.selectByFid(ids[i]); //
+		    	File file = new File(uploadDir + File.separator + userDetails.getUsername(), 
+		    			fileDto.getCname());
+		    	
+		    	bis = new BufferedInputStream(new FileInputStream(file));
+		    	ZipEntry zentry = new ZipEntry(fileDto.getName());
+		    	zentry.setTime(file.lastModified());
+		    	zos.putNextEntry(zentry);
+		    	
+		    	byte[] buffer = new byte[bufferSize];
+		    	int cnt = 0;
+		    	while ((cnt = bis.read(buffer, 0, bufferSize)) != -1) {
+		    		zos.write(buffer, 0, cnt);
+		    	}
+		    	zos.closeEntry();
+		    }
+		               
+		    zos.close();
+		    bis.close();
+		                
+		                
+		} catch(Exception e){
+		    e.printStackTrace();
 		}
-		catch (IOException ex) {
-			contentType = "application/octet-stream";
-		}
-		
-		return ResponseEntity.ok()
-				.contentType(MediaType.parseMediaType(contentType))
-				.header(
-						HttpHeaders.CONTENT_DISPOSITION,
-						"attachment; filename=\"" + fileDto.getName() + "\""
-				)
-				.body(resource);
-	}
 
+
+	}
  
 
 	
@@ -168,10 +183,12 @@ public class AjaxFileController {
 		}
 		
 		return result;
+		
+		
+		
+		
 	}
 
-	// 복수개의 특정 파일(file_id)들 삭제
-	// TODO
 
 	
 	

@@ -36,10 +36,10 @@ public class FileDAOImpl implements FileDAO {
 	}
 
 	// 특정 file_id 파일 삭제
-	@Override
-	public int deleteById(int id) {
-		return mapper.deleteById(id);
-	}
+//	@Override
+//	public int deleteById(int id) {
+//		return mapper.deleteById(id);
+//	}
 	
 	// 특정 file_id 파일들 삭제
 	@Override

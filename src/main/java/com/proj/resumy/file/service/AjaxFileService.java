@@ -49,9 +49,9 @@ public class AjaxFileService {
 	}
 	
 	// 특정 file_id 파일 삭제
-	public int deleteById(int id) {
-		return filedao.deleteById(id);
-	}
+//	public int deleteById(int id) {
+//		return filedao.deleteById(id);
+//	}
 	
 	// 특정 file_id 파일들 삭제
 	public int deleteByIds(int[] id) {
