@@ -26,7 +26,7 @@ public class AjaxCareerController {
 	CareerService careerService;
 	Authentication authentication;
 	
-	// 이력관리 목록 (list)
+	// 이력관리(경력사항) 목록 (list)
 	@GetMapping("/list/")
 	public List<CareerDTO> view(Authentication authentication) {
 		

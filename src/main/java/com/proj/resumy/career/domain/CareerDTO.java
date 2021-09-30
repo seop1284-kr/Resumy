@@ -12,16 +12,16 @@ import lombok.Data;
 public class CareerDTO {
 	
 	private String company;				// cr_company
-	private String hiredate;		// cr_crHiredate
-	private String leavedate;	    // cr_crLeavedate
-	private String lvreason;			    // cr_crLvreason
-	private String post;				    // cr_crcrPost
-	private String dept;				    // cr_crDept
-	private String companyArea;				    // cr_crArea
+	private String hiredate;			// cr_crHiredate
+	private String leavedate;	    	// cr_crLeavedate
+	private String lvreason;			// cr_crLvreason
+	private String post;				// cr_crcrPost
+	private String dept;				// cr_crDept
+	private String companyArea;			// cr_crArea
 	private int salary;					// cr_crSalary
-	private String work;				    // cr_crWork
+	private String work;				// cr_crWork
 	private int id;   					// cr_id
-	private String userid;					    // mem_userid
+	private String userid;				// mem_userid
 	
 	public CareerDTO() {
 		super();
@@ -42,6 +42,6 @@ public class CareerDTO {
 		this.work = work;
 		this.id = id;
 		this.userid = userid;
-		System.out.println("IntroDTO(...) 객체 생성");
+		System.out.println("Career(...) 객체 생성");
 	}
 }

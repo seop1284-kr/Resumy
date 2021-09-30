@@ -4,20 +4,45 @@
 
 <mapper namespace="com.proj.resumy.spec.domain.SpecDAO">
 
-	<select id="select" resultType="com.proj.resumy.spec.domain.SpecDAO">
+	<select id="select" resultType="com.proj.resumy.spec.domain.SpecDTO">
 		SELECT 
-			spec_id "id", 
-			spec_cat_cd cat, 
-			spec_name name, 
-			spec_area area,
-			spec_major major,
-			spec_university university,
-			reg_dtm regdate,
-			mody_dtm modydate,
-			mem_id mid
-		FROM 
-			hr_spec_info
+			b.spec_id 			id, 
+			b.spec_cat_cd 		cat, 
+			b.spec_name 		name, 
+			b.spec_area 		area,
+			b.spec_major 		major,
+			b.spec_university 	university,
+			a.mem_userid      	userid
+		FROM hr_member a
+		left join hr_spec_info b
+		on a.mem_userid = b.mem_userid
+		where a.mem_userid = #{userid}
 		ORDER BY 
-			spec_id DESC;
+			b.spec_id DESC;
 	</select>
+	
+	<!-- 글작성 -->
+		<insert id="insert" flushCache="true" parameterType="com.proj.resumy.career.domain.CareerDTO"
+		useGeneratedKeys="true" keyProperty="id">
+		INSERT INTO hr_career
+		(      
+		spec_cat_cd, 
+		spec_name, 
+		spec_area,
+		spec_major,
+		spec_university,
+		mem_userid
+		)
+		values
+		(
+		#{cat}
+		,#{name}
+		,#{area}
+		,#{major}
+		,#{university}
+		,#{userid}
+		)  
+	</insert>
+	
+	
 </mapper>

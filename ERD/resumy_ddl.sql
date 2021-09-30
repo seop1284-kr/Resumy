@@ -42,9 +42,7 @@ CREATE TABLE `hr_spec_info` (
 	`spec_area`	varchar(10)	NOT NULL	COMMENT '지역명',
 	`spec_major`	varchar(10)	NULL	COMMENT '전공명',
 	`spec_university`	varchar(10)	NULL	COMMENT '01: 2,3년제 02: 4년제  03: 대학원(석사) 04: 대학원(박사)',
-	`reg_dtm`	datetime	NOT NULL	DEFAULT now()	COMMENT '등록일시',
-	`mody_dtm`	datetime	NOT NULL	DEFAULT now()	COMMENT '수정일시',
-	`mem_userid` varchar(100) NOT NULL,
+	`mem_userid` varchar(100) NOT NULL
 	FOREIGN KEY (mem_userid) REFERENCES hr_member(mem_userid) ON DELETE CASCADE
 );
 

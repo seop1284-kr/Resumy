@@ -18,8 +18,8 @@ public class SpecDAOImpl implements SpecDAO {
 	}
 	
 	@Override
-	public List<SpecDTO> select(int mid) {
-		return mapper.select(mid);
+	public List<SpecDTO> select(String userid) {
+		return mapper.select(userid);
 	}
 
 	@Override

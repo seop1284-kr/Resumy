@@ -22,8 +22,8 @@ public class SpecService {
 		System.out.println("CareerService() 생성");	
 	}
 
-	public List<SpecDTO> view(int mid) {
-		return dao.select(mid);
+	public List<SpecDTO> view(String userid) {
+		return dao.select(userid);
 	}
 	
 	public int write(SpecDTO dto) {

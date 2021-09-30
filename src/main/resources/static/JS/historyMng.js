@@ -3,6 +3,56 @@ var careerUserId = "";
 $(document).ready(function(){
 	
 	loadPage();
+	
+	//학력사항 초등학교 버튼
+	$("#btnEleSchool").click(function(){
+		$("#spec01").show();
+		$("#spec02").hide();
+		$("#spec03").hide();
+		$("#spec04").hide();
+		$("#btnEleSchool").css("background-color", "skyblue");
+		$("#btnMidSchool").css("background-color", "#EFEFEF");
+		$("#btnHigSchool").css("background-color", "#EFEFEF");
+		$("#btnUniversity").css("background-color", "#EFEFEF");
+	});//초등학교 버튼 end
+	
+	//학력사항 중학교 버튼
+	$("#btnMidSchool").click(function(){
+		$("#spec02").show();
+		$("#spec01").hide();
+		$("#spec03").hide();
+		$("#spec04").hide();
+		$("#btnMidSchool").css("background-color", "skyblue");
+		$("#btnEleSchool").css("background-color", "#EFEFEF");
+		$("#btnHigSchool").css("background-color", "#EFEFEF");
+		$("#btnUniversity").css("background-color", "#EFEFEF");
+	});//중학교 버튼 end
+	
+	//학력사항 고등학교 버튼
+	$("#btnHigSchool").click(function(){
+		$("#spec03").show();
+		$("#spec01").hide();
+		$("#spec02").hide();
+		$("#spec04").hide();
+		$("#btnHigSchool").css("background-color", "skyblue");
+		$("#btnMidSchool").css("background-color", "#EFEFEF");
+		$("#btnEleSchool").css("background-color", "#EFEFEF");
+		$("#btnUniversity").css("background-color", "#EFEFEF");
+	});//고등학교 버튼 end
+	
+	//학력사항 대학/대학원 버튼
+	$("#btnUniversity").click(function(){
+		$("#spec04").show();
+		$("#spec01").hide();
+		$("#spec02").hide();
+		$("#spec03").hide();
+		$("#btnUniversity").css("background-color", "skyblue");
+		$("#btnEleSchool").css("background-color", "#EFEFEF");
+		$("#btnMidSchool").css("background-color", "#EFEFEF");
+		$("#btnHigSchool").css("background-color", "#EFEFEF");
+		
+	});//대학/대학원 버튼 end
+
 	//경력 버튼 클릭시 경력폼 출력 및 백그라운 색상 변경
 	$("#btnCareer").click(function(){
 		$("#btnCareerPuls").show();
@@ -36,10 +86,69 @@ function loadPage(){
 	$('#content2').html('<h4><b>학력사항</b></h4>');
 	$('#content3').html('<h4><b>경력사항</b></h4>');
 	$("#careerContent").hide();
-	$("#careerPuls").hide();
-	selectCareerList();
+	$("#spec01").hide();
+	$("#spec02").hide();
+	$("#spec03").hide();
+	$("#spec04").hide();
+	
+	selectCareerList(); // 경력
+	selectSpecList(); // 학력
 	
 }//loadPage end
+//학력사항 조회
+function selectSpecList(){
+	$.ajax({
+		url : "/specAjax/list/" ,
+		type : "GET",
+		cache : false,
+		success : function(data, status){
+			if(status == "success"){
+				//addViewEvent();
+				if(data.length > 0){
+					//$("#career01").show();
+					for(var i = 0; i<data.length; i++){	
+						if(data[i].cat == 01){
+							$("input[name='id_01']").eq(i).val(data[i].id);
+							$("input[name='cat_01']").eq(i).val(data[i].cat);
+							$("input[name='School_01']").eq(i).val(data[i].name);
+							$("input[name='schoolArea_01']").eq(i).val(data[i].area);
+							$("input[name='userid_01']").eq(i).val(data[i].userid);
+							console.log("1" + data[i].name);		
+						}if(data[i].cat == 02){
+							$("input[name='id_02']").eq(i).val(data[i].id);
+							$("input[name='cat_02']").eq(i).val(data[i].cat);
+							$("input[name='School_02']").eq(i).val(data[i].name);
+							$("input[name='schoolArea_02']").eq(i).val(data[i].area);
+							$("input[name='userid_02']").eq(i).val(data[i].userid);
+							console.log("2" + data[i].name);	
+						}
+						if(data[i].cat == 03){
+							$("input[name='id_03']").eq(i).val(data[i].id);
+							$("input[name='cat_03']").eq(i).val(data[i].cat);
+							$("input[name='School_03']").eq(i).val(data[i].name);
+							$("input[name='schoolArea_03']").eq(i).val(data[i].area);
+							$("input[name='major_03']").eq(i).val(data[i].major);
+							$("input[name='userid_03']").eq(i).val(data[i].userid);
+							console.log("3" + data[i].name);	
+						}if(data[i].cat == 04){
+							$("input[name='id_04']").eq(i).val(data[i].id);
+							$("input[name='cat_04']").eq(i).val(data[i].cat);
+							$("input[name='School_04']").eq(i).val(data[i].name);
+							$("input[name='schoolArea_04']").eq(i).val(data[i].area);
+							$("input[name='major_04']").eq(i).val(data[i].major);
+							$("input[name='university_04']").eq(i).val(data[i].university);
+							$("input[name='userid_04']").eq(i).val(data[i].userid);
+								}
+							}
+						}	
+						} else {
+							alert("444");
+			}
+		}
+	});
+} // end selectSpecList()
+
+
 
 // 경력사항 조회
 function selectCareerList(){
@@ -70,12 +179,13 @@ function selectCareerList(){
 					}
 				}	
 			} else {
-				alert("444");
+				alert("경력사항을 읽어오지 못 했습니다");
 			}
 		}
 	}); 		
 	
 } // end selectCareerList()
+
 //경력사항 추가
 function writeCareer(formId){	
 	

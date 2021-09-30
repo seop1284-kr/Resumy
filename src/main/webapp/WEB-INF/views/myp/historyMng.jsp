@@ -35,7 +35,6 @@
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="/assets/dist/js/bootstrap.min.js"></script>
-<script src="/JS/career.js"></script>
 <script src="/JS/historyMng.js"></script> <!-- bootrstap 을 따르는 문서 -->
 <!-- bootrstap 을 따르는 문서 -->
 
@@ -58,35 +57,9 @@
 </head>
 
 <body class="container-md">
-	<header>
-		<nav class="navbar navbar-expand-md fixed-top">
-			<div class="container-md">
-				<a class="navbar-brand" href="index.html"> <img
-					src="/img/logo_main.png">
-				</a>
-				<ul>
-					<li>기업정보</li>
-					<li>자소서 게시판</li>
-					<li>고객센터</li>
-				</ul>
-				<button class="login_btn">로그인</button>
-			</div>
-		</nav>
-	</header>
+	
 	<!-- ./navbar -->
-
-	<div class="row">
-		<aside class="col-2">
-			<h4>
-				<b>마이페이지</b>
-			</h4>
-			<hr>
-			<ul>
-				<li>자기소개서 관리</li>
-				<li>파일 관리</li>
-				<li class="active">이력 관리</li>
-			</ul>
-		</aside>
+		<div class="row">
 		<!-- ./aside -->
 
 		<section class="col">
@@ -128,45 +101,6 @@
 						<td></td>
 					</tr>
 				</table>
-				<%--			  id="test" style= "visibility:hidden;"
-		     글 작성 / 보기 / 수정 폼
-	        <form id="frmWrite" name="frmWrite" method="get" target="iframe1">
-	        	submit 후 이동 막는 방안 
-	        	
-	       		<iframe id="iframe1" name="iframe1" style="display:none"></iframe>
-				<div id="crud_form_box">
-					<div id="content_text_box">
-						<div id="content_text">
-							<input type="text" placeholder="자소서 제목(필수)" name="title" required>
-							<input type="text" placeholder="질문" name="question" value="">
-							<textarea placeholder="내용" name="content"  value=""></textarea>					
-						</div>
-						<div id="content_text_plus"></div>
-					</div> --%>
-
-				<%-- 				 하단 버튼 : 글 조회 
-					<div class="d01 btn_group_view">
-						<button type="button" class="listBtn">목록</button>
-						<button type="button" class="deleteBtn">자소서 삭제</button>
-						<button type="button" class="updateBtn">자소서 수정</button>
-					</div>
-					
-					 하단 버튼 : 글 작성 
-					<div class="d01 btn_group_write">
-						<button type="button" class="plusBtn">추가</button>					
-						<button type="button" class="listBtn">목록</button>
-						<button type="submit" >자소서 저장</button>
-					</div>
-					
-					 하단 버튼 : 글 수정 
-					<div class="d01 btn_group_update">
-						<button type="button" class="plusBtn">추가</button>					
-						<button type="button" class="updateCancelBtn">수정 취소</button>
-						<button type="submit">자소서 저장</button>
-					</div> 
-				</div>
-			</form>
-					--%>
 			</article>
 			
 			
@@ -176,55 +110,61 @@
 				<!-- 제목 -->
 				<h4 id="title" style="font-weight: bold"></h4>
 
-				<!-- 자소서 목록 리스트 -->
+				<!-- 학력 목록 -->
 				<div id="content2"></div>
 				<table width="100%">
 					<tr>
-						<td width="25%"><button type="button" class="" id="eleSchool">초등학교
+						<td width="25%"><button type="button" class="" id="btnEleSchool" name="btnEleSchool">초등학교
 								졸업</button></td>
-						<td width="25%"><button type="button" class="" id="midSchool">중학교
+						<td width="25%"><button type="button" class="" id="btnMidSchool" name="btnMidSchool">중학교
 								졸업</button></td>
-						<td width="25%"><button type="button" class="" id="higSchool">고등학교
+						<td width="25%"><button type="button" class="" id="btnHigSchool" name="btnHigSchool">고등학교
 								졸업</button></td>
-						<td width="25%"><button type="button" class="" id="university">대학/대학원
+						<td width="25%"><button type="button" class="" id="btnUniversity" name="btnUniversity">대학/대학원<br>
 								이상 졸업</button></td>
 					</tr>
 				</table>
+				
+				
 				<%-- 초등학교 정보 --%>
-				<table id="spec01" width="100%">
+			<form name='spec01' id='spec01' action='' method='post'>
+				<table  width="100%">
 					<tr>
 						<td width="80%" colspan="2"><h4><b>초등학교 정보입력</b></h4></td>
 						<td width="20%"><button type="button" class="">저장</button></td>
 					</tr>
 					<tr>
-						<td width="20%">학교명</td>
-						<td width="60%"><input type="text" name="name" value=""></td>
+						<td width="20%" name="school01">학교명</td>
+						<td width="60%"><input type="text" name="School_01" value=""></td>
 						<td width="20%"></td>
 					</tr>
 					<tr>
-						<td width="20%">지역</td>
-						<td width="60%"><input type="text" name="area" value=""></td>
+						<td width="20%" name="schoolArea01">지역</td>
+						<td width="60%"><input type="text" name="schoolArea_01" value=""></td>
 						<td width="20%"></td>
 					</tr>
 				</table>
+			</form>
 				
 				<%-- 중학교 정보 --%>
-				<table id="spec02" width="100%">
+			<form name='spec02' id='spec02' action='' method='post'>
+				<table width="100%">
 					<tr>
 						<td width="80%" colspan="2"><h4><b>중학교 정보입력</b></h4></td>
 						<td width="20%"><button type="button" class="">저장</button></td>
 					</tr>
 					<tr>
-						<td width="20%">학교명</td>
-						<td width="60%"><input type="text" name="name" value=""></td>
+						<td width="20%" name="school02">학교명</td>
+						<td width="60%"><input type="text" name="School_02" value=""></td>
 						<td width="20%"></td>
 					</tr>
 					<tr>
-						<td width="20%">지역</td>
-						<td width="60%"><input type="text" name="area" value=""></td>
+						<td width="20%" name="schoolArea02">지역</td>
+						<td width="60%"><input type="text" name="schoolArea_02" value=""></td>
 						<td width="20%"></td>
 					</tr>
 				</table>
+			</form>
 				
 				<%-- 고등학교 정보 --%>
 				<table id="spec03" width="100%">
@@ -234,17 +174,17 @@
 					</tr>
 					<tr>
 						<td width="20%">학교명</td>
-						<td width="60%"><input type="text" name="name" value=""></td>
+						<td width="60%"><input type="text" name="School_03" value=""></td>
 						<td width="20%"></td>
 					</tr>
 					<tr>
 						<td width="20%">지역</td>
-						<td width="60%"><input type="text" name="area" value=""></td>
+						<td width="60%"><input type="text" name="schoolArea_03" value=""></td>
 						<td width="20%"></td>
 					</tr>
 					<tr>
 						<td width="20%">전공</td>
-						<td width="60%"><input type="text" name="major" value=""></td>
+						<td width="60%"><input type="text" name="major_03" value=""></td>
 						<td width="20%"></td>
 					</tr>
 				</table>
@@ -257,22 +197,22 @@
 					</tr>
 					<tr>
 						<td width="20%">대학</td>
-						<td width="60%"><input type="text" name="cat" value=""></td>
+						<td width="60%"><input type="text" name="university_04" value=""></td>
 						<td width="20%"></td>
 					</tr>
 					<tr>
 						<td width="20%">학교명</td>
-						<td width="60%"><input type="text" name="name" value=""></td>
+						<td width="60%"><input type="text" name="School_04" value=""></td>
 						<td width="20%"></td>
 					</tr>
 					<tr>
 						<td width="20%">지역</td>
-						<td width="60%"><input type="text" name="area" value=""></td>
+						<td width="60%"><input type="text" name="schoolArea_04" value=""></td>
 						<td width="20%"></td>
 					</tr>
 					<tr>
 						<td width="20%">전공계열</td>
-						<td width="60%"><input type="text" name="major" value=""></td>
+						<td width="60%"><input type="text" name="major_04" value=""></td>
 						<td width="20%"></td>
 					</tr>
 				</table>
@@ -304,22 +244,7 @@
 
 	</div>
 
-	<footer >
-		<div class="row">
-			<div class="col-2">
-				<img src="/img/logo_ contrast.png">
-			</div>
-			<div class="col-9">
-				프로젝트명 : 채용 도우미 사이트 Resumy(리주마이)<br> 팀명 : 간개다모 (김진섭 팀장, 김민수,
-				노수빈, 하병노)<br> 이메일 : seop1284@gmail.com (김진섭),
-				kimpkoiw@gmail.com (김민수), binigy97@gmail.com (노수빈),
-				hahbr88@gmail.com (하병노)
-			</div>
-			<div class="col">CopyrightⓒGangeadamo 2021-09-07 ~ 2021-10-15</div>
-		</div>
-	</footer>
-
-
+	
 </body>
 
 </html>

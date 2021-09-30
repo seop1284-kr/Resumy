@@ -19,7 +19,7 @@ private String major;			// spec_major
 private String university;		// spec_university '01: 2,3년제 02: 4년제  03: 대학원(석사) 04: 대학원(박사)'
 private LocalDateTime regdate;	// reg_dtm
 private LocalDateTime modydate;	// mody_dtm
-private int mid;				// mody_dtm
+private String userid;			// mem_userid
 
 public SpecDTO() {
 	super();
@@ -27,7 +27,7 @@ public SpecDTO() {
 }
 
 
-public SpecDTO(int id,  String cat, String name, String area, String major, String university, LocalDateTime regdate, LocalDateTime modydate, int mid) {
+public SpecDTO(int id,  String cat, String name, String area, String major, String university, LocalDateTime regdate, LocalDateTime modydate, String userid) {
 	super();
 	this.id = id;
 	this.cat = cat;
@@ -37,7 +37,7 @@ public SpecDTO(int id,  String cat, String name, String area, String major, Stri
 	this.university = university;
 	this.regdate = regdate;
 	this.modydate = modydate;
-	this.mid = mid;
-	System.out.println("Career(toString) 객체 생성");
+	this.userid = userid;
+	System.out.println("Spec(...) 객체 생성");
 }
 }

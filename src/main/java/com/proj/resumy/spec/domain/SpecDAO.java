@@ -4,9 +4,9 @@ import java.util.List;
 
 public interface SpecDAO {
 	// 전체 경력사항 출력 SELECT
-	public abstract List<SpecDTO> select(int mid);
+	public abstract List<SpecDTO> select(String userid);
 	
-	// 새 경력사항 작성 <-- DTO 
+	// 학력사항 추가 <-- DTO 
 	public abstract int insert(SpecDTO dto);
 	
 	// 특정 id 경력사항 내용 읽기
