@@ -23,7 +23,7 @@ public class IntroDTO {
 	
 	public IntroDTO() {
 		super();
-		System.out.println("IntroDTO() 객체 생성");
+		//System.out.println("IntroDTO() 객체 생성");
 	}
 
 
@@ -36,14 +36,20 @@ public class IntroDTO {
 		this.fin = fin;
 		this.modydate = modydate;
 		this.userid = userid;
-		System.out.println("IntroDTO(...) 객체 생성");
+		//System.out.println("IntroDTO(...) 객체 생성");
 	}
 	
 	public String getRegdate() {
+		if(regdate == null) {
+			regdate = LocalDateTime.now();
+		}
 		return this.regdate.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
 	}
 	
 	public String getModydate() {
-		return this.regdate.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+		if(modydate == null) {
+			modydate = LocalDateTime.now();
+		}
+		return this.modydate.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
 	}
 }

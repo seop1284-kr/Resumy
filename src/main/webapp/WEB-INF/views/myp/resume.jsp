@@ -28,7 +28,7 @@
 			<form id="frmWrite" name="frmWrite" method="post" target="iframe1">
 				<%-- submit 후 이동 막는 방안 --%>
 				<iframe id="iframe1" name="iframe1" style="display: none"></iframe>
-				<input type="hidden" name="id">
+				<input type="hidden" name="iid">
 
 
 				<div id="crud_form_box">
@@ -39,7 +39,7 @@
 						<div id="content_text">
 							<input type="text" placeholder="자소서 제목(필수)" name="title" required>
 							<input type="text" placeholder="질문" name="question" value="" required>
-							<textarea placeholder="내용" name="content" value=""></textarea>
+							<textarea placeholder="내용" name="content" value="" required></textarea>
 						</div>
 						<div id="content_text_plus"></div>
 					</div>

@@ -64,10 +64,10 @@ public class AjaxIntroController {
 	
 	// 특정 id 자소서 삭제 (delete)
 	@DeleteMapping("")
-	public String delete(int id) {
+	public String delete(int iid) {
 		String result = "fail";
 		int count = 0;
-		count = ajaxIntroService.deleteResumeById(id);
+		count = ajaxIntroService.deleteResumeById(iid);
 		
 		if (count == 1) {
 			result = "success";
@@ -81,13 +81,11 @@ public class AjaxIntroController {
 	public int write(
 			@RequestParam(value = "pub", defaultValue = "false") boolean pub, 
 			@RequestParam(value = "fin", defaultValue = "false")boolean fin, 
-			String title, String[] question, String[] content, Authentication authentication) {
+			IntroDTO resume, String[] question, String[] content, Authentication authentication) {
 		int iid = 0;
 		// 로그인한 사람의 정보를 담은 객체
 		UserDetails userDetails = (UserDetails) authentication.getPrincipal();
-				
-		IntroDTO resume = new IntroDTO();
-		resume.setTitle(title);
+			
 		resume.setUserid(userDetails.getUsername());
 		resume.setPub(pub);
 		resume.setFin(fin);
@@ -102,17 +100,17 @@ public class AjaxIntroController {
 	public int update(
 			@RequestParam(value = "pub", defaultValue = "false") boolean pub, 
 			@RequestParam(value = "fin", defaultValue = "false")boolean fin, 
-			String title, int id, String[] question, String[] content) {
-		int iid = 0;
+			String title, int iid, String[] question, String[] content) {
+		int id = 0;
 		
 		IntroDTO resume = new IntroDTO();
-		resume.setId(id);
+		resume.setId(iid);
 		resume.setTitle(title);
 		resume.setPub(pub);
 		resume.setFin(fin);
-		iid = ajaxIntroService.update(resume, question, content);
+		id = ajaxIntroService.update(resume, question, content);
 		
-		return iid;
+		return id;
 		
 	}
 	
