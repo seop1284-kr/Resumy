@@ -26,9 +26,9 @@ public class MainController {
 		System.out.println("MainController() 생성");
 	}
 	
-	// main page
+	// index page
 	@RequestMapping("")
-	public String mainPage(String content, String headerMenu, Model model) {
+	public String indexPage(String content, String headerMenu, Model model) {
 		if (headerMenu == null) {
 			model.addAttribute("headerMenu", "main");
 			model.addAttribute("content", "main");
@@ -39,16 +39,33 @@ public class MainController {
 		return "index";
 	}
 	
+	// main page 콘텐츠
+	@RequestMapping("/main")
+	public String mainPage(String content, String headerMenu, Model model) {
+		
+		return "mainBoard/main/mainBoard";
+	}
+	
+	// company board 콘텐츠
+	@RequestMapping("/companyBoard")
+	public String companyBoard(Model model) {
+
+		return "mainBoard/company/companyBoard";
+	}
+	
 
 	// Spring Security(이하 '시큐리티') 가 적용되면
 	// /login 등의 url 로의 request 를  시큐리티가 모두 낚아 챕니다.
 	// 나중에 SecurityConfig 가 설정되면 낚아 채지 않게 된다.
+	
+	
+	// 로그인 페이지
 	@GetMapping("/login")
-	//@ResponseBody
 	public String login() {	
 		return "loginForm";
 	}
 	
+	// 회원가입 페이지
 	@GetMapping("/join")
 	public String join() {
 		return "joinForm";

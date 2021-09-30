@@ -2,5 +2,6 @@
     pageEncoding="UTF-8"%>
 
 <body>
-	<h1>기업정보페이지</h1>
+	<h1>main 페이지</h1>
+
 </body>
