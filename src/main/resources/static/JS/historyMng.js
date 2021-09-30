@@ -108,40 +108,50 @@ function selectSpecList(){
 					//$("#career01").show();
 					for(var i = 0; i<data.length; i++){	
 						if(data[i].cat == 01){
-							$("input[name='id_01']").eq(i).val(data[i].id);
-							$("input[name='cat_01']").eq(i).val(data[i].cat);
-							$("input[name='School_01']").eq(i).val(data[i].name);
-							$("input[name='schoolArea_01']").eq(i).val(data[i].area);
-							$("input[name='userid_01']").eq(i).val(data[i].userid);
+							$("input[name='id_01']").val(data[i].id);
+							$("input[name='cat_01']").val(data[i].cat);
+							$("input[name='School_01']").val(data[i].name);
+							$("input[name='schoolArea_01']").val(data[i].area);
+							$("input[name='userid_01']").val(data[i].userid);
 							console.log("1" + data[i].name);		
 						}if(data[i].cat == 02){
-							$("input[name='id_02']").eq(i).val(data[i].id);
-							$("input[name='cat_02']").eq(i).val(data[i].cat);
-							$("input[name='School_02']").eq(i).val(data[i].name);
-							$("input[name='schoolArea_02']").eq(i).val(data[i].area);
-							$("input[name='userid_02']").eq(i).val(data[i].userid);
+							$("input[name='id_02']").val(data[i].id);
+							$("input[name='cat_02']").val(data[i].cat);
+							$("input[name='School_02']").val(data[i].name);
+							$("input[name='schoolArea_02']").val(data[i].area);
+							$("input[name='userid_02']").val(data[i].userid);
 							console.log("2" + data[i].name);	
 						}
 						if(data[i].cat == 03){
-							$("input[name='id_03']").eq(i).val(data[i].id);
-							$("input[name='cat_03']").eq(i).val(data[i].cat);
-							$("input[name='School_03']").eq(i).val(data[i].name);
-							$("input[name='schoolArea_03']").eq(i).val(data[i].area);
-							$("input[name='major_03']").eq(i).val(data[i].major);
-							$("input[name='userid_03']").eq(i).val(data[i].userid);
+							$("input[name='id_03']").val(data[i].id);
+							$("input[name='cat_03']").val(data[i].cat);
+							$("input[name='School_03']").val(data[i].name);
+							$("input[name='schoolArea_03']").val(data[i].area);
+							$("input[name='major_03']").val(data[i].major);
+							$("input[name='userid_03']").val(data[i].userid);
 							console.log("3" + data[i].name);	
 						}if(data[i].cat == 04){
-							$("input[name='id_04']").eq(i).val(data[i].id);
-							$("input[name='cat_04']").eq(i).val(data[i].cat);
-							$("input[name='School_04']").eq(i).val(data[i].name);
-							$("input[name='schoolArea_04']").eq(i).val(data[i].area);
-							$("input[name='major_04']").eq(i).val(data[i].major);
-							$("input[name='university_04']").eq(i).val(data[i].university);
-							$("input[name='userid_04']").eq(i).val(data[i].userid);
+							$("input[name='id_04']").val(data[i].id);
+							$("input[name='cat_04']").val(data[i].cat);
+							$("input[name='School_04']").val(data[i].name);
+							$("input[name='schoolArea_04']").val(data[i].area);
+							$("input[name='major_04']").val(data[i].major);
+							$("input[name='userid_04']").val(data[i].userid);
+							console.log(data[i].major);
+							}if(data[i].university == 01){
+								$("input[name='university_04']").val("2,3년제");
+							}if(data[i].university == 02){
+								$("input[name='university_04']").val("4년제");
+							}if(data[i].university == 03){
+								$("input[name='university_04']").val("대학원(석사)");
+							}if(data[i].university == 04){
+								$("input[name='university_04']").val("대학원(박사)");
+										
+									
 								}
 							}
 						}	
-						} else {
+							} else {
 							alert("444");
 			}
 		}
