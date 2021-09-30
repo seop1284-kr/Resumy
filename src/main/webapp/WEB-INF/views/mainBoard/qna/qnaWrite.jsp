@@ -61,8 +61,8 @@
     <!-- ./navbar -->
     
     <form name="frm" id="frm" action="writeOk.do"  method="post">
-	    <input type="text" name="subject" placeholder="제목을 입력해주세요.">
-	    <input type="text" name="content" placeholder="내용을 입력해주세요.">
+	    <input type="text" name="subject" placeholder="제목을 입력해주세요." required>
+	    <input type="text" name="content" placeholder="내용을 입력해주세요." required>
 	    <button type="submit" id="btn_submit">등록하기</button>
     </form>
 

@@ -18,6 +18,9 @@ public class QnaADTO {
 	private LocalDateTime regdate;	// a_regdate
 	
 	public String getRegdate() {
+		if(regdate == null) {
+			regdate = LocalDateTime.now();
+		}
 		return this.regdate.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
 	}
 }

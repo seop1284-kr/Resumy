@@ -3,8 +3,6 @@ package com.proj.resumy.qna.controller;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.transaction.Transactional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -145,27 +143,16 @@ public class QnaController {
 	
 	// 고객센터 관리 페이지 - 답변 update (또는 insert) DB에 반영하기
 	// 특정 q_id 게시물의 답변 상태 true 로 수정
-	@Transactional
 	@PostMapping("mng/qna/updateOk.do")
-	public String updateQnaAOk(String id, String reply, Model model) {
-		// request
-		QnaADTO adto = new QnaADTO();
-		QnaQDTO qdto = new QnaQDTO();
-		int qid = Integer.parseInt(id);
-		
-		adto.setId(qid);
-		adto.setReply(reply);
-		qdto.setId(qid);
-		qdto.setReplyState(true);
+	public String updateQnaAOk(QnaADTO dto, Model model) {
+		boolean chk = true;
 		
 		// response
-		if(qnaService.selectByQid(qid) == null) { // 해당 게시물에 대한 답변 존재 여부 확인
-			model.addAttribute("result", qnaService.insertQnaA(adto)); // 답변 insert
-		} else {
-			model.addAttribute("result", qnaService.updateQnaA(adto)); // 답변 update
+		if(qnaService.selectByQid(dto.getId()) == null) { // 해당 게시물에 대한 답변 존재 여부 확인
+			chk = false;
 		}
-
-		qnaService.updateReplyState(qdto); // 답변상태 update
+		
+		model.addAttribute("result", qnaService.updateQnaA(chk, dto)); 
 		
 		return "mng/qna/qnaAUpdateOk";
 	}
@@ -211,19 +198,9 @@ public class QnaController {
 
 	// 고객센터 관리 페이지 - 삭제 : 특정 q_id 문의 답글 삭제
 	// 특정 q_id 게시물의 답변 상태 false 로 수정
-	@Transactional
 	@GetMapping("mng/qna/qnaADeleteOk.do")
 	public String aDeleteOk(int id, Model model) {
-		QnaQDTO qdto = new QnaQDTO();
-		
-		qdto.setId(id);
-		qdto.setReplyState(false);
-		
-		// 답글 삭제
 		model.addAttribute("result", qnaService.deleteByQid(id));
-		
-		// 답변 상태 업데이트
-		qnaService.updateReplyState(qdto);
 		
 		return "redirect:/mng/qna/board.do";
 	}

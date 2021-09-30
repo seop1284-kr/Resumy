@@ -4,8 +4,6 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.Statement;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.Random;
 
 import org.junit.jupiter.api.Order;
@@ -148,10 +146,9 @@ class DataBatch {
          
          // 테스트용 dummy 데이터 만들기
          pstmt = conn.prepareStatement(SQL_RESUMY_CAREER_INSERT);
-         LocalDate now = LocalDate.now();
+//         LocalDate now = LocalDate.now();
          //LocalDate leavedate = LocalDate.now();
          
-         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
          //SimpleDateFormat transFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
          
          int num = 10;
@@ -185,9 +182,6 @@ class DataBatch {
          
          // 테스트용 dummy 데이터 만들기
          pstmt = conn.prepareStatement(SQL_RESUMY_SPEC_INSERT);
-         LocalDate now = LocalDate.now();
-         
-         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
          
          int num = 10;
          Random rand = new Random();

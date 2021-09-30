@@ -86,7 +86,7 @@
 			</table>
 			<form name="frm" action="updateOk.do" method="post">
 				<input type="hidden" name="id" value="${qdto.id }">
-				<input type="text" name="content" value="${qdto.content }" style="display: block; width:90vh"/>
+				<input type="text" name="content" value="${qdto.content }" required style="display: block; width:90vh"/>
 				<button type="submit">수정완료</button>
 			</form>
 		</body>
