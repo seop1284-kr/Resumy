@@ -14,7 +14,7 @@ public class IntroConDTO {
 	
 	public IntroConDTO() {
 		super();
-		System.out.println("IntroConDTO() 객체 생성");
+		//System.out.println("IntroConDTO() 객체 생성");
 	}
 
 	public IntroConDTO(int id, String question, String content, int iid) {
@@ -23,7 +23,7 @@ public class IntroConDTO {
 		this.question = question;
 		this.content = content;
 		this.iid = iid;
-		System.out.println("IntroConDTO(...) 객체 생성");
+		//System.out.println("IntroConDTO(...) 객체 생성");
 
 	}
 

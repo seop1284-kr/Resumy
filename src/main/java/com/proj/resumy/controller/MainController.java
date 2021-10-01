@@ -74,7 +74,10 @@ public class MainController {
 	@PostMapping("/joinOk")
 	public String joinOk(MemberDTO user) {
 		System.out.println(user);
-		
+		// join id 중복 체크
+		if (memberService.findById(user.getUserid()) != null) {
+			return "redirect:/join";
+		}
 		String rawPassword = user.getPw();
 		String encPassword = passwordEncoder.encode(rawPassword);
 		user.setPw(encPassword);

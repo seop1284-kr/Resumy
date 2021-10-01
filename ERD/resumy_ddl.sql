@@ -29,8 +29,9 @@ CREATE TABLE `hr_member` (
 
 -- 회원권한 테이블(김진섭)
 CREATE TABLE `hr_authority` (
-	mem_userid varchar(50) REFERENCES hr_member(mem_userid) ON DELETE CASCADE,
+	mem_userid varchar(50),
 	mem_auth varchar(50) NOT NULL,        -- 시큐리티의 authority
+	FOREIGN KEY (mem_userid) REFERENCES hr_member(mem_userid) ON DELETE CASCADE,
 	PRIMARY KEY (mem_userid, mem_auth)
 );
 -- 김민수
