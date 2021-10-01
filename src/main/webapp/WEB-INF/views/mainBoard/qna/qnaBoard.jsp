@@ -100,33 +100,8 @@
     		<th>등록일</th>
     	</thead>
     	<tbody>
-	    	<%-- 
-	    	<c:choose>
-				<c:when test="${empty list || fn:length(list) == 0 }">
-				</c:when>
-				<c:otherwise>
-					<c:forEach var="dto" items="${list }" varStatus="status">
-						<tr>
-							<td>${dto.id }</td>
-							<td><a href="view.do?id=${dto.id }">${dto.subject }</a></td>
-							<td>
-								<c:choose>
-									<c:when test="${dto.replyState eq false }">
-									</c:when>
-									<c:otherwise>
-										<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chat-left-fill" viewBox="0 0 16 16">
-										  <path d="M2 0a2 2 0 0 0-2 2v12.793a.5.5 0 0 0 .854.353l2.853-2.853A1 1 0 0 1 4.414 12H14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
-										</svg>1
-									</c:otherwise>
-								</c:choose>
-							</td>
-							<td>${listName[status.index] }</td>
-							<td>${dto.regdate }</td>
-						</tr>
-					</c:forEach>
-				</c:otherwise>
-			</c:choose> 
-			--%>
+    	</tbody>
+    </table>
     	</tbody>
     </table>
     
