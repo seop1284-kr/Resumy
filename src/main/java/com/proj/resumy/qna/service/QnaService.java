@@ -1,7 +1,8 @@
 package com.proj.resumy.qna.service;
 
-import java.util.ArrayList;
 import java.util.List;
+
+import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -39,6 +40,16 @@ public class QnaService {
 		;
 	}
 
+	// 페이징용 SELECT (from : 몇 번째부터, pageRows : 몇 개의 데이터를)
+	public List<QnaQDTO> list(int from, int pageRows) {
+		return dao.selectFromRow(from, pageRows);
+	}
+	
+	// 전체 글 개수
+	public int count() {
+		return dao.countAll();
+	}
+	
 	// 고객센터 테이블 목록 출력 SELECT
 	public List<QnaQDTO> listQnaQ() {
 		return dao.selectQnaQ();
@@ -52,12 +63,6 @@ public class QnaService {
 	// 문의하기 글 작성 <-- DTO
 	public int insertQnaQ(QnaQDTO dto) {
 		return dao.insertQnaQ(dto);
-	}
-	
-	// 답변 작성 <-- DTO
-	// (controller 의 /mng/qna/updateOk.do 에 코드 위치)
-	public int insertQnaA(QnaADTO dto) {
-		return dao.insertQnaA(dto);
 	}
 
 	// 특정 id 문의 내용 읽기
@@ -75,9 +80,27 @@ public class QnaService {
 		return dao.updateQnaQ(dto);
 	}
 	
-	// 특정 id 문의 답변 수정
-	public int updateQnaA(QnaADTO dto) {
-		return dao.updateQnaA(dto);
+	// 특정 id 문의 답변 수정/삽입
+	// 특정 q_id 게시물의 답변 상태 true 로 수정
+	@Transactional
+	public int updateQnaA(boolean chk, QnaADTO dto) {
+		int result = 0;
+		QnaQDTO qdto = new QnaQDTO();
+		
+		// 고객센터 답변 테이블에 답변 등록
+		if(!chk) { // 특정 게시물에 답변이 없을 때
+			result = dao.insertQnaA(dto); // 답변 insert
+		} else {
+			result = dao.updateQnaA(dto); // 답변 update	
+		}
+		
+		// 고겍센터 테이블의 답변상태 true로 업데이트
+		qdto.setId(dto.getId());
+		qdto.setReplyState(true);
+		
+		dao.updateReplyState(qdto);
+		
+		return result;
 	}
 
 	// 특정 q_id 게시물의 답변 상태 수정
@@ -91,8 +114,22 @@ public class QnaService {
 	}
 	
 	// 특정 q_id 문의 답글 삭제
+	// 특정 q_id 게시물의 답변 상태 false 로 수정
+	@Transactional
 	public int deleteByQid(int id) {
-		return dao.deleteByQid(id);
+		int result = 0;
+		QnaQDTO qdto = new QnaQDTO();
+
+		// 답글 삭제
+		result = dao.deleteByQid(id);
+		
+		// 답변 상태 업데이트
+		qdto.setId(id);
+		qdto.setReplyState(false);
+		
+		dao.updateReplyState(qdto);
+		
+		return result;
 	}
 	
 	// 특정 userid 의 작성자 이름 뽑기
