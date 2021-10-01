@@ -1,6 +1,5 @@
 package com.proj.resumy.qna.domain;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -15,6 +14,16 @@ public class QnaDAOImpl implements QnaDAO {
 	@Autowired
 	public QnaDAOImpl(SqlSession sqlSession) {
 		mapper = sqlSession.getMapper(QnaDAO.class);
+	}
+	
+	@Override
+	public List<QnaQDTO> selectFromRow(int from, int pageRows) {
+		return mapper.selectFromRow(from, pageRows);
+	}
+
+	@Override
+	public int countAll() {
+		return mapper.countAll();
 	}
 	
 	@Override

@@ -1,6 +1,5 @@
 package com.proj.resumy.qna.controller;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,7 +34,7 @@ public class QnaController {
 	@RequestMapping("main/qna/board.do")
 	public String listQnaQ(Model model) {
 		List<QnaQDTO> listQ = qnaService.listQnaQ();
-		List<String> listName = this.findNameAll(listQ); // (문의글) 작성자
+		List<String> listName = qnaService.findNameAll(listQ); // (문의글) 작성자
 		
 		model.addAttribute("list", listQ); // jsp로 2번 매개변수를 1번 매개변수 이름으로 값을 보냄
 		model.addAttribute("listName", listName);
@@ -203,23 +202,6 @@ public class QnaController {
 		model.addAttribute("result", qnaService.deleteByQid(id));
 		
 		return "redirect:/mng/qna/board.do";
-	}
-	
-	// 모든 게시물의 작성자 이름 뽑기
-	public List<String> findNameAll(List<QnaQDTO> list) {
-		List<String> listName = new ArrayList<>();
-		
-		for (int i = 0; i < list.size(); i++) {
-			listName.add(qnaService.findNameByUserId(list.get(i).getUserid()));
-		}
-		
-		return listName;
-	}
-	
-	// userid 로부터 사용자 이름 뽑기
-	public String findNameByUserId(String userid) {
-		String name = qnaService.findNameByUserId(userid);
-		return name;
 	}
 
 }

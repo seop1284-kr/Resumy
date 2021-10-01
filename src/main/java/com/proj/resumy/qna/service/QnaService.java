@@ -1,5 +1,6 @@
 package com.proj.resumy.qna.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.transaction.Transactional;
@@ -10,6 +11,7 @@ import org.springframework.stereotype.Service;
 import com.proj.resumy.domain.MemberDAO;
 import com.proj.resumy.qna.domain.QnaADTO;
 import com.proj.resumy.qna.domain.QnaDAO;
+import com.proj.resumy.qna.domain.QnaDTO;
 import com.proj.resumy.qna.domain.QnaQDTO;
 
 //Service 단.
@@ -41,8 +43,19 @@ public class QnaService {
 	}
 
 	// 페이징용 SELECT (from : 몇 번째부터, pageRows : 몇 개의 데이터를)
-	public List<QnaQDTO> list(int from, int pageRows) {
-		return dao.selectFromRow(from, pageRows);
+	public List<QnaDTO> list(int from, int pageRows) {
+		List<QnaDTO> list = new ArrayList<QnaDTO>();
+		List<QnaQDTO> listQ = dao.selectFromRow(from, pageRows);
+		
+		// QnaDTO 에 QnaQDTO 넣어서 반환
+		for (int i = 0; i < listQ.size(); i++) {
+			QnaDTO dto = new QnaDTO();
+			dto.setQdto(listQ.get(i));
+			
+			list.add(dto);
+		}
+		
+		return list;
 	}
 	
 	// 전체 글 개수
@@ -130,6 +143,17 @@ public class QnaService {
 		dao.updateReplyState(qdto);
 		
 		return result;
+	}
+	
+	// 모든 게시물의 작성자 이름 뽑기
+	public List<String> findNameAll(List<QnaQDTO> list) {
+		List<String> listName = new ArrayList<>();
+		
+		for (int i = 0; i < list.size(); i++) {
+			listName.add(memberDao.findNameByUserId(list.get(i).getUserid()));
+		}
+		
+		return listName;
 	}
 	
 	// 특정 userid 의 작성자 이름 뽑기

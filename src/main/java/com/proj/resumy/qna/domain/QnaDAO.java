@@ -2,10 +2,14 @@ package com.proj.resumy.qna.domain;
 
 import java.util.List;
 
-import com.proj.resumy.domain.MemberDAO;
-
 // QnaDAO(고객센터 페이지, 고객센터 답글) 노수빈
 public interface QnaDAO {
+	// 페이징용 SELECT (from : 몇 번째부터, pageRows : 몇 개의 데이터를)
+	public List<QnaQDTO> selectFromRow(int from, int pageRows);
+	
+	// 전체 글 개수
+	public int countAll();
+	
 	// 고객센터 테이블 목록 출력 SELECT
 	public abstract List<QnaQDTO> selectQnaQ();
 	

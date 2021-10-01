@@ -38,6 +38,36 @@
                 font-size: 3.5rem;
             }
         }
+        
+        /* [페이징] */
+		.center {
+			text-align: center;
+		}
+		
+		ul.pagination{
+			list-style-type: none;
+		}
+		
+		ul.pagination li{
+			display: inline-block;
+		}
+		
+		ul.pagination a {
+			color: black;
+			float: left;
+			padding: 4px 8px;
+			text-decoration: none;
+			transition: background-color .3s;
+			margin: 0px;
+		}
+		
+		ul.pagination a.active {
+			background-color: #4CAF50;
+			color: white;
+			border: 1px solid #4CAF50;
+		}
+		
+		ul.pagination a:hover:not(.active) {background-color: #ddd;}
     </style>
 </head>
 
@@ -62,33 +92,52 @@
     <div>현재 <span style="color:orange;">${fn:length(list) }건</span>의 게시물이 있습니다</div>
     
     <table>
-		<c:choose>
-			<c:when test="${empty list || fn:length(list) == 0 }">
-			</c:when>
-			<c:otherwise>
-				<c:forEach var="dto" items="${list }" varStatus="status">
-					<tr>
-						<td>${dto.id }</td>
-						<td><a href="view.do?id=${dto.id }">${dto.subject }</a></td>
-						<td>
-							<c:choose>
-								<c:when test="${dto.replyState eq false }">
-								</c:when>
-								<c:otherwise>
-									<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chat-left-fill" viewBox="0 0 16 16">
-									  <path d="M2 0a2 2 0 0 0-2 2v12.793a.5.5 0 0 0 .854.353l2.853-2.853A1 1 0 0 1 4.414 12H14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
-									</svg>1
-								</c:otherwise>
-							</c:choose>
-						</td>
-						<td>${listName[status.index] }</td>
-						<td>${dto.regdate }</td>
-					</tr>
-				</c:forEach>
-			</c:otherwise>
-		</c:choose>
-	</table>
-	
+    	<thead>
+    		<th>번호</th>
+    		<th>제목</th>
+    		<th>답변</th>
+    		<th>작성자</th>
+    		<th>등록일</th>
+    	</thead>
+    	<tbody>
+	    	<%-- 
+	    	<c:choose>
+				<c:when test="${empty list || fn:length(list) == 0 }">
+				</c:when>
+				<c:otherwise>
+					<c:forEach var="dto" items="${list }" varStatus="status">
+						<tr>
+							<td>${dto.id }</td>
+							<td><a href="view.do?id=${dto.id }">${dto.subject }</a></td>
+							<td>
+								<c:choose>
+									<c:when test="${dto.replyState eq false }">
+									</c:when>
+									<c:otherwise>
+										<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chat-left-fill" viewBox="0 0 16 16">
+										  <path d="M2 0a2 2 0 0 0-2 2v12.793a.5.5 0 0 0 .854.353l2.853-2.853A1 1 0 0 1 4.414 12H14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
+										</svg>1
+									</c:otherwise>
+								</c:choose>
+							</td>
+							<td>${listName[status.index] }</td>
+							<td>${dto.regdate }</td>
+						</tr>
+					</c:forEach>
+				</c:otherwise>
+			</c:choose> 
+			--%>
+    	</tbody>
+    </table>
+    
 	<button type="button" onclick="location.href='write.do'">문의하기</button>
+	
+	<!-- 페이징 -->
+	<div class="center">
+		<ul class="pagination" id="pagination"></ul>
+	</div>
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<script src="/JS/qnaBoard.js"></script>
 </body>
 </html>
