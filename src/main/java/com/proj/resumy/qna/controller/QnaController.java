@@ -152,7 +152,7 @@ public class QnaController {
 			chk = false;
 		}
 		
-		//model.addAttribute("result", qnaService.updateQnaA(chk, dto)); 
+		model.addAttribute("result", qnaService.updateQnaA(chk, dto)); 
 		
 		return "mng/qna/qnaAUpdateOk";
 	}
