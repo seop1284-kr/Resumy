@@ -1,6 +1,7 @@
 package com.proj.resumy.domain;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 import lombok.Data;
 
@@ -19,9 +20,19 @@ public class MemberDTO {
 	private LocalDateTime regdtm;	// reg_dtm
 	private LocalDateTime modydtm;	// mody_dtm
 	
-	//public boolean getLev() {
-	//	return lev;
-	//}
+	public String getRegdtm() {
+		if(regdtm == null) {
+			regdtm = LocalDateTime.now();
+		}
+		return this.regdtm.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+	}
+	
+	public String getModydtm() {
+		if(modydtm == null) {
+			modydtm = LocalDateTime.now();
+		}
+		return this.modydtm.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+	}
 
 	
 }

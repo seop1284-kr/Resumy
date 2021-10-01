@@ -18,6 +18,10 @@ public class MemberDAOImpl implements MemberDAO {
 		mapper = sqlSession.getMapper(MemberDAO.class);
 	}
 	
+	@Override
+	public List<MemberDTO> selectAll() {
+		return mapper.selectAll();
+	}
 	
 	@Override
 	public int addUser(MemberDTO user) {
@@ -59,5 +63,7 @@ public class MemberDAOImpl implements MemberDAO {
 	public List<String> selectAuthoritiesById(String userid) {
 		return mapper.selectAuthoritiesById(userid);
 	}
+
+
 
 }

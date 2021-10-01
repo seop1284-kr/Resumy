@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.proj.resumy.intro.domain.IntroResult;
 import com.proj.resumy.mng.fed.domain.AjaxMngFedList;
 import com.proj.resumy.mng.fed.domain.AjaxMngFedResult;
 import com.proj.resumy.mng.fed.domain.MngFedResult;
@@ -86,7 +85,6 @@ public class AjaxMngFedController {
 	// 글 삭제
 	@DeleteMapping("")
 	public AjaxMngFedResult deleteOk(int [] uid) {
-		System.out.println("hello");
 		int count = 0;
 		
 		// message 

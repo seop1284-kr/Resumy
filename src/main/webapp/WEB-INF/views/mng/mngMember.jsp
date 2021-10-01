@@ -6,13 +6,13 @@
 
 <!-- 스타일, js 라이브러리 -->
 <link rel="stylesheet" type="text/css" href="/CSS/mngFed.css">
-<script src="/JS/mngFed.js"></script>
+<script src="/JS/mngMember.js"></script>
 
 <body>
 	<div>
 		<%-- 글 목록 --%>
 		<div id="list">
-			<h4>자소서 피드백 관리</h4>
+			<h4>회원 관리</h4>
 			<hr>
 			<%-- header 헤더 --%>
 			<div class="d01">
@@ -25,10 +25,12 @@
 			<form id="frmList" name="frmList">
 				<table>
 					<thead>
-						<th>게시물 번호</th>
-						<th>자소서 제목</th>
-						<th>피드백 내용</th>
-						<th>피드백 업로드</th>
+						<th>이름</th>
+						<th>아이디</th>
+						<th>이메일</th>
+						<th>전화번호</th>
+						<th>생년월일</th>
+						<th>가입일</th>
 						<th>#</th>
 					</thead>
 					<tbody>
@@ -39,7 +41,7 @@
 			<%-- bottom 버튼 --%>
 			<div class="d01">
 				<div class="right">
-					<button type="button" id="btnDel" class="btn danger">글삭제</button>
+					<button type="button" id="btnDel" class="btn danger">회원삭제</button>
 				</div>
 
 			</div>

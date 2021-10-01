@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.proj.resumy.mng.member.domain.AjaxMngMemberDAO">
+
+	<!-- 글 목록 (페이징) -->
+	<select id="selectMemberFromRow"
+		resultType="com.proj.resumy.domain.MemberDTO">
+		<![CDATA[    
+		SELECT
+			mem_id id,
+			mem_userid userid,
+			mem_pw pw,
+			mem_name name,
+			mem_email email,
+			mem_gender gender,
+			mem_phone phone,
+			mem_birthday birthday,
+			mem_address address,
+			mem_career mem_career,
+			reg_dtm regdtm,
+			mody_dtm modydtm
+		FROM 
+			hr_member
+		ORDER BY 
+			reg_dtm DESC
+		LIMIT #{from}, #{pageRows}
+		]]>
+	</select>
+	
+	<!-- SELECT 쿼리문인데, 단일값 int 값 받고 싶으면 어쩌나?
+ 	resultType="java.lang.Integer" 혹은 resultType="int" 
+	-->
+	<select id="countAllMember" resultType="int">
+		SELECT count(*) FROM hr_member
+	</select>
+	
+	
+	<!-- 배열을 파라미터로 받는 경우
+ 		collection : 전달받은 인자값 이름(변수 이름)
+ 			* 배열을 파라미터로 받을때 collection 에 꼭! array 로!!
+		item : foreach 문 안에서 사용할 매개변수 이름
+		separator : foreach 문이 한번 돌고 다음번 돌때의 구분자
+		open : 시작 문자열
+		close : 종료 문자열					
+ 	 -->
+ 	 
+ 	 <delete id="deleteByUid" flushCache="true"
+ 	 	parameterType="java.util.ArrayList">
+ 	 	DELETE FROM hr_member
+ 	 	WHERE mem_id in (
+ 	 		<foreach collection="array" item="item" index="index" separator=",">
+ 	 			${item}
+ 	 		</foreach>
+ 	 	) 	 
+ 	 </delete>
+
+
+
+</mapper>

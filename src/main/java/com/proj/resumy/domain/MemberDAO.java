@@ -3,6 +3,8 @@ package com.proj.resumy.domain;
 import java.util.List;
 
 public interface MemberDAO {
+	List<MemberDTO> selectAll();
+	
 	// 사용자 추가
 	int addUser(MemberDTO user);
 	

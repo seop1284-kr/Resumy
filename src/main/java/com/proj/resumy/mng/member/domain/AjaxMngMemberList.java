@@ -5,6 +5,11 @@ import java.util.List;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.proj.resumy.domain.MemberDTO;
 
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
 public class AjaxMngMemberList extends AjaxMngMemberResult {
 	@JsonProperty("data")
 	List<MemberDTO> memberDtoList;	// 데이터 목록
