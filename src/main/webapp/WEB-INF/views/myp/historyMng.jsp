@@ -131,7 +131,7 @@
 				<table  width="100%">
 					<tr>
 						<td width="80%" colspan="2"><h4><b>초등학교 정보입력</b></h4></td>
-						<td width="20%"><button type="button" class="">저장</button></td>
+						<td width="20%"><button type="button" class="" name ="btnWriteSpec01" id ="btnWriteSpec01" onclick="writeSpec('spec01')">등록</button> <button type="button" class="" id ="btnUpdateSpec01" name ="btnUpdateSpec01" onclick="updateSpec('spec01')">수정</button></td>
 					</tr>
 					<tr>
 						<td width="20%" name="school01">학교명</td>
@@ -151,7 +151,7 @@
 				<table width="100%">
 					<tr>
 						<td width="80%" colspan="2"><h4><b>중학교 정보입력</b></h4></td>
-						<td width="20%"><button type="button" class="">저장</button></td>
+						<td width="20%"><button type="button" class="" id ="btnWriteSpec02" name ="btnWriteSpec02" onclick="writeSpec('spec02')">등록</button> <button type="button" class="" id ="btnUpdateSpec02" name ="btnUpdateSpec02" onclick="updateSpec('spec02')">수정</button></td>
 					</tr>
 					<tr>
 						<td width="20%" name="school02">학교명</td>
@@ -167,10 +167,11 @@
 			</form>
 				
 				<%-- 고등학교 정보 --%>
-				<table id="spec03" width="100%">
+				<form name='spec03' id='spec03' action='' method='post'>
+				<table  width="100%">
 					<tr>
 						<td width="80%" colspan="2"><h4><b>고등학교 정보입력</b></h4></td>
-						<td width="20%"><button type="button" class="">저장</button></td>
+						<td width="20%"><button type="button" class="" id ="btnWriteSpec03" name ="btnWriteSpec03" onclick="writeSpec('spec03')">등록</button> <button type="button" class="" id ="btnUpdateSpec03" name ="btnUpdateSpec03" onclick="updateSpec('spec03')">수정</button></td>
 					</tr>
 					<tr>
 						<td width="20%">학교명</td>
@@ -188,16 +189,26 @@
 						<td width="20%"></td>
 					</tr>
 				</table>
+				</form>
 				
 				<%-- 대학/대학원 정보 --%>
-				<table id="spec04" width="100%">
+				<form name='spec04' id='spec04' action='' method='post'>
+				<table width="100%">
 					<tr>
 						<td width="80%" colspan="2"><h4><b>대학∙대학원 정보입력</b></h4></td>
-						<td width="20%"><button type="button" class="">저장</button></td>
+						<td width="20%"><button type="button" class="" id ="btnWriteSpec04" name ="btnWriteSpec04" onclick="writeSpec('spec04')">등록</button> <button type="button" class="" id ="btnUpdateSpec04" name ="btnUpdateSpec04" onclick="updateSpec('spec04')">수정</button></td>
 					</tr>
 					<tr>
 						<td width="20%">대학</td>
-						<td width="60%"><input type="text" name="university_04" value=""></td>
+						<td width="60%">
+							<select name="university" >
+								<option value="">선택하세요</option>
+	           					<option value="01">2,3년제</option>
+	           					<option value="02">4년제</option>
+	            				<option value="03">대학원(석사)</option>
+	            				<option value="04">대학원(박사)</option>
+							</select>
+						</td>
 						<td width="20%"></td>
 					</tr>
 					<tr>
@@ -216,6 +227,7 @@
 						<td width="20%"></td>
 					</tr>
 				</table>
+				</form>
 			</article>
 
 

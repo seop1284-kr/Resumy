@@ -87,6 +87,8 @@ public class AjaxSpecController {
 			String status = "FAIL";
 			
 			try {
+				System.out.println("1111");
+				System.out.println("학력 DTO: " + dto.getCat());
 				count = specService.write(dto);
 				if(count == 0) {
 					message.append("[트랜잭션 실패 : 0 insert]");

@@ -3,7 +3,7 @@
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.proj.resumy.spec.domain.SpecDAO">
-
+	<!-- 조회 -->
 	<select id="select" resultType="com.proj.resumy.spec.domain.SpecDTO">
 		SELECT 
 			b.spec_id 			id, 
@@ -22,9 +22,9 @@
 	</select>
 	
 	<!-- 글작성 -->
-		<insert id="insert" flushCache="true" parameterType="com.proj.resumy.career.domain.CareerDTO"
+		<insert id="insert" flushCache="true" parameterType="com.proj.resumy.spec.domain.SpecDTO"
 		useGeneratedKeys="true" keyProperty="id">
-		INSERT INTO hr_career
+		INSERT INTO hr_spec_info
 		(      
 		spec_cat_cd, 
 		spec_name, 
@@ -44,5 +44,17 @@
 		)  
 	</insert>
 	
-	
+	<!-- 글수정 -->
+	<update id="update" flushCache="true" parameterType="com.proj.resumy.spec.domain.SpecDTO"
+		useGeneratedKeys="true" keyProperty="id">
+		UPDATE hr_spec_info 
+		SET spec_cat_cd = #{cat},
+			spec_name = #{name},
+			spec_area = #{area},
+			spec_major = #{major},
+			spec_university = #{university}
+		WHERE mem_userid = #{userid} 
+		and spec_id = #{id}
+	</update>
+
 </mapper>

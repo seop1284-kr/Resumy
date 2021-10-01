@@ -1,5 +1,9 @@
 var careerIdNo = 0;
 var careerUserId = "";
+var spec01 = 0;
+var spec02 = 0;
+var spec03 = 0;
+var spec04 = 0;
 $(document).ready(function(){
 	
 	loadPage();
@@ -78,6 +82,10 @@ $(document).ready(function(){
 	
   	});//경력추가+ 버튼 end
 
+
+	
+
+
 });
 //초기 화면
 function loadPage(){
@@ -95,6 +103,28 @@ function loadPage(){
 	selectSpecList(); // 학력
 	
 }//loadPage end
+
+function writeSpec(){
+	
+	// 특정 form 의 name 달린 form element 들의 value 들을 string 으로 묶기
+	// ex) name=aaa&subject=bbb&content=ccc   <-- string 타입이다
+	var serialData = $("#btnWriteSpec04").serialize();
+	$.ajax({
+		url : "/specAjax",  // url : /board
+		type : "POST",
+		cache : false,
+		data : serialData,  // POST 로 ajax request 할 경우 data 에 parameter 넘기기
+		async: false,
+		success : function(data, status){
+			if(status == "success"){
+				alert("INSERT 성공 " + data);
+				specIdNo = data;
+			}
+		}
+	});
+}
+
+
 //학력사항 조회
 function selectSpecList(){
 	$.ajax({
@@ -105,59 +135,118 @@ function selectSpecList(){
 			if(status == "success"){
 				//addViewEvent();
 				if(data.length > 0){
-					//$("#career01").show();
 					for(var i = 0; i<data.length; i++){	
 						if(data[i].cat == 01){
+							spec01++;
 							$("input[name='id_01']").val(data[i].id);
 							$("input[name='cat_01']").val(data[i].cat);
 							$("input[name='School_01']").val(data[i].name);
 							$("input[name='schoolArea_01']").val(data[i].area);
-							$("input[name='userid_01']").val(data[i].userid);
-							console.log("1" + data[i].name);		
-						}if(data[i].cat == 02){
+							$("input[name='userid_01']").val(data[i].userid);		
+						}else if(data[i].cat == 02){
+							spec02++;
 							$("input[name='id_02']").val(data[i].id);
 							$("input[name='cat_02']").val(data[i].cat);
 							$("input[name='School_02']").val(data[i].name);
 							$("input[name='schoolArea_02']").val(data[i].area);
-							$("input[name='userid_02']").val(data[i].userid);
-							console.log("2" + data[i].name);	
-						}
-						if(data[i].cat == 03){
+							$("input[name='userid_02']").val(data[i].userid);	
+						}else if(data[i].cat == 03){
+							spec03++;
 							$("input[name='id_03']").val(data[i].id);
 							$("input[name='cat_03']").val(data[i].cat);
 							$("input[name='School_03']").val(data[i].name);
 							$("input[name='schoolArea_03']").val(data[i].area);
 							$("input[name='major_03']").val(data[i].major);
-							$("input[name='userid_03']").val(data[i].userid);
-							console.log("3" + data[i].name);	
-						}if(data[i].cat == 04){
+							$("input[name='userid_03']").val(data[i].userid);	
+						}else if(data[i].cat == 04){
+							spec04++;
 							$("input[name='id_04']").val(data[i].id);
 							$("input[name='cat_04']").val(data[i].cat);
 							$("input[name='School_04']").val(data[i].name);
 							$("input[name='schoolArea_04']").val(data[i].area);
 							$("input[name='major_04']").val(data[i].major);
 							$("input[name='userid_04']").val(data[i].userid);
-							console.log(data[i].major);
-							}if(data[i].university == 01){
-								$("input[name='university_04']").val("2,3년제");
-							}if(data[i].university == 02){
-								$("input[name='university_04']").val("4년제");
-							}if(data[i].university == 03){
-								$("input[name='university_04']").val("대학원(석사)");
-							}if(data[i].university == 04){
-								$("input[name='university_04']").val("대학원(박사)");
-										
-									
-								}
-							}
-						}	
-							} else {
-							alert("444");
-			}
+							$("select[name='university_04']").val(data[i].university);
+						}
+													
+					}//for문 end	
+						if(spec01 == 0){
+							$("#btnWriteSpec01").show();
+							$("#btnUpdateSpec01").hide();
+						}else{
+							$("#btnUpdateSpec01").show();
+							$("#btnWriteSpec01").hide();
+						}
+						if(spec02 == 0){
+							$("#btnWriteSpec02").show();
+							$("#btnUpdateSpec02").hide();
+						}else{
+							$("#btnUpdateSpec02").show();
+							$("#btnWriteSpec02").hide();
+						}
+						if(spec03 == 0){
+							$("#btnWriteSpec03").show();
+							$("#btnUpdateSpec03").hide();
+						}else{
+							$("#btnUpdateSpec03").show();
+							$("#btnWriteSpec03").hide();
+						}
+						if(spec04 == 0){
+							$("#btnWriteSpec04").show();
+							$("#btnUpdateSpec04").hide();
+						}else{
+							$("#btnUpdateSpec04").show();
+							$("#btnWriteSpec04").hide();
+						}
+				} else {
+					alert("444");
+				}
+			}// success if() end
 		}
 	});
 } // end selectSpecList()
 
+//학력사항 추가
+function writeSpec(formId){	
+	
+	var serialData = $("#"+formId).serialize();
+	console.log(formId);
+	console.log("!!! serialData : "+serialData);
+	
+	$.ajax({
+		url : "/specAjax",  // url : /board
+		type : "POST",
+		cache : false,
+		data : serialData,  // POST 로 ajax request 할 경우 data 에 parameter 넘기기
+		async: false,
+		success : function(data, status){
+			if(status == "success"){
+				alert("insert 성공 ");
+				loadPage();
+			}
+		}
+	});	
+	
+}//writeSpec() end
+
+//학력사항 수정
+function updateSpec(formId){
+		var serialData = $("#"+formId).serialize();
+			//alert(formId);
+	$.ajax({
+		url : "/specAjax",  // url : /board
+		type : "PUT",
+		cache : false,
+		data : serialData,  // POST 로 ajax request 할 경우 data 에 parameter 넘기기
+		async: false,
+		success : function(data, status){
+			if(status == "success"){
+				alert("update 성공 ");
+				loadPage();
+			}
+		}
+	});
+}//updateSpec end()
 
 
 // 경력사항 조회
