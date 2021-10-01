@@ -131,10 +131,15 @@ function chkUpload(){
      	processData: false,
       	contentType: false,
 		success : function(data, status){
-			if(status == "success"){
+			if(status == "success"){ // 200
 				loadPage();
 			}
+			
+		},
+		error : function(error){
+			alert("파일은 5MB 이하 첨부 가능합니다" + error);
 		}
+		
 	});
 	
 	return false;
