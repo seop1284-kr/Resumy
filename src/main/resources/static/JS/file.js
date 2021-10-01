@@ -83,7 +83,6 @@ function selectAll(selectAll)  {
 // 모달 대화상자 업로드 버튼 누르면	
 	$("#frmFile").submit(function(){
 		$(this).parents(".modal").hide();
-		
 		return chkUpload();  // 새글 등록 submit
 	});
 
@@ -216,10 +215,12 @@ function chkSubmit(){
 	var memoContent = form.memo.value.trim();
 	
 	var memoPat = /^.{0,8}$/;
-	if(!memoPat.test()){
+	if(!memoPat.test(memoContent)){
 		alert("메모는 8글자 이하로 입력해야합니다.")
-		form.memoContent.focus();
+		form.memo.focus();
+		return false;
 	}
+		return true;
 	
 }
 

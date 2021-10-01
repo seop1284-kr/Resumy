@@ -6,6 +6,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.net.URLEncoder;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.zip.ZipEntry;
@@ -32,6 +33,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.proj.resumy.file.domain.FileDAO;
 import com.proj.resumy.file.domain.FileDTO;
 import com.proj.resumy.file.service.AjaxFileService;
 import com.proj.resumy.file.service.FileService;
@@ -93,7 +95,9 @@ public class AjaxFileController {
 	@PostMapping("")
 	public int write(MultipartFile file, String memo, Authentication authentication) {
 		int result = 0;
-		
+		int maxPostSize = 5 * 1024 * 1024; // 최대용량, 5M byte : 1Kbyte = 1024 byte, 1Mbyte = 1024Kbyte
+		String encoding = "utf-8";    // 인코딩
+
 		
 		// 로그인한 사람의 정보를 담은 객체
 		UserDetails userDetails = (UserDetails) authentication.getPrincipal();
@@ -106,7 +110,7 @@ public class AjaxFileController {
 		return result;
 	}
 	
-	// 특정 파일(file_id) 다운로드?
+	// 특정 파일(file_id) .zip 으로 다운로드?
 	
 	@Value("${app.upload.dir:${user.home}}")
 	private String uploadDir;
@@ -173,10 +177,14 @@ public class AjaxFileController {
 
 	// 특정 파일(file_id) 삭제
 	@DeleteMapping("")
-	public String delete(int[] id) {
+	public String delete(int[] id, Authentication authentication) {
 		String result = "fail";
 		int count = 0;
+	
+		UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+		fileService.fileDelete(userDetails, id);
 		count = ajaxFileService.deleteByIds(id);
+
 		System.out.println(id);
 		if (count == 1) {
 			result = "success";

@@ -5,22 +5,31 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.nio.file.StandardCopyOption;
 import java.util.UUID;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.proj.resumy.file.domain.FileDAO;
 import com.proj.resumy.file.domain.FileDTO;
 
 @Service
 public class FileService {
+	
+	
 	@Value("${app.upload.dir:${user.home}}")
 	private String uploadDir;
 
+	FileDAO fileDao;
+
+	@Autowired
+	public void setFileDao(FileDAO fileDao) {
+		this.fileDao = fileDao;
+	}
 	public FileDTO fileUpload(MultipartFile multipartFile, UserDetails userDetails, String memo) {
 		// File.seperator 는 OS종속적이다.
 		// Spring에서 제공하는 cleanPath()를 통해서 ../ 내부 점들에 대해서 사용을 억제한다
@@ -62,5 +71,35 @@ public class FileService {
 		}
 		
 		return fileDTO;
+	}
+	
+	
+	public int fileDelete(UserDetails userDetails, int[] id) {
+		Path userDir = Paths
+				.get(uploadDir + File.separator + userDetails.getUsername());
+		System.out.println(userDir);
+		
+		for(int i=0; i<id.length; i++) {
+			
+			FileDTO dto = fileDao.selectByFid(id[i]);
+			System.out.println(dto.getCname());
+			File f = new File(userDir.toString(), dto.getCname());   // 삭제 대상 파일의 File 객체
+			
+			System.out.println("삭제시도--> " + f.getAbsolutePath());
+			
+			if(f.exists()) {
+				if(f.delete()) {
+					System.out.println("삭제 성공");
+				} else {
+					System.out.println("삭제 실패");
+				}
+			} else {
+				System.out.println("파일이 존재하지 않습니다.");
+			}
+			
+		}
+		
+		return 0;
+		
 	}
 }

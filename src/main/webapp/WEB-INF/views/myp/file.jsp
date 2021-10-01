@@ -73,7 +73,7 @@
 
 <%-- 파일 업로드 모달 --%>
 <div id="dlg_file" class="modal">
-	<form action="file.jsp" class="modal-content animate" id="frmFile" name="frmFile" method="post" enctype="Multipart/form-data">
+	<form action="file.jsp" class="modal-content animate" id="frmFile" name="frmFile" method="post" enctype="Multipart/form-data" onsubmit="return chkSubmit()">
 		<div class="container">
 			
 			
@@ -89,7 +89,7 @@
 		</div>
 		<div class="btn_group_file">
 			<button type="button" class="btn_cancel">취소</button>
-			<button type="submit" class="btn_upload" onclick="chkSubmit()">업로드</button>
+			<button type="submit" class="btn_upload">업로드</button>
 		</div>
 	</form>
 </div>

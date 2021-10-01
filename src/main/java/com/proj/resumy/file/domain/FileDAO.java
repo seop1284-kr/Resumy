@@ -2,6 +2,8 @@ package com.proj.resumy.file.domain;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 //AjaxFileController (파일관리) 하병노
 
 public interface FileDAO {
@@ -23,6 +25,7 @@ public interface FileDAO {
 
 	// 복수개의 특정 파일(file_id)들 삭제
 	public abstract int deleteByIds(int[] id);
+
 
 	
 
