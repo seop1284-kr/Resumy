@@ -29,7 +29,7 @@ CREATE TABLE `hr_member` (
 
 -- 회원권한 테이블(김진섭)
 CREATE TABLE `hr_authority` (
-	mem_userid varchar(50) REFERENCES hr_member(mem_userid),
+	mem_userid varchar(50) REFERENCES hr_member(mem_userid) ON DELETE CASCADE,
 	mem_auth varchar(50) NOT NULL,        -- 시큐리티의 authority
 	PRIMARY KEY (mem_userid, mem_auth)
 );
@@ -72,7 +72,7 @@ CREATE TABLE `hr_file` (
 	`file_regdate`	datetime	NOT NULL	DEFAULT now()	COMMENT '등록일시',
 	`file_memo`	varchar(8)	NULL  DEFAULT ''	COMMENT '메모',
 	`mem_userid`	varchar(100)	NOT NULL,
-	FOREIGN KEY (mem_userid) REFERENCES hr_member(mem_userid) #ON DELETE CASCADE #참조하는 부모(mem_id)가 삭제되면 같이 삭제
+	FOREIGN KEY (mem_userid) REFERENCES hr_member(mem_userid) ON DELETE CASCADE #참조하는 부모(mem_id)가 삭제되면 같이 삭제
 );
 
 -- 김진섭
