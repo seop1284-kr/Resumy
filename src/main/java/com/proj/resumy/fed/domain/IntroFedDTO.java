@@ -16,7 +16,7 @@ public class IntroFedDTO {
 	
 	public IntroFedDTO() {
 		super();
-		System.out.println("IntroFedDTO() 객체 생성");
+		//System.out.println("IntroFedDTO() 객체 생성");
 	}
 
 	public IntroFedDTO(int id, String userid, String content, LocalDateTime regdate, int iid) {
@@ -26,7 +26,7 @@ public class IntroFedDTO {
 		this.content = content;
 		this.regdate = regdate;
 		this.iid = iid;
-		System.out.println("IntroFedDTO(...) 객체 생성");
+		//System.out.println("IntroFedDTO(...) 객체 생성");
 
 	}
 	
