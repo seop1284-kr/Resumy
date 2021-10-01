@@ -1,6 +1,5 @@
 package com.proj.resumy.qna.controller;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -92,7 +91,7 @@ public class AjaxQnaController {
 	}
 	
 	// 글 하나에 대하여 모든 필드 가져옴 : 고객센터 관리자 페이지
-	@GetMapping("qnaAjax/list/{id}")
+	@GetMapping("/list/{id}")
 	public QnaDTO list(@PathVariable int id, Model model) {
 		QnaDTO dto = new QnaDTO();
 		

@@ -41,21 +41,9 @@
 </head>
 
 <body>
-    <header class="container-md">
-        <nav class="navbar navbar-expand-md fixed-top">
-            <div class="container-md">
-                <a class="navbar-brand" href="index.html">
-                    <img src="/img/logo_main.png">
-                </a>
-                <ul>
-                    <li><a href="companyBoard.do">기업정보</a></li>
-                    <li><a href="fedboard">자소서 게시판</a></li>
-                    <li><a href="/main/qna/board.do" class="active">고객센터</a></li>
-                </ul>
-                <button class="login_btn">로그인</button>
-            </div>
-        </nav>
-    </header>
+	<c:import url="../../layout/header.jsp">
+		<c:param name="headerMenu" value="qna" />
+	</c:import>
     <!-- ./navbar -->
     
 	<c:choose>
@@ -101,5 +89,9 @@
 	<button onClick="location.href='deleteOk.do?id=${qdto.id }'">삭제</button>
 	<button onClick="location.href='update.do?id=${qdto.id }'">수정</button>
 	<button onClick="location.href='board.do'">목록</button>
+	
+	<!-- 푸터 -->
+	<c:import url="../../layout/footer.jsp">
+	</c:import>
 </body>
 </html>

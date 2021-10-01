@@ -118,7 +118,7 @@ CREATE TABLE `hr_qna_q` (
 	`q_regdate`		datetime	 NOT NULL DEFAULT now()				 COMMENT '글 등록일시',
 	`q_replyState` 	boolean  	 NOT NULL DEFAULT FALSE 			 COMMENT '답변 상태 : 0(답변없음), 1(답변있음)',
 	`mem_userid`	varchar(100) NOT NULL							 COMMENT '회원아이디',
-	FOREIGN KEY (mem_userid) REFERENCES hr_member(mem_userid)  ON DELETE CASCADE
+	FOREIGN KEY (mem_userid) REFERENCES hr_member(mem_userid) ON DELETE CASCADE
 );
 
 -- 고객센터 답글 테이블

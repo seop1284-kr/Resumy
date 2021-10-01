@@ -12,7 +12,7 @@
 	<c:otherwise>
 		<script>
 			alert("삭제 완료");
-			location.href = "/main/qna/board.do";
+			location.href = "/mng/qna/board.do";
 			<%-- 여유될 때 Board 1페이지로 돌아가는 게 아닌, 보고있던 페이지의 Board 로 돌아가게 코드 수정 --%>
 		</script>
 	</c:otherwise>

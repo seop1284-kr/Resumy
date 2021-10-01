@@ -101,13 +101,13 @@ if (header_menu_param != null) {
 
 			<!-- 비로그인 -->
 			<sec:authorize access="isAnonymous()">
-				<button class="login_btn" onclick="location.href='login'">로그인</button>
+				<button class="login_btn" onclick="location.href='/login'">로그인</button>
 			</sec:authorize>
 
 			<!-- 로그인 -->
 			<sec:authorize access="isAuthenticated()">
 
-				<button class="login_btn" onclick="location.href='myp'">
+				<button class="login_btn" onclick="location.href='/myp'">
 					<sec:authentication property="principal.username" />
 				</button>
 			</sec:authorize>

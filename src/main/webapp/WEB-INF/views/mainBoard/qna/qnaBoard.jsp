@@ -72,36 +72,28 @@
 </head>
 
 <body>
-    <header class="container-md">
-        <nav class="navbar navbar-expand-md fixed-top">
-            <div class="container-md">
-                <a class="navbar-brand" href="index.html">
-                    <img src="/img/logo_main.png">
-                </a>
-                <ul>
-                    <li><a href="companyBoard.do">기업정보</a></li>
-                    <li><a href="fedboard">자소서 게시판</a></li>
-                    <li><a href="/main/qna/board.do" class="active">고객센터</a></li>
-                </ul>
-                <button class="login_btn">로그인</button>
-            </div>
-        </nav>
-    </header>
+	<c:import url="../../layout/header.jsp">
+		<c:param name="headerMenu" value="qna" />
+	</c:import>
     <!-- ./navbar -->
     
     <div>현재 <span style="color:orange;">${fn:length(list) }건</span>의 게시물이 있습니다</div>
     
     <table>
     	<thead>
-    		<th>번호</th>
-    		<th>제목</th>
-    		<th>답변</th>
-    		<th>작성자</th>
-    		<th>등록일</th>
+    		<tr>
+	    		<th>번호</th>
+	    		<th>제목</th>
+	    		<th>답변</th>
+	    		<th>작성자</th>
+	    		<th>등록일</th>
+	    	</tr>
     	</thead>
     	<tbody>
     	</tbody>
     </table>
+    
+    <!-- 페이징 -->
     	</tbody>
     </table>
     
@@ -111,6 +103,10 @@
 	<div class="center">
 		<ul class="pagination" id="pagination"></ul>
 	</div>
+	
+	<!-- 푸터 -->
+	<c:import url="../../layout/footer.jsp">
+	</c:import>
 	
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 	<script src="/JS/qnaBoard.js"></script>

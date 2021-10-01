@@ -38,7 +38,11 @@
     }
 </style>
 </head>
-
+<body>
+	<c:import url="../../layout/header.jsp">
+		<c:param name="headerMenu" value="qna" />
+	</c:import>
+	<!-- navbar -->
 <%-- 
 	result == 0 의미 : 1 또는 2 만족
 	1) 현재 로그인한 계정 != 문의글 작성한 계정
@@ -89,9 +93,13 @@
 				<input type="text" name="content" value="${qdto.content }" required style="display: block; width:90vh"/>
 				<button type="submit">수정완료</button>
 			</form>
-		</body>
-	</c:otherwise>
-</c:choose>
+		</c:otherwise>
+	</c:choose>
+	
+	<!-- 푸터 -->
+	<c:import url="../../layout/footer.jsp">
+	</c:import>
+</body>
 
 </html>
 

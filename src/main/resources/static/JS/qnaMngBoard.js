@@ -1,8 +1,9 @@
-// qnaBoard(고객센터 페이지, 고객센터 관리 페이지) 노수빈
+// qnaMng(고객센터 관리 페이지) 노수빈
+
 var page = 1;   // 현재 페이지
 var pageRows = 10;   // 페이지당 글의 개수
-
-$(document).ready(function() {
+	
+$(document).ready(function(){
 	// 페이지 최초 로딩되면 1페이지 내용을 로딩
 	loadPage(page);
 });
@@ -17,6 +18,8 @@ function loadPage(page) {
 			if(status == "success"){
 				// view 에 QnaDTO 정보 삽입
 				insertQnaDTO(data);
+				// 모달에 데이터 삽입
+				setModalData();
 			} else {
 				alert("잘못된 접근");
 				console.log("QnaDTO 데이터 접근 실패");
@@ -34,10 +37,11 @@ function insertQnaDTO(jsonObj) { // data 인자를 jsonObj 매개변수로 받�
 		var data = jsonObj.data;  // .data : QnaDTO 의 QnaQDTO 객체
 		window.page = jsonObj.page;
 		window.pageRows = jsonObj.pagerows;
-		// 답변상태에 답변이 있을 때 들어갈 아이콘
-		var replyState = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chat-left-fill" viewBox="0 0 16 16">'
-					+'<path d="M2 0a2 2 0 0 0-2 2v12.793a.5.5 0 0 0 .854.353l2.853-2.853A1 1 0 0 1 4.414 12H14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>'
-					+'</svg>1';
+		// 답변하기 아이콘
+		var btn_reply = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">'
+					+ '<path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>'
+					+ '<path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/?>'
+					+ '</svg>';
 		
 		// 출력 정보 삽입
 		for (var i = 0; i < count; i++) {
@@ -47,19 +51,26 @@ function insertQnaDTO(jsonObj) { // data 인자를 jsonObj 매개변수로 받�
 			result += "<tr>\n";
 			
 			// 번호
-			result += "<td>" + id + "</td>\n";
+			result += "<td>" + data[i].qdto.id + "</td>\n";
 			// 제목
-			result += "<td><a href="+ view_url + ">" + data[i].qdto.subject + "</a></td>\n";
-			// 답변상태
-			if (data[i].qdto.replyState == true) {
-				result += "<td>" + replyState + "</td>\n";
-			} else {
-				result += "<td> </td>\n";
-			}
-			// 작성자
-			result += "<td>" + data[i].name + "</td>\n";
+			result += "<td><a href=" + view_url + ">" + data[i].qdto.subject + "</td>\n";
+			// 내용
+			result += "<td>" + data[i].qdto.content + "</td>\n";
 			// 등록일
 			result += "<td>" + data[i].qdto.regdate + "</td>\n";
+			// 답변상태
+			if (data[i].qdto.replyState == true) {
+				result += "<td class='replyStateYes'>완료</td>\n";
+			} else {
+				result += "<td>-</td>\n";
+			}
+			// 답변 (아이콘)
+			result += '<td>'
+						+ '<button type="button" class="btn_replyWriteModal" data-id="' + id + '" data-toggle="modal" data-target="#replyWriteModal" >'
+						+ btn_reply
+						+ '</td>';
+			// 삭제 (체크박스)
+			result += '<td><input type="checkbox" name="id" class="chk_delete" value="' + id + '"></td>\n';
 			
 			result += "</tr>\n";
 		}
@@ -122,3 +133,20 @@ function buildPagination(writePages, totalPage, curPage, pageRows) {
 	
 	return str;
 } // end buildPagination()
+
+// 관리 페이지에서 삭제버튼 (문의글 삭제버튼)
+function frmChkSubmit() {
+	var cnt = $(".chk_delete:checked").length;
+	var warning = cnt + "개의 문의글을 삭제하시겠습니까?";
+	
+	if (cnt > 0) {
+		if (confirm(warning) == true){
+			document.frmChk.submit(); // form[name="frmchk"]
+		} else {
+			return false;
+		}
+	} else {
+		alert("삭제를 원하시는 항목을 체크해주세요.");
+		return false;
+	}
+}
