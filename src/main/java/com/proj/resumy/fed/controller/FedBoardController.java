@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.proj.resumy.fed.domain.IntroFedDTO;
 import com.proj.resumy.fed.service.IntroFedService;
 import com.proj.resumy.intro.service.AjaxIntroService;
+import com.proj.resumy.qna.domain.QnaQDTO;
 
 // FedBoardController 김진섭
 @Controller
@@ -68,5 +69,27 @@ public class FedBoardController {
 		
 		model.addAttribute("result", introFedService.insertFed(dto));
 		return "mainBoard/fed/fedCommentOk";
+	}
+	
+	// 피드백 댓글 삭제
+	@GetMapping("/fedDeleteOk")
+	public String deleteOk(int id, Model model, Authentication authentication) {
+		// 로그인한 사람의 정보를 담은 객체
+		UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+		
+		
+		
+		// response (리턴문까지 전부 response)
+		// 현재 로그인한 계정 == 문의글 작성한 계정
+		if (introFedService.selectFedById(id).getUserid().equals(userDetails.getUsername())) {
+			int result = introFedService.deleteFedById(id);
+			model.addAttribute("result", result);
+			
+		} else {
+			model.addAttribute("result", -1);
+			
+		}
+		
+		return "mainBoard/fed/fedDeleteOk";
 	}
 }

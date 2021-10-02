@@ -19,7 +19,7 @@
 	</select>
 	
 	<!-- 특정 자소서 id의 자소서 피드백 가져오기 -->
-	<select id="selectById" resultType="com.proj.resumy.fed.domain.IntroFedDTO">
+	<select id="selectByIid" resultType="com.proj.resumy.fed.domain.IntroFedDTO">
 		SELECT 
 			fb_id "id",
 			fb_userid userid, 
@@ -34,6 +34,22 @@
 			fb_regdate DESC	
 	</select>
 	
+	<!-- 특정 피드백 아이디로 피드백 가져오기 -->
+	<select id="selectFedById" resultType="com.proj.resumy.fed.domain.IntroFedDTO">
+		SELECT 
+			fb_id "id",
+			fb_userid userid, 
+			fb_content content, 
+			fb_regdate regdate, 
+			intr_id iid
+		FROM 
+			intr_feedback
+		WHERE
+			fb_id = #{id}
+		ORDER BY 
+			fb_content DESC	
+	</select>
+	
 	<!-- 자소서 피드백 댓글 추가 -->
 	<insert id="insertFed" flushCache="true"
 		parameterType="com.proj.resumy.fed.domain.IntroFedDTO"
@@ -45,6 +61,10 @@
 			(#{userid}, #{content}, #{iid})
 	</insert>
 	
+	<!-- 자소서 피드백 댓글 삭제 -->
+	<delete id="deleteFedById" flushCache="true">
+		DELETE FROM intr_feedback WHERE fb_id = #{id}
+	</delete>
 	
 </mapper> 
 

@@ -45,8 +45,10 @@ public class AjaxFedBoardService {
 		
 		for (int i = 0; i < introList.size(); i++) {
 			IntroResult introResult = new IntroResult();
+			
 			introResult.setIntro(introList.get(i));
 			introResult.setConList(introConDao.selectConByIid(introList.get(i).getId()));
+			introResult.setFedList(introFedDao.selectByIid(introList.get(i).getId()));
 			introResultList.add(introResult);
 			
 		}	
@@ -73,6 +75,7 @@ public class AjaxFedBoardService {
 			IntroResult introResult = new IntroResult();
 			introResult.setIntro(introList.get(i));
 			introResult.setConList(introConDao.selectConByIid(introList.get(i).getId()));
+			introResult.setFedList(introFedDao.selectByIid(introList.get(i).getId()));
 			introResultList.add(introResult);
 			
 		}	

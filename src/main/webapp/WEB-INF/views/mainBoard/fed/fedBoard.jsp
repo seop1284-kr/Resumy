@@ -28,39 +28,15 @@
 				<thead>
 					<th>자소서 제목</th>
 					<th>내용</th>
+					<th>피드백 수</th>
 					<th>공개 날짜</th>
+					<th>사용자 아이디</th>
 				</thead>
 				<tbody>
 				</tbody>
 			</table>
 		</form>
 	</div>
-
-
-	<!--
-    <table>
-		<c:choose>
-			<c:when test="${empty list || fn:length(list) == 0 }">
-			</c:when>
-			<c:otherwise>
-				<c:forEach var="introResult" items="${list }" varStatus="status">
-					<table>
-						<tr>
-							
-							<td><a href="fedView?id=${introResult.intro.id }">
-							${introResult.intro.title }</a></td>
-							<td>${introResult.conList[0].question }</td>
-							<td>${introResult.conList[0].content }</td>
-							<td>${introResult.intro.modydate }</td>
-							
-						</tr>
-					</table>
-				</c:forEach>
-			</c:otherwise>
-		</c:choose>
-	</table>
-	-->
-
 
 	</div>
 	<div class="clear"></div>

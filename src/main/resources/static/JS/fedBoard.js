@@ -66,7 +66,9 @@ function updateList(jsonObj) {
 
 			result += "<td>" + items[i].intro.title + "</td>\n";
 			result += "<td>" + items[i].conList[0].question + " / " + items[i].conList[0].content + "</td>\n";
+			result += "<td>" + items[i].fedList.length + "</td>\n";
 			result += "<td>" + items[i].intro.modydate + "</td>\n";
+			result += "<td>" + items[i].intro.userid + "</td>\n";
 
 			result += "</tr>\n";
 		}
@@ -116,7 +118,7 @@ function addViewEvent() {
 		headerMenuObj.setAttribute('value', "fed");
 		form.appendChild(headerMenuObj);
 		
-		form.setAttribute('method', 'post');
+		form.setAttribute('method', 'put');
 		form.setAttribute('action', "/");
 
 		document.body.appendChild(form);

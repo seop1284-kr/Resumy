@@ -24,8 +24,8 @@ public class IntroFedDAOImpl implements IntroFedDAO {
 	
 	// 특정 자소서 id의 자소서 피드백 가져오기
 	@Override
-	public List<IntroFedDTO> selectById(int iid) {
-		return mapper.selectById(iid);
+	public List<IntroFedDTO> selectByIid(int iid) {
+		return mapper.selectByIid(iid);
 	}
 
 
@@ -40,9 +40,14 @@ public class IntroFedDAOImpl implements IntroFedDAO {
 //		return mapper.update(dto);
 //	}
 //
-//	@Override
-//	public int deleteByUid(int uid) {
-//		return mapper.deleteByUid(uid);
-//	}
+	@Override
+	public int deleteFedById(int id) {
+		return mapper.deleteFedById(id);
+	}
+
+	@Override
+	public IntroFedDTO selectFedById(int id) {
+		return mapper.selectFedById(id);
+	}
 
 }

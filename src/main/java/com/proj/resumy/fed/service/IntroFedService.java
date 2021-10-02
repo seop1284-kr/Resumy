@@ -73,7 +73,7 @@ public class IntroFedService {
 		
 		introResult.setIntro(intro);
 		introResult.setConList(introConDao.selectConByIid(intro.getId()));
-		introResult.setFedList(introFedDao.selectById(intro.getId()));
+		introResult.setFedList(introFedDao.selectByIid(intro.getId()));
 
 		return introResult;
 	}
@@ -109,10 +109,19 @@ public class IntroFedService {
 		
 		return introResultList;
 	}
+	// 피드백 아이디로 select
+	public IntroFedDTO selectFedById(int id) {
+		return introFedDao.selectFedById(id);
+	}
 	
 	// 피드백 작성
 	public int insertFed(IntroFedDTO fedDto) {
 		return introFedDao.insertFed(fedDto);
+	}
+	
+	// 피드백 삭제
+	public int deleteFedById(int id) {
+		return introFedDao.deleteFedById(id);
 	}
 	
 	

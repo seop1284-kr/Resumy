@@ -67,15 +67,15 @@ if (header_menu_param != null) {
 
 
 <!-- a tag post -->
-<form name=form1 action="/" method=post id="company">
+<form name=form1 action="/" method=put id="company">
 	<input type=hidden name="headerMenu" value="company"> <input
 		type=hidden name="content" value="companyBoard">
 </form>
-<form name=form2 action="/" method=post id="fed">
+<form name=form2 action="/" method=put id="fed">
 	<input type=hidden name="headerMenu" value="fed"> <input
 		type=hidden name="content" value="fedBoard">
 </form>
-<form name=form3 action="/main/qna/board.do" method=post id="qna">
+<form name=form3 action="/main/qna/board.do" method=put id="qna">
 	<input type=hidden name="headerMenu" value="qna"> <input
 		type=hidden name="content" value="main/qna/board.do">
 

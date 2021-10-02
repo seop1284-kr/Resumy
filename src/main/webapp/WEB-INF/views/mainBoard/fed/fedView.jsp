@@ -16,7 +16,7 @@
 	<div class="container" style="margin-top: 100px">
 		<div>
 			<tr>
-				<td>${introResult.intro.title }</td>
+				<td>자소서 제목: ${introResult.intro.title }</td>
 				<hr>
 			</tr>
 			<c:choose>
@@ -25,8 +25,9 @@
 				</c:when>
 				<c:otherwise>
 					<tr>
-						<td>수정 날짜</td>
-						<td colspan="4">${introResult.intro.modydate }</td>
+						<td colspan="4">작성자 : ${introResult.intro.userid }</td>
+						<hr>
+						<td colspan="4">공개 날짜 : ${introResult.intro.modydate }</td>
 						<hr>
 					</tr>
 					<c:forEach var="con" items="${introResult.conList }"
@@ -34,13 +35,11 @@
 
 
 						<tr>
-							<td>질문 ${status.count}</td>
-							<br>
+							<td>질문 ${status.count} :</td>
+
 							<td>${con.question }</td>
 							<br>
 
-							<td>내용</td>
-							<br>
 							<td>${con.content }</td>
 							<br>
 							<br>
@@ -55,20 +54,20 @@
 
 			<!-- 비로그인 -->
 			<sec:authorize access="isAnonymous()">
-				<p> 회원만 볼 수 있습니다. </p>
+				<p>회원만 볼 수 있습니다.</p>
 			</sec:authorize>
 
 			<!-- 로그인 했을 때 피드백 보기 및 댓글 달기 -->
 			<sec:authorize access="isAuthenticated()">
 
-				
+
 
 
 				<!-- 댓글 달기 -->
 				<form name="frm" action="fedCommentOk" method="post">
 					<input type="hidden" name="iid" value="${introResult.intro.id }">
 					<input type="text" name="content"
-						style="display: block; width: 90vh" />
+						style="display: block; width: 90vh" required />
 					<button type="submit">댓글 작성</button>
 				</form>
 
@@ -92,11 +91,15 @@
 								<br>
 							</tr>
 							<tr>
-
-
 								<td>내용</td>
 								<td>${fed.content }</td>
+								<form name="frm" action="fedDeleteOk" method="put">
+									<input type="hidden" name="iid" value="${introResult.intro.id }">
+									<input type="hidden" name="id" value="${fed.id}">
+									<button type="submit">댓글 삭제</button>
+								</form>
 							</tr>
+
 							<hr>
 							<br>
 						</c:forEach>
@@ -106,9 +109,9 @@
 			</sec:authorize>
 
 			<form name=form1 action="/" method=post>
-				<input type=hidden name="headerMenu" value="fed">
-				<input type=hidden name="content" value="fedBoard">
-				
+				<input type=hidden name="headerMenu" value="fed"> <input
+					type=hidden name="content" value="fedBoard">
+
 				<button type=submit>목록</button>
 			</form>
 		</div>

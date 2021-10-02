@@ -212,6 +212,7 @@
 			mem_userid userid
 		FROM hr_introduction
 		WHERE intr_title like CONCAT('%',#{keyword},'%')
+		or mem_userid like CONCAT('%',#{keyword},'%')
 	</select>
 	
 	
