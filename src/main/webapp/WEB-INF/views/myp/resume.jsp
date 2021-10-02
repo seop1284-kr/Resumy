@@ -4,6 +4,8 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
 <script src="/JS/resume.js"></script>
+<link href="/css/resume.css" rel="stylesheet">
+
 <body class="container-md">
 
 
@@ -37,9 +39,9 @@
 
 					<div id="content_text_box">
 						<div id="content_text">
-							<input type="text" placeholder="자소서 제목(필수)" name="title" required>
-							<input type="text" placeholder="질문" name="question" value="" required>
-							<textarea placeholder="내용" name="content" value="" required></textarea>
+							<input type="text" placeholder="자소서 제목을 입력해주세요." name="title" required>
+							<input type="text" placeholder="질문을 입력해주세요." name="question" value="" required>
+							<textarea placeholder="내용을 입력해주세요." name="content" value="" required></textarea>
 						</div>
 						<div id="content_text_plus"></div>
 					</div>

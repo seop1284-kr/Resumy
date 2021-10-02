@@ -80,7 +80,7 @@ function updateResume() {
 	// 특정 form 의 name 달린 form element 들의 value 들을 string 으로 묶기
 	// ex) name=aaa&subject=bbb&content=ccc   <-- string 타입이다
 	var serialData = $("#frmWrite").serialize();
-	alert(serialData);
+	//alert(serialData);
 	$.ajax({
 		url: "/resumeAjax",  // url : /board
 		type: "PUT",
@@ -121,8 +121,8 @@ function deleteResume() {
 
 
 function makeContentForm() {
-	var content_text = '<div id="content_text_plus"><hr><input type="text" placeholder="질문" name="question" required>';
-	content_text += '<textarea placeholder="내용" name="content" required></textarea>';
+	var content_text = '<div id="content_text_plus"><hr><input type="text" placeholder="질문을 입력해주세요." name="question" required>';
+	content_text += '<textarea placeholder="내용을 입력해주세요." name="content" required></textarea>';
 	content_text += '<button class="minus" onclick="$(this).parent().remove()">삭제</button></div>'
 	$('#content_text_plus').append(content_text);
 }
@@ -177,18 +177,18 @@ function loadPage() {
 // 목록 업데이트
 function updateList(items) {
 	var result = "";  // 최종 결과
-	result += "<h5><b>작성 중 자소서</b></h5><table id='notfin'></table>";
-	result += "<h5><b>작성 완료된 자소서</b></h5><table id='fin'></table>";
+	result += "<h5><b>작성 중 자소서</b></h5><div class='container' id='notfin'></div>";
+	result += "<h5><b>작성 완료된 자소서</b></h5><div class='container' id='fin'></div>";
 	$("#content").html(result);
 
 	var count = items.length;
 	for (var i = 0; i < count; i++) {
 		var row = "";
-		row += "<tr class='box' data-id=" + items[i].id + ">\n";
-		row += "<td>" + items[i].id + "</td>\n";
-		row += "<td>" + items[i].title + "</td>\n";
-		row += "<td>" + items[i].modydate + "</td>\n";
-		row += "</tr>\n";
+		row += "<div class='box' data-id=" + items[i].id + ">\n";
+		//row += "<div>" + items[i].id + "</div>\n";
+		row += "<div>" + items[i].title + "</div>\n";
+		row += "<div>" + items[i].modydate + "</div>\n";
+		row += "</div>\n";
 		if (items[i].fin) {
 			$("#fin").append(row);
 		} else {

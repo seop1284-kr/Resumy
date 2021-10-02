@@ -1,0 +1,21 @@
+/* 기본 색상 */
+:root {
+	--resumy-blue: #4876EF;
+	--resumy-gray: #B4C0D3;
+	--resumy-green: #00D3AB;
+	--resumy-black: #2F2C33;
+	--resumy-white: #FFFFF3;
+}
+
+body {
+	font-family: 'Jua', sans-serif;
+	/*background-color: var(--resumy-white);*/
+}
+
+#content .box {
+	border: 1px solid #444444;
+}
+
+#content .container {
+	border: 1px solid #444444;
+}
