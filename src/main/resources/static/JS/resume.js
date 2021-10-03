@@ -57,12 +57,11 @@ function writeResume() {
 	// 특정 form 의 name 달린 form element 들의 value 들을 string 으로 묶기
 	// ex) name=aaa&subject=bbb&content=ccc   <-- string 타입이다
 	var serialData = $("#frmWrite").serialize();
-	alert(serialData);
 	$.ajax({
 		url: "/resumeAjax",  // url : /board
 		type: "POST",
 		cache: false,
-		traditional :true,
+		traditional: true,
 		data: serialData,  // POST 로 ajax request 할 경우 data 에 parameter 넘기기
 		async: false,
 		success: function(data, status) {
@@ -122,10 +121,12 @@ function deleteResume() {
 
 
 function makeContentForm() {
-	var content_text = '<div id="content_text_plus"><hr><textarea class="input-question-text" type="text" placeholder="질문을 입력해주세요." name="question" value="" required></textarea>';
+	var content_text = '<div id="content_text_plus"><hr><textarea class="input-question-text" placeholder="질문을 입력해주세요." name="question" value="" maxlength=255 required></textarea>';
 	content_text += '<textarea class="input-content-text" placeholder="내용을 입력해주세요." name="content" required></textarea>';
 	content_text += '<button class="minus" onclick="$(this).parent().remove()">삭제</button></div>'
 	$('#content_text_plus').append(content_text);
+
+
 }
 
 // 자소서 관리 시작 페이지
@@ -192,9 +193,9 @@ function updateList(items) {
 		row += "<div class='info-text' style='font-size: 0.6rem'> 작성일: " + items[i].regdate + "</div>\n";
 		row += "<div class='info-text' style='font-size: 0.6rem'> 수정일: " + items[i].modydate + "</div>\n";
 		if (items[i].pub) {
-			row += "<div class='info-text' style='font-size: 0.6rem'> 공개함 </div>\n";	
+			row += "<div class='info-text' style='font-size: 0.6rem'> 공개함 </div>\n";
 		} else {
-			row += "<div class='info-text' style='font-size: 0.6rem'> 공개안함 </div>\n";	
+			row += "<div class='info-text' style='font-size: 0.6rem'> 공개안함 </div>\n";
 		}
 
 		row += "</div></div>\n";
@@ -364,10 +365,9 @@ function setData(data) {
 		}
 	}
 
-
-
-
-
 }
+
+
+
 
 

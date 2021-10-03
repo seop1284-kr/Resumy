@@ -103,12 +103,12 @@ body {
 
 
 .input-question-text {
-	font-weight: 500;
-	padding-left: 0.5em;
-	margin-top: 15px;
-	width: 100%;    
-	height: fit-content;
 
+	font-weight: 500;
+	padding: 0.5em; 
+	margin-top: 15px;
+	width: 100%;
+	height: fit-content;
 }
 
 .input-content-text {
