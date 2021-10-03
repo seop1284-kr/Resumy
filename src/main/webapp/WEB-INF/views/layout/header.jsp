@@ -108,7 +108,8 @@ if (header_menu_param != null) {
 			<sec:authorize access="isAuthenticated()">
 
 				<button class="login_btn" onclick="location.href='/myp'">
-					<sec:authentication property="principal.username" />
+					<div style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+					<sec:authentication property="principal.username"/></div>
 				</button>
 			</sec:authorize>
 

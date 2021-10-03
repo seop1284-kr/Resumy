@@ -10,7 +10,7 @@
 
 
 body {
-	font-family: 'Jua', sans-serif;
+	/*font-family: 'Jua', sans-serif;*/
 	/*background-color: var(--resumy-white);*/
 }
 #content .title-resume {
@@ -33,7 +33,7 @@ body {
 
 .container-resume .box {
 	display: inline-block;
-	width: 153px;
+	width: 148px;
     height: 120px;
     border-radius: 10px;
     margin: 18px;
@@ -63,7 +63,7 @@ body {
 
 .container-resume .box-btn {
 	display: inline-block;
-	width: 153px;
+	width: 148px;
     height: 120px;
     border-radius: 10px;
     margin: 18px;
