@@ -177,18 +177,26 @@ function loadPage() {
 // 목록 업데이트
 function updateList(items) {
 	var result = "";  // 최종 결과
-	result += "<h5><b>작성 중 자소서</b></h5><div class='container' id='notfin'></div>";
-	result += "<h5><b>작성 완료된 자소서</b></h5><div class='container' id='fin'></div>";
+	result += "<h5 class='title-resume'><b>작성 중 자소서</b></h5><div class='container-resume' id='notfin'></div>";
+	result += "<div class='clear'></div><h5 class='title-resume'><b>작성 완료된 자소서</b></h5><div class='container-resume' id='fin'></div>";
 	$("#content").html(result);
 
 	var count = items.length;
 	for (var i = 0; i < count; i++) {
 		var row = "";
 		row += "<div class='box' data-id=" + items[i].id + ">\n";
+		row += "<div class='info-box'>"
 		//row += "<div>" + items[i].id + "</div>\n";
-		row += "<div>" + items[i].title + "</div>\n";
-		row += "<div>" + items[i].modydate + "</div>\n";
-		row += "</div>\n";
+		row += "<div class='info-text' style='font-size: 1.2rem'><b>" + items[i].title + "</b></div>\n";
+		row += "<div class='info-text' style='font-size: 0.6rem'> 작성일: " + items[i].regdate + "</div>\n";
+		row += "<div class='info-text' style='font-size: 0.6rem'> 수정일: " + items[i].modydate + "</div>\n";
+		if (items[i].pub) {
+			row += "<div class='info-text' style='font-size: 0.6rem'> 공개함 </div>\n";	
+		} else {
+			row += "<div class='info-text' style='font-size: 0.6rem'> 공개안함 </div>\n";	
+		}
+
+		row += "</div></div>\n";
 		if (items[i].fin) {
 			$("#fin").append(row);
 		} else {
@@ -196,7 +204,7 @@ function updateList(items) {
 		}
 	}
 	// 자소서 작성 버튼 추가
-	var writeBtn = "<button id='writeBtn'>작성</button>"
+	var writeBtn = "<div class='box-btn' id='writeBtn'></div>"
 	$("#notfin").append(writeBtn);
 } // end updateList()
 

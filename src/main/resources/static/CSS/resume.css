@@ -1,3 +1,4 @@
+
 /* 기본 색상 */
 :root {
 	--resumy-blue: #4876EF;
@@ -7,15 +8,84 @@
 	--resumy-white: #FFFFF3;
 }
 
+
 body {
 	font-family: 'Jua', sans-serif;
 	/*background-color: var(--resumy-white);*/
 }
-
-#content .box {
-	border: 1px solid #444444;
+#content .title-resume {
+	margin-top: 30px;
 }
 
-#content .container {
-	border: 1px solid #444444;
+#content .container-resume {
+	display: table;
+	float: left;
+	
+	width: fit-content;
+    height: fit-content;
+    background: var(--resumy-gray);
+	border-radius: 5px;
+	
+	margin: auto;
 }
+
+
+
+.container-resume .box {
+	display: inline-block;
+	width: 153px;
+    height: 120px;
+    border-radius: 10px;
+    margin: 18px;
+    padding: 10px;
+	background: var(--resumy-white);	
+}
+
+.container-resume .box:hover {
+    cursor: pointer;
+    box-shadow: 0 12px 12px 0 rgba(0, 0, 0, 0.3);
+}
+
+
+
+.box .info-box {
+	width: 100%;
+	float: left;
+	
+	
+}
+
+.box .info-box .info-text {
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.container-resume .box-btn {
+	display: inline-block;
+	width: 153px;
+    height: 120px;
+    border-radius: 10px;
+    margin: 18px;
+    padding: 10px;
+	
+	border-style: dotted;
+	object-fit: cover;
+	background-image: url(../img/plus.png);
+	background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+	
+}
+
+.container-resume .box-btn:hover {
+    cursor: pointer;
+    box-shadow: 0 12px 12px 0 rgba(0, 0, 0, 0.3);
+}
+
+.clear{
+	clear: both;
+}
+
+
+

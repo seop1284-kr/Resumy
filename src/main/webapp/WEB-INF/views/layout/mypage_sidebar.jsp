@@ -23,7 +23,7 @@ if (menu_param != null) {
 
 
 
-<aside class="col-2">
+<aside class="col-2" style="height: 100%">
 	<h4>
 		<b>마이페이지</b>
 	</h4>
