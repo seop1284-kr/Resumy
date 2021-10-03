@@ -80,7 +80,7 @@ CREATE TABLE `hr_file` (
 -- 자기소개서 테이블
 CREATE TABLE `hr_introduction` (
 	`intr_id`	int	NOT NULL AUTO_INCREMENT	PRIMARY KEY COMMENT '일련번호',
-	`intr_title`	varchar(100)	NOT NULL	COMMENT '자소서제목',
+	`intr_title`	varchar(255)	NOT NULL	COMMENT '자소서제목',
 	`intr_regdate`	datetime	NOT NULL	DEFAULT now()	COMMENT '등록일',
 	`intr_public`	boolean	NOT NULL	DEFAULT false	COMMENT '공개여부 (공개: true, 비공개: false)',
 	`intr_finish`	boolean	NOT NULL	DEFAULT false	COMMENT '완성 여부 (완성: true, 진행중 : false)',
@@ -92,7 +92,7 @@ CREATE TABLE `hr_introduction` (
 -- 자소서컨텐츠 테이블
 CREATE TABLE `hr_introduction_c` (
 	`intr_c_id`	int	NOT NULL AUTO_INCREMENT	PRIMARY KEY COMMENT '일련번호',
-	`intr_question`	varchar(100)	NULL DEFAULT ""	COMMENT '자소서질문',
+	`intr_question`	text	NULL 	COMMENT '자소서질문',
 	`intr_content`	text	NULL	COMMENT '자소서내용',
 	`intr_id`	int	NOT NULL	COMMENT '자소서 게시글 일련번호',
 	FOREIGN KEY (intr_id) REFERENCES hr_introduction(intr_id) ON DELETE CASCADE

@@ -37,15 +37,21 @@
 
 
 			<div id="crud_form_box">
-				<input class="checkBox" type="checkbox" name="pub" value="true">공개<br>
-				<input class="checkBox" type="checkbox" name="fin" value="true">작성완료<br>
-
+				
 				<div id="content_text_box">
 					<div id="content_text">
-						<input type="text" placeholder="자소서 제목을 입력해주세요." name="title"
-							required> <input type="text" placeholder="질문을 입력해주세요."
-							name="question" value="" required>
-						<textarea placeholder="내용을 입력해주세요." name="content" value=""
+						<div class="input-title-line">
+							<input class="input-title-text" type="text" placeholder="자소서 제목을 입력해주세요." name="title" required>
+							<input class="checkBox" type="checkbox" name="pub" value="true">공개
+							<input class="checkBox" type="checkbox" name="fin" value="true">작성완료<br>
+						</div>
+						<br>
+						
+					
+						 
+						<textarea class="input-question-text" type="text" placeholder="질문을 입력해주세요."
+							name="question" value="" required></textarea>
+						<textarea class="input-content-text" placeholder="내용을 입력해주세요." name="content" value=""
 							required></textarea>
 					</div>
 					<div id="content_text_plus"></div>

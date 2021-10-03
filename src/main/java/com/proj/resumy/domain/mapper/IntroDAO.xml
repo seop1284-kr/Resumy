@@ -20,7 +20,7 @@
 		WHERE
 			mem_userid = #{userid}
 		ORDER BY 
-			intr_id DESC	
+			mody_dtm DESC	
 	</select>
 	
 	<!-- 공개로 설정된 자소서 select -->

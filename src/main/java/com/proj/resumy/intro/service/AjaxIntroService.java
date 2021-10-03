@@ -67,15 +67,6 @@ public class AjaxIntroService {
 	public int writeResume(IntroDTO introDto, String[] question, String[] content) {
 		introDao.insertResume(introDto);
 		
-		// 첫 질문을 채우지 않으면 데이터가 넘어오지 않음(이유 모름)
-		if (question.length == 0) {
-			IntroConDTO conDto = new IntroConDTO();
-			conDto.setQuestion("");
-			conDto.setContent("");
-			conDto.setIid(introDto.getId());
-			introConDao.insertCon(conDto);
-		}
-
 		for (int i = 0; i < question.length; i++) {
 			IntroConDTO conDto = new IntroConDTO();
 			conDto.setQuestion(question[i]);
@@ -115,15 +106,6 @@ public class AjaxIntroService {
 		// 질문은 삭제 후 다시 생성
 		introConDao.deleteConById(introDto.getId());
 		
-		// 첫 질문을 채우지 않으면 데이터가 넘어오지 않음(이유 모름)
-		if (question.length == 0) {
-			IntroConDTO conDto = new IntroConDTO();
-			conDto.setQuestion("");
-			conDto.setContent("");
-			conDto.setIid(introDto.getId());
-			introConDao.insertCon(conDto);
-		}
-
 		for (int i = 0; i < question.length; i++) {
 			
 			IntroConDTO conDto = new IntroConDTO();

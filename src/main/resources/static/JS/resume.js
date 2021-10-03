@@ -57,6 +57,7 @@ function writeResume() {
 	// 특정 form 의 name 달린 form element 들의 value 들을 string 으로 묶기
 	// ex) name=aaa&subject=bbb&content=ccc   <-- string 타입이다
 	var serialData = $("#frmWrite").serialize();
+	alert(serialData);
 	$.ajax({
 		url: "/resumeAjax",  // url : /board
 		type: "POST",
@@ -121,8 +122,8 @@ function deleteResume() {
 
 
 function makeContentForm() {
-	var content_text = '<div id="content_text_plus"><hr><input type="text" placeholder="질문을 입력해주세요." name="question" required>';
-	content_text += '<textarea placeholder="내용을 입력해주세요." name="content" required></textarea>';
+	var content_text = '<div id="content_text_plus"><hr><textarea class="input-question-text" type="text" placeholder="질문을 입력해주세요." name="question" value="" required></textarea>';
+	content_text += '<textarea class="input-content-text" placeholder="내용을 입력해주세요." name="content" required></textarea>';
 	content_text += '<button class="minus" onclick="$(this).parent().remove()">삭제</button></div>'
 	$('#content_text_plus').append(content_text);
 }
@@ -271,8 +272,8 @@ function setPage(mode) {
 		$("#frmWrite input[name='title']").attr("readonly", false);
 		$("#frmWrite input[name='title']").css("border", "1px solid #ccc");
 
-		$("#frmWrite input[name='question']").attr("readonly", false);
-		$("#frmWrite input[name='question']").css("border", "1px solid #ccc");
+		$("#frmWrite textarea[name='question']").attr("readonly", false);
+		$("#frmWrite textarea[name='question']").css("border", "1px solid #ccc");
 
 		$("#frmWrite textarea[name='content']").attr("readonly", false);
 		$("#frmWrite textarea[name='content']").css("border", "1px solid #ccc");
@@ -301,13 +302,13 @@ function setPage(mode) {
 		$("#frmWrite input[name='title']").attr("readonly", true);
 		$("#frmWrite input[name='title']").css("border", "none");
 
-		//$("#frmWrite input[name='question']").val(viewItem.subject)
-		$("#frmWrite input[name='question']").attr("readonly", true);
-		$("#frmWrite input[name='question']").css("border", "none");
+		//$("#frmWrite textarea[name='question']").val(viewItem.subject)
+		$("#frmWrite textarea[name='question']").attr("readonly", true);
+		$("#frmWrite textarea[name='question']").css("border", "none");
 
 		//$("#frmWrite textarea[name='content']").val(viewItem.content);
 		$("#frmWrite textarea[name='content']").attr("readonly", true);
-		$("#frmWrite textarea[name='content']").css("border", "none");
+		$("#frmWrite textarea[name='content']").css("border", "1px solid #ccc");
 	}
 
 	// 글 수정
@@ -328,8 +329,8 @@ function setPage(mode) {
 		$("#frmWrite input[name='title']").attr("readonly", false);
 		$("#frmWrite input[name='title']").css("border", "1px solid #ccc");
 
-		$("#frmWrite input[name='question']").attr("readonly", false);
-		$("#frmWrite input[name='question']").css("border", "1px solid #ccc");
+		$("#frmWrite textarea[name='question']").attr("readonly", false);
+		$("#frmWrite textarea[name='question']").css("border", "1px solid #ccc");
 
 		$("#frmWrite textarea[name='content']").attr("readonly", false);
 		$("#frmWrite textarea[name='content']").css("border", "1px solid #ccc");
@@ -349,7 +350,7 @@ function setData(data) {
 
 
 	if (count != 0) {
-		$("#frmWrite input[name='question']").eq(0).val(conList[0].question);
+		$("#frmWrite textarea[name='question']").eq(0).val(conList[0].question);
 		$("#frmWrite textarea[name='content']").eq(0).val(conList[0].content);
 		$("#frmWrite input[name='pub']").prop("checked", intro.pub);
 		$("#frmWrite input[name='fin']").prop("checked", intro.fin);
@@ -357,7 +358,7 @@ function setData(data) {
 
 		for (var i = 1; i < count; i++) {
 			makeContentForm();
-			$("#frmWrite input[name='question']").eq(i).val(conList[i].question);
+			$("#frmWrite textarea[name='question']").eq(i).val(conList[i].question);
 			$("#frmWrite textarea[name='content']").eq(i).val(conList[i].content);
 
 		}

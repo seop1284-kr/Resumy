@@ -3,6 +3,8 @@ package com.proj.resumy.intro.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -81,7 +83,7 @@ public class AjaxIntroController {
 	public int write(
 			@RequestParam(value = "pub", defaultValue = "false") boolean pub, 
 			@RequestParam(value = "fin", defaultValue = "false")boolean fin, 
-			IntroDTO resume, String[] question, String[] content, Authentication authentication) {
+			IntroDTO resume, HttpServletRequest request, Authentication authentication) {
 		int iid = 0;
 		// 로그인한 사람의 정보를 담은 객체
 		UserDetails userDetails = (UserDetails) authentication.getPrincipal();
@@ -89,8 +91,9 @@ public class AjaxIntroController {
 		resume.setUserid(userDetails.getUsername());
 		resume.setPub(pub);
 		resume.setFin(fin);
-		System.out.println(resume);
-
+		String[] question = request.getParameterValues("question");
+		String[] content = request.getParameterValues("content");
+		
 		iid = ajaxIntroService.writeResume(resume, question, content);
 
 		return iid;
@@ -100,7 +103,7 @@ public class AjaxIntroController {
 	public int update(
 			@RequestParam(value = "pub", defaultValue = "false") boolean pub, 
 			@RequestParam(value = "fin", defaultValue = "false")boolean fin, 
-			String title, int iid, String[] question, String[] content) {
+			String title, int iid, HttpServletRequest request) {
 		int id = 0;
 		
 		IntroDTO resume = new IntroDTO();
@@ -108,6 +111,8 @@ public class AjaxIntroController {
 		resume.setTitle(title);
 		resume.setPub(pub);
 		resume.setFin(fin);
+		String[] question = request.getParameterValues("question");
+		String[] content = request.getParameterValues("content");
 		id = ajaxIntroService.update(resume, question, content);
 		
 		return id;
