@@ -54,7 +54,7 @@
 			spec_major = #{major},
 			spec_university = #{university}
 		WHERE mem_userid = #{userid} 
-		and spec_id = #{id}
+		and spec_cat_cd = #{cat}
 	</update>
 
 </mapper>

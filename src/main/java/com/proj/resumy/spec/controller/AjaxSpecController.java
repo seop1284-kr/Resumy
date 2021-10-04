@@ -87,7 +87,6 @@ public class AjaxSpecController {
 			String status = "FAIL";
 			
 			try {
-				System.out.println("1111");
 				System.out.println("학력 DTO: " + dto.getCat());
 				count = specService.write(dto);
 				if(count == 0) {
@@ -109,8 +108,14 @@ public class AjaxSpecController {
 		
 		// 글 수정
 		@PutMapping("")  // URI: /myp/history
-		public SpecResult updateOk(SpecDTO dto) {
+		public SpecResult updateOk(SpecDTO dto, Authentication authentication) {
 			int count = 0;
+			
+			// 로그인한 사람의 정보를 담은 객체
+			UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+			dto.setUserid(userDetails.getUsername());
+			
+			System.out.println("dto 뭔가 : " + dto);
 				
 			// message 
 			StringBuffer message = new StringBuffer();

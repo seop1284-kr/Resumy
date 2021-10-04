@@ -127,106 +127,110 @@
 				
 				
 				<%-- 초등학교 정보 --%>
-			<form name='spec01' id='spec01' action='' method='post'>
-				<table  width="100%">
-					<tr>
-						<td width="80%" colspan="2"><h4><b>초등학교 정보입력</b></h4></td>
-						<td width="20%"><button type="button" class="" name ="btnWriteSpec01" id ="btnWriteSpec01" onclick="writeSpec('spec01')">등록</button> <button type="button" class="" id ="btnUpdateSpec01" name ="btnUpdateSpec01" onclick="updateSpec('spec01')">수정</button></td>
-					</tr>
-					<tr>
-						<td width="20%" name="school01">학교명</td>
-						<td width="60%"><input type="text" name="School_01" value=""></td>
-						<td width="20%"></td>
-					</tr>
-					<tr>
-						<td width="20%" name="schoolArea01">지역</td>
-						<td width="60%"><input type="text" name="schoolArea_01" value=""></td>
-						<td width="20%"></td>
-					</tr>
-				</table>
-			</form>
+				<form name='spec01' id='spec01' action='' method='post'>
+					<table  width="100%">
+						<tr>
+							<td width="80%" colspan="2"><h4><b>초등학교 정보입력</b></h4></td>
+							<td width="20%"><button type="button" class="" name ="btnWriteSpec01" id ="btnWriteSpec01" onclick="writeSpec('spec01')">등록</button> <button type="button" class="" id ="btnUpdateSpec01" name ="btnUpdateSpec01" onclick="updateSpec('spec01')">수정</button></td>
+						</tr>
+						<tr>
+							<td width="20%" name="school01">학교명</td>
+							<td width="60%"><input type="text" id="school_01" name="name" value=""></td>
+							<td width="20%"></td>
+						</tr>
+						<tr>
+							<td width="20%" name="schoolArea01">지역</td>
+							<td width="60%"><input type="text" id="schoolArea_01" name="area" value=""></td>
+							<td width="20%"></td>
+						</tr>
+					</table>
+					<input type="hidden" id="cat_01" name="cat" value="">
+				</form>
 				
 				<%-- 중학교 정보 --%>
-			<form name='spec02' id='spec02' action='' method='post'>
-				<table width="100%">
-					<tr>
-						<td width="80%" colspan="2"><h4><b>중학교 정보입력</b></h4></td>
-						<td width="20%"><button type="button" class="" id ="btnWriteSpec02" name ="btnWriteSpec02" onclick="writeSpec('spec02')">등록</button> <button type="button" class="" id ="btnUpdateSpec02" name ="btnUpdateSpec02" onclick="updateSpec('spec02')">수정</button></td>
-					</tr>
-					<tr>
-						<td width="20%" name="school02">학교명</td>
-						<td width="60%"><input type="text" name="School_02" value=""></td>
-						<td width="20%"></td>
-					</tr>
-					<tr>
-						<td width="20%" name="schoolArea02">지역</td>
-						<td width="60%"><input type="text" name="schoolArea_02" value=""></td>
-						<td width="20%"></td>
-					</tr>
-				</table>
-			</form>
+				<form name='spec02' id='spec02' action='' method='post'>
+					<table width="100%">
+						<tr>
+							<td width="80%" colspan="2"><h4><b>중학교 정보입력</b></h4></td>
+							<td width="20%"><button type="button" class="" id ="btnWriteSpec02" name ="btnWriteSpec02" onclick="writeSpec('spec02')">등록</button> <button type="button" class="" id ="btnUpdateSpec02" name ="btnUpdateSpec02" onclick="updateSpec('spec02')">수정</button></td>
+						</tr>
+						<tr>
+							<td width="20%" name="school02">학교명</td>
+							<td width="60%"><input type="text" id="school_02" name="name" value=""></td>
+							<td width="20%"></td>
+						</tr>
+						<tr>
+							<td width="20%" name="schoolArea02">지역</td>
+							<td width="60%"><input type="text" id="schoolArea_02" name="area" value=""></td>
+							<td width="20%"></td>
+						</tr>
+					</table>
+					<input type="hidden" id="cat_02" name="cat" value="">
+				</form>
 				
 				<%-- 고등학교 정보 --%>
 				<form name='spec03' id='spec03' action='' method='post'>
-				<table  width="100%">
-					<tr>
-						<td width="80%" colspan="2"><h4><b>고등학교 정보입력</b></h4></td>
-						<td width="20%"><button type="button" class="" id ="btnWriteSpec03" name ="btnWriteSpec03" onclick="writeSpec('spec03')">등록</button> <button type="button" class="" id ="btnUpdateSpec03" name ="btnUpdateSpec03" onclick="updateSpec('spec03')">수정</button></td>
-					</tr>
-					<tr>
-						<td width="20%">학교명</td>
-						<td width="60%"><input type="text" name="School_03" value=""></td>
-						<td width="20%"></td>
-					</tr>
-					<tr>
-						<td width="20%">지역</td>
-						<td width="60%"><input type="text" name="schoolArea_03" value=""></td>
-						<td width="20%"></td>
-					</tr>
-					<tr>
-						<td width="20%">전공</td>
-						<td width="60%"><input type="text" name="major_03" value=""></td>
-						<td width="20%"></td>
-					</tr>
-				</table>
+					<table  width="100%">
+						<tr>
+							<td width="80%" colspan="2"><h4><b>고등학교 정보입력</b></h4></td>
+							<td width="20%"><button type="button" class="" id ="btnWriteSpec03" name ="btnWriteSpec03" onclick="writeSpec('spec03')">등록</button> <button type="button" class="" id ="btnUpdateSpec03" name ="btnUpdateSpec03" onclick="updateSpec('spec03')">수정</button></td>
+						</tr>
+						<tr>
+							<td width="20%">학교명</td>
+							<td width="60%"><input type="text" id="school_03"  name="name" value=""></td>
+							<td width="20%"></td>
+						</tr>
+						<tr>
+							<td width="20%">지역</td>
+							<td width="60%"><input type="text" id="schoolArea_03"  name="area" value=""></td>
+							<td width="20%"></td>
+						</tr>
+						<tr>
+							<td width="20%">전공</td>
+							<td width="60%"><input type="text" id="major_03" name="major" value=""></td>
+							<td width="20%"></td>
+						</tr>
+					</table>
+					<input type="hidden" id="cat_03" name="cat" value="">
 				</form>
 				
 				<%-- 대학/대학원 정보 --%>
 				<form name='spec04' id='spec04' action='' method='post'>
-				<table width="100%">
-					<tr>
-						<td width="80%" colspan="2"><h4><b>대학∙대학원 정보입력</b></h4></td>
-						<td width="20%"><button type="button" class="" id ="btnWriteSpec04" name ="btnWriteSpec04" onclick="writeSpec('spec04')">등록</button> <button type="button" class="" id ="btnUpdateSpec04" name ="btnUpdateSpec04" onclick="updateSpec('spec04')">수정</button></td>
-					</tr>
-					<tr>
-						<td width="20%">대학</td>
-						<td width="60%">
-							<select name="university" >
-								<option value="">선택하세요</option>
-	           					<option value="01">2,3년제</option>
-	           					<option value="02">4년제</option>
-	            				<option value="03">대학원(석사)</option>
-	            				<option value="04">대학원(박사)</option>
-							</select>
-						</td>
-						<td width="20%"></td>
-					</tr>
-					<tr>
-						<td width="20%">학교명</td>
-						<td width="60%"><input type="text" name="School_04" value=""></td>
-						<td width="20%"></td>
-					</tr>
-					<tr>
-						<td width="20%">지역</td>
-						<td width="60%"><input type="text" name="schoolArea_04" value=""></td>
-						<td width="20%"></td>
-					</tr>
-					<tr>
-						<td width="20%">전공계열</td>
-						<td width="60%"><input type="text" name="major_04" value=""></td>
-						<td width="20%"></td>
-					</tr>
-				</table>
+					<table width="100%">
+						<tr>
+							<td width="80%" colspan="2"><h4><b>대학∙대학원 정보입력</b></h4></td>
+							<td width="20%"><button type="button" class="" id ="btnWriteSpec04" name ="btnWriteSpec04" onclick="writeSpec('spec04')">등록</button> <button type="button" class="" id ="btnUpdateSpec04" name ="btnUpdateSpec04" onclick="updateSpec('spec04')">수정</button></td>
+						</tr>
+						<tr>
+							<td width="20%">대학</td>
+							<td width="60%">
+								<select  id ="university_04" name="university" >
+									<option value="">선택하세요</option>
+		           					<option value="01">2,3년제</option>
+		           					<option value="02">4년제</option>
+		            				<option value="03">대학원(석사)</option>
+		            				<option value="04">대학원(박사)</option>
+								</select>
+							</td>
+							<td width="20%"></td>
+						</tr>
+						<tr>
+							<td width="20%">학교명</td>
+							<td width="60%"><input type="text"  id ="school_04" name="name" value=""></td>
+							<td width="20%"></td>
+						</tr>
+						<tr>
+							<td width="20%">지역</td>
+							<td width="60%"><input type="text"  id ="schoolArea_04" name="area" value=""></td>
+							<td width="20%"></td>
+						</tr>
+						<tr>
+							<td width="20%">전공계열</td>
+							<td width="60%"><input type="text"  id ="major_04" name="major" value=""></td>
+							<td width="20%"></td>
+						</tr>
+					</table>
+					<input type="hidden" id="cat_04" name="cat" value="">
 				</form>
 			</article>
 
