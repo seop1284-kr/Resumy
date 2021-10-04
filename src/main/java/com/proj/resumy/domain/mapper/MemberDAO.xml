@@ -77,6 +77,19 @@
 		FROM hr_authority
 		WHERE mem_userid = #{userid}
 	</select>
+	
+	<!-- 기본정보 수정 -->
+	<update id="update" flushCache="true" parameterType="com.proj.resumy.domain.MemberDTO"
+		useGeneratedKeys="true" keyProperty="id">
+		UPDATE hr_member 
+		SET mem_name = #{name},
+			mem_email = #{email},
+			mem_gender = #{gender},
+			mem_phone = #{phone},
+			mem_birthday = #{birthday},
+			mem_address = #{address}
+		WHERE mem_userid = #{userid} 
+	</update>
 
 </mapper>
 

@@ -105,11 +105,13 @@ function loadPage(){
 	$("#btnNewcomer").css("background-color", "skyblue");
 	$("#btnCareer").css("background-color", "#EFEFEF");
 	
+	selectMemberList(); // 기본정보
 	selectCareerList(); // 경력
 	selectSpecList(); // 학력
 	
 }//loadPage end
 
+//기본정보 조회
 function selectMemberList(){
 	$.ajax({
 		url : "/memberAjax/list/" ,
@@ -139,6 +141,28 @@ function selectMemberList(){
 	}); 		
 	
 } // end selectMemberList()
+
+//기본정보 수정
+function updateMember(formId){
+	
+	var serialData = $("#"+formId).serialize();
+	
+	$.ajax({
+		url : "/memberAjax",  // url : /board
+		type : "PUT",
+		cache : false,
+		data : serialData,  // POST 로 ajax request 할 경우 data 에 parameter 넘기기
+		async: false,
+		success : function(data, status){
+			if(status == "success"){
+				alert("수정 성공");
+				loadPage();
+			}
+		}
+	});
+}//updateMember end()
+
+
 
 //학력사항 조회
 function selectSpecList(){

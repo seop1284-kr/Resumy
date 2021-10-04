@@ -14,7 +14,7 @@ public class MemberDTO {
 	private String email;	// mem_email
 	private int gender;		// mem_gender
 	private String phone;	// mem_phone
-	private char[] birthday;// mem_birthday
+	private String birthday;// mem_birthday
 	private String address;	// mem_address
 	private boolean career;	// mem_career
 	private LocalDateTime regdtm;	// reg_dtm

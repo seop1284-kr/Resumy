@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.proj.resumy.career.domain.CareerDTO;
 import com.proj.resumy.domain.MemberDAO;
 import com.proj.resumy.domain.MemberDTO;
 
@@ -44,5 +45,10 @@ public class MemberService {
 	// 특정 id 의 권한(들) 정보 가져오기
 	public List<String> selectAuthoritiesById(String userId){
 		return memberDao.selectAuthoritiesById(userId);
+	}
+	
+	//기본정보 수정
+	public int update(MemberDTO dto) {
+		return memberDao.update(dto);
 	}
 }

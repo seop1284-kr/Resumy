@@ -2,6 +2,8 @@ package com.proj.resumy.domain;
 
 import java.util.List;
 
+import com.proj.resumy.career.domain.CareerDTO;
+
 public interface MemberDAO {
 	List<MemberDTO> selectAll();
 	
@@ -28,4 +30,8 @@ public interface MemberDAO {
 	
 	// 특정 userid (username) 의 권한(들) 뽑기
 	List<String> selectAuthoritiesById(String userid);
+	
+	//이력관리(기본정보) data 출력
+	public abstract int update(MemberDTO dto);
+	
 }

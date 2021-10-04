@@ -67,11 +67,12 @@
 			<article>
 				<!-- 제목 -->
 				<h4 id="title" style="font-weight: bold"></h4>
-				<button type="button" class="topListBtn">수정하기</button>
+				<button type="button" class="topListBtn" onclick="updateMember('memberList')">수정하기</button>
 
 				<!-- 기본정보 리스트 -->
 				<div id="content1"></div>
 				<br>
+				<form name='memberList' id='memberList' action='' method='post'>
 				<table width="100%">
 					<tr>
 						<td width="10%"><h4>
@@ -86,7 +87,13 @@
 						<td>이메일</td>
 						<td><input type="text" name="email" value=""></td>
 						<td>성별</td>
-						<td><input type="text" name="gender" value=""></td>
+						<td>
+							<select  id ="gender" name="gender">
+									<option value="">선택하세요</option>
+		           					<option value="1">남</option>
+		           					<option value="2">여</option>
+							</select>
+						</td>
 					</tr>
 					<tr>
 						<td>휴대폰</td>
@@ -101,6 +108,7 @@
 						<td></td>
 					</tr>
 				</table>
+				</form>
 			</article>
 			
 			

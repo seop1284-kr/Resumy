@@ -6,6 +6,8 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.proj.resumy.career.domain.CareerDTO;
+
 
 @Repository
 public class MemberDAOImpl implements MemberDAO {
@@ -63,7 +65,11 @@ public class MemberDAOImpl implements MemberDAO {
 	public List<String> selectAuthoritiesById(String userid) {
 		return mapper.selectAuthoritiesById(userid);
 	}
-
+	
+	@Override
+	public int update(MemberDTO dto) {
+		return mapper.update(dto);
+	}
 
 
 }
