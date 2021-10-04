@@ -28,11 +28,11 @@ public class MngpageController {
 	// mng page
 	@RequestMapping("")
 	public String mngPage(String menu, Model model) {
-		if (menu == null) {
-			model.addAttribute("menu", "fed");
-		} else {
-			model.addAttribute("menu", menu);
-		}
-		return "mng/mngpage";
+//		if (menu == null) {
+//			model.addAttribute("menu", "fed");
+//		} else {
+//			model.addAttribute("menu", menu);
+//		}
+		return "mng/mngFed";
 	}
 }
