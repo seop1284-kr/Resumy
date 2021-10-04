@@ -98,14 +98,19 @@ public class AjaxFileController {
 	@PostMapping("")
 	public int write(MultipartFile file, String memo, Authentication authentication) {
 		int result = 0;
-		int maxPostSize = 5 * 1024 * 1024; // 최대용량, 5M byte : 1Kbyte = 1024 byte, 1Mbyte = 1024Kbyte
-		String encoding = "utf-8";    // 인코딩
+//		int maxPostSize = 5 * 1024 * 1024; // 최대용량, 5M byte : 1Kbyte = 1024 byte, 1Mbyte = 1024Kbyte
+//		String encoding = "utf-8";    // 인코딩
 
 		
 		// 로그인한 사람의 정보를 담은 객체
 		UserDetails userDetails = (UserDetails) authentication.getPrincipal();
-		FileDTO fileDTO = new FileDTO();
 		
+		// 유저 게시물 갯수 제한
+		System.out.println(ajaxFileService.filesById(userDetails.getUsername()));
+		if(ajaxFileService.filesById(userDetails.getUsername()) > 15) {
+			return result;
+		}
+		FileDTO fileDTO = new FileDTO();
 		
 		fileDTO = fileService.fileUpload(file, userDetails, memo);
 		result = ajaxFileService.insert(fileDTO);		
@@ -174,8 +179,6 @@ public class AjaxFileController {
 
 
 	}
- 
-
 	
 
 	// 특정 파일(file_id) 삭제
@@ -194,9 +197,6 @@ public class AjaxFileController {
 		}
 		
 		return result;
-		
-		
-		
 		
 	}
 

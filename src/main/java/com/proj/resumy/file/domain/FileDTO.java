@@ -36,7 +36,7 @@ public class FileDTO {
 	
 	public FileDTO() {
 		super();
-		System.out.println("fileDTO() 객체 생성");
+//		System.out.println("fileDTO() 객체 생성");
 	}
 
 

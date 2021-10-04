@@ -73,7 +73,7 @@
 
 <%-- 파일 업로드 모달 --%>
 <div id="dlg_file" class="modal">
-	<form action="file.jsp" class="modal-content animate" id="frmFile" name="frmFile" method="post" enctype="Multipart/form-data" onsubmit="return chkSubmit()">
+	<form action="file.jsp" class="modal-content animate" id="frmFile" name="frmFile" method="post" enctype="Multipart/form-data">
 		<div class="container">
 			
 			

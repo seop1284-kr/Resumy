@@ -57,7 +57,9 @@ public class AjaxFileService {
 	public int deleteByIds(int[] id) {
 		return filedao.deleteByIds(id);
 	}
-	
-	
-	
+
+	// 한 아이디당 올린 파일의 갯수 
+	public int filesById(String userid) {
+		return filedao.filesById(userid);
+	}
 }

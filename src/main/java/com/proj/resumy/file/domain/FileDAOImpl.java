@@ -47,12 +47,13 @@ public class FileDAOImpl implements FileDAO {
 		return mapper.deleteByIds(id);
 	}
 
-	// 특정 파일(file_id) 다운로드 ? 이걸 구현할 수 있나?
+	// 한 아이디당 올린 파일의 갯수 
 	@Override
-	public int download() {
-		// TODO Auto-generated method stub
-		return 0;
+	public int filesById(String userid) {
+		return mapper.filesById(userid);
 	}
+
+
 
 	
 	

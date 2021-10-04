@@ -37,6 +37,15 @@
 		WHERE file_id = #{id}
 	</select>
 	
+	<select id="filesById" resultType= "int">
+		 SELECT
+		 	count(*)
+		 FROM
+		 	hr_file
+		 WHERE mem_userid = #{userid}
+	</select>
+	
+	
 	<delete id="deleteById">
 		DELETE FROM hr_file 
 		WHERE file_id = #{id};
