@@ -1,0 +1,65 @@
+@charset "UTF-8";
+
+/* 게시물 목록 */
+	/* 답변상태 */
+	.replyStateYes {
+		color: #4CAF50;
+	}
+	/* 답변 */
+	tbody td>button {
+		width: 3em !important;
+		border:none; 
+		background:none;
+	}
+	
+/* Modal */
+	/* modal-dialog */
+	.modal-dialog {
+		max-width: 40em;
+	}
+	
+	/* modal-header */
+	.modal-header i {
+		font-size: 1.2em;
+	}
+	
+	/* modal-body */
+	.modal-body {
+		margin-top: 1em;
+	}
+	.modal-body ul {
+		margin-bottom: 1em;
+	}
+	.modal-body li#q_content {
+		margin-top: .5em;
+		margin-bottom: 1em;
+	}
+	.modal-body textarea[name="reply"] {
+		margin-top: 1em;
+		margin-bottom: .5em;
+		width: 100%;
+		height: 2em;
+		overflow:visible;
+		color: #00c29d;
+		color: var(--dk-mint-color);
+		outline: none;
+		border: none;
+		border-bottom: 2px solid #00D3AB;
+		border-bottom: 2px solid var(--mint-color);
+	}
+	.modal-body textarea[name="reply"]::placeholder {
+		color: #00c29d;
+		color: var(--dk-mint-color);
+	}
+	
+	/* modal-footer */
+	form[name="frm"] .modal-footer {
+		margin: 0;
+		padding: 0;
+	}
+	form[name="frm"] .modal-footer button {
+		margin: 0;
+		width: 50%;
+		height: 2.7em;
+		border-radius: 0;
+	}

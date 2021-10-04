@@ -11,6 +11,7 @@
     <meta name="author" content="">
     
 	<title>Resumy 관리자 페이지</title>
+    <link href="/img/logo_sm.png" rel="shortcut icon" type="image/x-icon">
 
 	 <!-- Custom fonts for this template -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
@@ -21,55 +22,10 @@
 
     <!-- Custom styles for this page -->
     <link href="/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
-    <link href="/css/dataTables.css" rel="stylesheet">
     <link href="/css/common.css" rel="stylesheet">
-    <style>
-        /* 게시물 목록 */
-        	/* 답변상태 */
-        	.replyStateYes {
-        		color: #4CAF50;
-        	}
-	        /* 답변 */
-	        tbody td>button {
-	        	border:none; 
-	        	background:none;
-	        }
-        
-         /* [페이징] */
-		.center {
-			text-align: center;
-		}
-		
-		ul.pagination{
-			list-style-type: none;
-		}
-		
-		ul.pagination li{
-			display: inline-block;
-		}
-		
-		ul.pagination a {
-			color: black;
-			float: left;
-			padding: 4px 8px;
-			text-decoration: none;
-			transition: background-color .3s;
-			margin: 0px;
-		}
-		
-		ul.pagination a.active {
-			background-color: #4CAF50;
-			color: white;
-			border: 1px solid #4CAF50;
-		}
-		
-		ul.pagination a:hover:not(.active) {background-color: #ddd;}
-		
-		/* 모달 */
-		input[name="reply"] {
-			width: 100%;
-		}
-    </style>
+    <link href="/css/dataTables.css" rel="stylesheet">
+    <link href="/css/qnaMng.css" rel="stylesheet">
+
 </head>
 
 <body id="page-top">
@@ -81,7 +37,7 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center my-2" href="indexMng.html">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center my-2" href="/mng">
             </a>
 
             <!-- Divider -->
@@ -94,7 +50,7 @@
 
             <!-- Nav Item - 홈페이지 -->
             <li class="nav-item">
-                <a class="nav-link" href="index.html">
+                <a class="nav-link" href="/">
                     <i class="fas fa-home"></i>
                     <span>홈페이지</span></a>
             </li>
@@ -223,44 +179,54 @@
 	<!-- ================================================================================================== -->
 	<!-- 답변하기 Modal -->
 	<div class="modal fade" id="replyWriteModal" tabindex="-1" aria-labelledby="replyWriteModalLabel" aria-hidden="true">
-	  <div class="modal-dialog">
-	    <div class="modal-content">
-	      <div class="modal-header">
-	     	<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
-			  <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
-			  <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
-			</svg>
-	        <span class="modal-title" id="exampleModalLabel">
-	        	<span class="q_id">00</span>
-	        	번 문의글 답변 작성하기</span>
-	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-	          <span aria-hidden="true">&times;</span>
-	        </button>
-	      </div>
-	      <div class="modal-body">
-		  	<form name="frm" action="updateOk.do" method="post">
-		       	<input type="hidden" name="id" class="q_id">
-		    	<ul class="row">
-		        	<li class="col-2">작성자</li>
-		        	<li class="col-3" name="name" id="q_name"></li>
-		        	<li class="col-2">날짜</li>
-		        	<li class="col" name="regdate" id="q_regdate"></li>
-		        </ul>
-		        <ul class="row">
-		        	<li class="col-2">제목</li>
-		        	<li class="col" name="subject" id="q_subject"></li>
-		        </ul>
-		        <ul class="row">
-		        	<li class="col-12">내용</li>
-		        	<li class="col-12" name="content" id="q_content"></li>
-		        </ul>
-		        <input type="text" name="reply" id="r_reply" placeholder="답변을 적어주세요.">
-		        <button type="button" class="btn btn-secondary" id="btn_delete">답변 삭제</button>
-		        <button type="submit" class="btn btn-primary">답변 완료</button>
-			</form>
-	      </div>
-	    </div>
-	  </div>
+		<div class="modal-dialog">
+		
+			<div class="modal-content">
+			
+				<div class="modal-header">
+			     	<i class="far fa-edit mr-2"></i>
+			        <span class="modal-title text-gray-800" id="exampleModalLabel">
+			        	<span class="q_id text-gray-800">00</span>
+			        	번 문의글 답변 작성하기
+			        </span>
+			        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			          <span aria-hidden="true">&times;</span>
+			        </button>
+				</div>
+				
+				<form name="frm" action="updateOk.do" method="post">
+				
+					<div class="modal-body container">
+				       	<input type="hidden" name="id" class="q_id">
+				    	<ul class="row">
+				        	<li class="col-2 text-gray-500">작성자</li>
+				        	<li class="col-3" name="name" id="q_name"></li>
+				        	<li class="col-2 text-gray-500">날짜</li>
+				        	<li class="col" name="regdate" id="q_regdate"></li>
+				        </ul>
+				        <ul class="row">
+				        	<li class="col-2 text-gray-500">제목</li>
+				        	<li class="col" name="subject" id="q_subject"></li>
+				        </ul>
+				        <ul class="row">
+				        	<li class="col-12 text-gray-500">내용</li>
+				        	<li class="col-12" name="content" id="q_content"></li>
+				        </ul>
+		
+				        <hr>
+				        <div class="text-gray-500">답변</div>
+				        <textarea name="reply" id="r_reply" placeholder="답변을 적어주세요."></textarea>
+					</div>
+	
+			        <div class="modal-footer">
+				        <button type="button" class="btn btn-secondary" id="btn_delete">답변 삭제</button>
+				        <button type="submit" class="btn btn-primary">답변 완료</button>
+			        </div>
+			        
+				</form>
+				
+			</div>
+		</div>
 	</div>
 	<!-- ./답변 모달 -->
 	
@@ -277,8 +243,8 @@
                 </div>
                 <div class="modal-body">확인을 누르면 관리자 계정에서 로그아웃한 뒤 홈페이지로 돌아가게 됩니다.</div>
                 <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">취소</button>
-                    <a class="btn btn-primary" href="index.html">확인</a>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">취소</button>
+                    <button type="button" class="btn btn-primary" onclick="location.href='/logout'">확인</button>
                 </div>
             </div>
         </div>

@@ -21,6 +21,6 @@ public class QnaADTO {
 		if(regdate == null) {
 			regdate = LocalDateTime.now();
 		}
-		return this.regdate.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+		return this.regdate.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"));
 	}
 }

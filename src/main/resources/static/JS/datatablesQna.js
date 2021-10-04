@@ -2,7 +2,7 @@
 // datatablesQna(고객센터 관리 페이지) 노수빈
 
 // Korean
- var lang_kor = {
+var lang_kor = {
   "decimal" : "",
   "emptyTable" : "데이터가 없습니다.",
   "info" : "_START_ ~ _END_ 페이지 (총 _TOTAL_ 건)",
@@ -54,7 +54,7 @@ $(document).ready(function() {
 	    language : lang_kor,
 		order: [[0, 'desc']], // 기본 정렬칼럼 (0이 첫번째 칼럼)
 		ordering: true, // 칼럼별 정렬기능
-		serverSide: false, // 
+		serverSide: false,
 		/*paging: true, // 페이징처리
         lengthChange: true, // 데이터건수 변경
         lengthMenu: [10, 20, 50, 100], // 데이터건수옵션 

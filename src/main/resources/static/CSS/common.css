@@ -1,5 +1,6 @@
 :root {
     --mint-color : #00D3AB;
+    --dk-mint-color : #00c29d;
     --light-color : #fffff3;
     --dark-color : #2f2c33;
 /* 메인페이지 */
@@ -32,9 +33,35 @@ a:hover {
     text-decoration: none;
     color: black;
 }
+
+button[type="button"], button[type="submit"] {
+	width: 9em;
+	height: 2.5em;
+}
+
+.btn-mint {
+	color: #fffff3;
+	color: var(--light-color);
+	background-color: #00D3AB;
+	background-color: var(--mint-color);
+}
+
+.btn-mint:hover {
+	color: #fffff3;
+	color: var(--light-color);
+	background-color: #00c29d;
+	background-color: var(--dk-mint-color);
+}
+
 /*
 body {
     background-color: #F2F4F7;
     background-color: var(--body-bg-color);
 }
 */
+
+/* 관리자 페이지의 모달의 닫기 버튼 크기 설정 */
+.modal-header button[aria-label="Close"] {
+	float: right;
+	max-width: 3em;
+}
