@@ -82,6 +82,15 @@ public class AjaxMngMemberController {
 		return result;
 	}
 	
+	// 목록
+//	@GetMapping("/")
+//	public List<MemberDTO> listAll() {
+//		
+//		List<MemberDTO> list = null;
+//		list = ajaxMngMemberService.list(1, 1000);
+//		return list;
+//	}
+	
 	// 회원 삭제
 	@DeleteMapping("")
 	public AjaxMngMemberResult deleteOk(int [] uid) {
