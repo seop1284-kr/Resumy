@@ -55,7 +55,7 @@ function loadPageAll() {
 		language: lang_kor,
 		"pageLength": 10,
 		ajax: {
-			url: "/AjaxMngMember/1/100",
+			url: "/AjaxMngMember/1/1000",
 			type: "GET",
 			dataSrc: 'data'
 		},
@@ -156,7 +156,6 @@ function chkDelete() {
 		if (!confirm(uids.length + "명의 회원을 삭제하시겠습니까?")) return false;
 
 		var data = $("#frmList").serialize();
-		alert(data);
 		// DELETE 방식
 		$.ajax({
 			url: "/AjaxMngMember/",
@@ -186,7 +185,7 @@ function deleteUid(uid) {
 
 	// DELETE 방식
 	$.ajax({
-		url: "/AjaxMngFed/",  //
+		url: "/AjaxMngMember/",  //
 		type: "DELETE",
 		data: "uid=" + uid,
 		cache: false,

@@ -51,7 +51,7 @@
 			<!-- Sidebar - Brand -->
 			<a
 				class="sidebar-brand d-flex align-items-center justify-content-center my-2"
-				href="indexMng.html"> </a>
+				href="/mng"> </a>
 
 			<!-- Divider -->
 			<hr class="sidebar-divider">
@@ -60,7 +60,7 @@
 			<div class="sidebar-heading">바로가기</div>
 
 			<!-- Nav Item - 홈페이지 -->
-			<li class="nav-item"><a class="nav-link" href="index.html">
+			<li class="nav-item"><a class="nav-link" href="/">
 					<i class="fas fa-home"></i> <span>홈페이지</span>
 			</a></li>
 
@@ -128,10 +128,12 @@
 						class="d-s-flex align-items-center justify-content-between mb-2">
 						<h1 class="h3 mb-0 text-gray-800">
 							<!-- 채워야 될 부분 -->
+							회원 관리
 						</h1>
 					</div>
 					<div class="mb-4">
 						<!-- 채워야 될 부분 -->
+						삭제 체크박스를 누른 다음 항목 삭제 버튼을 누르면 피드백 댓글이 삭제됩니다.
 					</div>
 
 					<!-- DataTales Example -->
@@ -154,7 +156,7 @@
 										</thead>
 
 									</table>
-									<button id="btnDel">삭제하기</button>
+									<button id="btnDel" class="btn btn-primary dataTables_btn_del">항목 삭제</button>
 								</div>
 							</div>
 						</div>
@@ -193,7 +195,7 @@
 				<div class="modal-footer">
 					<button class="btn btn-secondary" type="button"
 						data-dismiss="modal">취소</button>
-					<a class="btn btn-primary" href="index.html">확인</a>
+					<a class="btn btn-primary" href="/logout">확인</a>
 				</div>
 			</div>
 		</div>
