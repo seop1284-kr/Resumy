@@ -114,13 +114,13 @@
 				<div id="content2"></div>
 				<table width="100%">
 					<tr>
-						<td width="25%"><button type="button" class="" id="btnEleSchool" name="btnEleSchool">초등학교
+						<td width="25%"><button type="button" class="" id="btnSchool01" name="btnSchool01">초등학교
 								졸업</button></td>
-						<td width="25%"><button type="button" class="" id="btnMidSchool" name="btnMidSchool">중학교
+						<td width="25%"><button type="button" class="" id="btnSchool02" name="btnSchool02">중학교
 								졸업</button></td>
-						<td width="25%"><button type="button" class="" id="btnHigSchool" name="btnHigSchool">고등학교
+						<td width="25%"><button type="button" class="" id="btnSchool03" name="btnSchool03">고등학교
 								졸업</button></td>
-						<td width="25%"><button type="button" class="" id="btnUniversity" name="btnUniversity">대학/대학원<br>
+						<td width="25%"><button type="button" class="" id="btnSchool04" name="btnSchool04">대학/대학원<br>
 								이상 졸업</button></td>
 					</tr>
 				</table>

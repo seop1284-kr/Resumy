@@ -18,7 +18,7 @@
 		on a.mem_userid = b.mem_userid
 		where a.mem_userid = #{userid}
 		ORDER BY 
-			b.spec_id DESC;
+			b.spec_cat_cd DESC ;
 	</select>
 	
 	<!-- 글작성 -->

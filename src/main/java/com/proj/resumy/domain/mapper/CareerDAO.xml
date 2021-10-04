@@ -6,23 +6,20 @@
 
 	<select id="select" resultType="com.proj.resumy.career.domain.CareerDTO">
 		SELECT 
-			b.cr_id           id, 
-			b.cr_company      company, 
-			b.cr_hiredate     hiredate, 
-			b.cr_leavedate    leavedate,
-			b.cr_lvreason     lvreason,
-			b.cr_post         post,
-			b.cr_dept         dept,
-			b.cr_area         companyArea,
-			b.cr_salary       salary,
-			b.cr_work         work,
-			a.mem_userid      userid
-		FROM hr_member a
-		left join hr_career b
-		on a.mem_userid = b.mem_userid
-		where a.mem_userid = #{userid}
-		ORDER BY 
-			b.cr_id DESC;
+			cr_id           id, 
+			cr_company      company, 
+			cr_hiredate     hiredate, 
+			cr_leavedate    leavedate,
+			cr_lvreason     lvreason,
+			cr_post         post,
+			cr_dept         dept,
+			cr_area         companyArea,
+			cr_salary       salary,
+			cr_work         work,
+			mem_userid      userid
+		FROM hr_career 
+		where mem_userid = #{userid}
+		ORDER BY cr_id DESC;
 	</select>
 	
 	<!-- 글작성 -->

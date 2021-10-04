@@ -9,51 +9,51 @@ $(document).ready(function(){
 	loadPage();
 	
 	//학력사항 초등학교 버튼
-	$("#btnEleSchool").click(function(){
+	$("#btnSchool01").click(function(){
 		$("#spec01").show();
 		$("#spec02").hide();
 		$("#spec03").hide();
 		$("#spec04").hide();
-		$("#btnEleSchool").css("background-color", "skyblue");
-		$("#btnMidSchool").css("background-color", "#EFEFEF");
-		$("#btnHigSchool").css("background-color", "#EFEFEF");
-		$("#btnUniversity").css("background-color", "#EFEFEF");
+		$("#btnSchool01").css("background-color", "skyblue");
+		$("#btnSchool02").css("background-color", "#EFEFEF");
+		$("#btnSchool03").css("background-color", "#EFEFEF");
+		$("#btnSchool04").css("background-color", "#EFEFEF");
 	});//초등학교 버튼 end
 	
 	//학력사항 중학교 버튼
-	$("#btnMidSchool").click(function(){
+	$("#btnSchool02").click(function(){
 		$("#spec02").show();
 		$("#spec01").hide();
 		$("#spec03").hide();
 		$("#spec04").hide();
-		$("#btnMidSchool").css("background-color", "skyblue");
-		$("#btnEleSchool").css("background-color", "#EFEFEF");
-		$("#btnHigSchool").css("background-color", "#EFEFEF");
-		$("#btnUniversity").css("background-color", "#EFEFEF");
+		$("#btnSchool02").css("background-color", "skyblue");
+		$("#btnSchool01").css("background-color", "#EFEFEF");
+		$("#btnSchool03").css("background-color", "#EFEFEF");
+		$("#btnSchool04").css("background-color", "#EFEFEF");
 	});//중학교 버튼 end
 	
 	//학력사항 고등학교 버튼
-	$("#btnHigSchool").click(function(){
+	$("#btnSchool03").click(function(){
 		$("#spec03").show();
 		$("#spec01").hide();
 		$("#spec02").hide();
 		$("#spec04").hide();
-		$("#btnHigSchool").css("background-color", "skyblue");
-		$("#btnMidSchool").css("background-color", "#EFEFEF");
-		$("#btnEleSchool").css("background-color", "#EFEFEF");
-		$("#btnUniversity").css("background-color", "#EFEFEF");
+		$("#btnSchool03").css("background-color", "skyblue");
+		$("#btnSchool02").css("background-color", "#EFEFEF");
+		$("#btnSchool01").css("background-color", "#EFEFEF");
+		$("#btnSchool04").css("background-color", "#EFEFEF");
 	});//고등학교 버튼 end
 	
 	//학력사항 대학/대학원 버튼
-	$("#btnUniversity").click(function(){
+	$("#btnSchool04").click(function(){
 		$("#spec04").show();
 		$("#spec01").hide();
 		$("#spec02").hide();
 		$("#spec03").hide();
-		$("#btnUniversity").css("background-color", "skyblue");
-		$("#btnEleSchool").css("background-color", "#EFEFEF");
-		$("#btnMidSchool").css("background-color", "#EFEFEF");
-		$("#btnHigSchool").css("background-color", "#EFEFEF");
+		$("#btnSchool04").css("background-color", "skyblue");
+		$("#btnSchool01").css("background-color", "#EFEFEF");
+		$("#btnSchool02").css("background-color", "#EFEFEF");
+		$("#btnSchool03").css("background-color", "#EFEFEF");
 		
 	});//대학/대학원 버튼 end
 
@@ -63,8 +63,8 @@ $(document).ready(function(){
 		$("#careerContent").show();
 		$("#btnCareer").css("background-color", "skyblue");
 		$("#btnNewcomer").css("background-color", "#EFEFEF");
-		$("#careerPlus").remove();
-		makeCareerContentPuls(0);
+		$("#careerPuls").empty();
+		//makeCareerContentPuls(0);
 	});//경력 버튼 end
 	
 	//신입 버튼 클릭시 백그라운 색상 변경
@@ -73,6 +73,7 @@ $(document).ready(function(){
 		$("#careerContent").hide();
 		$("#btnNewcomer").css("background-color", "skyblue");
 		$("#btnCareer").css("background-color", "#EFEFEF");
+		$("#careerPuls").empty();
 	});//신입 버튼 end
 	
 	//경력추가+ 버튼 
@@ -93,37 +94,51 @@ function loadPage(){
 	$('#content1').html('<h4><b>기본정보</b></h4>');
 	$('#content2').html('<h4><b>학력사항</b></h4>');
 	$('#content3').html('<h4><b>경력사항</b></h4>');
-	$("#careerContent").hide();
+	//$("#careerPuls").hide();
 	$("#spec01").hide();
 	$("#spec02").hide();
 	$("#spec03").hide();
 	$("#spec04").hide();
+	$("#careerContent").empty();
+	$("#careerPuls").empty();		
+	$("#btnCareerPuls").hide();
+	$("#btnNewcomer").css("background-color", "skyblue");
+	$("#btnCareer").css("background-color", "#EFEFEF");
 	
 	selectCareerList(); // 경력
 	selectSpecList(); // 학력
 	
 }//loadPage end
 
-function writeSpec(){
-	
-	// 특정 form 의 name 달린 form element 들의 value 들을 string 으로 묶기
-	// ex) name=aaa&subject=bbb&content=ccc   <-- string 타입이다
-	var serialData = $("#btnWriteSpec04").serialize();
+function selectMemberList(){
 	$.ajax({
-		url : "/specAjax",  // url : /board
-		type : "POST",
+		url : "/memberAjax/list/" ,
+		type : "GET",
 		cache : false,
-		data : serialData,  // POST 로 ajax request 할 경우 data 에 parameter 넘기기
-		async: false,
 		success : function(data, status){
 			if(status == "success"){
-				alert("INSERT 성공 " + data);
-				specIdNo = data;
+				if(data.length > 0){
+
+					for(var i = 0; i<data.length; i++){	
+												
+						$("input[name='name']").eq(i).val(data[i].name);
+						$("input[name='email']").eq(i).val(data[i].email);
+						$("input[name='gender']").eq(i).val(data[i].gender);
+						$("input[name='phone']").eq(i).val(data[i].phone);
+						$("input[name='birthday']").eq(i).val(data[i].birthday);
+						$("input[name='address']").eq(i).val(data[i].address);
+						$("input[name='userid']").eq(i).val(data[i].userid);
+					}
+				}else{
+					
+				}	
+			}else{
+				alert("기본정보를 읽어오지 못 했습니다");
 			}
 		}
-	});
-}
-
+	}); 		
+	
+} // end selectMemberList()
 
 //학력사항 조회
 function selectSpecList(){
@@ -135,6 +150,11 @@ function selectSpecList(){
 			if(status == "success"){
 				//addViewEvent();
 				if(data.length > 0){
+					//최종 이력 세팅
+					$("#spec" + data[0].cat).show();
+					$("#btnSchool" + data[0].cat).css("background-color", "skyblue");
+					
+					//학력list 생성
 					for(var i = 0; i<data.length; i++){	
 						if(data[i].cat == 01){
 							spec01++;
@@ -200,7 +220,7 @@ function selectSpecList(){
 
 //학력사항 추가
 function writeSpec(formId){	
-	
+	//from id 에서 초:01/중:02/고:03/대:04 중 value를 확인 하기 위함 
 	var sFormCatCd = formId.substr(formId.length-2, 2 );
 	$("#cat_"+sFormCatCd).val(sFormCatCd);
 					
@@ -214,9 +234,9 @@ function writeSpec(formId){
 		async: false,
 		success : function(data, status){
 			if(status == "success"){
-				alert("insert 성공 ");
+				alert("등록 성공");
 				loadPage();
-								
+				//등록 혹은 수정시 해당 입력 정보가 출력			
 				$("#spec"+sFormCatCd).show();
 			}
 		}
@@ -226,6 +246,7 @@ function writeSpec(formId){
 
 //학력사항 수정
 function updateSpec(formId){
+	//from id 에서 초:01/중:02/고:03/대:04 중 value를 확인 하기 위함 
 	var sFormCatCd = formId.substr(formId.length-2, 2 );
 	$("#cat_"+sFormCatCd).val(sFormCatCd);
 					
@@ -239,8 +260,9 @@ function updateSpec(formId){
 		async: false,
 		success : function(data, status){
 			if(status == "success"){
-				alert("update 성공 ");
+				alert("수정 성공");
 				loadPage();
+				//등록 혹은 수정시 해당 입력 정보가 출력
 				$("#spec"+sFormCatCd).show();
 			}
 		}
@@ -258,10 +280,14 @@ function selectCareerList(){
 			if(status == "success"){
 				//addViewEvent();
 				if(data.length > 0){
-					//$("#career01").show();
-						makeCareerContent(data);
+					console.log("data.length : " + data.length);
+					makeCareerContent(data);	
+					$("#btnCareer").css("background-color", "skyblue");
+					$("#btnNewcomer").css("background-color", "#EFEFEF");
+					$("#btnCareerPuls").show();
+					
 					for(var i = 0; i<data.length; i++){	
-						
+												
 						$("input[name='company']").eq(i).val(data[i].company);
 						$("input[name='hiredate']").eq(i).val(data[i].hiredate);
 						$("input[name='leavedate']").eq(i).val(data[i].leavedate);
@@ -273,10 +299,11 @@ function selectCareerList(){
 						$("input[name='work']").eq(i).val(data[i].work);
 						$("input[name='userid']").eq(i).val(data[i].userid);
 						$("input[name='id']").eq(i).val(data[i].id);
-						
 					}
+				}else{
+					
 				}	
-			} else {
+			}else{
 				alert("경력사항을 읽어오지 못 했습니다");
 			}
 		}
@@ -299,7 +326,7 @@ function writeCareer(formId){
 		async: false,
 		success : function(data, status){
 			if(status == "success"){
-				alert("insert 성공 ");
+				alert("insert 성공 ");			
 				loadPage();
 			}
 		}
@@ -351,7 +378,7 @@ function deleteCareer(formId){
 
 //경력사항 보유시 해당 페이지 들어오면 출력
 function makeCareerContent(data){
-		
+		console.log("makeCareerContent 1 ");
 	for(var i = 0; i < data.length; i++){				
 		var careerContent ="<form name='career"+ i +"' id='career"+ i +"' action='' method='post'>";
 		careerContent +='<table width="100%"><tr><td width="10%">회사명</td><td width="50%"><input type="text" name="company" value="" placeholder="회사명을 입력하세요"></td>';
@@ -377,6 +404,7 @@ function makeCareerContent(data){
 }
 
 function makeCareerContentPuls(careerIdNo){
+		console.log("makeCareerContentPuls 2 ");
 
 	var careerContent ="<form name='conent_plus"+ careerIdNo +"' id='conent_plus"+ careerIdNo +"' action='' method='post'>";
 	    careerContent +='<table width="100%"><tr><td width="10%">회사명</td><td width="50%"><input type="text" name="company" value="" placeholder="회사명을 입력하세요"></td>';
@@ -396,5 +424,5 @@ function makeCareerContentPuls(careerIdNo){
 		
 //		careerContent +='<tr><td width="10%"></td><td width="60%"></td><td width="20%"><button type="button" class="">경력추가+</button></td></tr>';
 		
-		$('#careerContent').append(careerContent);
+		$('#careerPuls').append(careerContent);
 }
