@@ -138,35 +138,27 @@ function selectSpecList(){
 					for(var i = 0; i<data.length; i++){	
 						if(data[i].cat == 01){
 							spec01++;
-							$("input[name='id_01']").val(data[i].id);
-							$("input[name='cat_01']").val(data[i].cat);
-							$("input[name='School_01']").val(data[i].name);
-							$("input[name='schoolArea_01']").val(data[i].area);
-							$("input[name='userid_01']").val(data[i].userid);		
+							$("#cat_01").val(data[i].cat);
+							$("#school_01").val(data[i].name);
+							$("#schoolArea_01").val(data[i].area);	
 						}else if(data[i].cat == 02){
 							spec02++;
-							$("input[name='id_02']").val(data[i].id);
-							$("input[name='cat_02']").val(data[i].cat);
-							$("input[name='School_02']").val(data[i].name);
-							$("input[name='schoolArea_02']").val(data[i].area);
-							$("input[name='userid_02']").val(data[i].userid);	
+							$("#cat_02").val(data[i].cat);
+							$("#school_02").val(data[i].name);
+							$("#schoolArea_02").val(data[i].area);
 						}else if(data[i].cat == 03){
 							spec03++;
-							$("input[name='id_03']").val(data[i].id);
-							$("input[name='cat_03']").val(data[i].cat);
-							$("input[name='School_03']").val(data[i].name);
-							$("input[name='schoolArea_03']").val(data[i].area);
-							$("input[name='major_03']").val(data[i].major);
-							$("input[name='userid_03']").val(data[i].userid);	
+							$("#cat_03").val(data[i].cat);
+							$("#school_03").val(data[i].name);
+							$("#schoolArea_03").val(data[i].area);
+							$("#major_03").val(data[i].major);	
 						}else if(data[i].cat == 04){
 							spec04++;
-							$("input[name='id_04']").val(data[i].id);
-							$("input[name='cat_04']").val(data[i].cat);
-							$("input[name='School_04']").val(data[i].name);
-							$("input[name='schoolArea_04']").val(data[i].area);
-							$("input[name='major_04']").val(data[i].major);
-							$("input[name='userid_04']").val(data[i].userid);
-							$("select[name='university_04']").val(data[i].university);
+							$("#cat_04").val(data[i].cat);
+							$("#school_04").val(data[i].name);
+							$("#schoolArea_04").val(data[i].area);
+							$("#major_04").val(data[i].major);
+							$("#university_04").val(data[i].university);
 						}
 													
 					}//for문 end	
@@ -199,7 +191,7 @@ function selectSpecList(){
 							$("#btnWriteSpec04").hide();
 						}
 				} else {
-					alert("444");
+					alert("조회 실패");
 				}
 			}// success if() end
 		}
@@ -209,9 +201,10 @@ function selectSpecList(){
 //학력사항 추가
 function writeSpec(formId){	
 	
+	var sFormCatCd = formId.substr(formId.length-2, 2 );
+	$("#cat_"+sFormCatCd).val(sFormCatCd);
+					
 	var serialData = $("#"+formId).serialize();
-	console.log(formId);
-	console.log("!!! serialData : "+serialData);
 	
 	$.ajax({
 		url : "/specAjax",  // url : /board
@@ -223,6 +216,8 @@ function writeSpec(formId){
 			if(status == "success"){
 				alert("insert 성공 ");
 				loadPage();
+								
+				$("#spec"+sFormCatCd).show();
 			}
 		}
 	});	
@@ -231,8 +226,11 @@ function writeSpec(formId){
 
 //학력사항 수정
 function updateSpec(formId){
-		var serialData = $("#"+formId).serialize();
-			//alert(formId);
+	var sFormCatCd = formId.substr(formId.length-2, 2 );
+	$("#cat_"+sFormCatCd).val(sFormCatCd);
+					
+	var serialData = $("#"+formId).serialize();
+	
 	$.ajax({
 		url : "/specAjax",  // url : /board
 		type : "PUT",
@@ -243,6 +241,7 @@ function updateSpec(formId){
 			if(status == "success"){
 				alert("update 성공 ");
 				loadPage();
+				$("#spec"+sFormCatCd).show();
 			}
 		}
 	});
