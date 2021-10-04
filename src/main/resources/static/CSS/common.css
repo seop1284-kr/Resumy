@@ -9,6 +9,15 @@
     --footer-bgc : #F8F8F8;
 }
 
+/*
+body {
+    background-color: #F2F4F7;
+    background-color: var(--body-bg-color);
+}
+*/
+
+/* 거의 항상 사용하는 css */
+
 * {
     box-sizing: border-box;
     /* word-break: break-all; */
@@ -34,6 +43,7 @@ a:hover {
     color: black;
 }
 
+/* 버튼 커스텀 */
 button[type="button"], button[type="submit"] {
 	width: 9em;
 	height: 2.5em;
@@ -53,12 +63,6 @@ button[type="button"], button[type="submit"] {
 	background-color: var(--dk-mint-color);
 }
 
-/*
-body {
-    background-color: #F2F4F7;
-    background-color: var(--body-bg-color);
-}
-*/
 
 /* 관리자 페이지의 모달의 닫기 버튼 크기 설정 */
 .modal-header button[aria-label="Close"] {
