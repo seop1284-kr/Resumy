@@ -15,16 +15,47 @@ div.dataTables_length {
 }
 
 /* 항목 삭제 버튼 설정 */
-button.dataTables_btn_del {
+button.btn_del {
     float: right;
+    transform: translateY(-6em);
 }
 
 /* 페이징 설정 */
 div.dataTables_paginate {
     clear: both;
-    padding: .5em 0;
+    padding-top: 2em;
 }
 
 div.dataTables_paginate ul.pagination {
     justify-content: center !important;
+}
+
+/* 표 꾸미기 설정 */
+thead th.width-xs {
+	width: 2.5em;
+}
+
+thead th.width-sm {
+	width: 5em;
+}
+
+thead th.width-md {
+	width: 10em;
+}
+
+thead th.width-lg {
+	width: 20em;
+}
+
+thead th, tbody td {
+	text-align: center;
+}
+
+tbody .left {
+	float: left;
+	text-align: left;
+}
+
+tbody a, tbody i {
+	color: gray;
 }

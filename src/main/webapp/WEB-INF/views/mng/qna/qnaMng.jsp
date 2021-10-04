@@ -1,10 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
-
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -26,6 +22,7 @@
     <!-- Custom styles for this page -->
     <link href="/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
     <link href="/css/dataTables.css" rel="stylesheet">
+    <link href="/css/common.css" rel="stylesheet">
     <style>
         /* 게시물 목록 */
         	/* 답변상태 */
@@ -189,23 +186,24 @@
                             	    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
 								    	<thead>
 								    		<tr>
-									    		<th>번호</th>
-									    		<th>제목</th>
+									    		<th class="width-xs">번호</th>
+									    		<th class="width-lg">제목</th>
 									    		<th>내용</th>
-									    		<th>등록일</th>
-									    		<th>답변상태</th>
-									    		<th>답변</th>
-									    		<th>삭제</th>
+									    		<th class="width-sm">아이디</th>
+									    		<th class="width-md">등록일</th>
+									    		<th class="width-xs">상태</th>
+									    		<th class="width-xs">답변</th>
+									    		<th class="width-xs">삭제</th>
 									    	</tr>
 								    	</thead>
-								    	<tbody>
-								    	</tbody>
 							 		</table>
-							 	</div>
-							 </div>
-						</div>
-						
+							 		<button type="button" class="btn btn-primary btn_del" onclick="frmChkSubmit()">항목 삭제</button>
+						 		</form>
+						 	</div>
+						 </div>
 					</div>
+						
+				</div>
                 <!-- /.container-fluid -->
 
             </div>
@@ -302,8 +300,6 @@
 
     <!-- Page level custom scripts -->
     <script src="/js/sidebarMng.js"></script>
-    <script src="/js/datatables.js"></script>
-    <script src="/JS/qnaMngBoard.js"></script>
-    <script src="/JS/qnaMngModal.js"></script>
+    <script src="/js/datatablesQna.js"></script>
 </body>
 </html>
