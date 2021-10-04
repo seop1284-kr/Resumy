@@ -53,10 +53,13 @@ function loadPageAll() {
 		*/
 		dom: "fltip",
 		language: lang_kor,
-		"pageLength": 10,
+		order: [[5, 'desc']], // 기본 정렬칼럼 (0이 첫번째 칼럼)
+		ordering: true, // 칼럼별 정렬기능
+		serverSide: false,
 		ajax: {
 			url: "/AjaxMngMember/1/1000",
 			type: "GET",
+			cache: false,
 			dataSrc: 'data'
 		},
 		columns: [

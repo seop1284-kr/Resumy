@@ -1,38 +1,75 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-<%@ taglib prefix="sec"
-	uri="http://www.springframework.org/security/tags"%>
-
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="description" content="">
-<meta name="author" content="">
+	<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    
+	<title>Resumy 관리자 페이지</title>
 
-<title>Resumy 관리자 페이지</title>
+	 <!-- Custom fonts for this template -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
-<!-- Custom fonts for this template -->
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-<link
-	href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
-	rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="/css/sb-admin-2.min.css" rel="stylesheet">
 
-<!-- Custom styles for this template -->
-<link href="/css/sb-admin-2.min.css" rel="stylesheet">
-
-<!-- Custom styles for this page -->
-<link href="/vendor/datatables/dataTables.bootstrap4.min.css"
-	rel="stylesheet">
-<link href="/css/dataTables.css" rel="stylesheet">
-
+    <!-- Custom styles for this page -->
+    <link href="/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+    <link href="/css/dataTables.css" rel="stylesheet">
+    <link href="/css/common.css" rel="stylesheet">
+    <style>
+        /* 게시물 목록 */
+        	/* 답변상태 */
+        	.replyStateYes {
+        		color: #4CAF50;
+        	}
+	        /* 답변 */
+	        tbody td>button {
+	        	border:none; 
+	        	background:none;
+	        }
+        
+         /* [페이징] */
+		.center {
+			text-align: center;
+		}
+		
+		ul.pagination{
+			list-style-type: none;
+		}
+		
+		ul.pagination li{
+			display: inline-block;
+		}
+		
+		ul.pagination a {
+			color: black;
+			float: left;
+			padding: 4px 8px;
+			text-decoration: none;
+			transition: background-color .3s;
+			margin: 0px;
+		}
+		
+		ul.pagination a.active {
+			background-color: #4CAF50;
+			color: white;
+			border: 1px solid #4CAF50;
+		}
+		
+		ul.pagination a:hover:not(.active) {background-color: #ddd;}
+		
+		/* 모달 */
+		input[name="reply"] {
+			width: 100%;
+		}
+    </style>
 </head>
 
 
@@ -145,18 +182,18 @@
 										cellspacing="0">
 										<thead>
 											<tr>
-												<th>이름</th>
-												<th>아이디</th>
-												<th>이메일</th>
-												<th>전화번호</th>
-												<th>생년월일</th>
-												<th>가입일</th>
-												<th>#</th>
+												<th class="width-xs">이름</th>
+												<th class="width-sm">아이디</th>
+												<th class="width-md">이메일</th>
+												<th class="width-sm">전화번호</th>
+												<th class="width-sm">생년월일</th>
+												<th class="width-sm">가입일</th>
+												<th class="width-xs">삭제</th>
 											</tr>
 										</thead>
 
-									</table>
-									<button id="btnDel" class="btn btn-primary dataTables_btn_del">항목 삭제</button>
+									</table>							 		
+									<button id="btnDel" class="btn btn-primary btn_del">항목 삭제</button>
 								</div>
 							</div>
 						</div>
@@ -218,6 +255,6 @@
 	<!-- Page level custom scripts -->
 	<!-- <script src="/js/datatables.js"></script> -->
 	<script src="/js/sidebarMng.js"></script>
-	<script src="/JS/mngMember.js"></script>
+	<script src="/js/mngMember.js"></script>
 </body>
 </html>

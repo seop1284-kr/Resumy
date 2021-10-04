@@ -53,7 +53,9 @@ function loadPageAll() {
 		*/
 		dom: "fltip",
 		language: lang_kor,
-		"pageLength": 10,
+		order: [[0, 'desc']], // 기본 정렬칼럼 (0이 첫번째 칼럼)
+		ordering: true, // 칼럼별 정렬기능
+		serverSide: false,
 		ajax: {
 			url: "/AjaxMngFed/1/1000",
 			type: "GET",
@@ -64,10 +66,16 @@ function loadPageAll() {
 			{
 				data: "introDto",
 				render: function(data, type, row) {
-					return "<a onclick='addViewEvent(" + data.id + ")'>" + data.title +"</a>";
+					return "<a class='left' onclick='addViewEvent(" + data.id + ")'>" + data.title +"</a>";
 				}
 			},
-			{ data: "fedDto.content" },
+			{ 
+				data: "fedDto.content",
+				render: function(data, row) {
+					return "<span class='left'>" + data + "</span>";
+				}
+			},
+			{ data: "fedDto.userid" },
 			{ data: "fedDto.regdate" },
 			{
 				data: "fedDto",
