@@ -1,0 +1,30 @@
+/* dataTables 에서 최상위 부모 */
+div.dataTables_wrapper {
+    text-align : left; /* 자식 elements 좌측 정렬 */
+}
+
+/* 필터링 (검색) */
+div.dataTables_filter {
+    display: inline;
+}
+
+/* 표시 건수수 설정 */
+div.dataTables_length {
+    display: inline;
+    float: right;
+}
+
+/* 항목 삭제 버튼 설정 */
+button.dataTables_btn_del {
+    float: right;
+}
+
+/* 페이징 설정 */
+div.dataTables_paginate {
+    clear: both;
+    padding: .5em 0;
+}
+
+div.dataTables_paginate ul.pagination {
+    justify-content: center !important;
+}
