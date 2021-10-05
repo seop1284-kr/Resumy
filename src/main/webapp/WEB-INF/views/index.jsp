@@ -3,24 +3,19 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
 
-<!-- 헤드 -->
-<c:import url="./layout/head.jsp">
-</c:import>
+<c:import url="./layout/head.jsp"></c:import>
+<%-- 헤드 끝 --%>
 </head>
 
 <body>
-
-	<!-- 헤더 -->
 	<c:import url="./layout/header.jsp">
 		<c:param name="headerMenu" value="main" />
 	</c:import>
-			
+	<%-- 헤더 끝 --%>
 			
 	<h1>메인 페이지</h1>
 			
-	<!-- 푸터 -->
-	<c:import url="./layout/footer.jsp">
-	</c:import>
-	
+	<c:import url="./layout/footer.jsp"></c:import>
+	<%-- 푸터 끝 --%>
 </body>
 </html>

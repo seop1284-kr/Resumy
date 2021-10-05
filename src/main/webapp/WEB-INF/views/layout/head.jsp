@@ -1,9 +1,8 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
+<!-- 헤드 -->
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -26,4 +25,3 @@
 	<link href="/css/common.css" rel="stylesheet">
 	<link href="/css/navbar.css" rel="stylesheet">
 	<link href="/css/footer.css" rel="stylesheet">
-
