@@ -1,0 +1,37 @@
+@charset "UTF-8";
+
+form[name="frm"] ul.row {
+	margin-bottom: 2em;	
+	border-top: 2px solid gray;
+	border-bottom: 2px solid gray;
+}
+
+form[name="frm"] ul.row li {
+	padding-top: 1.5em;
+}
+
+form[name="frm"] ul.row li:last-child {
+	padding-bottom: 1.5em;
+}
+
+form[name="frm"] ul.row li:nth-child(2n-1) {
+	padding-left: 2em;
+	transform: translateY(2px);
+	font-size: 1.1em;
+	font-weight: 600;
+}
+
+form[name="frm"] ul.row li:nth-child(2n) {
+	padding-right: 2em;
+}
+
+form[name="frm"] ul.row li:nth-child(2n) > * {
+	padding: .2em .7em;
+	width: 100%;
+}
+
+form[name="frm"] textarea[name="content"] {
+	min-width: 100%;
+	min-height: 22em;
+	resize: none;
+}

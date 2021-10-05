@@ -32,7 +32,6 @@ div.textContent {
 	padding: 1em;
 	min-height: 13em;
 	overflow: visible;
-	text-align:justify;
 	border-bottom: 2px solid gray;
 }
 
@@ -65,7 +64,5 @@ table.tableRply tr.notEmpty td[colspan="3"] {
 /* ----------------------------------------- */
 /* tableRply */
 button.btn_del, button.btn_update, button.btn_list {
-	float: right;
 	margin-left: .5em;
-	margin-bottom: 5em;
 }

@@ -1,65 +1,20 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>    
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>	
 
-<!DOCTYPE html>
-<html lang='ko'>
+<%-- 헤드 --%>
+<c:import url="../../layout/head.jsp"></c:import>
 
-<head>
-    <meta charset="UTF-8">
-    <title>고객센터 - RESUMY</title>
-    <link href="/img/logo_sm.png" rel="shortcut icon" type="image/x-icon">
-    
-	 <!-- Custom fonts for this template -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
-
-    <!-- Custom styles for this template -->
-    <link href="/css/sb-admin-2.min.css" rel="stylesheet">
-    <link href="/assets/dist/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Custom styles for this page -->
-    <link href="/css/common.css" rel="stylesheet">
-    <link href="/css/navbar.css" rel="stylesheet">
-    <link href="/css/footer.css" rel="stylesheet">
+    <!-- My CSS -->
     <link href="/css/dataTables.css" rel="stylesheet">
-    
-    <style>
-        .bd-placeholder-img {
-            font-size: 1.125rem;
-            text-anchor: middle;
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            -ms-user-select: none;
-            user-select: none;
-        }
-
-        @media (min-width: 768px) {
-            .bd-placeholder-img-lg {
-                font-size: 3.5rem;
-            }
-        }
-        
-        /* 문의하기 버튼 위치 설정 */
-        button.btn_write {
-       		float: right;
-       		transform: translateY(-10em);
-        }
-        
-        /* 페이징 위치 설정 */
-        div.dataTables_wrapper div.dataTables_paginate {
-        	margin-top: 3.5em;
-        	margin-bottom: 3em;
-        }
-    </style>
+    <link href="/css/buttonSize.css" rel="stylesheet">
 </head>
 
 <body>
 	<c:import url="../../layout/header.jsp">
 		<c:param name="headerMenu" value="qna" />
 	</c:import>
-    <!-- ./navbar -->
+	<%-- ./navbar --%>
     
     <!-- Begin Page Content -->
     <div class="container-lg mt-4">
@@ -93,15 +48,13 @@
             		</tr>
             	</thead>
             </table>
-            <button type="button" class="btn btn-mint btn_write" onclick="location.href='write.do'">문의하기</button>
         </div>
 
     </div>
     <!-- /.container-lg -->
     
-	<!-- 푸터 -->
-	<c:import url="../../layout/footer.jsp">
-	</c:import>
+	<%-- 푸터 --%>
+	<c:import url="../../layout/footer.jsp"></c:import>
 	
 	<!-- Bootstrap core JavaScript-->
     <script src="/vendor/jquery/jquery.min.js"></script>
@@ -117,7 +70,20 @@
     <script src="/vendor/datatables/jquery.dataTables.min.js"></script>
     <script src="/vendor/datatables/dataTables.bootstrap4.min.js"></script>
 
-    <!-- Page level custom scripts -->
+    <!-- My Script -->
     <script src="/JS/qnaBoard.js"></script>
+    <script>
+    	$(function(){
+	     	var insertStd = '#dataTable_paginate'; <%-- 어떤 요소를 기준으로 element를 삽입할 건지 --%>
+    		var insertElement = '<button type="button" class="btn btn-mint btn_write float-right">문의하기</button>'; <%-- 삽입하려는 element --%>
+			var locationElement = '.btn_write'; <%-- 클릭 시 경로변경 이벤트를 넣고싶은 elemtent --%>
+	     	var locationUrl = 'write.do'; <%-- 이동할 경로의 url --%>
+			
+			<%-- 특정 요소의 바깥쪽 앞에 내용 삽입 (cf. after) --%>
+	     	$(insertStd).before(insertElement);
+			<%-- 클릭 시 url 로 이동 --%>
+	    	$(locationElement).on('click', function(){location.href=locationUrl});
+    	});
+    </script>
 </body>
 </html>
