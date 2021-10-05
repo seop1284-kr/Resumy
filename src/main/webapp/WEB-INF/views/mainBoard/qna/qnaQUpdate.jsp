@@ -15,6 +15,9 @@
 			animation-delay: 2s; /* 지연시간 */
 			animation-iteration-count: 2; /* 반복 횟수 */
 		}
+		.textContent textarea {
+			outline: 0;
+		}
 	</style>
 </head>
 

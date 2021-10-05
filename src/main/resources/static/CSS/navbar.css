@@ -21,12 +21,31 @@ nav button.login_btn {
     height: 2.3em;
     color: #2f2c33;
     color: var(--dark-color);
+    text-align: center;
     font-size: 14px;
     font-weight: 700;
     background-color: #fffff3;
     background-color: var(--light-color);
     border: none;
-    border-radius: 5em;
+}
+
+/* 계정정보 */
+nav button.users_btn {
+	height: 2.3em;
+	color: #fffff3;
+    color: var(--light-color);
+	border: none;
+	outline: none;
+	background: none;
+}
+
+nav button.users_btn i {
+	color: #fffff3;
+    color: var(--light-color);
+}
+
+nav button.users_btn i:first-child {
+	font-size: 1.3em;
 }
 
 nav li {
@@ -44,6 +63,14 @@ nav li a {
     font-weight: 700;
 }
 
+.label {
+	margin: 0 15px 3px 18px; 
+	color: lightgray;
+	font-size: 12px;
+	font-weight: 700;
+}
+
+/* 메뉴 활성화 */
 nav li a.active, nav li a:hover {
 	color: var(--dark-color);
     color: #2f2c33;
