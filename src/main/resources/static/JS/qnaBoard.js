@@ -24,9 +24,9 @@ $(document).ready(function() {
 	    */
 	    dom: "tp",
 		language: lang_kor,
-		order: [[0, 'desc']], // 기본 정렬칼럼 (0이 첫번째 칼럼)
-		ordering: true, // 칼럼별 정렬기능
-		serverSide: false,
+		ordering: false, // 칼럼별 정렬기능
+		/*order: [[0, 'desc']], // 기본 정렬칼럼 (0이 첫번째 칼럼)
+		serverSide: false,*/
 		/*paging: true, // 페이징처리
         lengthChange: true, // 데이터건수 변경
         lengthMenu: [10, 20, 50, 100], // 데이터건수옵션 
@@ -59,10 +59,10 @@ $(document).ready(function() {
 					var view_url = "/main/qna/view.do?id=" + id;
 					var subject = data.subject;
 					
-					return "<a class='left' href=" + view_url + ">" 
-							/*+ '<div style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">'*/
+					return "<a class='left ellipsis-parent' href=" + view_url + ">" 
+							+ '<div class="ellipsis">'
 							+ subject
-							/*+ '</div>'*/
+							+ '</div>'
 							+ "</a>";
 				}
 			},

@@ -75,14 +75,21 @@
         
         <!-- DataTales Example -->
         <div class="table-responsive">
-            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+            <table class="table table-bordered table-layout-fixed" id="dataTable" width="100%" cellspacing="0">
+            	<colgroup>
+			        <col width="8%"/>
+			        <col/>
+			        <col width="8%"/>
+			        <col width="10%"/>
+			        <col width="15%"/>
+			    </colgroup>
             	<thead>
             		<tr>
-            			<th class="width-sm">번호</th>
+            			<th>번호</th>
             			<th>제목</th>
-            			<th class="width-sm">답변</th>
-            			<th class="width-md">작성자</th>
-            			<th style="width:13em">등록일</th>
+            			<th>답변</th>
+            			<th>작성자</th>
+            			<th>등록일</th>
             		</tr>
             	</thead>
             </table>

@@ -31,22 +31,6 @@ div.dataTables_paginate ul.pagination {
 }
 
 /* 표 꾸미기 설정 */
-thead th.width-xs {
-	width: 2.5em;
-}
-
-thead th.width-sm {
-	width: 5em;
-}
-
-thead th.width-md {
-	width: 10em;
-}
-
-thead th.width-lg {
-	width: 20em;
-}
-
 thead th, tbody td {
 	text-align: center;
 }
@@ -58,4 +42,15 @@ tbody .left {
 
 tbody a, tbody i {
 	color: gray;
+}
+
+tbody a:hover {
+	color: #2f2c33;
+	color: var(--dark-color);
+	font-weight: 700;
+}
+
+tbody tr:hover {
+	background-color: #fffff3;
+	background-color: var(--light-color);	
 }
