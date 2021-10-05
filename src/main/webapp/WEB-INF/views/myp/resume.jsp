@@ -22,7 +22,7 @@
 
 			<input type="text" id="keyword" placeholder="자소서 제목, 항목, 내용 등 키워드"
 				style="width: 50vh" />
-			<button type="button" class="searchBtn">검색</button>
+			<button type="button" class="searchBtn btn btn-mint">검색</button>
 		</div>
 
 		<!-- 자소서 목록 리스트 -->
@@ -59,23 +59,23 @@
 
 				<%-- 하단 버튼 : 글 조회 --%>
 				<div class="d01 btn_group_view">
-					<button type="button" class="listBtn">목록</button>
-					<button type="button" class="deleteBtn">자소서 삭제</button>
-					<button type="button" class="updateBtn">자소서 수정</button>
+					<button type="button" class="listBtn btn btn-mint">목록</button>
+					<button type="button" class="deleteBtn btn btn-mint">자소서 삭제</button>
+					<button type="button" class="updateBtn btn btn-mint">자소서 수정</button>
 				</div>
 
 				<%-- 하단 버튼 : 글 작성 --%>
 				<div class="d01 btn_group_write">
-					<button type="button" class="plusBtn">추가</button>
-					<button type="button" class="listBtn">목록</button>
-					<button type="submit">자소서 저장</button>
+					<button type="button" class="plusBtn btn btn-mint">추가</button>
+					<button type="button" class="listBtn btn btn-mint">목록</button>
+					<button type="submit" class="btn btn-mint">자소서 저장</button>
 				</div>
 
 				<%-- 하단 버튼 : 글 수정 --%>
 				<div class="d01 btn_group_update">
-					<button type="button" class="plusBtn">추가</button>
-					<button type="button" class="updateCancelBtn">수정 취소</button>
-					<button type="submit">자소서 저장</button>
+					<button type="button" class="plusBtn btn btn-mint">추가</button>
+					<button type="button" class="updateCancelBtn btn btn-mint">수정 취소</button>
+					<button type="submit" class="btn btn-mint">자소서 저장</button>
 				</div>
 			</div>
 		</form>

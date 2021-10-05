@@ -123,7 +123,7 @@ function deleteResume() {
 function makeContentForm() {
 	var content_text = '<div id="content_text_plus"><hr><textarea class="input-question-text" placeholder="질문을 입력해주세요." name="question" value="" maxlength=255 required></textarea>';
 	content_text += '<textarea class="input-content-text" placeholder="내용을 입력해주세요." name="content" required></textarea>';
-	content_text += '<button class="minus" onclick="$(this).parent().remove()">삭제</button></div>'
+	content_text += '<button class="minus btn btn-mint" onclick="$(this).parent().remove()">삭제</button></div>'
 	$('#content_text_plus').append(content_text);
 
 

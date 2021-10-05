@@ -42,13 +42,12 @@
 
 			</div>
 
-			<!-- 푸터 -->
-			<c:import url="../layout/footer.jsp">
-			</c:import>
-
-
 		</div>
 	</div>
+
+	<!-- 푸터 -->
+	<c:import url="../layout/footer.jsp">
+	</c:import>
 
 </body>
 </html>

@@ -8,12 +8,11 @@
 <html lang="ko">
 <head>
 
-<title>RESUMY - 채용 도우미 사이트</title>
-<link href="/img/logo_sm.png" rel="shortcut icon" type="image/x-icon">
-<meta charset="UTF-8">
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	
+	<title>RESUMY - 채용 도우미 사이트</title>
+	<link href="/img/logo_sm.png" rel="shortcut icon" type="image/x-icon">
 
 </head>
 
@@ -31,14 +30,12 @@
 			<c:import url="/${content }">
 			</c:import>
 
-
-			<!-- 푸터 -->
-			<c:import url="./layout/footer.jsp">
-			</c:import>
-
-
 		</div>
 	</div>
 
+	<!-- 푸터 -->
+	<c:import url="./layout/footer.jsp">
+	</c:import>
+	
 </body>
 </html>

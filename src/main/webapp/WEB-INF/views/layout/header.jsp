@@ -6,32 +6,26 @@
 <%@ taglib prefix="sec"
 	uri="http://www.springframework.org/security/tags"%>
 
+<!-- 파비콘 -->
 <link href="/img/logo_sm.png" rel="shortcut icon" type="image/x-icon">
+
+<!-- Bootstrap CSS -->
 <link href="/assets/dist/css/bootstrap.min.css" rel="stylesheet">
 <link href="/css/common.css" rel="stylesheet">
-<link href="/css/mypageTemplate.css" rel="stylesheet">
 
-<!-- font-awesome -->
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+<!-- FontAwesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 <!-- font -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link
-	href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap"
-	rel="stylesheet">
 <!-- font-family: 'Gowun Dodum', sans-serif; -->
-<link
-	href="https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap"
-	rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap" rel="stylesheet">
 <!-- font-family: 'Roboto Condensed', sans-serif; -->
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap" rel="stylesheet">
 
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<!-- Bootstrap JS -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="/assets/dist/js/bootstrap.min.js"></script>
-<!-- bootrstap 을 따르는 문서 -->
-
-
 
 <style>
 .bd-placeholder-img {

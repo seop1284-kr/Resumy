@@ -44,10 +44,10 @@ a:hover {
 }
 
 /* 버튼 커스텀 */
-button[type="button"], button[type="submit"] {
+/* button[type="button"], button[type="submit"] {
 	width: 9em;
 	height: 2.5em;
-}
+} */
 
 .btn-mint {
 	color: #fffff3;
