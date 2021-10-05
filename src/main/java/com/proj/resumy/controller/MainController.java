@@ -28,14 +28,7 @@ public class MainController {
 	
 	// index page
 	@RequestMapping("")
-	public String indexPage(String content, String headerMenu, Model model) {
-		if (headerMenu == null) {
-			model.addAttribute("headerMenu", "main");
-			model.addAttribute("content", "main");
-		} else {
-			model.addAttribute("headerMenu", headerMenu);
-			model.addAttribute("content", content);
-		}
+	public String indexPage(Model model) {
 		return "index";
 	}
 	

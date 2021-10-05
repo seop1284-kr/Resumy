@@ -1,50 +1,8 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"	pageEncoding="UTF-8"%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-<%@ taglib prefix="sec"
-	uri="http://www.springframework.org/security/tags"%>
-
-<!-- 파비콘 -->
-<link href="/img/logo_sm.png" rel="shortcut icon" type="image/x-icon">
-
-<!-- Bootstrap CSS -->
-<link href="/assets/dist/css/bootstrap.min.css" rel="stylesheet">
-<link href="/css/common.css" rel="stylesheet">
-
-<!-- FontAwesome -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-<!-- font -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<!-- font-family: 'Gowun Dodum', sans-serif; -->
-<link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap" rel="stylesheet">
-<!-- font-family: 'Roboto Condensed', sans-serif; -->
-<link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap" rel="stylesheet">
-
-<!-- Bootstrap JS -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script src="/assets/dist/js/bootstrap.min.js"></script>
-
-<style>
-.bd-placeholder-img {
-	font-size: 1.125rem;
-	text-anchor: middle;
-	-webkit-user-select: none;
-	-moz-user-select: none;
-	-ms-user-select: none;
-	user-select: none;
-}
-
-@media ( min-width : 768px) {
-	.bd-placeholder-img-lg {
-		font-size: 3.5rem;
-	}
-}
-</style>
-
-<link href="/css/navbar.css" rel="stylesheet">
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
 
 <%
 String headerMenu = "main";
@@ -59,20 +17,15 @@ if (header_menu_param != null) {
 }
 %>
 
-
 <!-- a tag post -->
-<form name=form1 action="/" method=put id="company">
-	<input type=hidden name="headerMenu" value="company"> <input
-		type=hidden name="content" value="companyBoard">
+<form name=form1 action="/company" method=put id="company">
+	<input type=hidden name="headerMenu" value="company">
 </form>
-<form name=form2 action="/" method=put id="fed">
-	<input type=hidden name="headerMenu" value="fed"> <input
-		type=hidden name="content" value="fedBoard">
+<form name=form2 action="/fedBoard" method=put id="fed">
+	<input type=hidden name="headerMenu" value="fed">
 </form>
 <form name=form3 action="/main/qna/board.do" method=put id="qna">
-	<input type=hidden name="headerMenu" value="qna"> <input
-		type=hidden name="content" value="main/qna/board.do">
-
+	<input type=hidden name="headerMenu" value="qna">
 </form>
 
 

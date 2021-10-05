@@ -14,10 +14,10 @@
 		<script>
 			var form = document.createElement('form');
 			var contentObj;
-			var content = "fedView?id=" + ${param.iid};
+			var content = ${param.iid};
 			contentObj = document.createElement('input');
 			contentObj.setAttribute('type', 'hidden');
-			contentObj.setAttribute('name', 'content');
+			contentObj.setAttribute('name', 'id');
 			contentObj.setAttribute('value', content);
 			form.appendChild(contentObj);
 
@@ -29,7 +29,7 @@
 			form.appendChild(headerMenuObj);
 
 			form.setAttribute('method', 'put');
-			form.setAttribute('action', "/");
+			form.setAttribute('action', "/fedView");
 
 			document.body.appendChild(form);
 

@@ -24,18 +24,8 @@
     <link href="/css/dataTables.css" rel="stylesheet">
     <link href="/css/common.css" rel="stylesheet">
     <style>
-        /* 게시물 목록 */
-        	/* 답변상태 */
-        	.replyStateYes {
-        		color: #4CAF50;
-        	}
-	        /* 답변 */
-	        tbody td>button {
-	        	border:none; 
-	        	background:none;
-	        }
         
-         /* [페이징] */
+        /* [페이징] */
 		.center {
 			text-align: center;
 		}
@@ -65,10 +55,6 @@
 		
 		ul.pagination a:hover:not(.active) {background-color: #ddd;}
 		
-		/* 모달 */
-		input[name="reply"] {
-			width: 100%;
-		}
     </style>
     
 </head>

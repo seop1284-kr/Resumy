@@ -9,14 +9,30 @@
 <html lang="ko">
 <head>
 
-<title>RESUMY - 채용 도우미 사이트</title>
-<link href="/img/logo_sm.png" rel="shortcut icon" type="image/x-icon">
 <meta charset="UTF-8">
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<title>RESUMY - 채용 도우미 사이트</title>
+
+<!-- 파비콘 -->
+<link href="/img/logo_sm.png" rel="shortcut icon" type="image/x-icon">
+
+<!-- Bootstrap CSS -->
+<link href="/assets/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- FontAwesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+<!-- Bootstrap JS -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="/assets/dist/js/bootstrap.min.js"></script>
+
+<!-- My CSS -->
+<link href="/css/common.css" rel="stylesheet">
+<link href="/css/navbar.css" rel="stylesheet">
+<link href="/css/footer.css" rel="stylesheet">
 
 </head>
-
 
 <body>
 

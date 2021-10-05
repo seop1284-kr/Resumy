@@ -1,7 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
-<link href="/css/footer.css" rel="stylesheet">
-
 <footer>
 	<div class="row">
 		<div class="col-2">
@@ -15,3 +13,8 @@
 		<div class="col">CopyrightⓒGangeadamo 2021-09-07 ~ 2021-10-15</div>
 	</div>
 </footer>
+
+<!-- Bootstrap JS -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="/assets/dist/js/bootstrap.min.js"></script>
+	

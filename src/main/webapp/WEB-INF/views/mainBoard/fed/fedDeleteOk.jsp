@@ -9,10 +9,10 @@
 			alert("댓글 삭제 실패");
 			var form = document.createElement('form');
 			var contentObj;
-			var content = "fedView?id=" + ${param.iid};
+			var content = ${param.iid};
 			contentObj = document.createElement('input');
 			contentObj.setAttribute('type', 'hidden');
-			contentObj.setAttribute('name', 'content');
+			contentObj.setAttribute('name', 'id');
 			contentObj.setAttribute('value', content);
 			form.appendChild(contentObj);
 
@@ -23,8 +23,8 @@
 			headerMenuObj.setAttribute('value', "fed");
 			form.appendChild(headerMenuObj);
 
-			form.setAttribute('method', 'put');
-			form.setAttribute('action', "/");
+			form.setAttribute('method', 'get');
+			form.setAttribute('action', "/fedView");
 
 			document.body.appendChild(form);
 
@@ -35,10 +35,10 @@
 		<script>
 			var form = document.createElement('form');
 			var contentObj;
-			var content = "fedView?id=" + ${param.iid};
+			var content = ${param.iid};
 			contentObj = document.createElement('input');
 			contentObj.setAttribute('type', 'hidden');
-			contentObj.setAttribute('name', 'content');
+			contentObj.setAttribute('name', 'id');
 			contentObj.setAttribute('value', content);
 			form.appendChild(contentObj);
 
@@ -49,8 +49,8 @@
 			headerMenuObj.setAttribute('value', "fed");
 			form.appendChild(headerMenuObj);
 
-			form.setAttribute('method', 'put');
-			form.setAttribute('action', "/");
+			form.setAttribute('method', 'get');
+			form.setAttribute('action', "/fedView");
 
 			document.body.appendChild(form);
 
