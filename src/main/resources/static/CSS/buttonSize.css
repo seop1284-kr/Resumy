@@ -1,0 +1,7 @@
+@charset "UTF-8";
+
+/* 문의하기 버튼 크기 설정 */
+button[type="button"], button[type="submit"] {
+	width: 9em;
+	height: 2.5em;
+}

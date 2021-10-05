@@ -9,11 +9,47 @@
     --footer-bgc : #F8F8F8;
 }
 
-/* 거의 항상 사용하는 css */
+/* sb-admin-2.css 에서 가져온 글자색상 */
+.text-gray-100 {
+  color: #f8f9fc !important;
+}
 
+.text-gray-200 {
+  color: #eaecf4 !important;
+}
+
+.text-gray-300 {
+  color: #dddfeb !important;
+}
+
+.text-gray-400 {
+  color: #d1d3e2 !important;
+}
+
+.text-gray-500 {
+  color: #b7b9cc !important;
+}
+
+.text-gray-600 {
+  color: #858796 !important;
+}
+
+.text-gray-700 {
+  color: #6e707e !important;
+}
+
+.text-gray-800 {
+  color: #5a5c69 !important;
+}
+
+.text-gray-900 {
+  color: #3a3b45 !important;
+}
+
+/* 거의 항상 사용하는 css */
 * {
     box-sizing: border-box;
-    /* word-break: break-all; */
+    text-align: justify;
 }
 
 ul, ol, li {
@@ -55,7 +91,18 @@ a:hover {
 }
 
 .btn-mint.active {
-	box-shadow: -2px -2px 0 rgb(0,0,0,0.5);
+/* 아래 3가지 중 만족스러운 한 가지를 제외하고 전부 지워주세요.(주석포함) */
+/*  1. 버튼이 눌린 것 같은 스타일  */
+	border-top: 3px solid gray;
+	border-left: 3px solid gray;
+	
+/*  2. 로고 컬러를 따온 스타일 */
+	/* background-color: #4e73df;
+	background-color: var(--primary); */
+	
+/* 	3. 요구사항 따른 스타일 */
+	/* background-color: #2f2c33;
+	background-color: var(--dark-color); */
 }
 
 /* 관리자 페이지의 모달의 닫기 버튼 크기 설정 */
