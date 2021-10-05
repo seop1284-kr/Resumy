@@ -54,6 +54,10 @@ a:hover {
 	background-color: var(--dk-mint-color);
 }
 
+.btn-mint.active {
+	box-shadow: -2px -2px 0 rgb(0,0,0,0.5);
+}
+
 /* 관리자 페이지의 모달의 닫기 버튼 크기 설정 */
 .modal-header button[aria-label="Close"] {
 	float: right;
