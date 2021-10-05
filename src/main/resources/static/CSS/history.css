@@ -28,4 +28,16 @@ aside li.active {
 	float: right; 
 }
 
+.inputBox{
+        width:100px;
+        height:40px;
+        font-size:15px;
+      }
+      
+.inputBox2{
+        width:250px;
+        height:40px;
+        font-size:15px;
+      }
+
 

@@ -14,10 +14,10 @@ $(document).ready(function(){
 		$("#spec02").hide();
 		$("#spec03").hide();
 		$("#spec04").hide();
-		$("#btnSchool01").css("background-color", "skyblue");
-		$("#btnSchool02").css("background-color", "#EFEFEF");
-		$("#btnSchool03").css("background-color", "#EFEFEF");
-		$("#btnSchool04").css("background-color", "#EFEFEF");
+		$("#btnSchool01").attr("class", "btn btn-mint active");
+		$("#btnSchool02").attr("class", "btn btn-mint");
+		$("#btnSchool03").attr("class", "btn btn-mint");
+		$("#btnSchool04").attr("class", "btn btn-mint");
 	});//초등학교 버튼 end
 	
 	//학력사항 중학교 버튼
@@ -26,10 +26,10 @@ $(document).ready(function(){
 		$("#spec01").hide();
 		$("#spec03").hide();
 		$("#spec04").hide();
-		$("#btnSchool02").css("background-color", "skyblue");
-		$("#btnSchool01").css("background-color", "#EFEFEF");
-		$("#btnSchool03").css("background-color", "#EFEFEF");
-		$("#btnSchool04").css("background-color", "#EFEFEF");
+		$("#btnSchool02").attr("class", "btn btn-mint active");
+		$("#btnSchool01").attr("class", "btn btn-mint");
+		$("#btnSchool03").attr("class", "btn btn-mint");
+		$("#btnSchool04").attr("class", "btn btn-mint");
 	});//중학교 버튼 end
 	
 	//학력사항 고등학교 버튼
@@ -38,10 +38,10 @@ $(document).ready(function(){
 		$("#spec01").hide();
 		$("#spec02").hide();
 		$("#spec04").hide();
-		$("#btnSchool03").css("background-color", "skyblue");
-		$("#btnSchool02").css("background-color", "#EFEFEF");
-		$("#btnSchool01").css("background-color", "#EFEFEF");
-		$("#btnSchool04").css("background-color", "#EFEFEF");
+		$("#btnSchool03").attr("class", "btn btn-mint active");
+		$("#btnSchool02").attr("class", "btn btn-mint");
+		$("#btnSchool01").attr("class", "btn btn-mint");
+		$("#btnSchool04").attr("class", "btn btn-mint");
 	});//고등학교 버튼 end
 	
 	//학력사항 대학/대학원 버튼
@@ -50,10 +50,10 @@ $(document).ready(function(){
 		$("#spec01").hide();
 		$("#spec02").hide();
 		$("#spec03").hide();
-		$("#btnSchool04").css("background-color", "skyblue");
-		$("#btnSchool01").css("background-color", "#EFEFEF");
-		$("#btnSchool02").css("background-color", "#EFEFEF");
-		$("#btnSchool03").css("background-color", "#EFEFEF");
+		$("#btnSchool04").attr("class", "btn btn-mint active");
+		$("#btnSchool01").attr("class", "btn btn-mint");
+		$("#btnSchool02").attr("class", "btn btn-mint");
+		$("#btnSchool03").attr("class", "btn btn-mint");
 		
 	});//대학/대학원 버튼 end
 
@@ -61,8 +61,8 @@ $(document).ready(function(){
 	$("#btnCareer").click(function(){
 		$("#btnCareerPuls").show();
 		$("#careerContent").show();
-		$("#btnCareer").css("background-color", "skyblue");
-		$("#btnNewcomer").css("background-color", "#EFEFEF");
+		$("#btnCareer").attr("class", "btn btn-mint active");
+		$("#btnNewcomer").attr("class", "btn btn-mint");
 		$("#careerPuls").empty();
 		//makeCareerContentPuls(0);
 	});//경력 버튼 end
@@ -71,8 +71,8 @@ $(document).ready(function(){
 	$("#btnNewcomer").click(function(){
 		$("#btnCareerPuls").hide();
 		$("#careerContent").hide();
-		$("#btnNewcomer").css("background-color", "skyblue");
-		$("#btnCareer").css("background-color", "#EFEFEF");
+		$("#btnNewcomer").attr("class", "btn btn-mint active");
+		$("#btnCareer").attr("class", "btn btn-mint");
 		$("#careerPuls").empty();
 	});//신입 버튼 end
 	
@@ -102,8 +102,7 @@ function loadPage(){
 	$("#careerContent").empty();
 	$("#careerPuls").empty();		
 	$("#btnCareerPuls").hide();
-	$("#btnNewcomer").css("background-color", "skyblue");
-	$("#btnCareer").css("background-color", "#EFEFEF");
+
 	
 	selectMemberList(); // 기본정보
 	selectCareerList(); // 경력
@@ -125,7 +124,7 @@ function selectMemberList(){
 												
 						$("input[name='name']").eq(i).val(data[i].name);
 						$("input[name='email']").eq(i).val(data[i].email);
-						$("input[name='gender']").eq(i).val(data[i].gender);
+						$("select[name='gender']").eq(i).val(data[i].gender);
 						$("input[name='phone']").eq(i).val(data[i].phone);
 						$("input[name='birthday']").eq(i).val(data[i].birthday);
 						$("input[name='address']").eq(i).val(data[i].address);
@@ -176,7 +175,7 @@ function selectSpecList(){
 				if(data.length > 0){
 					//최종 이력 세팅
 					$("#spec" + data[0].cat).show();
-					$("#btnSchool" + data[0].cat).css("background-color", "skyblue");
+					$("#btnSchool" + data[0].cat).attr("class", "btn btn-mint active");
 					
 					//학력list 생성
 					for(var i = 0; i<data.length; i++){	
@@ -306,8 +305,8 @@ function selectCareerList(){
 				if(data.length > 0){
 					console.log("data.length : " + data.length);
 					makeCareerContent(data);	
-					$("#btnCareer").css("background-color", "skyblue");
-					$("#btnNewcomer").css("background-color", "#EFEFEF");
+					$("#btnCareer").attr("class", "btn btn-mint active");
+					$("#btnNewcomer").attr("class", "btn btn-mint");
 					$("#btnCareerPuls").show();
 					
 					for(var i = 0; i<data.length; i++){	
@@ -405,17 +404,17 @@ function makeCareerContent(data){
 		console.log("makeCareerContent 1 ");
 	for(var i = 0; i < data.length; i++){				
 		var careerContent ="<form name='career"+ i +"' id='career"+ i +"' action='' method='post'>";
-		careerContent +='<table width="100%"><tr><td width="10%">회사명</td><td width="50%"><input type="text" name="company" value="" placeholder="회사명을 입력하세요"></td>';
-		careerContent +='<td width="30%">';
-		careerContent +="<span><button type='button' class=''onclick='updateCareer(\"career"+i+"\")'>수정</button>";
-		careerContent +="<button type='button' name='btnCareerDelete' onclick='deleteCareer(\"career"+i+"\")' >삭제</button></span></td></tr>";
-		careerContent +='<tr><td width="10%">재직기간</td><td width="70%"><input type="text" name="hiredate" value="">  ~  <input type="text" name="leavedate" value=""></td><td width="10%"></td></tr>';
-		careerContent +='<tr><td width="10%">퇴사사유</td><td width="60%"><input type="text" name="lvreason" value="" placeholder="퇴사사유 입력하세요"></td><td width="20%"></td></tr>';
-		careerContent +='<tr><td width="10%">직급/직책</td><td width="60%"><input type="text" name="post" value=""></td><td width="20%"></td></tr>';
-		careerContent +='<tr><td width="10%">근무부서</td><td width="60%"><input type="text" name="dept" value=""></td><td width="20%"></td></tr>';
-		careerContent +='<tr><td width="10%">지역</td><td width="60%"><input type="text" name="companyArea" value=""></td><td width="20%"></td></tr>';
-		careerContent +='<tr><td width="10%">연봉</td><td width="60%"><input type="text" name="salary" value=""> <input type="text" name="manwon" value="만원"></td><td width="20%"></td></tr>';
-		careerContent +='<tr><td width="10%">담당업무</td><td width="60%"><input type="text" name="work" value=""></td><td width="20%"></td></tr><tr><td colspan="3"><hr></td></tr>';
+		careerContent +='<table width="100%"><tr><td width="20%">회사명</td><td width="80%"><input type="text" class="inputBox" name="company" value="" placeholder="회사명을 입력하세요"></td>';
+		careerContent +='<td width= 50px>';
+		careerContent +="<button type='button' class='updateBtn btn btn-mint'onclick='updateCareer(\"career"+i+"\")'>수정</button></td>";
+		careerContent +="<td width= 50px><button type='button' name='btnCareerDelete' class='deleteBtn btn btn-mint' onclick='deleteCareer(\"career"+i+"\")' >삭제</button></td></tr>";
+		careerContent +='<tr><td width="15%">재직기간</td><td width="75%"><input type="text" class="inputBox" name="hiredate" value="">  ~  <input type="text" class="inputBox" name="leavedate" value=""></td></tr>';
+		careerContent +='<tr><td width="15%">퇴사사유</td><td width="75%"><input type="text" class="inputBox2" name="lvreason" value="" placeholder="퇴사사유 입력하세요"></td></tr>';
+		careerContent +='<tr><td width="15%">직급/직책</td><td width="75%"><input type="text" class="inputBox" name="post" value=""></td></tr>';
+		careerContent +='<tr><td width="15%">근무부서</td><td width="75%"><input type="text" class="inputBox" name="dept" value=""></td></tr>';
+		careerContent +='<tr><td width="15%">지역</td><td width="75%"><input type="text" class="inputBox" name="companyArea" value=""></td></tr>';
+		careerContent +='<tr><td width="15%">연봉</td><td width="75%"><input type="text" class="inputBox" name="salary" value=""> <input type="text" class="inputBox" name="manwon" value="" placeholder = "만원"></td></tr>';
+		careerContent +='<tr><td width="15%">담당업무</td><td width="75%"><input type="text" class="inputBox" name="work" value=""></td></tr><tr><td colspan="4"><hr></td></tr>';
 		/* hidden setting */
 		careerContent +='<input type="hidden" id="id" name="id" value="">';
 		careerContent +='<input type="hidden" id="userid" name="userid" value="">';
@@ -431,16 +430,16 @@ function makeCareerContentPuls(careerIdNo){
 		console.log("makeCareerContentPuls 2 ");
 
 	var careerContent ="<form name='conent_plus"+ careerIdNo +"' id='conent_plus"+ careerIdNo +"' action='' method='post'>";
-	    careerContent +='<table width="100%"><tr><td width="10%">회사명</td><td width="50%"><input type="text" name="company" value="" placeholder="회사명을 입력하세요"></td>';
-		careerContent +="<td width='30%'><button type='button' class='' onclick='writeCareer(\"conent_plus"+ careerIdNo +"\")'>등록</button>";
-		careerContent +='<button type="button" class="" id="careerDelete" onclick="$(conent_plus'+ careerIdNo +').remove()">삭제</button></td></tr>';
-		careerContent +='<tr><td width="10%">재직기간</td><td width="70%"><input type="text" name="hiredate" value="">  ~  <input type="text" name="leavedate" value=""></td><td width="10%"></td></tr>';
-		careerContent +='<tr><td width="10%">퇴사사유</td><td width="60%"><input type="text" name="lvreason" value="" placeholder="퇴사사유 입력하세요"></td><td width="20%"></td></tr>';
-		careerContent +='<tr><td width="10%">직급/직책</td><td width="60%"><input type="text" name="post" value=""></td><td width="20%"></td></tr>';
-		careerContent +='<tr><td width="10%">근무부서</td><td width="60%"><input type="text" name="dept" value=""></td><td width="20%"></td></tr>';
-		careerContent +='<tr><td width="10%">지역</td><td width="60%"><input type="text" name="companyArea" value=""></td><td width="20%"></td></tr>';
-		careerContent +='<tr><td width="10%">연봉</td><td width="60%"><input type="text" name="salary" value=""> <input type="text" name="manwon" value="만원"></td><td width="20%"></td></tr>';
-		careerContent +='<tr><td width="10%">담당업무</td><td width="60%"><input type="text" name="work" value=""></td><td width="20%"></td></tr><tr><td colspan="3"><hr></td></tr></tr>';
+	    careerContent +='<table width="100%"><tr><td width="20%">회사명</td><td width="80%"><input type="text" name="company" value="" placeholder="회사명을 입력하세요"></td>';
+		careerContent +="<td ><button type='button' class='writeBtn btn btn-mint' onclick='writeCareer(\"conent_plus"+ careerIdNo +"\")'>등록</button></td>";
+		careerContent +='<td ><button type="button" class="deleteBtn btn btn-mint" id="careerDelete" onclick="$(conent_plus'+ careerIdNo +').remove()">삭제</button></td></tr>';
+		careerContent +='<tr><td width="15%">재직기간</td><td width="80%"><input type="text" name="hiredate" value="">  ~  <input type="text" name="leavedate" value=""></td></tr>';
+		careerContent +='<tr><td width="15%">퇴사사유</td><td width="80%"><input type="text" name="lvreason" value="" placeholder="퇴사사유 입력하세요"></td></tr>';
+		careerContent +='<tr><td width="15%">직급/직책</td><td width="80%"><input type="text" name="post" value=""></td></tr>';
+		careerContent +='<tr><td width="15%">근무부서</td><td width="80%"><input type="text" name="dept" value=""></td></tr>';
+		careerContent +='<tr><td width="15%">지역</td><td width="80%"><input type="text" name="companyArea" value=""></td></tr>';
+		careerContent +='<tr><td width="15%">연봉</td><td width="80%"><input type="text" name="salary" value=""> <input type="text" name="manwon" value="" placeholder = "만원"></td></tr>';
+		careerContent +='<tr><td width="15%">담당업무</td><td width="80%"><input type="text" name="work" value=""></td></tr><tr><td colspan="4"><hr></td></tr></tr>';
 		/* hidden setting */
 		//careerContent +='<input type="hidden" id="id" name="id" value="">';
 		careerContent +='<input type="hidden"  name="userid" value= CareerDTO.getUserId>';
