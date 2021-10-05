@@ -15,6 +15,9 @@
 		<c:param name="headerMenu" value="main" />
 	</c:import>
 			
+			
+	<h1>메인 페이지</h1>
+			
 	<!-- 푸터 -->
 	<c:import url="./layout/footer.jsp">
 	</c:import>
