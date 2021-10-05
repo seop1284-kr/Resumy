@@ -63,9 +63,23 @@ button[type="button"], button[type="submit"] {
 	background-color: var(--dk-mint-color);
 }
 
-
 /* 관리자 페이지의 모달의 닫기 버튼 크기 설정 */
 .modal-header button[aria-label="Close"] {
 	float: right;
 	max-width: 3em;
+}
+
+/* 말줄임표 크기 */
+table.table-layout-fixed {
+	table-layout: fixed;
+}
+.ellipsis-parent {
+	width: 100%;
+	display: inline-block;
+}
+.ellipsis {
+	width: 100%;
+	white-space: nowrap; /* 한 줄로만 나타내게 함 */
+	overflow: hidden;
+	text-overflow: ellipsis;
 }
