@@ -14,12 +14,6 @@ div.dataTables_length {
     float: right;
 }
 
-/* 항목 삭제 버튼 설정 */
-button.btn_del {
-    float: right;
-    transform: translateY(-6em);
-}
-
 /* 페이징 설정 */
 div.dataTables_paginate {
     clear: both;

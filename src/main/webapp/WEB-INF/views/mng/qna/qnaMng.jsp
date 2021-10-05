@@ -135,25 +135,34 @@
                     </div>
     
     				<!-- DataTales Example -->
-    				 <div class="card shadow mb-4">
+    				 <div class="card shadow mb-4 pb-2">
                         <div class="card-body">
                             <div class="table-responsive">
 								<form name="frmChk" action="qnaQDeleteOk.do" method="get" onsubmit="return frmChkSubmit();">
-                            	    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                            	    <table class="table table-bordered table-layout-fixed" id="dataTable" width="100%" cellspacing="0">
+								    	<colgroup>
+								    		<col width="5%"/>
+								    		<col width="24%"/>
+								    		<col/>
+								    		<col width="11%"/>
+								    		<col width="11%"/>
+								    		<col width="5%"/>
+								    		<col width="5%"/>
+								    		<col width="5%"/>
+								    	</colgroup>
 								    	<thead>
 								    		<tr>
-									    		<th class="width-xs">번호</th>
-									    		<th class="width-lg">제목</th>
+									    		<th>번호</th>
+									    		<th>제목</th>
 									    		<th>내용</th>
-									    		<th class="width-sm">아이디</th>
-									    		<th class="width-md">등록일</th>
-									    		<th class="width-xs">상태</th>
-									    		<th class="width-xs">답변</th>
-									    		<th class="width-xs">삭제</th>
+									    		<th>아이디</th>
+									    		<th>등록일</th>
+									    		<th>상태</th>
+									    		<th>답변</th>
+									    		<th>삭제</th>
 									    	</tr>
 								    	</thead>
 							 		</table>
-							 		<button type="button" class="btn btn-primary btn_del" onclick="frmChkSubmit()">항목 삭제</button>
 						 		</form>
 						 	</div>
 						 </div>
@@ -266,6 +275,6 @@
 
     <!-- Page level custom scripts -->
     <script src="/js/sidebarMng.js"></script>
-    <script src="/js/datatablesQna.js"></script>
+    <script src="/js/qnaMng.js"></script>
 </body>
 </html>

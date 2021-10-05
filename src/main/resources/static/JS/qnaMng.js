@@ -1,5 +1,5 @@
 // Call the dataTables jQuery plugin
-// datatablesQna(고객센터 관리 페이지) 노수빈
+// qnaMng(고객센터 관리 페이지) 노수빈
 
 // Korean
 var lang_kor = {
@@ -28,17 +28,6 @@ var lang_kor = {
 };
 
 $(document).ready(function() {
-	
-	// 데이터 없으면 페이징 없애기
-	if ($.fn.dataTable.isDataTable('#dataTable')) {
-	    table = $('#dataTable').DataTable();
-	}
-	else {
-	    table = $('#dataTable').DataTable({
-	        paging: false
-	    });
-	}
-
 	// DataTable 설정
 	$('#dataTable').DataTable({
 		destroy: true, // 테이블 재생성
@@ -87,13 +76,13 @@ $(document).ready(function() {
 							var view_url = "/main/qna/view.do?id=" + id;
 							var subject = data.subject;
 							
-							return "<a class='left' href=" + view_url + ">" + subject + "</a>";
+							return "<a class='left ellipsis-parent' href=" + view_url + "><div class='ellipsis'>" + subject + "</div></a>";
 						}
 					},
 					// 문의글 내용
                     { "data": "qdto.content",
 						render: function(data, row) {
-							return "<span class='left'>" + data + "</span>";
+							return "<span class='left ellipsis-parent'><div class='ellipsis'>" + data + "</div></span>";
 						}
 					},
 					// 문의자 아이디
@@ -129,9 +118,29 @@ $(document).ready(function() {
         ]
 	});
 	
+	// 데이터 없으면 페이징 없애기
+	if ($.fn.dataTable.isDataTable('#dataTable')) {
+	    $('#dataTable').DataTable();
+		insertButton(); // dataTables 사이에 button 삽입
+	}
+	else {
+	    table = $('#dataTable').DataTable({
+	        paging: false
+	    });
+		// 페이징이 없을 때 버튼도 없애고 싶은데 방법을 모르겠음
+	}
+
 });
 
 // 관리 페이지에서 삭제버튼 (문의글 삭제버튼)
+function insertButton() {
+	var insertStd = '#dataTable_info'; /* 어떤 요소를 기준으로 element를 삽입할 건지 */
+	var insertElement = '<button type="button" class="btn btn-primary btn_del float-right mt-1" onclick="frmChkSubmit()">항목 삭제</button>'; /* 삽입하려는 element */
+
+	/*  특정 요소(바깥)의 앞에 내용 삽입 (cf. after) */
+	$(insertStd).before(insertElement);
+}
+
 function frmChkSubmit() {
 	var cnt = $(".dataTables_btn_del:checked").length;
 	var warning = cnt + "개의 문의글을 삭제하시겠습니까?";
