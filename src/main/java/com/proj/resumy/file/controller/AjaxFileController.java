@@ -7,7 +7,9 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.net.URLEncoder;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
 
@@ -107,7 +109,7 @@ public class AjaxFileController {
 		
 		// 유저 게시물 갯수 제한
 		System.out.println(ajaxFileService.filesById(userDetails.getUsername()));
-		if(ajaxFileService.filesById(userDetails.getUsername()) > 15) {
+		if(ajaxFileService.filesById(userDetails.getUsername()) > 14) {
 			return result;
 		}
 		FileDTO fileDTO = new FileDTO();
@@ -151,13 +153,31 @@ public class AjaxFileController {
 		    zos.setLevel(8); // 압축 레벨 - 최대 압축률은 9, 디폴트 8
 		    BufferedInputStream bis = null;
 		    
+		    // fileNames Map 생성
+		    Map<String, Integer> fileNames = new HashMap<String, Integer>();
+		   
 		    for(int i = 0; i <ids.length ; i++ ) {
 		    	FileDTO fileDto = ajaxFileService.selectByFid(ids[i]); //
 		    	File file = new File(uploadDir + File.separator + userDetails.getUsername(), 
 		    			fileDto.getCname());
 		    	
+		    	String filename = fileDto.getName(); // 원본 파일명
+//		    	fileNames.replace(filename, fileNames.getOrDefault(filename, 1)) ;
+		    	
+		    	// 다운로드 할때 파일 이름이 같으면 zip 파일이 깨지는 현상 해결
+		    	if(!fileNames.containsKey(filename)) { // fileNames 맵에 filename 이라는 key 값이 없다면
+		    		fileNames.put(filename, 0); // value 로 0을 넣고 
+		    	} else { // Map에 filename 이라는 Key가 존재하면 (즉 파일 이름이 같다면) value를 1 더해준다.
+		    		fileNames.replace(filename, fileNames.get(filename) + 1);
+		    	}
+		    	
+		    	// value 값이 0이 아니라면 (즉 중복된 파일 이름이 존재하여 value 값에 1++ 이 되었다면)
+		    	if(fileNames.get(filename) != 0) {
+		    		filename = "(" + fileNames.get(filename) + ")_" + filename;
+		    	}
+		    	
 		    	bis = new BufferedInputStream(new FileInputStream(file));
-		    	ZipEntry zentry = new ZipEntry(fileDto.getName());
+		    	ZipEntry zentry = new ZipEntry(filename);
 		    	zentry.setTime(file.lastModified());
 		    	zos.putNextEntry(zentry);
 		    	

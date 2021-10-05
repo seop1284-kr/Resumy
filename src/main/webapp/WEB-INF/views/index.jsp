@@ -9,7 +9,7 @@
 <head>
 
 <title>RESUMY - 채용 도우미 사이트</title>
-
+<link href="/img/logo_sm.png" rel="shortcut icon" type="image/x-icon">
 <meta charset="UTF-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">

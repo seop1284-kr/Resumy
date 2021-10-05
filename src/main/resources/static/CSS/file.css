@@ -1,10 +1,6 @@
 /* 기본 색상 */
 :root {
-    --resumy-blue: #4876EF;
     --resumy-gray: #B4C0D3;
-    --resumy-green: #00D3AB;
-    --resumy-black: #2F2C33;
-    --resumy-white: #FFFFF3;
     }
     
 #title {
@@ -13,9 +9,11 @@
 
 body {
 	font-family: 'Jua', sans-serif;
-	/*background-color: var(--resumy-white);*/
 }
 
+table {
+	margin-bottom: 1em;
+}    
     
 .fileList {
 	margin-top: 10px;
@@ -28,8 +26,10 @@ body {
 .fileList th {
 	border-top: 2px solid var(--resumy-gray);
 	border-bottom: 1px solid var(--resumy-gray);
-	background-color: var(--resumy-green);
+	background-color: var(--mint-color);
 	text-align: center;
+	color: var(--light-color);
+	font-weight: normal;
 }
 
 .fileList td,th {
@@ -53,18 +53,18 @@ body {
 	text-align: right;
 }
 
-.uploadBtn, .downloadBtn, .deleteBtn{
+.btn_group_list button[type='button']{
 	border-radius: 4px;
 	border: none;
-	background-color: var(--resumy-gray);
-	padding: 5px;
-	padding-left: 10px;
-	padding-right: 10px;
+	padding: 5px 10px; /*상하 좌우*/
+	/*padding: 5px 10px 5px 10px; 상 우 하 좌*/
+	cursor: pointer;
 	
-}
+}	
 
-.btn_group_list .uploadBtn, .downloadBtn {
-	margin-right: 10px;
+
+section {
+	margin-bottom: 5em;
 }
 
 
@@ -117,7 +117,7 @@ body {
 	height: 50px;
 	border-bottom-left-radius: 4px; 
 	border: none;
-	border-right: 1px solid var(--resumy-white);
+	border-right: 1px solid var(--light-color);
 	background-color: var(--resumy-gray);
 }
 
@@ -127,7 +127,7 @@ body {
 	height: 50px;
 	border-bottom-right-radius: 4px; 
 	border: none;
-	border-left: 1px solid var(--resumy-white);
+	border-left: 1px solid var(--light-color);
 	background-color: var(--resumy-gray);
 	
 	

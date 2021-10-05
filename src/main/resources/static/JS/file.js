@@ -2,9 +2,37 @@ $(document).ready(function() {
 	loadPage();
 });
 
+
+// 업로드 버튼 누르면 모달 팝업
+$("#uploadBtn").click(function() {
+	setPopup("upload");
+	$("#dlg_file").show();
+});
+
+// 모달 대화상자 취소 버튼 누르면
+$(".modal .btn_group_file .btn_cancel").click(function() {
+	$(this).parents(".modal").hide();
+});
+
+// 모달 대화상자 업로드 버튼 누르면	
+$("#frmFile").submit(function() {
+	$(this).parents(".modal").hide();
+	chkUpload();  // 새글 등록 submit
+});
+
+// 다운로드 버튼 누르면
+$("#downloadBtn").click(function() {
+	chkDownload();
+
+});
+
+// 삭제 버튼 누르면
+$("#deleteBtn").click(function() {
+	chkDelete();
+});
+
 // 파일 관리 리스트
 function loadPage() {
-
 
 	$.ajax({
 		url: "/fileAjax/filelist",
@@ -29,7 +57,10 @@ function loadPage() {
 function updateList(items) {
 	var result = "";  // 최종 결과
 	var count = items.length;
-
+	$("#fileCnt").text(count + "개");
+	$("#leftCnt").text( 15-count + "개");
+	$("#fileCnt2").text(count + "개");
+	
 	if (count <= 0) {
 		return false;
 	}
@@ -50,7 +81,7 @@ function updateList(items) {
 		result += "<td>" + items[i].memo + "</td>\n";
 		result += "</tr>\n";
 	}
-	result += "</table><br><br><br>";
+	result += "</table>";
 
 	$("#content").html(result);
 
@@ -99,34 +130,6 @@ function checkSelectAll()  {
 
 
 
-// 업로드 버튼 누르면 모달 팝업
-$("#uploadBtn").click(function() {
-	setPopup("upload");
-	$("#dlg_file").show();
-});
-
-// 모달 대화상자 취소 버튼 누르면
-$(".modal .btn_group_file .btn_cancel").click(function() {
-	$(this).parents(".modal").hide();
-});
-
-// 모달 대화상자 업로드 버튼 누르면	
-$("#frmFile").submit(function() {
-	$(this).parents(".modal").hide();
-	chkUpload();  // 새글 등록 submit
-});
-
-// 다운로드 버튼 누르면
-$("#downloadBtn").click(function() {
-	chkDownload();
-
-});
-
-// 삭제 버튼 누르면
-$("#deleteBtn").click(function() {
-	chkDelete();
-});
-
 
 
 // 파일 업로드 대화상자 세팅
@@ -150,7 +153,7 @@ function chkUpload() {
 	if(!chkSubmit()){
 		return ;
 	}
-	alert("확인용!")
+	
 	// 특정 form 의 name 달린 form element 들의 value 들을 string 으로 묶기
 	// ex) name=aaa&subject=bbb&content=ccc   <-- string 타입이다
 	var data = new FormData($("#frmFile")[0]);

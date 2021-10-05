@@ -6,7 +6,7 @@
 <%@ taglib prefix="sec"
 	uri="http://www.springframework.org/security/tags"%>
 
-<link href="/img/fibicon.png" rel="shortcut icon" type="image/x-icon">
+<link href="/img/logo_sm.png" rel="shortcut icon" type="image/x-icon">
 <link href="/assets/dist/css/bootstrap.min.css" rel="stylesheet">
 <link href="/css/common.css" rel="stylesheet">
 <link href="/css/mypageTemplate.css" rel="stylesheet">
