@@ -11,8 +11,9 @@
     <meta name="author" content="">
     
 	<title>Resumy 관리자 페이지</title>
+    <link href="/img/logo_sm.png" rel="shortcut icon" type="image/x-icon">
 
-	 <!-- Custom fonts for this template -->
+	<!-- Custom fonts for this template -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
@@ -23,39 +24,7 @@
     <link href="/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
     <link href="/css/dataTables.css" rel="stylesheet">
     <link href="/css/common.css" rel="stylesheet">
-    <style>
-        
-        /* [페이징] */
-		.center {
-			text-align: center;
-		}
-		
-		ul.pagination{
-			list-style-type: none;
-		}
-		
-		ul.pagination li{
-			display: inline-block;
-		}
-		
-		ul.pagination a {
-			color: black;
-			float: left;
-			padding: 4px 8px;
-			text-decoration: none;
-			transition: background-color .3s;
-			margin: 0px;
-		}
-		
-		ul.pagination a.active {
-			background-color: #4CAF50;
-			color: white;
-			border: 1px solid #4CAF50;
-		}
-		
-		ul.pagination a:hover:not(.active) {background-color: #ddd;}
-		
-    </style>
+    
     
 </head>
 

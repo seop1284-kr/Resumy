@@ -7,7 +7,8 @@
 </c:import>
 
 <!-- My CSS -->
-<link rel="stylesheet" type="text/css" href="/CSS/fedBoard.css">
+<link href="/css/dataTables.css" rel="stylesheet">
+<!-- <link rel="stylesheet" type="text/css" href="/CSS/fedBoard.css"> -->
 
 </head>
 
