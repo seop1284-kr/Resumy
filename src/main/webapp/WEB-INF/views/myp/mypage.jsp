@@ -25,12 +25,12 @@
 
 <!-- Bootstrap JS -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script src="/assets/dist/js/bootstrap.min.js"></script>
 
-<!-- My CSS -->
+<!-- CSS -->
 <link href="/css/common.css" rel="stylesheet">
 <link href="/css/navbar.css" rel="stylesheet">
 <link href="/css/footer.css" rel="stylesheet">
+<link href="/css/mypageSidebar.css" rel="stylesheet">
 
 </head>
 

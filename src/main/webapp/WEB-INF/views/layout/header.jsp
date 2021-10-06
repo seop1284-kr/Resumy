@@ -52,50 +52,48 @@ if (header_menu_param != null) {
 				<sec:authorize access="isAnonymous()">
 					<button class="rounded-pill login_btn" onclick="location.href='/login'">로그인</button>
 				</sec:authorize>
-	
-				<%-- 로그인 : 관리자 --%>
-				<sec:authorize access="hasRole('ROLE_ADMIN')">
-					<div class="dropdown">
-						<button class="dropdown-toggle d-flex justify-content-center align-items-center users_btn" data-toggle="dropdown">
-							<sec:authentication property="principal.username"/>
-						</button>
-						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-				          <label class="label">마이페이지</label>
-				          <a class="dropdown-item" href="/myp?menu=resume">자소서 관리</a>
-				          <a class="dropdown-item" href="/myp?menu=file">파일 관리</a>
-				          <a class="dropdown-item" href="/myp?menu=historyMng">이력 관리</a>
-				          <div class="dropdown-divider"></div>
-				          <label class="label">관리자 페이지</label>
-				          <a class="dropdown-item" href="/mng/fed">자소서 피드백 관리</a>
-				          <a class="dropdown-item" href="/mng/qna/board.do">고객센터 답변 관리</a>
-				          <a class="dropdown-item" href="/mng/member">회원 관리</a>
-				          <div class="dropdown-divider"></div>
-				          <a class="dropdown-item" href="/logout">로그아웃</a>
-				        </div>
-					</div>
-				</sec:authorize>
 				
-				<%-- 로그인 : 일반사용자 --%>
-				<sec:authorize access="!hasRole('ROLE_ADMIN')">
-					<div class="dropdown">
-						<button class="dropdown-toggle d-flex justify-content-center align-items-center users_btn" data-toggle="dropdown">
-							<i class="fas fa-user-circle fa-fw mr-1"></i> <%-- fa-fw : 균등너비 --%>
-							<sec:authentication property="principal.username"/> 님
-						</button>
-						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-				          <label class="label">마이페이지</label>
-				          <a class="dropdown-item" href="/myp?menu=resume">자소서 관리</a>
-				          <a class="dropdown-item" href="/myp?menu=file">파일 관리</a>
-				          <a class="dropdown-item" href="/myp?menu=historyMng">이력 관리</a>
-				          <div class="dropdown-divider"></div>
-				          <a class="dropdown-item" href="/logout">로그아웃</a>
-				        </div>
-					</div>
-				</sec:authorize>
-
-
+				<%-- 로그인 --%>
 				<sec:authorize access="isAuthenticated()">
+					<%-- 로그인 : 관리자 --%>
+					<sec:authorize access="hasRole('ROLE_ADMIN')">
+						<div class="dropdown">
+							<button class="dropdown-toggle d-flex justify-content-center align-items-center users_btn" data-toggle="dropdown">
+								<sec:authentication property="principal.username"/>
+							</button>
+							<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+					          <label class="label">마이페이지</label>
+					          <a class="dropdown-item" href="/myp?menu=resume">자소서 관리</a>
+					          <a class="dropdown-item" href="/myp?menu=file">파일 관리</a>
+					          <a class="dropdown-item" href="/myp?menu=historyMng">이력 관리</a>
+					          <div class="dropdown-divider"></div>
+					          <label class="label">관리자 페이지</label>
+					          <a class="dropdown-item" href="/mng/fed">자소서 피드백 관리</a>
+					          <a class="dropdown-item" href="/mng/qna/board.do">고객센터 답변 관리</a>
+					          <a class="dropdown-item" href="/mng/member">회원 관리</a>
+					          <div class="dropdown-divider"></div>
+					          <a class="dropdown-item" href="/logout">로그아웃</a>
+					        </div>
+						</div>
+					</sec:authorize>
 					
+					<%-- 로그인 : 일반사용자 --%>
+					<sec:authorize access="!hasRole('ROLE_ADMIN')">
+						<div class="dropdown">
+							<button class="dropdown-toggle d-flex justify-content-center align-items-center users_btn" data-toggle="dropdown">
+								<i class="fas fa-user-circle fa-fw mr-1"></i> <%-- fa-fw : 균등너비 --%>
+								<sec:authentication property="principal.username"/> 님
+							</button>
+							<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+					          <label class="label">마이페이지</label>
+					          <a class="dropdown-item" href="/myp?menu=resume">자소서 관리</a>
+					          <a class="dropdown-item" href="/myp?menu=file">파일 관리</a>
+					          <a class="dropdown-item" href="/myp?menu=historyMng">이력 관리</a>
+					          <div class="dropdown-divider"></div>
+					          <a class="dropdown-item" href="/logout">로그아웃</a>
+					        </div>
+						</div>
+					</sec:authorize>
 				</sec:authorize>
 	
 			</div>

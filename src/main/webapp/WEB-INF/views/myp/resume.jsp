@@ -2,7 +2,10 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
+<!-- Resume JS -->
 <script src="/JS/resume.js"></script>
+
+<!-- Resume CSS -->
 <link href="/css/resume.css" rel="stylesheet">
 
 <!-- font-family: 'Jua', sans-serif; -->
