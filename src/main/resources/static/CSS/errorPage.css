@@ -1,0 +1,42 @@
+/* 에러페이지 */
+
+body {
+	background-color: #a8ffee;
+	
+}
+
+.errPage {
+	margin: 0;
+	text-align: center;
+}
+
+.errPageTitle {
+	margin-top: 4em;
+	font-size: x-large;
+	text-align: center;
+}
+
+.errPageLogo {
+	margin-top: 2em;
+	width: 70%;
+	max-width: 500px;
+	
+}
+
+.errPageLink {
+	font-size: large;
+	background-color: #B4C0D3;
+	border-radius: 4px;
+	display: inline-block;
+	width: 200px;
+	height: 35px;
+	text-align: center;	
+	border: none;
+	
+}
+
+.errPageLink:hover {
+	background-color: #889ab9;
+	cursor: pointer;
+
+}

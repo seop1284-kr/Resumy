@@ -1,35 +1,39 @@
 $(document).ready(function() {
 	loadPage();
+
+	// 업로드 버튼 누르면 모달 팝업
+	$("#uploadBtn").click(function() {
+		setPopup("upload");
+		$("#dlg_file").show();
+	});
+
+	// 모달 대화상자 취소 버튼 누르면
+	$(".modal .btn_group_file .btn_cancel").click(function() {
+		$(this).parents(".modal").hide();
+	});
+
+	// 모달 대화상자 업로드 버튼 누르면	
+	$(".btn_upload").click(function() {
+		if(chkFileAndMemo()){
+			$(this).parents(".modal").hide();
+			chkUpload();
+		}
+	});
+
+	// 다운로드 버튼 누르면
+	$("#downloadBtn").click(function() {
+		chkDownload();
+
+	});
+
+	// 삭제 버튼 누르면
+	$("#deleteBtn").click(function() {
+		chkDelete();
+	});
+
 });
 
 
-// 업로드 버튼 누르면 모달 팝업
-$("#uploadBtn").click(function() {
-	setPopup("upload");
-	$("#dlg_file").show();
-});
-
-// 모달 대화상자 취소 버튼 누르면
-$(".modal .btn_group_file .btn_cancel").click(function() {
-	$(this).parents(".modal").hide();
-});
-
-// 모달 대화상자 업로드 버튼 누르면	
-$("#frmFile").submit(function() {
-	$(this).parents(".modal").hide();
-	chkUpload();  // 새글 등록 submit
-});
-
-// 다운로드 버튼 누르면
-$("#downloadBtn").click(function() {
-	chkDownload();
-
-});
-
-// 삭제 버튼 누르면
-$("#deleteBtn").click(function() {
-	chkDelete();
-});
 
 // 파일 관리 리스트
 function loadPage() {
@@ -58,68 +62,86 @@ function updateList(items) {
 	var result = "";  // 최종 결과
 	var count = items.length;
 	$("#fileCnt").text(count + "개");
-	$("#leftCnt").text( 15-count + "개");
+	$("#leftCnt").text(15 - count + "개");
 	$("#fileCnt2").text(count + "개");
-	
-	if (count <= 0) {
+
+	if (count == 0) {
+		result += "<div class='thereIsNoFile'>\n";
+		result += "앗? 파일이 하나도 없습니다  <i class='far fa-smile-wink'></i>\n";
+		result += "</div>\n";
+
+		$("#downloadBtn").hide();
+		$("#deleteBtn").hide();
+
+		$("#content").html(result);
 		return false;
+	} else {
+
+		result += "<table class='fileList table-layout-fixed'>";
+		result += "<colgroup>\n"
+		result += "<col width='5%'/>\n"
+		result += "<col width='45%'/>\n"
+		result += "<col width='10%'/>\n"
+		result += "<col width='25%'/>\n"
+		result += "<col width='15%'/>\n"
+		result += "</colgroup>\n"
+
+		result += "<th><input type='checkbox' name='selectall' value='selectall' onclick='selectAll(this)'/></th>\n";
+		result += "<th>첨부파일명</th>\n";
+		result += "<th>용량</th>\n";
+		result += "<th>등록일</th>\n";
+		result += "<th>MEMO</th>\n";
+
+		for (var i = 0; i < count; i++) {
+			result += "<tr>\n";
+			result += "<td style='text-align: center;'><input type='checkbox' name='id' value='" + items[i].id + "' onclick='checkSelectAll()'></td>\n";
+			result += "<td class='ellipsis'>" + items[i].name + "</td>\n";
+			result += "<td style='text-align: center;'>" + (items[i].volume / (1024 * 1024)).toFixed(2) + " mb" + "</td>\n";
+			result += "<td style='text-align: center;'>" + items[i].regdate + "</td>\n";
+			result += "<td>" + items[i].memo + "</td>\n";
+			result += "</tr>\n";
+		}
+		result += "</table>";
+		$("#downloadBtn").show();
+		$("#deleteBtn").show();
+
+		$("#content").html(result);
+
+		return true;
 	}
-
-	result += "<table class='fileList'>";
-	result += "<th><input type='checkbox' name='selectall' value='selectall' onclick='selectAll(this)'/></th>\n";
-	result += "<th>첨부파일명</th>\n";
-	result += "<th>용량</th>\n";
-	result += "<th>등록일</th>\n";
-	result += "<th>MEMO</th>\n";
-
-	for (var i = 0; i < count; i++) {
-		result += "<tr>\n";
-		result += "<td style='text-align: center;'><input type='checkbox' name='id' value='" + items[i].id + "' onclick='checkSelectAll()'></td>\n";
-		result += "<td>" + items[i].name + "</td>\n";
-		result += "<td style='text-align: center;'>" + (items[i].volume / (1024 * 1024)).toFixed(2) + " mb" + "</td>\n";
-		result += "<td style='text-align: center;'>" + items[i].regdate + "</td>\n";
-		result += "<td>" + items[i].memo + "</td>\n";
-		result += "</tr>\n";
-	}
-	result += "</table>";
-
-	$("#content").html(result);
-
-	return true;
-
 } // end updateList()
 
 
 function selectAll(selectAll) {
 	const checkboxes
 		= document.querySelectorAll('input[type="checkbox"]'); //모든 input element 중 type이 체크박스인 목록들
-					//querySelectorAll() 함수는 파라미터로 지정한 특정 element 목록 전체를 가져온다
+	//querySelectorAll() 함수는 파라미터로 지정한 특정 element 목록 전체를 가져온다
 	checkboxes.forEach((checkbox) => {
 		checkbox.checked = selectAll.checked;
-	// 반복문 사용 각 체크박스의 checked 값을 'SelectAll' element의 check 값(selectAll.checked)과 동일하게 변경
-	// 따라서 'SelectAll' 체크박스가 선택되면 나머지 체크박스도 모두 선택되고, 해제되면 나머지 체크박스도 모두 해제됨
+		// 반복문 사용 각 체크박스의 checked 값을 'SelectAll' element의 check 값(selectAll.checked)과 동일하게 변경
+		// 따라서 'SelectAll' 체크박스가 선택되면 나머지 체크박스도 모두 선택되고, 해제되면 나머지 체크박스도 모두 해제됨
 
-		
+
 	})
 } // end selectAll()
 
 
-function checkSelectAll()  {
-  // 전체 체크박스
-  const checkboxes 
-    = document.querySelectorAll('input[name="id"]');
-  // 선택된 체크박스
-  const checked 
-    = document.querySelectorAll('input[name="id"]:checked');
-  // select all 체크박스
-  const selectAll 
-    = document.querySelector('input[name="selectall"]');
-  
-  if(checkboxes.length === checked.length)  {
-    selectAll.checked = true;
-  }else {
-    selectAll.checked = false;
-  }
+function checkSelectAll() {
+	// 전체 체크박스
+	const checkboxes
+		= document.querySelectorAll('input[name="id"]');
+	// 선택된 체크박스
+	const checked
+		= document.querySelectorAll('input[name="id"]:checked');
+	// select all 체크박스
+	const selectAll
+		= document.querySelector('input[name="selectall"]');
+
+	if (checkboxes.length === checked.length) {
+		selectAll.checked = true;
+	} else {
+		selectAll.checked = false;
+	}
 
 	// animal 체크박스에 onclick 이벤트가 발생할 때마다
 	// 전체 체크박스(checkboxes)와 선택된 체크박스(checked)의 갯수를 비교하여
@@ -150,10 +172,7 @@ function setPopup(mode) {
 // 파일 업로드 처리
 function chkUpload() {
 
-	if(!chkSubmit()){
-		return ;
-	}
-	
+
 	// 특정 form 의 name 달린 form element 들의 value 들을 string 으로 묶기
 	// ex) name=aaa&subject=bbb&content=ccc   <-- string 타입이다
 	var data = new FormData($("#frmFile")[0]);
@@ -181,7 +200,6 @@ function chkUpload() {
 
 	});
 
-	return false;
 
 } // end chkUpload()		
 
@@ -254,16 +272,21 @@ function chkDelete() {
 } // end chkDelete()
 
 
-function chkSubmit() {
-	var input = document.getElementsByClassName('')
+function chkFileAndMemo() {
 
 	var form = document.forms['frmFile'];
 	var memoContent = form.memo.value.trim();
+	var fileContent = form.file.value.trim();
 
 	var memoPat = /^.{0,8}$/;
 	if (!memoPat.test(memoContent)) {
 		alert("메모는 8글자 이하로 입력해야합니다.")
 		form.memo.focus();
+		return false;
+	}
+	if (fileContent == ""){
+		alert("첨부할 파일을 선택해 주세요")
+		form.file.focus();
 		return false;
 	}
 	return true;

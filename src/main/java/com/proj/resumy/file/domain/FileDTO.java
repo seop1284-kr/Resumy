@@ -20,7 +20,10 @@ public class FileDTO {
 	private String userid; // mem_userid
 
 	public String getRegdate() {
-		return this.regdate.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+		if(regdate == null) {
+			regdate = LocalDateTime.now();
+		}
+		return this.regdate.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"));
 	}
 	
 	// 사이즈 정형화
