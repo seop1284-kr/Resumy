@@ -8,77 +8,73 @@
 
 <!-- My CSS -->
 <link href="/css/dataTables.css" rel="stylesheet">
+<link href="/css/fedBoard.css" rel="stylesheet">
 <!-- <link rel="stylesheet" type="text/css" href="/CSS/fedBoard.css"> -->
 
 </head>
 
 <body>
-
-	<!-- 헤더 -->
-	<c:import url="../../layout/header.jsp">
-		<c:param name="headerMenu" value="fed" />
-	</c:import>
-
-	<section class="container-md">
-		<!-- 검색 -->
-		<input type="text" id="keyword" name="keyword" style="width: 50vh" />
-		<button type="button" id="searchBtn">검색</button>
+	<!-- wrapper 시작-->
+	<div class="wrapper">
 	
+		<!-- 헤더 -->
+		<c:import url="../../layout/header.jsp">
+			<c:param name="headerMenu" value="fed" />
+		</c:import>
 	
-		<!-- DataTales Example -->
-		<div class="table-responsive">
-            <table class="table table-bordered table-layout-fixed" id="dataTable" width="100%" cellspacing="0">
-            	<colgroup>
-			        <col width="20%"/>
-			        <col/>
-			        <col width="8%"/>
-			        <col width="10%"/>
-			        <col width="15%"/>
-			    </colgroup>
-            	<thead>
-            		<tr>
-            			<th>자소서 제목</th>
-						<th>내용</th>
-						<th>댓글</th>
-						<th>아이디</th>
-						<th>수정 날짜</th>
-            		</tr>
-            	</thead>
-            </table>
-        </div>
-        
-		<%-- 글 목록 --%>
-		<div id="list">
-			<%-- header 헤더 --%>
-			<div class="d01">
-				<div class="left" id="pageinfo"></div>
-				<div class="right" id="pageRows"></div>
-			</div>
-			<div class="clear"></div>
-			<%-- 목록 --%>
-				<table>
-					<thead>
-						<th>자소서 제목</th>
-						<th>내용</th>
-						<th>피드백 수</th>
-						<th>공개 날짜</th>
-						<th>사용자 아이디</th>
-					</thead>
-					<tbody>
-					</tbody>
-				</table>
+		<!-- main-content 시작 -->
+		<div class="main-content">
+	
+			<section class="container-md">
+				
+				<!-- 검색 -->
+				<div class="searchContainer">
+					<div class="searchWrapper">
+						<h5 class="searchTitle"> 무엇이든 검색해보세요. 딱 맞는 합격 자소서가 3초 안에 나옵니다.</h5>
+						<input type="text" class="customSearchTextField" id="customSearchTextField"
+							placeholder="자소서 항목, 내용, 제목, 아이디 등 키워드"/>
+					</div>
+				</div>
+				
+				<!--
+				<input type="text" id="keyword" name="keyword" style="width: 50vh" />
+				<button type="button" id="searchBtn">검색</button>
+			 	-->
+				
+				<!-- DataTales Example -->
+				<div class="table-responsive">
+		            <table class="table table-bordered table-layout-fixed" id="dataTable" width="100%" cellspacing="0">
+		            	<colgroup>
+					        <col width="15%"/>
+					        <col/>
+					        <col width="8%"/>
+					        <col width="10%"/>
+					        <col width="15%"/>
+					    </colgroup>
+		            	<thead>
+		            		<tr>
+		            			<th>자소서 제목</th>
+								<th>내용</th>
+								<th>댓글</th>
+								<th>아이디</th>
+								<th>수정 날짜</th>
+		            		</tr>
+		            	</thead>
+		            </table>
+		        </div>
+		        
+				
+			</section>
+			
 		</div>
-		<div class="clear"></div>
+		<!-- main-content 끝 -->
 	
-		<%-- [페이징] --%>
-		<div class="center">
-			<ul class="pagination" id="pagination"></ul>
-		</div>
-	</section>
-	
-	<!-- 푸터 -->
-	<c:import url="../../layout/footer.jsp">
-	</c:import>
+		<!-- 푸터 -->
+		<c:import url="../../layout/footer.jsp">
+		</c:import>
+				
+	</div>
+	<!-- wrapper 끝 -->
 	
 	<!-- Page level plugins -->
     <script src="/vendor/datatables/jquery.dataTables.min.js"></script>
@@ -86,6 +82,6 @@
 	
 	
 	<!-- My Script -->
-	<script src="/JS/fedBoard2.js"></script>
+	<script src="/JS/fedBoard.js"></script>
 </body>
 </html>

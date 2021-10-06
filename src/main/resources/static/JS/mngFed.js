@@ -134,14 +134,7 @@ function chkDelete() {
 // - 제목(title) 클릭하면 view 팝업 화면 뜰수 있게 하기
 function addViewEvent(id) {
 	var form = document.createElement('form');
-	var contentObj;
-	var content = "fedView";
-	contentObj = document.createElement('input');
-	contentObj.setAttribute('type', 'hidden');
-	contentObj.setAttribute('name', 'content');
-	contentObj.setAttribute('value', content);
-	form.appendChild(contentObj);
-
+	
 	var viewIdObj;
 	viewIdObj = document.createElement('input');
 	viewIdObj.setAttribute('type', 'hidden');
@@ -156,8 +149,8 @@ function addViewEvent(id) {
 	headerMenuObj.setAttribute('value', "fed");
 	form.appendChild(headerMenuObj);
 
-	form.setAttribute('method', 'post');
-	form.setAttribute('action', "/");
+	form.setAttribute('method', 'get');
+	form.setAttribute('action', "/fedView");
 
 	document.body.appendChild(form);
 
