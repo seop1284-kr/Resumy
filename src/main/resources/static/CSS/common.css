@@ -87,18 +87,9 @@ a, a:hover {
 }
 
 .btn-mint.active {
-/* 아래 3가지 중 만족스러운 한 가지를 제외하고 전부 지워주세요.(주석포함) */
-/*  1. 버튼이 눌린 것 같은 스타일  */
-	border-top: 3px solid gray;
-	border-left: 3px solid gray;
-	
-/*  2. 로고 컬러를 따온 스타일 */
-	/* background-color: #4e73df;
-	background-color: var(--primary); */
-	
-/* 	3. 요구사항 따른 스타일 */
-	/* background-color: #2f2c33;
-	background-color: var(--dark-color); */
+	/*  학력사항&경력사항 해당 버튼 클릭시 색 변환 */
+	background-color: #4e73df;
+	background-color: var(--primary); 
 }
 
 /* 관리자 페이지의 모달의 닫기 버튼 크기 설정 */

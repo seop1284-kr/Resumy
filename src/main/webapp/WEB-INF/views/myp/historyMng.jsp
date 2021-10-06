@@ -4,7 +4,6 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
 <link href="/css/history.css" rel="stylesheet">
-
 <script src="/JS/historyMng.js"></script>
 
 <div class="col">
@@ -19,14 +18,14 @@
 			<table width="100%">
 				<tr>
 					<td colspan="3"></td>
-					<td><button type="button" class="btn btn-mint" onclick="updateMember('memberList')">수정하기</button></td>
+					<td style="text-align: right;"><button type="submit" style="width:80px;" class="btn btn-mint" >수정</button></td>
 				</tr>
 				<tr>
 					<td width="10%"><h4>
 							<b>이름</b>
 						</h4></td>
 					<td width="40%" style="text-align: left;"><input type="text"
-						name="name" value=""></td>
+						name="name" required></td>
 					<td width="15%"></td>
 					<td width="35%"></td>
 				</tr>
@@ -69,24 +68,24 @@
 			<div id="content2"></div>
 			<table width="100%">
 				<tr>
-					<td width="25%"><button type="button" class="btn btn-mint" id="btnSchool01" name="btnSchool01">초등학교
+					<td width="25%"><button type="button" style="width:100%" class="btn btn-mint" id="btnSchool01" name="btnSchool01">초등학교
 							졸업</button></td>
-					<td width="25%"><button type="button" class="btn btn-mint" id="btnSchool02" name="btnSchool02">중학교
+					<td width="25%"><button type="button" style="width:100%" class="btn btn-mint" id="btnSchool02" name="btnSchool02">중학교
 							졸업</button></td>
-					<td width="25%"><button type="button" class="btn btn-mint" id="btnSchool03" name="btnSchool03">고등학교
+					<td width="25%"><button type="button" style="width:100%" class="btn btn-mint" id="btnSchool03" name="btnSchool03">고등학교
 							졸업</button></td>
-					<td width="25%"><button type="button" class="btn btn-mint" id="btnSchool04" name="btnSchool04">대학/대학원<br>
+					<td width="25%"><button type="button" style="width:100%" class="btn btn-mint" id="btnSchool04" name="btnSchool04">대학/대학원
 							이상 졸업</button></td>
 				</tr>
 			</table>
 			
 			
 			<%-- 초등학교 정보 --%>
-			<form name='spec01' id='spec01' action='' method='post'>
+			<form name='spec01' id='spec01' action='' method='post'><hr>
 				<table  width="100%">
 					<tr>
 						<td width="80%" colspan="2"><h4><b>초등학교 정보입력</b></h4></td>
-						<td width="20%"><button type="button" class="btn btn-mint" name ="btnWriteSpec01" id ="btnWriteSpec01" onclick="writeSpec('spec01')">등록</button> <button type="button" class="btn btn-mint" id ="btnUpdateSpec01" name ="btnUpdateSpec01" onclick="updateSpec('spec01')">수정</button></td>
+						<td width="20%" style="text-align: right;"><button type="button" style="width:80px;" class="btn btn-mint" name ="btnWriteSpec01" id ="btnWriteSpec01" onclick="writeSpec('spec01')">등록</button> <button type="button" style="width:80px;" class="btn btn-mint" id ="btnUpdateSpec01" name ="btnUpdateSpec01" onclick="updateSpec('spec01')">수정</button></td>
 					</tr>
 					<tr>
 						<td width="20%" name="school01">학교명</td>
@@ -103,11 +102,11 @@
 			</form>
 			
 			<%-- 중학교 정보 --%>
-			<form name='spec02' id='spec02' action='' method='post'>
+			<form name='spec02' id='spec02' action='' method='post'><hr>
 				<table width="100%">
 					<tr>
 						<td width="80%" colspan="2"><h4><b>중학교 정보입력</b></h4></td>
-						<td width="20%"><button type="button" class="btn btn-mint" id ="btnWriteSpec02" name ="btnWriteSpec02" onclick="writeSpec('spec02')">등록</button> <button type="button" class="btn btn-mint" id ="btnUpdateSpec02" name ="btnUpdateSpec02" onclick="updateSpec('spec02')">수정</button></td>
+						<td width="20%" style="text-align: right;"><button type="button" style="width:80px;" class="btn btn-mint" id ="btnWriteSpec02" name ="btnWriteSpec02" onclick="writeSpec('spec02')">등록</button> <button type="button" style="width:80px;" class="btn btn-mint" id ="btnUpdateSpec02" name ="btnUpdateSpec02" onclick="updateSpec('spec02')">수정</button></td>
 					</tr>
 					<tr>
 						<td width="20%" name="school02">학교명</td>
@@ -124,11 +123,11 @@
 			</form>
 			
 			<%-- 고등학교 정보 --%>
-			<form name='spec03' id='spec03' action='' method='post'>
+			<form name='spec03' id='spec03' action='' method='post'><hr>
 				<table  width="100%">
 					<tr>
 						<td width="80%" colspan="2"><h4><b>고등학교 정보입력</b></h4></td>
-						<td width="20%"><button type="button" class="btn btn-mint" id ="btnWriteSpec03" name ="btnWriteSpec03" onclick="writeSpec('spec03')">등록</button> <button type="button" class="btn btn-mint" id ="btnUpdateSpec03" name ="btnUpdateSpec03" onclick="updateSpec('spec03')">수정</button></td>
+						<td width="20%" style="text-align: right;"><button type="button" style="width:80px;" class="btn btn-mint" id ="btnWriteSpec03" name ="btnWriteSpec03" onclick="writeSpec('spec03')">등록</button> <button type="button" style="width:80px;" class="btn btn-mint" id ="btnUpdateSpec03" name ="btnUpdateSpec03" onclick="updateSpec('spec03')">수정</button></td>
 					</tr>
 					<tr>
 						<td width="20%">학교명</td>
@@ -150,11 +149,11 @@
 			</form>
 			
 			<%-- 대학/대학원 정보 --%>
-			<form name='spec04' id='spec04' action='' method='post'>
+			<form name='spec04' id='spec04' action='' method='post'><hr>
 				<table width="100%">
 					<tr>
 						<td width="80%" colspan="2"><h4><b>대학∙대학원 정보입력</b></h4></td>
-						<td width="20%"><button type="button" class="btn btn-mint" id ="btnWriteSpec04" name ="btnWriteSpec04" onclick="writeSpec('spec04')">등록</button> <button type="button" class="btn btn-mint" id ="btnUpdateSpec04" name ="btnUpdateSpec04" onclick="updateSpec('spec04')">수정</button></td>
+						<td width="20%" style="text-align: right;"><button type="button" style="width:80px;" class="btn btn-mint" id ="btnWriteSpec04" name ="btnWriteSpec04" onclick="writeSpec('spec04')">등록</button> <button type="button" style="width:80px;"  class="btn btn-mint" id ="btnUpdateSpec04" name ="btnUpdateSpec04" onclick="updateSpec('spec04')">수정</button></td>
 					</tr>
 					<tr>
 						<td width="20%">대학</td>
@@ -201,8 +200,8 @@
 
 			<table width="100%">
 				<tr>
-					<td width="25%"><button class="btn btn-mint active" type="button" class="" id="btnNewcomer">신입</button></td>
-					<td width="25%"><button class="btn btn-mint" type="button" class="" id="btnCareer">경력</button></td>
+					<td width="25%"><button style="width:50%" class="btn btn-mint active" type="button" class="" id="btnNewcomer">신입</button></td>
+					<td width="25%"><button style="width:50%" class="btn btn-mint" type="button" class="" id="btnCareer">경력</button></td>
 				</tr>
 			</table>
 			<hr>
