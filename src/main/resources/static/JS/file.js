@@ -93,10 +93,20 @@ function updateList(items) {
 		result += "<th>MEMO</th>\n";
 
 		for (var i = 0; i < count; i++) {
+			
+			// 파일 사이즈 정형화 (kb, mb까지만 구현)
+			var unit = 1024 * 1024;
+			var size;
+			if(items[i].volume < unit){
+				size = (items[i].volume/1024).toFixed(2) + ' KB'
+			} else {
+				size = (items[i].volume/unit).toFixed(2) + ' MB'
+			}
+			
 			result += "<tr>\n";
 			result += "<td style='text-align: center;'><input type='checkbox' name='id' value='" + items[i].id + "' onclick='checkSelectAll()'></td>\n";
 			result += "<td class='ellipsis'>" + items[i].name + "</td>\n";
-			result += "<td style='text-align: center;'>" + (items[i].volume / (1024 * 1024)).toFixed(2) + " mb" + "</td>\n";
+			result += "<td style='text-align: center;'>" + size +"</td>\n";
 			result += "<td style='text-align: center;'>" + items[i].regdate + "</td>\n";
 			result += "<td>" + items[i].memo + "</td>\n";
 			result += "</tr>\n";
@@ -286,7 +296,6 @@ function chkFileAndMemo() {
 	}
 	if (fileContent == ""){
 		alert("첨부할 파일을 선택해 주세요")
-		form.file.focus();
 		return false;
 	}
 	return true;

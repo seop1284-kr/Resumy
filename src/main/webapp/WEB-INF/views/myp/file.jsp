@@ -24,7 +24,7 @@
 	    	<h4 id="title">나의 파일 관리</h4>
 	    	
 	    	<div class="d-flex justify-content-between align-items-end">
-	    		<div style="font-weight: lighter;">현재 파일 개수 : <span id="fileCnt" style="color:orange;"></span> / 남은 저장 공간 : <span id="leftCnt" style="color:orange;"></span> / 파일 하나당 최대 5MB</div>
+	    		<div style="font-weight: lighter;">현재 파일 개수 : <span id="fileCnt" style="color:orange;"></span> / 남은 저장 공간 : <span id="leftCnt" style="color:orange;"></span> / 파일 하나당 <span style="color:orange;">최대 5MB</span> 까지 가능</div>
 	    		<!-- <div class="mt-5 mb-2">저장 가능한 15개의 파일 중 현재 <span id="fileCnt2" style="color:orange;"></span>의 파일이 있습니다</div> -->
 	    		
 	    		<%-- 우상단 버튼들 --%>
