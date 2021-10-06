@@ -66,6 +66,18 @@ a, a:hover {
     color: black;
 }
 
+/* header, main 콘텐츠, footer를 묶음 */
+.wrapper { 
+	display: flex;
+	min-height: 100vh;
+	flex-direction: column;
+}
+
+/* main 콘텐츠만 묶음 */
+.main-content {
+	flex: 1;
+}
+
 /* 버튼 커스텀 */
 /* button[type="button"], button[type="submit"] {
 	width: 9em;
@@ -89,7 +101,7 @@ a, a:hover {
 .btn-mint.active {
 	/*  학력사항&경력사항 해당 버튼 클릭시 색 변환 */
 	background-color: #4e73df;
-	background-color: var(--primary); 
+	background-color: var(--primary);
 }
 
 /* 관리자 페이지의 모달의 닫기 버튼 크기 설정 */
@@ -111,4 +123,11 @@ table.table-layout-fixed {
 	white-space: nowrap; /* 한 줄로만 나타내게 함 */
 	overflow: hidden;
 	text-overflow: ellipsis;
+}
+
+/* 영문 텍스트 줄바꿈 처리 */
+.engBreakWord {
+	word-wrap: break-word;      /* IE 5.5-7 */
+	white-space: -moz-pre-wrap; /* Firefox 1.0-2.0 */
+	white-space: pre-wrap;      /* current browsers */
 }

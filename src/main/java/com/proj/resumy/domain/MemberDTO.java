@@ -24,14 +24,14 @@ public class MemberDTO {
 		if(regdtm == null) {
 			regdtm = LocalDateTime.now();
 		}
-		return this.regdtm.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+		return this.regdtm.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"));
 	}
 	
 	public String getModydtm() {
 		if(modydtm == null) {
 			modydtm = LocalDateTime.now();
 		}
-		return this.modydtm.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+		return this.modydtm.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"));
 	}
 
 	

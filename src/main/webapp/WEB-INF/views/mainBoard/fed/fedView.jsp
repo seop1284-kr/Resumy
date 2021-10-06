@@ -7,8 +7,10 @@
 <c:import url="../../layout/head.jsp">
 </c:import>
 
-<!-- My CSS -->
-<link rel="stylesheet" type="text/css" href="/CSS/fedBoard.css">
+	<!-- My CSS -->
+    <link href="/css/buttonSize.css" rel="stylesheet">
+	<!-- <link rel="stylesheet" type="text/css" href="/CSS/fedBoard.css"> -->
+    <link href="/css/qnaView.css" rel="stylesheet">
 
 </head>
 
@@ -18,40 +20,68 @@
 	<c:import url="../../layout/header.jsp">
 		<c:param name="headerMenu" value="fed" />
 	</c:import>
-
-	<tr>
-		<td>자소서 제목: ${introResult.intro.title }</td>
-		<hr>
-	</tr>
-	<c:choose>
-		<c:when
-			test="${empty introResult.conList || fn:length(introResult.conList) == 0 }">
-		</c:when>
-		<c:otherwise>
-			<tr>
-				<td colspan="4">작성자 : ${introResult.intro.userid }</td>
-				<hr>
-				<td colspan="4">공개 날짜 : ${introResult.intro.modydate }</td>
-				<hr>
-			</tr>
-			<c:forEach var="con" items="${introResult.conList }"
-				varStatus="status">
-
-				<tr>
-					<td>질문 ${status.count} :</td>
-
-					<td>${con.question }</td>
-					<br>
-
-					<td>${con.content }</td>
-					<br>
-					<br>
-				</tr>
-				<hr>
-			</c:forEach>
-
-		</c:otherwise>
-	</c:choose>
+	
+	
+	<!-- Begin Page Content -->
+	<div class="container-lg mt-4">
+		<h1 class="h3 text-gray-800 text-center" style="margin-bottom: 3em;">
+            	<b>자소서 피드백 글</b>
+        </h1>        
+	
+	
+		<!-- 자소서 글 -->
+		<div class="shadow">
+			<c:choose>
+				<c:when test="${empty introResult.conList || fn:length(introResult.conList) == 0 }">
+				</c:when>
+				<c:otherwise>
+					
+					<!-- 제목 -->
+					<table class="tableInfo" width="100%" cellspacing="0">
+						<tr>
+							<td colspan="4"><b>${introResult.intro.title }</b></td>
+						</tr>
+						<tr>
+							<td>작성자</td>
+							<td class="text-gray-500"> ${introResult.intro.userid }</td>
+							<td>등록일</td>
+							<td class="text-gray-500">${introResult.intro.regdate }</td>
+							<td>수정일</td>
+							<td class="text-gray-500">${introResult.intro.modydate }</td>
+						</tr>
+					</table>
+					
+					
+					<!-- 내용 -->
+					<div class="textContent">
+						<c:forEach var="con" items="${introResult.conList }"
+							varStatus="status">
+							<div>
+								<div class="engBreakWord font-weight-bold mb-3">${status.count}.&nbsp;${con.question }</div>
+								<div class="engBreakWord mb-5">${con.content }</div>
+								
+								<c:if test="${status.last eq false}">
+									<hr>
+								</c:if>
+							</div>
+							
+						</c:forEach>
+					</div>
+					
+		
+				</c:otherwise>
+			</c:choose>
+		
+		</div>
+		<!-- 자소서 글 끝-->
+	
+	</div>	
+	<!-- End Page Content -->
+	
+	
+	
+	
+	
 	
 	<!-- 비로그인 -->
 	<sec:authorize access="isAnonymous()">

@@ -24,39 +24,7 @@
     <link href="/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
     <link href="/css/dataTables.css" rel="stylesheet">
     <link href="/css/common.css" rel="stylesheet">
-    <style>
-
-        /* [페이징] */
-		.center {
-			text-align: center;
-		}
-		
-		ul.pagination{
-			list-style-type: none;
-		}
-		
-		ul.pagination li{
-			display: inline-block;
-		}
-		
-		ul.pagination a {
-			color: black;
-			float: left;
-			padding: 4px 8px;
-			text-decoration: none;
-			transition: background-color .3s;
-			margin: 0px;
-		}
-		
-		ul.pagination a.active {
-			background-color: #4CAF50;
-			color: white;
-			border: 1px solid #4CAF50;
-		}
-		
-		ul.pagination a:hover:not(.active) {background-color: #ddd;}
-
-    </style>
+    
 </head>
 
 
@@ -165,22 +133,31 @@
 						<div class="card shadow mb-4">
 							<div class="card-body">
 								<div class="table-responsive">
-									<table class="table table-bordered" id="dataTable" width="100%"
+									<table class="table table-bordered table-layout-fixed" id="dataTable" width="100%"
 										cellspacing="0">
+										<colgroup>
+								    		<col width="10%"/>
+								    		<col width="15%"/>
+								    		<col/>
+								    		<col width="15%"/>
+								    		<col width="15%"/>
+								    		<col width="15%"/>
+								    		<col width="8%"/>
+								    	</colgroup>
 										<thead>
-											<tr>
-												<th class="width-xs">이름</th>
-												<th class="width-sm">아이디</th>
-												<th class="width-md">이메일</th>
-												<th class="width-sm">전화번호</th>
-												<th class="width-sm">생년월일</th>
-												<th class="width-sm">가입일</th>
-												<th class="width-xs">삭제</th>
+											<tr> 
+												<th>이름</th>
+												<th>아이디</th>
+												<th>이메일</th>
+												<th>전화번호</th>
+												<th>생년월일</th>
+												<th>가입일</th>
+												<th>삭제</th>
 											</tr>
 										</thead>
 
 									</table>							 		
-									<button id="btnDel" class="btn btn-primary btn_del">항목 삭제</button>
+									
 								</div>
 							</div>
 						</div>

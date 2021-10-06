@@ -1,18 +1,6 @@
 header {
 	/* fedBoard에서는 header margin 없애기 */
-    margin-bottom: 0 !important;
-}
-
-/* header, main 콘텐츠, footer를 묶음 */
-.wrapper{ 
-	display: flex;
-	min-height: 100vh;
-	flex-direction: column;
-}
-
-/* main 콘텐츠만 묶음 */
-.main-content {
-	flex: 1;
+    margin-bottom: 0;
 }
 
 .searchContainer {

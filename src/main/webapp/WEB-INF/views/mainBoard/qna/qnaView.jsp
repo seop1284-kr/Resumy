@@ -47,7 +47,7 @@
 					</table>
 					
 					<!-- tableContent -->
-					<div class="textContent">${	qdto.content }</div>
+					<div class="textContent engBreakWord">${qdto.content }</div>
 					
 				</c:otherwise>
 			</c:choose>
@@ -84,7 +84,7 @@
 		<!-- ./답변 -->
 		
 		<div class="d-flex flex-row-reverse">
-			<button type="button" class="btn btn-mint btn_del order-3" onClick="location.href='deleteOk.do?id=${qdto.id }'">삭제</button>
+			<button type="button" class="btn btn-mint btn_del order-3" onClick="chkDelete(${qdto.id })">삭제</button>
 			<button type="button" class="btn btn-mint btn_update order-2" onClick="location.href='update.do?id=${qdto.id }'">수정</button>
 			<button type="button" class="btn btn-mint btn_list order-1" onClick="location.href='board.do'">목록</button>
 		</div>
@@ -94,5 +94,16 @@
     
 	<%-- 푸터 --%>
 	<c:import url="../../layout/footer.jsp"></c:import>
+	
+	<!-- My JS -->
+	<script>
+		function chkDelete(id) {
+			var check = confirm("삭제하시겠습니까?");
+			if (check) {
+				location.href = "deleteOk.do?id=" + id;
+			}
+		}
+	</script>
+	
 </body>
 </html>

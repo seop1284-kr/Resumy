@@ -5,13 +5,13 @@
 <c:choose>
 	<c:when test="${result == 0 }">
 		<script>
-			alert("수정 실패");
+			alert("실패");
 			history.back();
 		</script>
 	</c:when>
 	<c:otherwise>
 		<script>
-			alert("수정 성공");
+			alert("성공");
 			location.href = "/mng/qna/board.do";
 			<%-- 여유될 때 Board 1페이지로 돌아가는 게 아닌, 보고있던 페이지의 Board 로 돌아가게 코드 수정 --%>
 		</script>

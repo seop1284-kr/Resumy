@@ -33,10 +33,6 @@ div.textContent {
 	min-height: 13em;
 	overflow: visible;
 	border-bottom: 2px solid gray;
-	/* 영문 텍스트 줄바꿈 처리 */
-	word-wrap: break-word;      /* IE 5.5-7 */
-	white-space: -moz-pre-wrap; /* Firefox 1.0-2.0 */
-	white-space: pre-wrap;      /* current browsers */
 }
 
 /* ----------------------------------------- */

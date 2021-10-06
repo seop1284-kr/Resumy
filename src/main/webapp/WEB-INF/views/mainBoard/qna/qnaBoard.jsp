@@ -10,14 +10,14 @@
     <link href="/css/buttonSize.css" rel="stylesheet">
 </head>
 
-<body>
+<body class="wrapper">
 	<c:import url="../../layout/header.jsp">
 		<c:param name="headerMenu" value="qna" />
 	</c:import>
 	<%-- ./navbar --%>
     
     <!-- Begin Page Content -->
-    <div class="container-lg mt-4">
+    <div class="container-lg mt-4 main-content">
 
         <!-- Page Heading -->
         <div class="d-s-flex align-items-center justify-content-between">

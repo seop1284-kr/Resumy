@@ -133,19 +133,26 @@
 						<div class="card shadow mb-4">
 							<div class="card-body">
 								<div class="table-responsive">
-									<table class="table table-bordered" id="dataTable" width="100%"
+									<table class="table table-bordered table-layout-fixed" id="dataTable" width="100%"
 										cellspacing="0">
+										<colgroup>
+								    		<col width="8%"/>
+								    		<col width="23%"/>
+								    		<col/>
+								    		<col width="15%"/>
+								    		<col width="11%"/>
+								    		<col width="5%"/>
+								    	</colgroup>
 										<thead>
-											<th class="width-xs">번호</th>
-											<th class="width-lg">자소서 제목</th>
+											<th>번호</th>
+											<th>자소서 제목</th>
 											<th>피드백 내용</th>
-											<th class="width-sm">아이디</th>
-											<th class="width-md">피드백 등록일</th>
-											<th class="width-xs">삭제</th>
+											<th>아이디</th>
+											<th>피드백 등록일</th>
+											<th>삭제</th>
 										</thead>
 
 									</table>
-									<button id="btnDel" class="btn btn-primary btn_del">항목 삭제</button>
 								</div>
 							</div>
 						</div>

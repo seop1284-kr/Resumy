@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.proj.resumy.domain.MemberDAO">
 	
-	<select id="selecAll" resultType="com.proj.resumy.domain.MemberDTO">
+	<select id="selectAll" resultType="com.proj.resumy.domain.MemberDTO">
 		SELECT
 			mem_id id,
 			mem_userid userid,
@@ -13,9 +13,7 @@
 			mem_phone phone,
 			mem_birthday birthday,
 			mem_address address,
-			mem_career mem_career,
-			reg_dtm regdtm,
-			mody_dtm modydtm
+			mem_career mem_career
 		FROM hr_member
 	</select>
 	

@@ -3,6 +3,9 @@
 
 // Korean
 var lang_kor = {
+	"emptyTable": "데이터가 없습니다.",
+	"loadingRecords": "로딩중...",
+	"processing": "처리중...",
 	"paginate" : {
 		"next" : ">",
     	"previous" : "<"

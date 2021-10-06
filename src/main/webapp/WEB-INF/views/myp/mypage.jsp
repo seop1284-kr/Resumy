@@ -28,37 +28,35 @@
 
 <!-- CSS -->
 <link href="/css/common.css" rel="stylesheet">
-<link href="/css/navbar.css" rel="stylesheet">
+<link href="/css/header.css" rel="stylesheet">
 <link href="/css/footer.css" rel="stylesheet">
 <link href="/css/mypageSidebar.css" rel="stylesheet">
 
 </head>
 
-<body>
+<body class="wrapper">
 
-	<div class="container" style="margin-top: 100px">
-		<div>
+	<!-- 헤더 -->
+	<c:import url="../layout/header.jsp">
+		<c:param name="headerMenu" value="${headerMenu }" />
+	</c:import>
 
-			<!-- 헤더 -->
-			<c:import url="../layout/header.jsp">
-				<c:param name="headerMenu" value="${headerMenu }" />
+	<div class="container main-content">
+
+		<div class="row">
+
+			<!-- 사이드 바 -->
+			<c:import url="../layout/mypage_sidebar.jsp">
+				<c:param name="menu" value="${menu }" />
 			</c:import>
 
-			<div class="row">
-
-				<!-- 사이드 바 -->
-				<c:import url="../layout/mypage_sidebar.jsp">
-					<c:param name="menu" value="${menu }" />
-				</c:import>
-
-				<!-- 콘텐츠 -->
-				<c:import url="/myp/${menu }">
-					<c:param name="access" value="true" />
-				</c:import>
-
-			</div>
+			<!-- 콘텐츠 -->
+			<c:import url="/myp/${menu }">
+				<c:param name="access" value="true" />
+			</c:import>
 
 		</div>
+
 	</div>
 
 	<!-- 푸터 -->

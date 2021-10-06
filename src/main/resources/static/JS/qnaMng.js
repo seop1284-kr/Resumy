@@ -106,7 +106,7 @@ $(document).ready(function() {
 					// 답변하기 modal
 				    { "data": "qdto.id",
 						render: function(data, row) {
-							return '<button type="button" class="btn_replyWriteModal" data-id="' + data + '" data-toggle="modal" data-target="#replyWriteModal" onclick="setModalData(' + data + ')"><i class="far fa-edit"></i></button>';
+							return '<button type="button" class="text-center btn_replyWriteModal" data-id="' + data + '" data-toggle="modal" data-target="#replyWriteModal" onclick="setModalData(' + data + ')"><i class="far fa-edit"></i></button>';
 						}
 				    },
 					// 문의글 삭제

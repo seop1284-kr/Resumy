@@ -11,7 +11,7 @@
 <!-- font-family: 'Jua', sans-serif; -->
 <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
     
-<div class="col">
+<div class="col-10">
 	<div class="container-md">
 		<!-- 제목 -->
 		<h4 id="title" style="font-weight: bold"></h4>
@@ -20,10 +20,8 @@
 		<br>
 
 		<div id="searchBox">
-
-
 			<input type="text" id="keyword" placeholder="자소서 제목, 항목, 내용 등 키워드"
-				style="width: 50vh" />
+				style="width: 25em" />
 			<button type="button" class="searchBtn btn btn-mint">검색</button>
 		</div>
 
@@ -49,11 +47,9 @@
 						</div>
 						<br>
 						
-					
-						 
-						<textarea class="input-question-text" type="text" placeholder="질문을 입력해주세요."
+						<textarea class="input-question-text p-3" type="text" placeholder="질문을 입력해주세요."
 							name="question" value="" maxlength=255 required></textarea>
-						<textarea class="input-content-text" placeholder="내용을 입력해주세요." name="content" value=""
+						<textarea class="input-content-text p-3" placeholder="내용을 입력해주세요." name="content" value=""
 							required></textarea>
 					</div>
 					<div id="content_text_plus"></div>

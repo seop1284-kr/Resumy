@@ -6,11 +6,16 @@ $(document).ready(function() {
 	//loadPage(page);
 	loadPageAll();
 
+	var insertStd = '#dataTable_info'; /* 어떤 요소를 기준으로 element를 삽입할 건지 */
+	var insertElement = '<button id="btnDel" class="btn btn-primary btn_del float-right mt-1"">항목 삭제</button>'; /* 삽입하려는 element */
+		
+	/*  특정 요소(바깥)의 앞에 내용 삽입 (cf. after) */
+	$(insertStd).before(insertElement);
+
 	// 글 삭제 버튼 누르면
 	$("#btnDel").click(function() {
 		chkDelete();
 	});
-
 });
 
 
@@ -168,10 +173,9 @@ function chkDelete() {
 			success: function(data, status) {
 				if (status == "success") {  // 200
 					if (data.status == "OK") {
-						alert("DELETE 성공 : " + data.count + "개")
 						loadPage(window.page);   // 현재 페이지 목록 리로딩
 					} else {
-						alert("DELETE 실패 " + data.message);
+						alert("삭제 실패 " + data.message);
 						return false;
 					}
 				}
@@ -180,37 +184,6 @@ function chkDelete() {
 	}
 
 } // end chkDelete()
-
-// 특정 uid 의 글 삭제하기
-function deleteUid(uid) {
-
-	if (!confirm(uid + "글을 삭제하시겠습니까?")) return false;
-
-	// DELETE 방식
-	$.ajax({
-		url: "/AjaxMngMember/",  //
-		type: "DELETE",
-		data: "uid=" + uid,
-		cache: false,
-		success: function(data, status) {
-			if (status == "success") {
-				if (data.status == "OK") {
-					alert("DELETE성공: " + data.count + "개");
-					loadPage(window.page);  // 현재 페이지 리로딩
-				} else {
-					alert("DELETE실패: " + data.message);
-					return false;
-				}
-			}
-		}
-	});
-
-	return true;
-} // end deleteUid()
-
-
-
-
 
 
 
