@@ -82,7 +82,7 @@ if (header_menu_param != null) {
 						<div class="dropdown">
 							<button class="dropdown-toggle d-flex justify-content-center align-items-center users_btn" data-toggle="dropdown">
 								<i class="fas fa-user-circle fa-fw mr-1"></i> <%-- fa-fw : 균등너비 --%>
-								<sec:authentication property="principal.username"/> 님
+								<div class="ellipsis" style="width:5em;"> <sec:authentication property="principal.username"/> </div> 님
 							</button>
 							<div class="dropdown-menu" aria-labelledby="navbarDropdown">
 					          <label class="label">마이페이지</label>

@@ -33,11 +33,11 @@ public class MainController {
 	}
 	
 	// main page 콘텐츠
-	@RequestMapping("/main")
-	public String mainPage(String content, String headerMenu, Model model) {
-		
-		return "mainBoard/main/mainBoard";
-	}
+//	@RequestMapping("/main")
+//	public String mainPage(String content, String headerMenu, Model model) {
+//		
+//		return "mainBoard/main/mainBoard";
+//	}
 	
 	// company board 콘텐츠
 	@RequestMapping("/companyBoard")

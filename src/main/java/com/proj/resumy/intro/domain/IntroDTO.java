@@ -43,13 +43,13 @@ public class IntroDTO {
 		if(regdate == null) {
 			regdate = LocalDateTime.now();
 		}
-		return this.regdate.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+		return this.regdate.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"));
 	}
 	
 	public String getModydate() {
 		if(modydate == null) {
 			modydate = LocalDateTime.now();
 		}
-		return this.modydate.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+		return this.modydate.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"));
 	}
 }
