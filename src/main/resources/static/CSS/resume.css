@@ -118,3 +118,10 @@ body {
 	height: 350px;
 }
 
+/* 나머지 버튼 */
+.gr button[type="button"], button[type="submit"] {
+	width: 9em;
+	height: 2.5em;
+}
+
+

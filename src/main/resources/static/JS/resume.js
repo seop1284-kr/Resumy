@@ -21,16 +21,21 @@ $(document).ready(function() {
 
 	// 수정 취소 버튼(뷰 페이지로 이동)
 	$(".updateCancelBtn").click(function() {
+		if (!confirm("수정 취소하시겠습니까?")) return false;
 		makePage(curResumeId, "view");
+	});
+	
+	// 목록 버튼(작성 중 목록 버튼)
+	$(".wrListBtn").click(function() {
+		if (!confirm("작성을 취소하시겠습니까?")) return false;
+		loadPage();
 	});
 
 	// 삭제 버튼(삭제 시 자소서 메인 페이지(목록)로 이동)
 	$(".deleteBtn").click(function() {
-		if (!confirm(curResumeId + "글을 삭제하시겠습니까?")) return false;
+		if (!confirm("삭제하시겠습니까?")) return false;
 		deleteResume();
 		loadPage();  // 현재 페이지 리로딩
-
-
 	});
 
 	// 자소서 수정 버튼(수정 페이지로 이동)
@@ -121,12 +126,11 @@ function deleteResume() {
 
 
 function makeContentForm() {
+	
 	var content_text = '<div id="content_text_plus"><hr><textarea class="input-question-text p-3" placeholder="질문을 입력해주세요." name="question" value="" maxlength=255 required></textarea>';
 	content_text += '<textarea class="input-content-text  p-3" placeholder="내용을 입력해주세요." name="content" required></textarea>';
-	content_text += '<button class="minus btn btn-mint" onclick="$(this).parent().remove()">삭제</button></div>'
+	content_text += '<button class="minus btn btn-danger" onclick="$(this).parent().remove()">삭제</button></div>'
 	$('#content_text_plus').append(content_text);
-
-
 }
 
 // 자소서 관리 시작 페이지

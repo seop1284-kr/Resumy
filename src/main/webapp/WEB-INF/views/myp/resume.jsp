@@ -5,7 +5,7 @@
 <!-- Resume JS -->
 <script src="/JS/resume.js"></script>
 
-<!-- Resume CSS -->
+<!-- My CSS -->
 <link href="/css/resume.css" rel="stylesheet">
 
 <!-- font-family: 'Jua', sans-serif; -->
@@ -56,24 +56,30 @@
 				</div>
 
 				<%-- 하단 버튼 : 글 조회 --%>
-				<div class="d01 btn_group_view">
-					<button type="button" class="listBtn btn btn-mint">목록</button>
-					<button type="button" class="deleteBtn btn btn-mint">자소서 삭제</button>
-					<button type="button" class="updateBtn btn btn-mint">자소서 수정</button>
+				<div class="btn_group_view">
+					<div class="gr d-flex flex-row-reverse mt-5">
+						<button type="button" class="listBtn btn btn-mint ml-2">목록</button>
+						<button type="button" class="updateBtn btn btn-mint ml-2">자소서 수정</button>
+						<button type="button" class="deleteBtn btn btn-danger ml-2">자소서 삭제</button>
+					</div>
 				</div>
 
 				<%-- 하단 버튼 : 글 작성 --%>
-				<div class="d01 btn_group_write">
-					<button type="button" class="plusBtn btn btn-mint">추가</button>
-					<button type="button" class="listBtn btn btn-mint">목록</button>
-					<button type="submit" class="btn btn-mint">자소서 저장</button>
+				<div class="btn_group_write">
+					<button type="button" class="plusBtn btn btn-mint mt-2">추가</button>
+					<div class="gr d-flex flex-row-reverse mt-3">
+						<button type="button" class="wrListBtn btn btn-danger ml-2">작성 취소</button>
+						<button type="submit" class="btn btn-mint ml-2">자소서 저장</button>
+					</div>
 				</div>
 
 				<%-- 하단 버튼 : 글 수정 --%>
-				<div class="d01 btn_group_update">
-					<button type="button" class="plusBtn btn btn-mint">추가</button>
-					<button type="button" class="updateCancelBtn btn btn-mint">수정 취소</button>
-					<button type="submit" class="btn btn-mint">자소서 저장</button>
+				<div class="btn_group_update">
+					<button type="button" class="plusBtn btn btn-mint mt-2">추가</button>
+					<div class="gr d-flex flex-row-reverse mt-3">
+						<button type="button" class="updateCancelBtn btn btn-danger ml-2">수정 취소</button>
+						<button type="submit" class="btn btn-mint ml-2">자소서 저장</button>
+					</div>
 				</div>
 			</div>
 		</form>
