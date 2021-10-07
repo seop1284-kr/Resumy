@@ -19,7 +19,7 @@
 <div class="col" style="color: black;">
 	<div class="container-md">
 		
-	    <section>
+	    <section class="">
 	    
 	    	<h4 id="title">나의 파일 관리</h4>
 	    	

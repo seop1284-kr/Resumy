@@ -77,6 +77,7 @@ function updateList(items) {
 		return false;
 	} else {
 
+		// 부트스트랩 컬럼 비율 지정  
 		result += "<table class='fileList table-layout-fixed'>";
 		result += "<colgroup>\n"
 		result += "<col width='5%'/>\n"
@@ -86,12 +87,15 @@ function updateList(items) {
 		result += "<col width='15%'/>\n"
 		result += "</colgroup>\n"
 
+		// 테이블 헤더
 		result += "<th><input type='checkbox' name='selectall' value='selectall' onclick='selectAll(this)'/></th>\n";
 		result += "<th>첨부파일명</th>\n";
 		result += "<th>용량</th>\n";
 		result += "<th>등록일</th>\n";
 		result += "<th>MEMO</th>\n";
 
+
+		// 가져오는 CONTENT
 		for (var i = 0; i < count; i++) {
 			
 			// 파일 사이즈 정형화 (kb, mb까지만 구현)
@@ -122,6 +126,7 @@ function updateList(items) {
 } // end updateList()
 
 
+// 테이블 헤더에 있는 체크박스 클릭시 모든 체크박스 체크
 function selectAll(selectAll) {
 	const checkboxes
 		= document.querySelectorAll('input[type="checkbox"]'); //모든 input element 중 type이 체크박스인 목록들
@@ -135,7 +140,7 @@ function selectAll(selectAll) {
 	})
 } // end selectAll()
 
-
+// 체크박스가 모두 체크되었을때 임의의 하나를 체크 해제했을때 테이블헤더 체크박스도 함께 해제
 function checkSelectAll() {
 	// 전체 체크박스
 	const checkboxes
@@ -204,8 +209,8 @@ function chkUpload() {
 				loadPage();
 			}
 		},
-		error: function(error) {
-			alert("파일은 5MB 이하 첨부 가능합니다" + error);
+		error: function() {
+			alert("파일은 5MB 이하 첨부 가능합니다");
 		}
 
 	});

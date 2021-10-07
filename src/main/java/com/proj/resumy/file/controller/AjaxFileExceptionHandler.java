@@ -14,16 +14,16 @@ import org.springframework.web.multipart.MultipartException;
 @RestControllerAdvice(annotations = RestController.class)
 public class AjaxFileExceptionHandler {
 	
-//	@ExceptionHandler(MultipartException.class)
-//	@ResponseStatus(value = HttpStatus.PAYLOAD_TOO_LARGE)
-//	@ResponseBody
-//	public String handleMultipartException(MultipartException ex) {
-//		//SizeLimitExceededException d;
-//		System.out.println("handleMultipartException()");
-//		ex.printStackTrace();
-//		return "fileTooLarge";
-////		return "redirect:/myp";
-//	}
+	@ExceptionHandler(MultipartException.class)
+	@ResponseStatus(value = HttpStatus.PAYLOAD_TOO_LARGE)
+	@ResponseBody
+	public String handleMultipartException(MultipartException ex) {
+		//SizeLimitExceededException d;
+		System.out.println("handleMultipartException()");
+		ex.printStackTrace();
+		return "fileTooLarge";
+//		return "redirect:/myp";
+	}
 
 	@ExceptionHandler(SizeLimitExceededException.class)
 	@ResponseStatus(value = HttpStatus.PAYLOAD_TOO_LARGE)

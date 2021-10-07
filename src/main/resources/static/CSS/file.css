@@ -12,7 +12,6 @@ body {
 	/*border: 2px solid red;*/
 	min-height: 100vh;
 	padding: 0;
-	position: relative;
 }
 
 table {
@@ -75,12 +74,6 @@ section button[type='button']{
 	width: 110px;
 }
 
-/* 푸터 위치 하단 고정 */
-footer {
-	width: 100%;
-	position: absolute;
-	bottom: 0;
-}
 
 
 /*모달 팝업*/ 
