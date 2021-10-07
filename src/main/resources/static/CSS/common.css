@@ -127,7 +127,7 @@ table.table-layout-fixed {
 
 /* 영문 텍스트 줄바꿈 처리 */
 .engBreakWord {
-	word-break: break-all;
+	word-break: break-all;		/* 자신의 콘텐츠 박스 밖으로 오버플로 할 때 줄을 바꿀 지 지정 */
 	word-wrap: break-word;      /* IE 5.5-7 */
 	white-space: -moz-pre-wrap; /* Firefox 1.0-2.0 */
 	white-space: pre-wrap;      /* current browsers */

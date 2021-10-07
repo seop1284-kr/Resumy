@@ -45,19 +45,20 @@ table.tableRply {
 table.tableRply td {
 	padding: 1em;
 }
-table.tableRply tr.notEmpty td:nth-child(1) {
+table.tableRply .ReplyBasicInfo .img {
 	padding: 1.5em 0 0 2em;
 	width: 4.5em;
 }
-table.tableRply tr.notEmpty td:nth-child(2) {
+table.tableRply .ReplyBasicInfo .name {
 	padding: 1em 0 0 0;
 	width: 3.6em;
 }
-table.tableRply tr.notEmpty td:nth-child(3) {
+table.tableRply .ReplyBasicInfo .regdate {
 	padding: 1em 0 0 0;
 }
-table.tableRply tr.notEmpty td[colspan="3"] {
-	padding-bottom: 1.5em;
+table.tableRply .ReplyContent {
+	padding: 1.5em 2em;
+	width: 4.5em;
 }
 
 

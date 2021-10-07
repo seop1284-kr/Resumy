@@ -203,7 +203,7 @@
 			        </button>
 				</div>
 				
-				<form name="frm" action="updateOk.do" method="post">
+				<form name="frm" id="modalfrm" action="updateOk.do" method="post">
 				
 					<div class="modal-body container">
 				       	<input type="hidden" name="id" class="q_id">
@@ -219,7 +219,7 @@
 				        </ul>
 				        <ul class="row">
 				        	<li class="col-12 text-gray-500">내용</li>
-				        	<li class="col-12" name="content" id="q_content"></li>
+				        	<li class="col-12 engBreakWord" name="content" id="q_content"></li>
 				        </ul>
 		
 				        <hr>

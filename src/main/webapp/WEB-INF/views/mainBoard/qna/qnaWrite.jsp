@@ -31,7 +31,7 @@
 	    <form name="frm" class="container-fluid d-flex flex-column" id="frm" action="writeOk.do" method="post">
 	    	<ul class="row">
 	    		<li class="col-2 text-gray-600">제목 <span style="color: red;">*</span></li>
-	    		<li class="col-10"><input type="text" name="subject" placeholder="제목을 입력해주세요." required></li>
+	    		<li class="col-10"><input type="text" name="subject" placeholder="제목을 입력해주세요." maxlength="50" required></li>
 	    		<li class="col-2 text-gray-600">내용 <span style="color: red;">*</span></li>
 	    		<li class="col-10"><textarea name="content" placeholder="내용을 입력해주세요." required></textarea></li>
 	    	</ul>

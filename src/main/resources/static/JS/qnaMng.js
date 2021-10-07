@@ -187,6 +187,9 @@ function getQnaDTO(id) {
 
 // view 에 QnaDTO 정보 삽입
 function insertQnaDTOModal(data) {
+	// form 내의 기존 내용 reset
+	$('#modalfrm')[0].reset();
+	
 	// 문의글 일련번호
 	$("span.q_id").text(data.qdto.id);
 	$("input[type='hidden'].q_id").val(data.qdto.id);
@@ -209,5 +212,4 @@ function insertQnaDTOModal(data) {
 	}else{
 		$("#r_reply").val(adto.reply);
 	}
-	
 };

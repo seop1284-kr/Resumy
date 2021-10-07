@@ -69,13 +69,13 @@
 				</c:when>
 				<c:otherwise>
 			
-					<tr class="notEmpty">
-						<td><i class="fas fa-user-circle text-gray-400" style="font-size: 1.5em;"></i></td>
-						<td>admin</td>
-						<td class="text-gray-500">${adto.regdate }</td>
+					<tr class="ReplyBasicInfo">
+						<td class="img"><i class="fas fa-user-circle text-gray-400" style="font-size: 1.5em;"></i></td>
+						<td class="name">admin</td>
+						<td class="regdate text-gray-500">${adto.regdate }</td>
 					</tr>
-					<tr class="notEmpty">
-						<td colspan="3">${adto.reply }</td>
+					<tr class="ReplyContent">
+						<td colspan="3" class="engBreakWord">${adto.reply }</td>
 					</tr>
 				
 				</c:otherwise>
