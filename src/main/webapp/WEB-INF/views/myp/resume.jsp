@@ -20,9 +20,9 @@
 		<br>
 
 		<div id="searchBox">
-			<input type="text" id="keyword" placeholder="자소서 제목, 항목, 내용 등 키워드"
+			<input class="customSearchTextField" type="text" id="keyword" placeholder="자소서 제목, 항목, 내용 등 키워드"
 				style="width: 25em" />
-			<button type="button" class="searchBtn btn btn-mint">검색</button>
+			<button type="button" class="searchBtn btn btn-mint mb-1">검색</button>
 		</div>
 
 		<!-- 자소서 목록 리스트 -->
