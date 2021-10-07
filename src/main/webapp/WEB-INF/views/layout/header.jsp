@@ -81,8 +81,8 @@ if (header_menu_param != null) {
 					<sec:authorize access="!hasRole('ROLE_ADMIN')">
 						<div class="dropdown">
 							<button class="dropdown-toggle d-flex justify-content-center align-items-center users_btn" data-toggle="dropdown">
-								<i class="fas fa-user-circle fa-fw mr-1"></i> <%-- fa-fw : 균등너비 --%>
-								<div class="ellipsis" style="width:5em;"> <sec:authentication property="principal.username"/> </div> 님
+								<i class="fas fa-user-circle fa-fw mr-2"></i> <%-- fa-fw : 균등너비 --%>
+								<div class="ellipsis"><sec:authentication property="principal.username"/></div>님
 							</button>
 							<div class="dropdown-menu" aria-labelledby="navbarDropdown">
 					          <label class="label">마이페이지</label>

@@ -93,7 +93,7 @@
 			<h4><b>댓글 작성</b></h4>
 			<form name="frm" action="fedCommentOk" method="post">
 				<input type="hidden" name="iid" value="${introResult.intro.id }">
-				<textarea class="w-100 mb-4" name="content" style="display: block; height: 7em" required></textarea>
+				<textarea class="w-100 mb-4" name="content" style="display: block; height: 7em" maxlength="500" required></textarea>
 				<div class="d-flex flex-row-reverse">
 					<button type="submit" class="btn btn-mint">댓글 작성</button>
 				</div>
