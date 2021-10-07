@@ -75,7 +75,15 @@
 	
 		<!-- 비로그인 -->
 		<sec:authorize access="isAnonymous()">
-			<p>회원만 볼 수 있습니다.</p>
+			<h4><b>댓글</b></h4>
+			<table class="tableRply shadow" width="100%" cellspacing="0">
+				<tr>
+					<td class="text-gray-500">
+						회원만 볼 수 있습니다.
+					</td>
+				</tr>
+			</table>
+			
 		</sec:authorize>
 	
 		<!-- 로그인 했을 때 피드백 보기 및 댓글 달기 -->
@@ -120,7 +128,7 @@
 							
 							<tr class="notEmpty">
 								<td colspan="3">
-									${fed.content }
+									<div class="engBreakWord">${fed.content }</div>
 								</td>
 							</tr>
 							

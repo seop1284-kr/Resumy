@@ -127,6 +127,7 @@ table.table-layout-fixed {
 
 /* 영문 텍스트 줄바꿈 처리 */
 .engBreakWord {
+	word-break: break-all;
 	word-wrap: break-word;      /* IE 5.5-7 */
 	white-space: -moz-pre-wrap; /* Firefox 1.0-2.0 */
 	white-space: pre-wrap;      /* current browsers */
