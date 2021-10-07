@@ -1,0 +1,72 @@
+@charset "UTF-8";
+
+/* ----------------------------------------- */
+/* tableInfo */
+table.tableInfo {
+	background-color: #F8F8F8;
+	background-color: var(--footer-bgc);
+	border-top: 2px solid gray;
+	border-bottom: 1px solid gray;
+}
+table.tableInfo td {
+	text-align: left;
+}
+table.tableInfo td[colspan="4"] {
+	padding: 1.1em 0 0 1em;
+	font-size: 1.1em;
+}
+table.tableInfo tr:nth-child(2) td {
+	padding: .5em 0 1em 1em;
+}
+table.tableInfo td:nth-child(2n-1) {
+	width: 5em;
+}
+table.tableInfo td:nth-child(2) {
+	width: 13em;
+}
+
+/* ----------------------------------------- */
+/* textContent */
+div.textContent {
+	margin-bottom: 4em;
+	padding: 1em;
+	min-height: 13em;
+	overflow: visible;
+	border-bottom: 2px solid gray;
+}
+
+/* ----------------------------------------- */
+/* tableRply */
+table.tableRply {
+	margin-bottom: 2em;
+	border-top: 2px solid gray;
+	border-bottom: 2px solid gray;
+}
+table.tableRply td {
+	padding: 1em;
+}
+table.tableRply tr.notEmpty td:nth-child(1) {
+	padding: 1.5em 0 0 2em;
+	width: 4.5em;
+}
+table.tableRply tr.notEmpty td:nth-child(2) {
+	padding: 1em 0 0 0;
+	width: 3.6em;
+}
+table.tableRply tr.notEmpty td:nth-child(3) {
+	padding: 1em 0 0 0;
+}
+
+table.tableRply tr.notEmpty td[colspan="3"] {
+	padding: 1.5em 2em;
+}
+
+table.tableRply tr.notEmpty td[colspan="4"] {
+	padding: 1em 0.5em 0.5em 0.5em;
+}
+
+/* ----------------------------------------- */
+/* tableRply */
+button.btn_del, button.btn_update, button.btn_list {
+	margin-left: .5em;
+}

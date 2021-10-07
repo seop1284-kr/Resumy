@@ -9,12 +9,11 @@
 
 	<!-- My CSS -->
     <link href="/css/buttonSize.css" rel="stylesheet">
-	<!-- <link rel="stylesheet" type="text/css" href="/CSS/fedBoard.css"> -->
-    <link href="/css/qnaView.css" rel="stylesheet">
+    <link href="/css/fedView.css" rel="stylesheet">
 
 </head>
 
-<body>
+<body class="wrapper">
 	
 	<!-- 헤더 -->
 	<c:import url="../../layout/header.jsp">
@@ -23,7 +22,7 @@
 	
 	
 	<!-- Begin Page Content -->
-	<div class="container-lg mt-4">
+	<div class="container-lg mt-4 main-content">
 		<h1 class="h3 text-gray-800 text-center" style="margin-bottom: 3em;">
             	<b>자소서 피드백 글</b>
         </h1>        
@@ -54,8 +53,7 @@
 					
 					<!-- 내용 -->
 					<div class="textContent">
-						<c:forEach var="con" items="${introResult.conList }"
-							varStatus="status">
+						<c:forEach var="con" items="${introResult.conList }" varStatus="status">
 							<div>
 								<div class="engBreakWord font-weight-bold mb-3">${status.count}.&nbsp;${con.question }</div>
 								<div class="engBreakWord mb-5">${con.content }</div>
@@ -75,73 +73,93 @@
 		</div>
 		<!-- 자소서 글 끝-->
 	
+		<!-- 비로그인 -->
+		<sec:authorize access="isAnonymous()">
+			<p>회원만 볼 수 있습니다.</p>
+		</sec:authorize>
+	
+		<!-- 로그인 했을 때 피드백 보기 및 댓글 달기 -->
+		<sec:authorize access="isAuthenticated()">
+	
+			<!-- 댓글 달기 -->
+			<h4><b>댓글 작성</b></h4>
+			<form name="frm" action="fedCommentOk" method="post">
+				<input type="hidden" name="iid" value="${introResult.intro.id }">
+				<textarea class="w-100 mb-4" name="content" style="display: block; height: 7em" required></textarea>
+				<div class="d-flex flex-row-reverse">
+					<button type="submit" class="btn btn-mint">댓글 작성</button>
+				</div>
+			</form>
+	
+	
+			<h4><b>댓글</b></h4>
+			<!-- 피드백 답변 -->
+			<table class="tableRply shadow" width="100%" cellspacing="0">
+				<c:choose>
+					<c:when test="${empty introResult.fedList || fn:length(introResult.fedList) == 0 }">
+						<tr>
+							<td class="text-gray-500">
+								<i class="fas fa-spinner fa-spin mr-2"></i>
+								아직 댓글이 없습니다.
+							</td>
+						</tr>
+					</c:when>
+					
+					<c:otherwise>
+						<c:forEach var="fed" items="${introResult.fedList }" varStatus="status">
+							
+							<tr class="notEmpty">
+								<td>
+									<i class="fas fa-user-circle text-gray-400" style="font-size: 1.5em;"></i>
+								</td>
+								<td>${fed.userid }</td>
+
+								<td class="text-gray-500">${fed.regdate }</td>
+								
+							</tr>
+							
+							<tr class="notEmpty">
+								<td colspan="3">
+									${fed.content }
+								</td>
+							</tr>
+							
+							<tr class="notEmpty">
+								<td colspan="4">
+									<form name="frm" action="fedDeleteOk" method="put">
+										<input type="hidden" name="iid" value="${introResult.intro.id }">
+										<input type="hidden" name="id" value="${fed.id}">
+										<button type=submit class="float-right btn btn-mint btn-sm">삭제</button>
+									</form>
+								</td>
+							</tr>
+							
+							<tr class="notEmpty">
+								<td class="pb-0 pt-0" colspan="3">
+									<c:if test="${status.last eq false}">
+										<hr>
+									</c:if>
+								</td>
+							</tr>
+							
+							
+						</c:forEach>
+					</c:otherwise>
+				</c:choose>
+			</table>
+			<!-- ./답변 -->
+			
+			
+		</sec:authorize>
+	
+		<form name=form1 action="fedBoard" method=get>
+			<input type=hidden name="iid" value="${introResult.intro.id }">
+			<button type=submit class="btn btn-mint float-right">목록</button>
+			
+		</form>
+		
 	</div>	
 	<!-- End Page Content -->
-	
-	
-	
-	
-	
-	
-	<!-- 비로그인 -->
-	<sec:authorize access="isAnonymous()">
-		<p>회원만 볼 수 있습니다.</p>
-	</sec:authorize>
-
-	<!-- 로그인 했을 때 피드백 보기 및 댓글 달기 -->
-	<sec:authorize access="isAuthenticated()">
-
-		<!-- 댓글 달기 -->
-		<form name="frm" action="fedCommentOk" method="post">
-			<input type="hidden" name="iid" value="${introResult.intro.id }">
-			<input type="text" name="content"
-				style="display: block; width: 90vh" required />
-			<button type="submit">댓글 작성</button>
-		</form>
-
-
-		<!-- 피드백 답변 -->
-		<h5>댓글</h5>
-		<c:choose>
-			<c:when
-				test="${empty introResult.fedList || fn:length(introResult.fedList) == 0 }">
-			</c:when>
-			<c:otherwise>
-
-				<c:forEach var="fed" items="${introResult.fedList }"
-					varStatus="status">
-
-					<tr>
-						<td>이름</td>
-						<td>${fed.userid }</td>
-						<td>/ 답변날짜</td>
-						<td>${fed.regdate }</td>
-						<br>
-					</tr>
-					<tr>
-						<td>내용</td>
-						<td>${fed.content }</td>
-						<form name="frm" action="fedDeleteOk" method="put">
-							<input type="hidden" name="iid" value="${introResult.intro.id }">
-							<input type="hidden" name="id" value="${fed.id}">
-							<button type="submit">댓글 삭제</button>
-						</form>
-					</tr>
-
-					<hr>
-					<br>
-				</c:forEach>
-
-			</c:otherwise>
-		</c:choose>
-	</sec:authorize>
-
-	<form name=form1 action="fedBoard" method=get>
-		<input type=hidden name="iid" value="${introResult.intro.id }">
-
-		<button type=submit>목록</button>
-	</form>
-
 	
 	<!-- 푸터 -->
 	<c:import url="../../layout/footer.jsp">
