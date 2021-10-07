@@ -14,8 +14,13 @@
 	<%-- 헤더 끝 --%>
 			
 	<h1>메인 페이지</h1>
+	<table id="tableXML"></table>
 			
 	<c:import url="./layout/footer.jsp"></c:import>
 	<%-- 푸터 끝 --%>
+	
+	<!-- MY JS -->
+	<script src="https://kit.fontawesome.com/8358df18ed.js" crossorigin="anonymous"></script>
+	<script src="/JS/index.js"></script>
 </body>
 </html>
