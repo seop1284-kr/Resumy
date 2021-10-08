@@ -1,5 +1,6 @@
 package com.proj.resumy.domain;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
@@ -14,7 +15,7 @@ public class MemberDTO {
 	private String email;	// mem_email
 	private int gender;		// mem_gender
 	private String phone;	// mem_phone
-	private LocalDateTime birthday;// mem_birthday
+	private LocalDate birthday;// mem_birthday
 	private String address;	// mem_address
 	private boolean career;	// mem_career
 	private LocalDateTime regdtm;	// reg_dtm
@@ -34,11 +35,10 @@ public class MemberDTO {
 	}
 	
 	public void setBirthday(String birthday) {
-		// 포맷터
-		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
-		// 문자열 -> Date
-		LocalDateTime date = LocalDateTime.parse(birthday, formatter);
-		System.out.println(date); // 2021-06-19T21:05:07
+		if (birthday.equals("")) {
+			return;
+		}
+		LocalDate date = LocalDate.parse(birthday, DateTimeFormatter.ISO_DATE);
 		
 		this.birthday = date;
 	}

@@ -33,7 +33,7 @@ public class AjaxCareerController {
 		//System.out.println("" + userDetails.getUsername());
 		List<CareerDTO> list = new ArrayList<>();
 		list = careerService.view(userDetails.getUsername());
-		System.out.println("list : " +  list.get(0));
+		//System.out.println("list : " +  list.get(0));
 		
 
 		return list;

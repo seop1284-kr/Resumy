@@ -43,7 +43,7 @@
     	<div class="mb-3">
 		  <label for="userid">아이디 <span class="text-danger">*</span></label>
 		  <div class="input-group mb-2">
-		    <input type="text" name="userid" class="form-control" id="userid" placeholder="아이디 입력" required>
+		    <input type="text" name="userid" class="form-control" id="userid" minlength="8" maxlength="16" placeholder="아이디 입력" required>
 		    <button type="button" class="btn btn-primary ml-3" id="chkId" onclick="checkId()">중복확인</button>
 		  </div>
 		  <!-- alert -->
@@ -62,8 +62,8 @@
         <div class="mb-3">
           <div class="mb-3">
 		    <label for="password">비밀번호 <span class="text-danger">*</span></label>
-            <input type="password" class="form-control mb-1" id="password" placeholder="비밀번호 입력 (8 ~ 32자리)">
-            <input type="password" name="pw" class="form-control" id="chkPassword" placeholder="비밀번호 재입력">
+            <input type="password" class="form-control mb-1" id="password" minlength="8" maxlength="32" placeholder="비밀번호 입력 (8 ~ 32자리)">
+            <input type="password" name="pw" class="form-control" id="chkPassword" minlength="8" maxlength="32" placeholder="비밀번호 재입력">
           </div>
           <!-- alert -->
 		  <div class="alert alert-danger alert-dismissable" id="chkPwErrorRE"> <%-- RE : regular expression --%>
