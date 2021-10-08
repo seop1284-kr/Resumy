@@ -8,29 +8,40 @@ nav {
     background-color: #00D3AB;
     background-color: var(--mint-color);
 }
-
-.navbar-brand > img {
-    width: 100px;
+nav ul { /* navbar-expand-lg 일 때 메뉴 배경색 */
+    background-color: #00D3AB95;
 }
 
-nav ul {
-    transform: translateX(-180px);
+/* 메뉴 비활성화 */
+nav li a {
+    color: #fffff3;
+    color: var(--light-color);
+    font-size: 18px;
+    font-weight: 700;
 }
 
+/* 메뉴 활성화 */
+nav li a.active {
+    color: #2f2c33;
+	color: var(--dark-color);
+}
+nav li a:hover {
+    color: #2f2c33;
+	color: var(--dark-color);
+}
+
+/* 로그인 버튼 */
 nav button.login_btn {
-    width: 70px;
-    height: 2.3em;
+    text-align: center;
     color: #2f2c33;
     color: var(--dark-color);
-    text-align: center;
     font-size: 14px;
     font-weight: 700;
     background-color: #fffff3;
     background-color: var(--light-color);
-    border: none;
 }
 
-/* 계정정보 */
+/* 로그인 후 뜨는 계정정보 */
 nav button.users_btn {
 	height: 2.3em;
 	color: #fffff3;
@@ -39,43 +50,23 @@ nav button.users_btn {
 	outline: none;
 	background: none;
 }
-
 nav button.users_btn i {
 	color: #fffff3;
     color: var(--light-color);
 }
-
 nav button.users_btn i:first-child {
 	font-size: 1.3em;
 }
 
-nav li {
-    display: flex;
-	float: left;
-    margin-right: 4em;
-    padding-top: .7em;
-    height: 3em;
-}
-
-nav li a {
-    color: var(--light-color);
-    color: #fffff3;
-    font-size: 18px;
-    font-weight: 700;
-}
-
-.label {
+/* 계정정보 드롭다운 */
+nav div.dropdown .dropdown-menu .label {
 	margin: 0 15px 3px 18px; 
 	color: lightgray;
 	font-size: 12px;
 	font-weight: 700;
 }
-
-/* 메뉴 활성화 */
-nav li a.active, nav li a:hover {
-	color: var(--dark-color);
-    color: #2f2c33;
-    border-bottom: 5px solid var(--dark-color);
+nav div.dropdown .dropdown-menu .dropdown-item {
+	font-size: 14px;
 }
 
 /* landscape : 가로가 더 긴 해상도 (ex. PC) */
