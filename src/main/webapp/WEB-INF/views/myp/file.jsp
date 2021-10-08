@@ -4,15 +4,14 @@
    
 <link href="/css/file.css" rel="stylesheet">
 
-<!-- font -->
+<!-- font 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-<!-- font-family: 'Jua', sans-serif; -->
+-->
+<!-- font-family: 'Jua', sans-serif; 
 <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
-
+-->
 <!-- JS -->
-<script src="https://kit.fontawesome.com/8358df18ed.js" crossorigin="anonymous"></script>
 <script src="/JS/file.js"></script>
 
 <!-- VIEW BODY -->
