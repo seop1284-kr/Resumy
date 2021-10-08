@@ -1,3 +1,5 @@
+var chkId = false;
+
 $(function(){
 	
 	// id alert
@@ -28,27 +30,52 @@ $(function(){
 	// select option 일 채우기
 	insertDate();
 	
+	//
+	$("#userid").keyup(function() {
+		chkId = false;
+		$('#chkIdErrorExist').hide();
+		$('#chkIdErrorNull').hide();
+		$('#chkIdSuccess').hide();
+	});
+	
 });
 
 // 아이디 중복확인
 function checkId() {
-	var id = $('#userid').val();
-	switch(id) {
-		case "": // 아이디를 입력하지 않고 중복확인 버튼 누름
-			$('#chkIdErrorExist').hide();
-			$('#chkIdErrorNull').show();
-			$('#chkIdSuccess').hide();
-			break;
-		case "same": // 동일한 아이디 존재 <<<<<<<<<<<<<<< 동일한 아이디 확인에 대한 로직 구현 필요
-			$('#chkIdErrorExist').show();
-			$('#chkIdErrorNull').hide();
-			$('#chkIdSuccess').hide();
-			break;
-		default: // 동일한 아이디 존재X
-			$('#chkIdErrorExist').hide();
-			$('#chkIdErrorNull').hide();
-			$('#chkIdSuccess').show();
-	}
+	
+	var userid = $('#userid').val();
+
+	if (userid == "") {
+		// 아이디를 입력하지 않고 중복확인 버튼 누름
+		$('#chkIdErrorExist').hide();
+		$('#chkIdErrorNull').show();
+		$('#chkIdSuccess').hide();
+		return;
+	} 
+	
+	$.ajax({
+		url: "/checkUserAjax/checkId/" + userid,  // url : /board
+		type: "GET",
+		cache: false,
+		async: false,
+		success: function(data, status) {
+			if (status == "success") {
+				if (!data) {
+					// 동일한 아이디 존재X
+					$('#chkIdErrorExist').show();
+					$('#chkIdErrorNull').hide();
+					$('#chkIdSuccess').hide();
+					chkId = true;
+				} else {
+					// 동일한 아이디 존재
+					$('#chkIdErrorExist').hide();
+					$('#chkIdErrorNull').hide();
+					$('#chkIdSuccess').show();
+				}
+				
+			}
+		}
+	});
 }
 
 
@@ -136,7 +163,7 @@ function insertDate() {
 	});
 }
 
-// 이메일 인증 <<<<<<<<< ????? 아무것도 안 보여야하는데 왜 성공 alert가 보이지?
+// 이메일 인증
 function checkEmail() {
 	var prefixEmail = $('#prefixEmail').val();
 	var suffixEmail = $('#suffixEmail option:selected').val();

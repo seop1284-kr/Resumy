@@ -3,10 +3,8 @@ package com.proj.resumy.config;
 import com.proj.resumy.domain.RecruitInfo;
 
 import retrofit2.Call;
-import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
-import retrofit2.http.POST;
 
 //공채 속보 API
 /*

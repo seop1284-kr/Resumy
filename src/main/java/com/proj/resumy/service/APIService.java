@@ -16,11 +16,11 @@ public class APIService {
 	
 	@Autowired
 	@Qualifier("restService")
-	RestInterface restService;
+	RestInterface restInterface;
 	
 	public Response<RecruitInfo> apiTest() throws Exception {
 	
-		Call<RecruitInfo> call = restService.apiTest(CONTENT_TYPE);
+		Call<RecruitInfo> call = restInterface.apiTest(CONTENT_TYPE);
 		
 		// API 호출
 		Response<RecruitInfo> response = call.execute();

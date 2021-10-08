@@ -43,9 +43,9 @@
 	  
 	  <!-- id/pw -->
 	  <label for="inputID" class="sr-only">Id</label>
-	  <input type="text" id="inputID" class="form-control" placeholder="아이디" required autofocus>
+	  <input type="text" name="userid" id="inputID" class="form-control" placeholder="아이디"  autofocus>
 	  <label for="inputPassword" class="sr-only">Password</label>
-	  <input type="password" id="inputPassword" class="form-control" placeholder="비밀번호" required>
+	  <input type="password" name="password" id="inputPassword" class="form-control" placeholder="비밀번호" >
 	  <div class="checkbox mb-2 d-flex justify-content-between">
 	    <label>
 	      <input type="checkbox" value="remember-me"> 로그인 상태 유지

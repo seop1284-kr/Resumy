@@ -59,8 +59,6 @@ $(document).ready(function() {
 // 새글 등록 처리
 function writeResume() {
 
-	// 특정 form 의 name 달린 form element 들의 value 들을 string 으로 묶기
-	// ex) name=aaa&subject=bbb&content=ccc   <-- string 타입이다
 	var serialData = $("#frmWrite").serialize();
 	$.ajax({
 		url: "/resumeAjax",  // url : /board
