@@ -58,5 +58,52 @@ function updateHireInfo() {
 }
 */
 
+$(document).ready(function() {
+	$.ajax({
+		url: "/indexAjax/",
+		type: "POST",
+		cache: false,
+		success: function(data, status) {
+			if (status == 'success') {
+				parse(data);
+
+			}
+		}
+	});
+});
+
+function parse(data) {
+	
+	var info = data.dhsOpenEmpInfo;
+	var table = "";
+	
+	for (var i = 0; i < info.length; i++) {
+		table += "<tr>\n";
+		table += "<td>" + JSON.stringify(info[i].empWantedTitle) + "</td>\n";
+		table += "<td>" + JSON.stringify(info[i].empBusiNm) + "</td>\n";
+		table += "<td>" + JSON.stringify(info[i].coClcdNm) + "</td>\n";
+		table += "<td>" + JSON.stringify(info[i].empWantedStdt) + "</td>\n";
+		table += "<td>" + JSON.stringify(info[i].empWantedEndt) + "</td>\n";
+		table += "<td>" + JSON.stringify(info[i].empWantedTypeNm) + "</td>\n";
+		//table += "<td>" + JSON.stringify(info[i].regLogImgNm) + "</td>\n";
+		//table += "<td>" + JSON.stringify(info[i].empWantedHomepgDetail) + "</td>\n";
+		//table += "<td>" + JSON.stringify(info[i].empWantedMobileUrl) + "</td>\n";
+		table += "</tr>\n";
+	}
+	
+	$('#infoTable').html(table);
+	
+	/*var table = "<tr><th>업체명</th><th>고용형태</th><th>마감일</th></tr>\n"
+	$(xmlDOM).find('dhsOpenEmpInfo').each(function (){
+		
+		table += "<tr>\n";
+		table += "<td>" + $(this).find('empBusiNm').text() + "</td>\n";
+		table += "<td>" + $(this).find('empWantedTypeNm').text() + "</td>\n";
+		table += "<td>" + $(this).find('empWantedEndt').text() + "</td>\n";
+		table += "</tr>\n";
+		
+	});
+	$('#tableXML').html(table);*/
+}
 
 
