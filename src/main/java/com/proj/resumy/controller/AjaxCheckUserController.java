@@ -18,11 +18,11 @@ public class AjaxCheckUserController {
 	
 	@GetMapping("/checkId/{userid}")
 	public boolean checkId(@PathVariable String userid) {
-		// userid 중복 체크(true: 중복, false: 중복 아님)
+		// userid 중복 체크(true: 중복아님, false: 중복)
 		if (memberService.findById(userid) == null) {
-			return false;
+			return true;
 		}
-		return true;
+		return false;
 	}
 	
 }
