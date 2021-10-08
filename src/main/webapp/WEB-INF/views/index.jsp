@@ -14,12 +14,12 @@
 	<%-- 헤더 끝 --%>
 			
 	<h1>메인 페이지</h1>
-	<!-- <table id="tableXML"></table> -->
+	<table id="infoTable"></table>
 			
 	<c:import url="./layout/footer.jsp"></c:import>
 	<%-- 푸터 끝 --%>
 	
 	<!-- MY JS -->
-	<!-- <script src="/JS/index.js"></script> --> <!-- 채용정보API -->
+	<script src="/JS/index.js"></script> <!-- 채용정보API -->
 </body>
 </html>

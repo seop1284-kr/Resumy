@@ -10,11 +10,12 @@ import org.springframework.context.annotation.Configuration;
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
 import retrofit2.converter.jackson.JacksonConverterFactory;
+import retrofit2.converter.jaxb.JaxbConverterFactory;
 
 @Configuration
 public class RetrofitConfig {
 	
-	private static String API_TEST_URL = "http://localhost:8080/";
+	private static String API_TEST_URL = "https://openapi.work.go.kr/";
 	
 	@Bean(name="okHttpClient")
 	public OkHttpClient okHttpClient() {
@@ -27,7 +28,7 @@ public class RetrofitConfig {
 	@Bean(name="commonRetrofit")
 	public Retrofit retrofit(@Qualifier("okHttpClient") OkHttpClient client) {
 		return new Retrofit.Builder().baseUrl(API_TEST_URL)
-				.addConverterFactory(JacksonConverterFactory.create())
+				.addConverterFactory(JaxbConverterFactory.create())
 				.client(client).build();
 	}
 	
