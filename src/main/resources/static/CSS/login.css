@@ -1,0 +1,75 @@
+@charset "UTF-8";
+:root {
+	--kakao-color: #FFDF00;
+	--facebook-color: #3F67AF;
+	--naver-color: #01C73C;	
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: center;
+  align-items: center;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  background-color: #f5f5f5;
+}
+
+/* 폼 설정 */
+.form-login {
+  width: 100%;
+  max-width: 330px;
+  padding: 15px;
+  margin: auto;
+}
+.form-login .checkbox {
+  font-weight: 400;
+}
+.form-login .form-control {
+  position: relative;
+  box-sizing: border-box;
+  height: auto;
+  padding: 10px;
+  font-size: 16px;
+}
+.form-login .form-control:focus {
+  z-index: 2;
+}
+.form-login input[type="email"] {
+  margin-bottom: -1px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.form-login input[type="password"] {
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+/* 버튼 설정 */
+.form-login .btn {
+	font-size: 16px;
+	height: 2.8em;
+}
+.form-login .btn-kk, .form-login .btn-fb, .form-login .btn-nv {
+	padding: 14px 16px;
+	height: 3.2em;
+}
+.form-login .btn-kk {
+	color: black;
+	background-color: var(--kakao-color);
+}
+.form-login .btn-fb {
+	background-color: var(--facebook-color);
+}
+.form-login .btn-nv {
+	background-color: var(--naver-color);
+}
+.form-login i {
+	margin-right: .5em;
+	font-size: 1.5em;
+}
