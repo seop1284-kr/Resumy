@@ -30,18 +30,20 @@
     </style>
     <!-- Bootsnipp -->
     <link href="/assets/bootsnipp/css/AlertGroup.css" rel="stylesheet">
+    <!-- JQuery UI -->
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 </head>
  <body class="container bg-light pt-5">
 
 	<!-- logo -->
     <a href="/"><img class="mb-4" src="/img/logo_shadow.png" alt="Resumy 로고" width="300"></a>
     
-	<form action="/joinOk" method="POST">
+	<form id="formJoin" class="mb-5" action="/joinOk" method="POST">
     	<!-- id -->
     	<div class="mb-3">
 		  <label for="userid">아이디 <span class="text-danger">*</span></label>
 		  <div class="input-group mb-2">
-		    <input type="text" class="form-control" id="userid" placeholder="아이디 입력" required>
+		    <input type="text" name="userid" class="form-control" id="userid" placeholder="아이디 입력" required>
 		    <button type="button" class="btn btn-primary ml-3" id="chkId" onclick="checkId()">중복확인</button>
 		  </div>
 		  <!-- alert -->
@@ -61,7 +63,7 @@
           <div class="mb-3">
 		    <label for="password">비밀번호 <span class="text-danger">*</span></label>
             <input type="password" class="form-control mb-1" id="password" placeholder="비밀번호 입력 (8 ~ 32자리)">
-            <input name="pw" type="password" class="form-control" id="chkPassword" placeholder="비밀번호 재입력">
+            <input type="password" name="pw" class="form-control" id="chkPassword" placeholder="비밀번호 재입력">
           </div>
           <!-- alert -->
 		  <div class="alert alert-danger alert-dismissable" id="chkPwErrorRE"> <%-- RE : regular expression --%>
@@ -78,12 +80,18 @@
         <!-- name -->
         <div class="mb-3">
 		  <label for="password">이름 <span class="text-danger">*</span></label>
-		  <input name="name" type="text" class="form-control" id="name" placeholder="이름을 입력해주세요">
+		  <input type="text" name="name" class="form-control" id="name" placeholder="이름을 입력해주세요">
         </div>
         
         <!-- birth -->
         <div class="mb-3">
           <label for="year">생년월일 <span class="text-muted">(선택)</span></label>
+          <div class="input-group">
+            <input type="text" name="birthday" class="form-control" id="datepicker">
+            <div class="input-group-prepend">
+			  <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
+			</div>
+          </div>
           <div class="input-group">
             <select name="year" class="custom-select d-block w-100 col-md-4" id="year" required>
 	          <option value="-1">선택하세요</option>
@@ -101,7 +109,7 @@
         <div class="mb-3">
           <label for="">이메일 <span class="text-danger">*</span></label>
 	      <div class="input-group mb-2">
-		    <input type="email" class="form-control" id="prefixEmail" placeholder="이메일" required>		   
+		    <input type="text" name="email" class="form-control" id="prefixEmail" placeholder="이메일" required>		   
 		    <div class="input-group-prepend">
 			  <span class="input-group-text">@</span>
 			</div>
@@ -119,33 +127,35 @@
           </div>
 		</div>
 		
-		<div class="mb-3" id="chkEmailSuccessForm">
+		<div class="mb-3" id="chkEmailNumBox">
 		  <label for="">이메일 인증하기</label>
 		  <div class="input-group mb-2">
-	        <input type="text" class="form-control mt-1" id="chkEmailSuccessInput" placeholder="인증번호 입력" required>
-	        <button type="button" class="btn btn-primary ml-3" id="btn_chkEmailSuccess" onclick="checkEmailSuccess()">확인하기</button>
+	        <input type="text" name="chkEmailNum" class="form-control mt-1" id="chkEmailNum" placeholder="인증번호 입력" required>
+	        <button type="button" class="btn btn-primary ml-3" id="btn_chkEmailNum" onclick="checkEmailNum()">확인하기</button>
           </div>
           <!-- email check Success/Fail alert -->
-		  <div class="alert alert-danger alert-dismissable" id="chkEmailErrorInputNull">
+		  <div class="alert alert-danger alert-dismissable" id="chkEmailNumErrorNull">
             <strong style="font-size: 15px;">[이메일 인증 오류] </strong> 인증번호를 입력한 뒤 확인버튼을 눌러주세요.
           </div>
-		  <div class="alert alert-danger alert-dismissable" id="chkEmailFail">
+		  <div class="alert alert-danger alert-dismissable" id="chkEmailNumFail">
             <strong style="font-size: 15px;">[이메일 인증 오류] </strong> 인증이 실패했습니다.
           </div>
-		  <div class="alert alert-success alert-dismissable" id="chkEmailSuccess">
+		  <div class="alert alert-success alert-dismissable" id="chkEmailNumSuccess">
             <strong style="font-size: 15px;">[이메일 확인 성공] </strong> 입력하신 비밀번호는 사용할 수 있는 비밀번호입니다.
           </div>
 		</div>
     	
     	<hr class="my-5">
     	
-        <button class="btn btn-primary btn-lg btn-block" type="submit" disabled>회원가입</button>
+        <button class="btn btn-primary btn-lg btn-block" type="submit" id="btn_submit" disabled>회원가입</button>
         
 	</form>
 	
 	<!-- Bootstrap -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 	<script src="/assets/dist/js/bootstrap.min.js"></script>
+	<!-- JQuery UI -->
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 	<!-- My JS -->
 	<script src="/JS/join.js"></script>
 </body>

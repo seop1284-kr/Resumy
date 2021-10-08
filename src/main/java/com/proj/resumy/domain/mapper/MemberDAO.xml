@@ -13,13 +13,13 @@
 			mem_phone phone,
 			mem_birthday birthday,
 			mem_address address,
-			mem_career mem_career
+			mem_career career
 		FROM hr_member
 	</select>
 	
 	<insert id="addUser" parameterType="com.proj.resumy.domain.MemberDTO">
-		INSERT INTO hr_member(mem_userid, mem_pw, mem_name, mem_email)
-		VALUES(#{userid}, #{pw}, #{name}, #{email})
+		INSERT INTO hr_member(mem_userid, mem_pw, mem_name, mem_birthday, mem_email)
+		VALUES(#{userid}, #{pw}, #{name}, #{birthday}, #{email})
 	</insert>
 	
 	<insert id="addAuth">
@@ -53,9 +53,7 @@
 			mem_phone phone,
 			mem_birthday birthday,
 			mem_address address,
-			mem_career mem_career,
-			reg_dtm regdtm,
-			mody_dtm modydtm
+			mem_career career
 		FROM hr_member
 		WHERE mem_userid = #{userid}	
 	</select>

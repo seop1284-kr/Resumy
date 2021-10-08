@@ -19,12 +19,10 @@ CREATE TABLE `hr_member` (
 	`mem_email`	varchar(50)	NOT NULL	COMMENT '회원이메일',
 	`mem_gender`	int(1)	NULL	COMMENT '성별 1:남, 2:여',
 	`mem_phone`	varchar(11)	NULL	COMMENT '연락처',
-	`mem_birthday`	varchar(8)	NULL	COMMENT '생년월일',
+	`mem_birthday`	datetime	NULL	COMMENT '생년월일',
 	`mem_address`	varchar(255)	NULL	COMMENT '주소',
 	`mem_career`	boolean	NULL	COMMENT '경력여부',
-	`reg_dtm`	datetime	NOT NULL	DEFAULT now()	COMMENT '등록일시',
-	`mody_dtm`	datetime	NOT NULL	DEFAULT now()	COMMENT '수정일시'/*,
-	`mem_level`	boolean	NOT NULL	DEFAULT true	COMMENT '회원등급 (true:회원  false: 관리자)'*/
+	`reg_dtm`	datetime	NOT NULL	DEFAULT now()	COMMENT '등록일시(가입일)'
 );
 
 -- 회원권한 테이블(김진섭)

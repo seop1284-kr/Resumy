@@ -14,11 +14,17 @@ public class MemberDTO {
 	private String email;	// mem_email
 	private int gender;		// mem_gender
 	private String phone;	// mem_phone
-	private String birthday;// mem_birthday
+	private LocalDateTime birthday;// mem_birthday
 	private String address;	// mem_address
 	private boolean career;	// mem_career
 	private LocalDateTime regdtm;	// reg_dtm
-	private LocalDateTime modydtm;	// mody_dtm
+	
+	public String getBirthday() {
+		if(birthday == null) {
+			return null;
+		}
+		return this.birthday.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+	}
 	
 	public String getRegdtm() {
 		if(regdtm == null) {
@@ -27,12 +33,14 @@ public class MemberDTO {
 		return this.regdtm.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"));
 	}
 	
-	public String getModydtm() {
-		if(modydtm == null) {
-			modydtm = LocalDateTime.now();
-		}
-		return this.modydtm.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"));
+	public void setBirthday(String birthday) {
+		// 포맷터
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+		// 문자열 -> Date
+		LocalDateTime date = LocalDateTime.parse(birthday, formatter);
+		System.out.println(date); // 2021-06-19T21:05:07
+		
+		this.birthday = date;
 	}
-
 	
 }

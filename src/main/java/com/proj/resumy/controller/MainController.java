@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.proj.resumy.domain.MemberDTO;
-import com.proj.resumy.intro.service.AjaxIntroService;
 import com.proj.resumy.service.MemberService;
 
 @Controller
@@ -74,6 +73,9 @@ public class MainController {
 		String rawPassword = user.getPw();
 		String encPassword = passwordEncoder.encode(rawPassword);
 		user.setPw(encPassword);
+		// 회원가입에서 이메일을 배열로 받아와서 , 을 @ 로 변경
+		user.setEmail(user.getEmail().replace(',', '@'));
+		System.out.println(user);
 		
 		int cnt = memberService.addMember(user);
 		

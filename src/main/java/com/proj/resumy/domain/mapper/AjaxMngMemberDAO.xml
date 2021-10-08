@@ -17,8 +17,7 @@
 			mem_birthday birthday,
 			mem_address address,
 			mem_career mem_career,
-			reg_dtm regdtm,
-			mody_dtm modydtm
+			reg_dtm regdtm
 		FROM 
 			hr_member
 		ORDER BY 
