@@ -13,7 +13,7 @@ DROP TABLE IF EXISTS `hr_member` CASCADE;
 -- 회원정보 테이블
 CREATE TABLE `hr_member` (
 	`mem_id`	int	NOT NULL AUTO_INCREMENT	PRIMARY KEY COMMENT '일련번호',
-	`mem_userid`	varchar(100)	NOT NULL UNIQUE	COMMENT '회원아이디',
+	`mem_userid`	varchar(16)	NOT NULL UNIQUE	COMMENT '회원아이디',
 	`mem_pw`	varchar(100)	NOT NULL	COMMENT '회원비밀번호',
 	`mem_name`	varchar(10)	NOT NULL	COMMENT '회원이름',
 	`mem_email`	varchar(50)	NOT NULL	COMMENT '회원이메일',
