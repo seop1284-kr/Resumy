@@ -14,7 +14,15 @@
 
 ★채용기업 홈페이지 <empWantedHomepg>
 ★채용사이트URL <empWantedHomepgDetail> - 현재 로고에 적용되어 있는 url
+
+
+url: 
+http://openapi.work.go.kr/opi/opi/opia/dhsOpenEmpInfoAPI.do?authKey=WNKTM9J2OCLG1EI81VOVZ2VR1HJ&callTp=L&returnType=XML&&startPage=1&display=100
 */
+
+document.cookie = "safeCookie1=foo; SameSite=Lax";
+document.cookie = "safeCookie2=foo";
+document.cookie = "crossCookie=bar; SameSite=None; Secure";
 
 $(document).ready(function() {
 	$.ajax({
@@ -31,23 +39,38 @@ $(document).ready(function() {
 });
 
 function parseJson(data) {
-	
+
 	var info = data.dhsOpenEmpInfo;
-	var table = ""
-	
+	var list = ""
+	var now = new Date();
+
+
 	for (var i = 0; i < info.length; i++) {
-		table += "<tr>\n";
-		table += "<td><a href='" + info[i].empWantedHomepgDetail + "'><img src ='" + info[i].regLogImgNm + "' alt='" + info[i].empWantedTitle + "'></a></td>\n";
-		table += "<td>" + info[i].empWantedTitle + "</td>\n";
-		table += "<td>" + info[i].empBusiNm + "</td>\n";
-		table += "<td>" + info[i].coClcdNm + "</td>\n";
-		table += "<td>" + info[i].empWantedTypeNm + "</td>\n";
-		table += "<td>" + info[i].empWantedEndt + "</td>\n";
-		table += "</tr>\n";
+		list += "<li class='infoBox'>";
+		list += "<div class='logo'><a href='" + info[i].empWantedHomepgDetail + "'><img src ='" + info[i].regLogImgNm + "' alt='" + info[i].empWantedTitle + "'></a></div>\n";
+		list += "<span class='title ellipsis'>" + info[i].empWantedTitle + "</span>\n";
+		list += "<span class='clcdNm'>" + info[i].coClcdNm + "</span>\n";
+		list += "<span class='busiNm'>" + info[i].empBusiNm + "</span>\n";
+		list += "<span class='type'>" + info[i].empWantedTypeNm.replaceAll("|", " / ").replace("/ 기타", "") + "</span>\n";
+
+		function parse(str) {
+			var y = str.substr(0, 4);
+			var m = str.substr(4, 2);
+			var d = str.substr(6, 2);
+			return new Date(y, m - 1, d);
+		}
+		var date = parse(info[i].empWantedEndt);
+		var now = new Date();
+		var dday = date.getTime() - now.getTime();
+		var result = Math.floor(dday / (1000 * 60 * 60 * 24));
+		
+		list += "<span class='endt'>" + "D - " + result + "</span>\n";
+		list += "</li>";
 	}
-	
-	$('#infoTable').html(table);
-	
+
+	$('#infoList').html(list);
+
 }
+
 
 

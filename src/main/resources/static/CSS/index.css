@@ -1,0 +1,87 @@
+/* 기본 색상 */
+:root {
+	--resumy-blue: #4876EF;
+	--resumy-gray: #B4C0D3;
+	--resumy-green: #00D3AB;
+	--resumy-black: #2F2C33;
+	--resumy-white: #FFFFF3;
+}
+
+
+.infoBox {
+	width: 25%;
+	height: 250px;
+	display: inline-block;
+	border: 1px solid #B4C0D3;
+	border: 1px solid var(--resumy-gray);
+	padding: 10px;
+	color: gray;
+}
+
+@media screen and (max-width: 991px){
+	.infoBox {
+		width: 33.3%;		
+	}
+}
+
+@media screen and (max-width: 730px){
+	.infoBox {
+		width: 50%;		
+		
+	}
+}
+
+.infoBox:hover {
+	border: 3px solid #00D3AB;
+	color: black;
+}
+
+.infoBox .logo {
+	/* border: 1px solid blue; */
+ 	width: 100%;
+	margin-top: 10px;
+	margin-bottom: 20px;
+}
+
+.infoBox img {
+	width: 100%;
+	height: 25%;
+	object-fit: cover;
+}
+
+.infoBox span {
+	float: left;
+	/* border: 1px solid red; */
+	margin-bottom: 10px;
+}
+
+
+.title {
+	width: 100%;
+	font-weight: 900;
+
+}
+
+.busiNm {
+	width: 68%;
+	text-align: right;
+	font-weight: 700;
+}
+
+.clcdNm {
+	width: 32%;
+}
+
+.type {
+	width: 100%;	
+}
+
+.endt {
+	width: 100%;
+	text-align: right;
+	right: 0;
+	bottom: 0;
+	color: red;
+	font-weight: 700;
+	
+}

@@ -28,7 +28,7 @@
 	
 	<img class="errPageLogo" alt="RESUMY" src="/img/logo_shadow.png"><br><br><br><br>
 	
-	<button class="errPageLink" onclick="location.href='/'">메인으로 돌아가기</button>
+	<button class="errPageLink text-white" onclick="location.href='/'">메인으로 돌아가기</button>
 <!--<a class="btn btn-secondary border rounded-pill btn-lg" href='/'>메인으로 돌아가기</a> -->
 </div>
 </body>

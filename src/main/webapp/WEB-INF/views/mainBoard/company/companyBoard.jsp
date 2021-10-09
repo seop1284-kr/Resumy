@@ -8,7 +8,7 @@
 </c:import>
 </head>
 
-<body>
+<body class="wrapper">
 
 	<!-- 헤더 -->
 	<c:import url="../../layout/header.jsp">
@@ -16,7 +16,10 @@
 	</c:import>
 			
 			
-	<h1>기업정보 페이지</h1>
+	<div class="container-lg main-content">
+		<h1>기업정보 페이지</h1>
+		<ul id="infoList" class="list"></ul>
+	</div>
 			
 	<!-- 푸터 -->
 	<c:import url="../../layout/footer.jsp">

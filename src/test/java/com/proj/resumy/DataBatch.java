@@ -206,36 +206,38 @@ class DataBatch {
             e.printStackTrace();
          }
       }
-      
-      // 파일 테이블
-      cnt = 0; // executeUpdate(), DML 결과
-      try {
-         Class.forName(DRIVER);
-         conn = DriverManager.getConnection(URL, USERID, USERPW);
-         
-         // 테스트용 dummy 데이터 만들기
-         pstmt = conn.prepareStatement(SQL_RESUMY_FILE_INSERT);
-         
-         int num = 10;
-         for(int i = 0; i < num; i++) {
-			pstmt.setString(1, String.format("file%02d", i));  
-			pstmt.setString(2, String.format("changed%02d", i));  
-			pstmt.setInt(3, i+500);
-			pstmt.setString(4, "mem01");
-			cnt += pstmt.executeUpdate();
-		}
-         System.out.println(cnt + "개 의 파일 데이터가 INSERT 되었습니다");
-         
-      } catch(Exception e) {
-         e.printStackTrace();
-      } finally {
-         try {
-            if(pstmt != null) pstmt.close();
-            if(conn != null) conn.close();
-         } catch(Exception e) {
-            e.printStackTrace();
-         }
-      }
+//      파일 업로드 다운로드 삭제 테스트를 위해 파일 테이블 배치는 주석처리 함
+//      
+//      // 파일 테이블
+//      cnt = 0; // executeUpdate(), DML 결과
+//      try {
+//         Class.forName(DRIVER);
+//         conn = DriverManager.getConnection(URL, USERID, USERPW);
+//         
+//         // 테스트용 dummy 데이터 만들기
+//         pstmt = conn.prepareStatement(SQL_RESUMY_FILE_INSERT);
+//         
+//         int num = 10;
+//         for(int i = 0; i < num; i++) {
+//			pstmt.setString(1, String.format("file%02d", i));  
+//			pstmt.setString(2, String.format("changed%02d", i));  
+//			pstmt.setInt(3, i+500);
+//			pstmt.setString(4, "mem01");
+//			cnt += pstmt.executeUpdate();
+//		}
+//         System.out.println(cnt + "개 의 파일 데이터가 INSERT 되었습니다");
+//         
+//      } catch(Exception e) {
+//         e.printStackTrace();
+//      } finally {
+//         try {
+//            if(pstmt != null) pstmt.close();
+//            if(conn != null) conn.close();
+//         } catch(Exception e) {
+//            e.printStackTrace();
+//         }
+//      }
+//      
       
       // 자기소개서 테이블
       cnt = 0; // executeUpdate(), DML 결과
