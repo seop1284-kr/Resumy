@@ -12,7 +12,7 @@
 
 	<!-- 헤더 -->
 	<c:import url="../../layout/header.jsp">
-		<c:param name="headerMenu" value="main" />
+		<c:param name="headerMenu" value="company" />
 	</c:import>
 			
 			
