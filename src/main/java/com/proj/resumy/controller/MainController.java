@@ -64,21 +64,24 @@ public class MainController {
 	}
 	
 	@PostMapping("/joinOk")
-	public String joinOk(MemberDTO user) {
+	public String joinOk(Model model, MemberDTO user) {
 		System.out.println(user);
+		
 		// join id 중복 체크
 		if (memberService.findById(user.getUserid()) != null) {
 			return "redirect:/join";
 		}
+		// pw encode
 		String rawPassword = user.getPw();
 		String encPassword = passwordEncoder.encode(rawPassword);
 		user.setPw(encPassword);
-		// 회원가입에서 이메일을 배열로 받아와서 , 을 @ 로 변경
-		user.setEmail(user.getEmail().replace(',', '@'));
+		
 		System.out.println(user);
 		
 		int cnt = memberService.addMember(user);
 		
-		return "redirect:/login";
+		model.addAttribute("result", cnt); // 회원가입 성공/실패 결과
+		
+		return "joinOk";
 	}
 }
