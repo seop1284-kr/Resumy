@@ -48,11 +48,12 @@ function parseJson(data) {
 	for (var i = 0; i < info.length; i++) {
 		list += "<li class='infoBox'>";
 		list += "<div class='logo'><a href='" + info[i].empWantedHomepgDetail + "'><img src ='" + info[i].regLogImgNm + "' alt='" + info[i].empWantedTitle + "'></a></div>\n";
-		list += "<span class='title ellipsis'>" + info[i].empWantedTitle + "</span>\n";
-		list += "<span class='clcdNm'>" + info[i].coClcdNm + "</span>\n";
 		list += "<span class='busiNm'>" + info[i].empBusiNm + "</span>\n";
+		list += "<span class='title ellipsis'>" + info[i].empWantedTitle + "</span>\n";
+		/*list += "<span class='clcdNm'>" + info[i].coClcdNm + "</span>\n";*/
 		list += "<span class='type'>" + info[i].empWantedTypeNm.replaceAll("|", " / ").replace("/ 기타", "") + "</span>\n";
 
+		// yyyyMMdd 형식의 문자열을 Date 형식으로 바꾸는 함수
 		function parse(str) {
 			var y = str.substr(0, 4);
 			var m = str.substr(4, 2);
