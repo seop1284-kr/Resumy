@@ -40,7 +40,7 @@ public class MypageController {
 		if (access) {
 			return "myp/historyMng";
 		}
-		return "errorPage";
+		return "myp/historyMng";
 		
 	}
 	

@@ -4,13 +4,49 @@ var spec01 = 0;
 var spec02 = 0;
 var spec03 = 0;
 var spec04 = 0;
+
 $(document).ready(function(){
-	loadPage();
-	//수정시 입력내용 없으면 알람
+	
+	loadPage();	
+	
+	//수정시 필수입력내용 없으면 알람
 	$("#memberList").submit(function(){
 		updateMember();
 	});
 	
+	$("#spec01").submit(function(){
+		if(spec01 == 0){
+			writeSpec("spec01");
+		} else {
+			updateSpec("spec01");
+		}
+	});
+	
+	$("#spec02").submit(function(){
+		if(spec02 == 0){
+			writeSpec("spec02");
+		} else {
+			updateSpec("spec02");
+		}
+	});
+	
+	$("#spec03").submit(function(){
+		if(spec03 == 0){
+			writeSpec("spec03");
+		} else {
+			updateSpec("spec03");
+		}
+	});
+	
+	$("#spec04").submit(function(){
+		if(spec04 == 0){
+			writeSpec("spec04");
+		} else {
+			updateSpec("spec04");
+		}
+	});
+	
+
 	//학력사항 초등학교 버튼
 	$("#btnSchool01").click(function(){
 		$("#spec01").show();
@@ -93,10 +129,7 @@ $(document).ready(function(){
 });
 //초기 화면
 function loadPage(){
-	
-	$('#content1').html('<h4><b>기본정보</b></h4>');
-	$('#content2').html('<h4><b>학력사항</b></h4>');
-	$('#content3').html('<h4><b>경력사항</b></h4>');
+
 	//$("#careerPuls").hide();
 	$("#spec01").hide();
 	$("#spec02").hide();
@@ -175,11 +208,14 @@ function selectSpecList(catCd){
 			if(status == "success"){
 				//addViewEvent();
 				if(data.length > 0){
+					console.log("김 " + catCd);
 					if(catCd == "" || catCd == null){
+							console.log("민 " + catCd);
 						//최종 이력 세팅
 						$("#spec" + data[0].cat).show();
 						$("#btnSchool" + data[0].cat).attr("class", "btn btn-mint active");	
 					}else{	
+							console.log("수 " + catCd);
 						//등록 혹은 수정시 해당 입력 정보가 출력			
 						$("#spec"+catCd).show();
 					}
@@ -407,22 +443,22 @@ function deleteCareer(formId){
 function makeCareerContent(data){
 		console.log("makeCareerContent 1 ");
 	for(var i = 0; i < data.length; i++){				
-		var careerContent ="<form name='career"+ i +"' id='career"+ i +"' action='' method='post'>";
+		var careerContent ="<div class='company'><form name='career"+ i +"' id='career"+ i +"' action='' method='post'>";
 		careerContent +='<table width="100%"><tr><td width="20%">회사명</td><td width="60%"><input type="text" class="inputBox" name="company" value="" placeholder="회사명을 입력하세요" required></td>';
 		careerContent +='<td width= "20%">';
 		careerContent +="<button type='submit' style='width:80px;' class='btn btn-mint' onclick='updateCareer(\"career"+i+"\")'>수정</button></td>";
 		careerContent +="<td width= '10%'><button type='submit' style='width:80px;' name='btnCareerDelete' class='deleteBtn btn btn-mint' onclick='deleteCareer(\"career"+i+"\")' >삭제</button></td></tr>";
-		careerContent +='<tr><td width="15%">재직기간</td><td width="75%"><input type="text" class="inputBox" name="hiredate" value="" required>  ~  <input type="text" class="inputBox" name="leavedate" value="" required></td></tr>';
+		careerContent +='<tr><td width="15%">재직기간</td><td width="75%"><input type="text" class="inputBox" name="hiredate" value="" placeholder="ex)yyyyMMdd" required>  ~  <input type="text" class="inputBox" name="leavedate" value="" placeholder="ex)yyyyMMdd" required></td></tr>';
 		careerContent +='<tr><td width="15%">퇴사사유</td><td width="75%"><input type="text" class="inputBox2" name="lvreason" value="" placeholder="퇴사사유 입력하세요"></td></tr>';
 		careerContent +='<tr><td width="15%">직급/직책</td><td width="75%"><input type="text" class="inputBox" name="post" value="" required></td></tr>';
 		careerContent +='<tr><td width="15%">근무부서</td><td width="75%"><input type="text" class="inputBox" name="dept" value=""></td></tr>';
 		careerContent +='<tr><td width="15%">지역</td><td width="75%"><input type="text" class="inputBox" name="companyArea" value=""></td></tr>';
-		careerContent +='<tr><td width="15%">연봉</td><td width="75%"><input type="text" class="inputBox" name="salary" value="" required> <input type="text" class="inputBox" name="manwon" value="" placeholder = "만원"></td></tr>';
-		careerContent +='<tr><td width="15%">담당업무</td><td width="75%"><input type="text" class="inputBox" name="work" value=""></td></tr><tr><td colspan="4"><hr></td></tr>';
+		careerContent +='<tr><td width="15%">연봉</td><td width="75%"><input type="number" class="inputBox" name="salary" value="" > 만원</td></tr>';
+		careerContent +='<tr><td width="15%">담당업무</td><td width="75%"><input type="text" style="width:100%;" class="inputBox" name="work" value=""></td></tr><tr><td colspan="4"><hr></td></tr>';
 		/* hidden setting */
 		careerContent +='<input type="hidden" id="id" name="id" value="">';
 		careerContent +='<input type="hidden" id="userid" name="userid" value="">';
-		careerContent +='</table></form>';
+		careerContent +='</table></form></div>';
 
 //		careerContent +='<tr><td width="10%"></td><td width="60%"></td><td width="20%"><button type="button" class="">경력추가+</button></td></tr></table>';
 
@@ -433,21 +469,21 @@ function makeCareerContent(data){
 function makeCareerContentPuls(careerIdNo){
 		console.log("makeCareerContentPuls 2 ");
 
-	var careerContent ="<form name='conent_plus"+ careerIdNo +"' id='conent_plus"+ careerIdNo +"' action='' method='post'>";
+	var careerContent ="<div id='careerDelete"+ careerIdNo +"' class='company'><form name='conent_plus"+ careerIdNo +"' id='conent_plus"+ careerIdNo +"' action='' method='post'>";
 	    careerContent +='<table width="100%"><tr><td width="20%">회사명</td><td width="80%"><input type="text" class="inputBox" name="company" value="" placeholder="회사명을 입력하세요" required ></td>';
 		careerContent +="<td ><button type='submit' style='width:80px;' class='writeBtn btn btn-mint' onclick='writeCareer(\"conent_plus"+ careerIdNo +"\")' >등록</button></td>";
-		careerContent +='<td ><button type="submit" style="width:80px;" class="deleteBtn btn btn-mint" id="careerDelete" onclick="$(conent_plus'+ careerIdNo +').remove()">삭제</button></td></tr>';
-		careerContent +='<tr><td width="15%">재직기간</td><td width="80%"><input type="text" class="inputBox" name="hiredate" value="" required >  ~  <input type="text" class="inputBox" name="leavedate" value="" required></td></tr>';
+		careerContent +='<td ><button type="submit" style="width:80px;" class="deleteBtn btn btn-mint" id="careerDelete" onclick="$(careerDelete'+ careerIdNo +').remove()">삭제</button></td></tr>';
+		careerContent +='<tr><td width="15%">재직기간</td><td width="80%"><input type="text" class="inputBox" name="hiredate" value="" placeholder="ex)yyyyMMdd" required >  ~  <input type="text" class="inputBox" name="leavedate" value="" placeholder="ex)yyyyMMdd" required></td></tr>';
 		careerContent +='<tr><td width="15%">퇴사사유</td><td width="80%"><input type="text" class="inputBox2" name="lvreason" value="" placeholder="퇴사사유 입력하세요"></td></tr>';
 		careerContent +='<tr><td width="15%">직급/직책</td><td width="80%"><input type="text" class="inputBox" name="post" value="" required></td></tr>';
 		careerContent +='<tr><td width="15%">근무부서</td><td width="80%"><input type="text" class="inputBox" name="dept" value=""></td></tr>';
 		careerContent +='<tr><td width="15%">지역</td><td width="80%"><input type="text" class="inputBox" name="companyArea" value=""></td></tr>';
-		careerContent +='<tr><td width="15%">연봉</td><td width="80%"><input type="text" class="inputBox" name="salary" value="" required > <input type="text" class="inputBox" name="manwon" value="" placeholder = "만원"></td></tr>';
-		careerContent +='<tr><td width="15%">담당업무</td><td width="80%"><input type="text" class="inputBox" name="work" value=""></td></tr><tr><td colspan="4"><hr></td></tr></tr>';
+		careerContent +='<tr><td width="15%">연봉</td><td width="80%"><input type="number" class="inputBox" name="salary" value="" required> 만원</td></tr>';
+		careerContent +='<tr><td width="15%">담당업무</td><td width="80%"><input type="text" style="width:100%;" class="inputBox" name="work" value=""></td></tr><tr><td colspan="4"><hr></td></tr></tr>';
 		/* hidden setting */
 		//careerContent +='<input type="hidden" id="id" name="id" value="">';
 		careerContent +='<input type="hidden"  name="userid" value= CareerDTO.getUserId>';
-		careerContent +='</table></form>';
+		careerContent +='</table></form></div>';
 		
 //		careerContent +='<tr><td width="10%"></td><td width="60%"></td><td width="20%"><button type="button" class="">경력추가+</button></td></tr>';
 		

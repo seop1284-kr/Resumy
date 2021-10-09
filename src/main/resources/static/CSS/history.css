@@ -27,17 +27,48 @@ aside li.active {
 .topListBtn{
 	float: right; 
 }
-
+/*정보 inputBox size */
 .inputBox{
         width:150px;
         height:30px;
         font-size:15px;
       }
-      
+/*기본정보(주소) inputBox size */      
 .inputBox2{
         width:270px;
         height:30px;
         font-size:15px;
       }
+/*경력사항(담당업무) inputBox size */      
+.inputBox3{
+        width:90%;
+        height:30px;
+        font-size:15px;
+      }     
+/*기본정보 배경색 */         
+div.basic{
+	height: 200px;
+	background-color:#F8F8F8;
+	padding : 5px 5px 5px 5px; 
+}
+/*학력사항 배경색 */ 
+div.school{
+	height: 250px;
+	background-color:#F8F8F8;
+	padding : 5px 5px 5px 5px; 
+}
+/*경력사항 배경색 */ 
+div.company{
+	height: 300px;
+	background-color:#F8F8F8;
+	padding : 18px 5px 5px 5px; 
+}      
+/*학력사항 중제목 글씨 size*/
+h5 {
+	font-size:18px;
+} 
+   
+      
+
 
 

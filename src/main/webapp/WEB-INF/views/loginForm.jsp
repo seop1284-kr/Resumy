@@ -12,6 +12,9 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 	<!-- Bootstrap CSS -->
 	<link href="/assets/dist/css/bootstrap.min.css" rel="stylesheet">
+	<!-- 카카오 로그인 -->
+	<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+	<script src="/JS/login.js"></script>
 	<style>
       .bd-placeholder-img {
         font-size: 1.125rem;
@@ -28,6 +31,27 @@
         }
       }
     </style>
+    <script>
+    window.Kakao.init("8a72cbf0b5226747f67595121318891d");
+
+    function kakaoLogin() {
+        window.Kakao.Auth.login({
+            scope: 'profile_nickname, account_email, gender, birthday',
+            success: function (autObj) {
+                console.log(autObj);
+                window.Kakao.API.request({
+                    url: '/v2/user/me',
+                    success: res => {
+                        const kakao_account = res.kakao_account;
+                        console.log(kakao_account)
+                    }
+                });
+
+            }
+        });
+
+    }
+    </script>
 	<!-- My CSS -->
 	<link href="/css/login.css" rel="stylesheet">
 </head>
@@ -35,7 +59,8 @@
 <%-- 일단 아이디/패스워드 의 name 은 'username' 과 'password' 로 하자 (시큐리티의 디폴트) --%>
 <%-- 만약 다른 name 을 사용하려면 SecurityConfig 에서 .usernameParameter("userid") 해주면 된다 --%>
 <body class="text-center">
-
+	<!-- 카카오 로그인 -->
+	
     <form class="form-login" action="/loginOk" method="POST">
     
       <!-- logo -->
@@ -57,17 +82,20 @@
 	  
 	  <!-- login button -->
 	  <button class="btn btn-lg btn-primary btn-block border-0 mb-4" type="submit">로그인</button>
-	  <button class="btn btn-lg btn-primary btn-block border-0 btn-kk d-flex justify-content-center align-item-center" type="button">
-	  	<i class="fas fa-comments"></i>
-	  	<span>카카오톡으로 로그인</span>
+	  
+	  <button class="btn btn-lg btn-primary btn-block border-0 btn-kk d-flex justify-content-center align-item-center" type="button" href="javascript:kakaoLogin();">
+	  	<i class="fas fa-comments" ></i>
+	  	<span>카카오톡 로그인</span>
 	  </button>
-	  <button class="btn btn-lg btn-primary btn-block border-0 btn-fb d-flex justify-content-center align-item-center" type="button">
+	  
+	  <button class="btn btn-lg btn-primary btn-block border-0 btn-fb d-flex justify-content-center align-item-center" type="button" href="javascript:kakaoLogin();">
 	  	<i class="fab fa-facebook-square"></i>
-	  	<span>Facebook으로 로그인</span>
+	  	<span>Facebook 로그인</span>
 	  </button>
+	  
 	  <button class="btn btn-lg btn-primary btn-block border-0 btn-nv d-flex justify-content-center align-item-center" type="button">
 	  	<i class="fas">N</i>
-	  	<span>네이버로 로그인</span>
+	  	<span>네이버 로그인</span>
 	  </button>
 	  
 	  <!-- signin -->
