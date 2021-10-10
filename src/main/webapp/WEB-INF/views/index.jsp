@@ -17,10 +17,18 @@
 		<c:param name="headerMenu" value="main" />
 	</c:import>
 	<%-- 헤더 끝 --%>
+	
+	<section class="heroImg">
+        
+            <!-- 히어로 이미지 -->
+            <div class="heroImgTxt">
+            <p>손쉬운 자소서, 이력서, 포트폴리오 관리 <p>
+            <h1>누구나 합격할 수 있다</h1>
+        	</div>
+        	<img alt="RESUMY" src="/img/logo_main.png">
+    </section>
 			
 	<div class="container main-content">
-		<h1>여기에 히어로 이미지</h1>
-		<h1>공채 속보</h1>
 		<ul id="infoList" class="list"></ul>
 	</div>
 		
