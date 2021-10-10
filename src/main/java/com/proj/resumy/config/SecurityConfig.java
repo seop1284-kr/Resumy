@@ -56,19 +56,19 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 			.and()
 			.logout()
 			.logoutSuccessUrl("/")
-
 			
 			// 접근오류(권한오류) 발생시 /login 으로 이동시키기 
 			.and()
 			.formLogin()
-			.loginPage("/login")
-		
+	
 			// 로그인 처리
+			.loginPage("/login")
 			.usernameParameter("userid")   // 만약 로그인 username 이 name="username" 이 아닌경우
 			.loginProcessingUrl("/loginOk")  // "/loginOk" url 로 request 가 들어오면 시큐리티가 낚아채서 처리, 대신 로그인을 진행해준다.
 									// 이와 같이 하면 Controller 에서 /longinOk 를 만들지 않아도 된다!
 			.defaultSuccessUrl("/")   // 직접 /login → /loginOk 에서 성공하면 "/" 로 이동시키기
 				// 만약 다른 특정페이지에 진입하려다 로그인 하여 성공하면 해당 페이지로 이동 (너무 편리!)
+			.successHandler(new MyAuthenticationSuccessHandler())
 			;
 	}
 }

@@ -1,5 +1,7 @@
 package com.proj.resumy.controller;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -27,16 +29,10 @@ public class MainController {
 	
 	// index page
 	@RequestMapping("")
-	public String indexPage(Model model) {
+	public String indexPage(HttpServletRequest request) {
+		//System.out.println(request.getSession().getMaxInactiveInterval());
 		return "index";
 	}
-	
-	// main page 콘텐츠
-//	@RequestMapping("/main")
-//	public String mainPage(String content, String headerMenu, Model model) {
-//		
-//		return "mainBoard/main/mainBoard";
-//	}
 	
 	// company board 콘텐츠
 	@RequestMapping("/companyBoard")
@@ -53,7 +49,7 @@ public class MainController {
 	
 	// 로그인 페이지
 	@GetMapping("/login")
-	public String login() {	
+	public String login() {
 		return "loginForm";
 	}
 	
