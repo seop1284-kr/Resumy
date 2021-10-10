@@ -3,13 +3,16 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
 
-<link href="/css/index.css" rel="stylesheet">
-
 <c:import url="./layout/head.jsp"></c:import>
 <%-- 헤드 끝 --%>
+
+	<!-- My CSS -->
+	<link href="/css/index.css" rel="stylesheet">
+
 </head>
 
 <body class="wrapper">
+
 	<c:import url="./layout/header.jsp">
 		<c:param name="headerMenu" value="main" />
 	</c:import>

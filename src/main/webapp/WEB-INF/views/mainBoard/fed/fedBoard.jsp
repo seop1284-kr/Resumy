@@ -18,6 +18,7 @@
 	<c:import url="../../layout/header.jsp">
 		<c:param name="headerMenu" value="fed" />
 	</c:import>
+	
 	<!-- 검색 -->
 	<div class="searchContainer">
 		<div class="searchWrapper">
