@@ -23,9 +23,10 @@ aside li {
 aside li.active {
     font-weight: 700;
 }
-
+/*기본정보 수정버튼 위치*/
 .topListBtn{
-	float: right; 
+	text-align: right;
+	padding: 2px 10px 2px 5px;
 }
 /*정보 inputBox size */
 .inputBox{
@@ -52,23 +53,45 @@ div.basic{
 	padding : 5px 5px 5px 5px; 
 }
 /*학력사항 배경색 */ 
-div.school{
-	height: 250px;
+.school{
+	height: 300px;
 	background-color:#F8F8F8;
-	padding : 5px 5px 5px 5px; 
+	magin : 5px 5px 5px 5px;
 }
+/*학력사항 초,중,고,대 별 각각 보이게하기*/
+.spec{
+	display:none;
+}   
+/*새로고침시 하단 경력추가+버튼 안보이게하기*/
+.plusBtn {
+	display:none;
+}
+/*초기화면시 학력사항 배경 안보이게하기*/
+.mainSpec{
+	display:none;
+}
+/*학력사항 타이틀 제목(초등학교 정보입력..등등)*/
+.title{
+	height:15%;
+	padding: 10px 0 0 20px;
+	font-size:18px;
+}
+/*학력사항 서브 제목(학교명,지역..등등)*/
+.subtitle{
+	text-align: center;
+	font-size:17px;
+}
+/*학력사항 입력 수정버튼 위치*/
+.btnWriteUpdate{
+	text-align: right;
+	padding: 2px 10px 2px 5px;
+}
+
 /*경력사항 배경색 */ 
 div.company{
 	height: 300px;
 	background-color:#F8F8F8;
 	padding : 18px 5px 5px 5px; 
 }      
-/*학력사항 중제목 글씨 size*/
-h5 {
-	font-size:18px;
-} 
-   
-      
-
 
 

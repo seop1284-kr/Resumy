@@ -45,11 +45,12 @@ $(document).ready(function(){
 			updateSpec("spec04");
 		}
 	});
-	
+		
 
 	//학력사항 초등학교 버튼
 	$("#btnSchool01").click(function(){
 		$("#spec01").show();
+		$("#mainSpec").show();
 		$("#spec02").hide();
 		$("#spec03").hide();
 		$("#spec04").hide();
@@ -62,6 +63,7 @@ $(document).ready(function(){
 	//학력사항 중학교 버튼
 	$("#btnSchool02").click(function(){
 		$("#spec02").show();
+		$("#mainSpec").show();
 		$("#spec01").hide();
 		$("#spec03").hide();
 		$("#spec04").hide();
@@ -74,6 +76,7 @@ $(document).ready(function(){
 	//학력사항 고등학교 버튼
 	$("#btnSchool03").click(function(){
 		$("#spec03").show();
+		$("#mainSpec").show();
 		$("#spec01").hide();
 		$("#spec02").hide();
 		$("#spec04").hide();
@@ -86,6 +89,7 @@ $(document).ready(function(){
 	//학력사항 대학/대학원 버튼
 	$("#btnSchool04").click(function(){
 		$("#spec04").show();
+		$("#mainSpec").show();
 		$("#spec01").hide();
 		$("#spec02").hide();
 		$("#spec03").hide();
@@ -130,11 +134,6 @@ $(document).ready(function(){
 //초기 화면
 function loadPage(){
 
-	//$("#careerPuls").hide();
-	$("#spec01").hide();
-	$("#spec02").hide();
-	$("#spec03").hide();
-	$("#spec04").hide();
 	$("#careerContent").empty();
 	$("#careerPuls").empty();		
 	$("#btnCareerPuls").hide();
@@ -208,14 +207,12 @@ function selectSpecList(catCd){
 			if(status == "success"){
 				//addViewEvent();
 				if(data.length > 0){
-					console.log("김 " + catCd);
-					if(catCd == "" || catCd == null){
-							console.log("민 " + catCd);
+					//console.log("김 " + catCd);
+					if(	!catCd ){
 						//최종 이력 세팅
 						$("#spec" + data[0].cat).show();
-						$("#btnSchool" + data[0].cat).attr("class", "btn btn-mint active");	
+						$("#btnSchool" + data[0].cat).attr("class", "btn btn-mint active");
 					}else{	
-							console.log("수 " + catCd);
 						//등록 혹은 수정시 해당 입력 정보가 출력			
 						$("#spec"+catCd).show();
 					}
@@ -236,7 +233,7 @@ function selectSpecList(catCd){
 							$("#cat_03").val(data[i].cat);
 							$("#school_03").val(data[i].name);
 							$("#schoolArea_03").val(data[i].area);
-							$("#major_03").val(data[i].major);	
+							$("#major_03").val(data[i].major);
 						}else if(data[i].cat == 04){
 							spec04++;
 							$("#cat_04").val(data[i].cat);
@@ -247,6 +244,7 @@ function selectSpecList(catCd){
 						}
 													
 					}//for문 end	
+						//DB에 정보 없을시 등록버튼,있으면 수정 버튼
 						if(spec01 == 0){
 							$("#btnWriteSpec01").show();
 							$("#btnUpdateSpec01").hide();
