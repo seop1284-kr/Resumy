@@ -4,8 +4,7 @@
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
 
 <!-- 헤드 -->
-<c:import url="../../layout/head.jsp">
-</c:import>
+<c:import url="../../layout/head.jsp"></c:import>
 </head>
 
 <body class="wrapper">
@@ -14,16 +13,14 @@
 	<c:import url="../../layout/header.jsp">
 		<c:param name="headerMenu" value="company" />
 	</c:import>
-			
-			
+
+	<!-- content -->
 	<div class="container-lg main-content">
-		<h1>기업정보 페이지</h1>
-		<ul id="infoList" class="list"></ul>
+		<iframe id="pageFrame" name="pageFrame" class="w-100" src="http://www.jobkorea.co.kr/Starter/calendar/sub/month" frameborder="0" height="1000px" scrolling="auto"></iframe>
 	</div>
 			
 	<!-- 푸터 -->
-	<c:import url="../../layout/footer.jsp">
-	</c:import>
+	<c:import url="../../layout/footer.jsp"></c:import>
 	
 </body>
 </html>
