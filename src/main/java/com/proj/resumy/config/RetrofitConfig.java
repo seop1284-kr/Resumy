@@ -13,7 +13,7 @@ import retrofit2.converter.jaxb.JaxbConverterFactory;
 @Configuration
 public class RetrofitConfig {
 	
-	private static String API_TEST_URL = "https://openapi.work.go.kr/";
+	private static String API_FOR_INDEX = "https://openapi.work.go.kr/";	
 	
 	@Bean(name="okHttpClient")
 	public OkHttpClient okHttpClient() {
@@ -25,13 +25,18 @@ public class RetrofitConfig {
 	
 	@Bean(name="commonRetrofit")
 	public Retrofit retrofit(@Qualifier("okHttpClient") OkHttpClient client) {
-		return new Retrofit.Builder().baseUrl(API_TEST_URL)
+		return new Retrofit.Builder().baseUrl(API_FOR_INDEX)
 				.addConverterFactory(JaxbConverterFactory.create())
 				.client(client).build();
 	}
 	
-	@Bean(name="restService")
-	public RestInterface restService(@Qualifier("commonRetrofit") Retrofit retrofit) {
+	@Bean(name="indexService")
+	public RestInterface indexService(@Qualifier("commonRetrofit") Retrofit retrofit) {
+		return retrofit.create(RestInterface.class);
+	}
+	
+	@Bean(name="companyService")
+	public RestInterface companyService(@Qualifier("commonRetrofit") Retrofit retrofit) {
 		return retrofit.create(RestInterface.class);
 	}
 	

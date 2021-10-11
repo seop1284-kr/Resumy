@@ -15,12 +15,16 @@ public class APIService {
 	private static final String CONTENT_TYPE = "Application/xml";
 	
 	@Autowired
-	@Qualifier("restService")
-	RestInterface restInterface;
+	@Qualifier("indexService")
+	RestInterface indexService;
+	
+	@Autowired
+	@Qualifier("companyService")
+	RestInterface companyService;
 	
 	public Response<RecruitInfo> apiTest() throws Exception {
 	
-		Call<RecruitInfo> call = restInterface.apiTest(CONTENT_TYPE);
+		Call<RecruitInfo> call = indexService.getRcruitInfo(CONTENT_TYPE);
 		
 		// API 호출
 		Response<RecruitInfo> response = call.execute();
