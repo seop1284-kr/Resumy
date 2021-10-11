@@ -3,8 +3,8 @@ var chkPw = false; // 비밀번호 입력 확인 상태 (true: 확인O, false: �
 var chkName = false; // 이름 입력 확인 상태 (true: 입력O, false: 입력X)
 var chkEmail = false; // 이메일 인증 확인 상태 (true: 인증O, false: 인증X)
 // 정규 표현식
-var regexId = /^[a-zA-Z][a-zA-Z\d]{7,15}$/;
-var regexPw = /^[a-zA-Z][a-zA-Z\d]{7,15}$/;
+var regexId = /^[a-zA-Z][a-zA-Z\d]{3,11}$/;
+var regexPw = /^[a-zA-Z\d]{8,16}$/;
 
 $(function() {
 	

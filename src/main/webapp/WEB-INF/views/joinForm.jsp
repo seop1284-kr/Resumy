@@ -46,12 +46,12 @@
 	    	<div class="mb-3">
 			  <label for="userid">아이디 <span class="text-danger">*</span></label>
 			  <div class="input-group mb-2">
-			    <input type="text" name="userid" class="form-control" id="userid" maxlength="16" placeholder="아이디 입력" required>
+			    <input type="text" name="userid" class="form-control" id="userid" minlength="4" maxlength="12" placeholder="아이디 입력(4~12자리, 영문/숫자 입력가능)" required>
 			    <button type="button" class="btn btn-primary ml-3" id="btn_chkId" onclick="checkId()" disabled>중복확인</button>
 			  </div>
 			  <!-- alert -->
 			  <div class="alert alert-danger alert-dismissable" id="chkIdErrorRE">
-	            아이디는 영문자로 시작하는 8~16자 영문자 또는 숫자이어야 합니다. <strong>(특수문자, 한글 불가능)</strong>
+	            아이디는 <strong>영문자로 시작</strong>하는 4~12자 영문자 또는 숫자이어야 합니다. <strong>(특수문자, 한글 불가능)</strong>
 	          </div>
 			  <div class="alert alert-danger alert-dismissable" id="chkIdErrorExist">
 	            <strong>존재하는 아이디입니다.</strong>
@@ -68,7 +68,7 @@
 	        <div class="mb-3">
 	          <div class="mb-3" id="pwform">
 			    <label for="password">비밀번호 <span class="text-danger">*</span></label>
-	            <input type="password" class="form-control mb-1" id="password" placeholder="비밀번호 입력">
+	            <input type="password" class="form-control mb-1" id="password" placeholder="비밀번호 입력 (8~16자리, 영문/숫자 입력가능)">
 	            <input type="password" name="pw" class="form-control" id="chkPassword" placeholder="비밀번호 재입력">
 	          </div>
 	          <!-- alert -->
