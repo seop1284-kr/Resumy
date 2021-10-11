@@ -8,6 +8,17 @@
 
 	<!-- My CSS -->
 	<link href="/css/index.css" rel="stylesheet">
+	
+	<style>
+		a#MOVE_TOP_BTN {
+		    position: fixed;
+		    right: 2%;
+		    bottom: 50px;
+		    display: none;
+		    z-index: 999;
+		}
+	</style>
+
 
 </head>
 
@@ -30,6 +41,7 @@
 			
 	<div class="container main-content">
 		<ul id="infoList" class="list"></ul>
+		<a id="MOVE_TOP_BTN" href="#">TOP</a>
 	</div>
 		
 	<c:import url="./layout/footer.jsp"></c:import>
