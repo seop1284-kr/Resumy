@@ -31,7 +31,7 @@ public interface RestInterface {
 	String API_KEY = "WNKTM9J2OCLG1EI81VOVZ2VR1HJ";
 			
 	// 반환 타입은 Call<타입>의 제네릭 형태
-	@GET("opi/opi/opia/dhsOpenEmpInfoAPI.do?authKey=" + API_KEY + "&callTp=L&returnType=XML&&startPage=1&display=100")
+	@GET("opi/opi/opia/dhsOpenEmpInfoAPI.do?authKey=" + API_KEY + "&callTp=L&returnType=XML&&startPage=1&display=100&sortOrderBy=asc")
 	Call<RecruitInfo> apiTest(@Header("content-type") String contentType);
 
 }

@@ -43,14 +43,15 @@ function parseJson(data) {
 	var info = data.dhsOpenEmpInfo;
 	var list = ""
 	var now = new Date();
+	
 
 
 	for (var i = 0; i < info.length; i++) {
-		list += "<a href='" + info[i].empWantedHomepgDetail + "'><li class='infoBox'>";
+		list += "<a href='" + info[i].empWantedHomepgDetail + "'><li class='infoBox'>\n";
 		list += "<div class='logo'><img src ='" + info[i].regLogImgNm + "' alt='" + info[i].empWantedTitle + "'></div>\n";
-		list += "<span class='busiNm'>" + info[i].empBusiNm + "</span><span class='clcdNm'>"+ info[i].coClcdNm+"</span>";
+		list += "<span class='busiNm'>" + info[i].empBusiNm + "</span><span class='clcdNm'>"+ info[i].coClcdNm+"</span>\n";
 		list += "<span class='title ellipsis'>" + info[i].empWantedTitle + "</span>\n";
-		list += "<span class='type ellipsis'>" + info[i].empWantedTypeNm.replaceAll("|", " / ").replace("/ 기타", "") + "</span>\n";
+		list += "<span class='type ellipsis'>" + info[i].empWantedTypeNm.replaceAll("|", " / ") + "</span>\n";
 
 		// yyyyMMdd 형식의 문자열을 Date 형식으로 바꾸는 함수
 		function parse(str) {
@@ -64,7 +65,20 @@ function parseJson(data) {
 		var dday = date.getTime() - now.getTime();
 		var result = Math.floor(dday / (1000 * 60 * 60 * 24));
 		
-		list += "<div class='endt'>" + "D - " + result + "</div>\n";
+		if (result < 0) {
+			result = "종 료";
+			list += "<div class='endtEx'>" + result + "</div>\n";
+		} else if (result == 0) {
+			result = "D - day";
+			list += "<div class='endt blinking'>" + result + "</div>\n";
+		} else if (0 < result && result < 4) {
+			result = "D - " + Math.floor(dday / (1000 * 60 * 60 * 24));
+			list += "<div class='endtUnder3'>" + result + "</div>\n";
+		} else {
+			result = "D - " + Math.floor(dday / (1000 * 60 * 60 * 24));
+			list += "<div class='endt'>" + result + "</div>\n";
+		}
+		
 		list += "</li></a>";
 	}
 
@@ -72,5 +86,8 @@ function parseJson(data) {
 
 }
 
-
-
+/*
+setInterval(function(){
+  $(".blinking").toggle();
+}, 250);
+*/

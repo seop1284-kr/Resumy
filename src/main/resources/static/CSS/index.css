@@ -56,7 +56,7 @@ header {
 	border: 1px solid #B4C0D3;
 	border: 1px solid var(--resumy-gray);
 	border-top : 4px solid #4876EF;
-	/* border-bottom : none; */
+	border-bottom : none;
 	padding: 10px;
 	color: gray;
 	margin-bottom: 10px;
@@ -153,13 +153,48 @@ header {
 }
 
 .endt {
-	width: 40px;
+	width: 45px;
 	font-size: 12px;
 	text-align: center;
-	color: red;
 	font-weight: 400;
+	color: #4876EF;
+	border: 1px solid #4876EF;
+	border-radius: 4px; 
+	float: right;
+}
+
+.endtUnder3 {
+	width: 45px;
+	font-size: 12px;
+	text-align: center;
+	font-weight: 400;
+	color: red;
 	border: 1px solid red;
 	border-radius: 4px; 
 	float: right;
-	
 }
+
+.endtEx {
+	width: 45px;
+	font-size: 12px;
+	text-align: center;
+	color: gray;
+	font-weight: 400;
+	border: 1px solid gray;
+	border-radius: 4px; 
+	float: right;
+}
+
+@keyframes blink-effect { 50% { opacity: 0; } }
+.blinking { 
+	animation: blink-effect 0.8s step-end infinite;
+	color: red;
+	border: 1px solid red;
+	} 
+
+.hidden {
+	display: none;
+}
+
+
+
