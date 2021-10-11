@@ -51,15 +51,18 @@ header {
 
 .infoBox {
 	width: 25%;
-	height: 200px;
+	height: 180px;
 	display: inline-block;
-	border: 1px solid #B4C0D3;
-	border: 1px solid var(--resumy-gray);
-	border-top : 4px solid #4876EF;
+	border: 1px solid lightgray;
+	border-top : 3px solid #4876EF;
 	border-bottom : none;
 	padding: 10px;
 	color: gray;
 	margin-bottom: 10px;
+}
+
+li.infoBox:nth-child(n+2) {
+	border-left: none;
 }
 
 @media screen and (max-width: 991px){
@@ -101,8 +104,9 @@ header {
 }
 
 .infoBox:hover {
-	border: 4px solid #4876EF;
+	border: 3px solid #4876EF;
 	color: black;
+	background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1))
 }
 
 .infoBox .logo {
@@ -121,7 +125,7 @@ header {
 .infoBox span {
 	float: left;
 	/* border: 1px solid red; */
-	margin-bottom: 5px;
+	/* margin-bottom: 5px; */
 }
 
 
@@ -133,7 +137,7 @@ header {
 }
 
 .busiNm {
-	font-size: 15px;
+	/* font-size: 15px; */
 	width: 72%;
 	color: var(--resumy-blue);
 	color: #4876EF;
@@ -147,50 +151,50 @@ header {
 
 .type {
 	width: 100%;
-	font-size: 10px;
-	color: var(--resumy-gray);
-	color: #B4C0D3; 
+	font-size: 13px;
+	color: #a7a7a7;
+	margin-top: 3px; 
 }
 
 .endt {
-	width: 45px;
-	font-size: 12px;
+	/* width: 40px; */
+	font-size: 14px;
 	text-align: center;
-	font-weight: 400;
+	font-weight: 500;
 	color: #4876EF;
 	border: 1px solid #4876EF;
-	border-radius: 4px; 
+	/* border-radius: 4px; */ 
+	padding: 0 3px;
 	float: right;
+	margin-bottom: 1px;
 }
 
 .endtUnder3 {
-	width: 45px;
-	font-size: 12px;
-	text-align: center;
-	font-weight: 400;
 	color: red;
 	border: 1px solid red;
-	border-radius: 4px; 
-	float: right;
 }
 
 .endtEx {
-	width: 45px;
-	font-size: 12px;
-	text-align: center;
 	color: gray;
-	font-weight: 400;
 	border: 1px solid gray;
-	border-radius: 4px; 
-	float: right;
 }
 
-@keyframes blink-effect { 50% { opacity: 0; } }
+@keyframes blink-effect { 50% { opacity: 0.5; } }
 .blinking { 
 	animation: blink-effect 0.8s step-end infinite;
 	color: red;
 	border: 1px solid red;
 	} 
+
+a#MOVE_TOP_BTN {
+    position: fixed;
+    right: 2%;
+    bottom: 50px;
+    display: none;
+    z-index: 999;
+    
+}
+
 
 .hidden {
 	display: none;

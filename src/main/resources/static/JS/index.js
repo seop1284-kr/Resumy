@@ -60,8 +60,6 @@ function parseJson(data) {
 	var info = data.dhsOpenEmpInfo;
 	var list = ""
 	var now = new Date();
-	
-
 
 	for (var i = 0; i < info.length; i++) {
 		list += "<a href='" + info[i].empWantedHomepgDetail + "'><li class='infoBox'>\n";
@@ -79,20 +77,20 @@ function parseJson(data) {
 		}
 		var date = parse(info[i].empWantedEndt);
 		var now = new Date();
-		var dday = date.getTime() - now.getTime();
-		var result = Math.floor(dday / (1000 * 60 * 60 * 24));
-		
+		var dday = now.getTime() - date.getTime();
+		var result = (Math.floor(dday / (1000 * 60 * 60 * 24))) * -1;
+
 		if (result < 0) {
 			result = "종 료";
-			list += "<div class='endtEx'>" + result + "</div>\n";
+			list += "<div class='endt endtEx'>" + result + "</div>\n";
 		} else if (result == 0) {
-			result = "D - day";
+			result = "D-day";
 			list += "<div class='endt blinking'>" + result + "</div>\n";
 		} else if (0 < result && result < 4) {
-			result = "D - " + Math.floor(dday / (1000 * 60 * 60 * 24));
-			list += "<div class='endtUnder3'>" + result + "</div>\n";
+			result = "D - " + (Math.floor(dday / (1000 * 60 * 60 * 24))) * -1;
+			list += "<div class='endt endtUnder3'>" + result + "</div>\n";
 		} else {
-			result = "D - " + Math.floor(dday / (1000 * 60 * 60 * 24));
+			result = "D - " + (Math.floor(dday / (1000 * 60 * 60 * 24))) * -1;
 			list += "<div class='endt'>" + result + "</div>\n";
 		}
 		
@@ -103,8 +101,3 @@ function parseJson(data) {
 
 }
 
-/*
-setInterval(function(){
-  $(".blinking").toggle();
-}, 250);
-*/

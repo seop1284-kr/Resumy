@@ -19,6 +19,7 @@ $(document).ready(function() {
 			chkUpload();
 		}
 	});
+	
 
 	// 다운로드 버튼 누르면
 	$("#downloadBtn").click(function() {
@@ -307,3 +308,10 @@ function chkFileAndMemo() {
 
 }
 
+/*
+function press(f){ 
+	if(f.keyCode == 13){ 	// javascript에서는 13이 enter키를 의미함 
+		frmFile.submit(); 	// 지정할 form의 name = frmFile
+	} 
+}
+*/
