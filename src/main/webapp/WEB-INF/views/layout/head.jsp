@@ -18,6 +18,9 @@
 	<!-- Bootstrap CSS -->
 	<link href="/assets/dist/css/bootstrap.min.css" rel="stylesheet">
 	
+	<!-- Custom styles for this template -->
+    <link href="/assets/startbootstrap-sb-admin-2-gh-pages/css/sb-admin-2.min.css" rel="stylesheet">
+	
 	<!-- FontAwesome -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 	

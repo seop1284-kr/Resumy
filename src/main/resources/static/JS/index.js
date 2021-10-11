@@ -64,7 +64,7 @@ function parseJson(data) {
 	for (var i = 0; i < info.length; i++) {
 		list += "<a href='" + info[i].empWantedHomepgDetail + "'><li class='infoBox'>\n";
 		list += "<div class='logo'><img src ='" + info[i].regLogImgNm + "' alt='" + info[i].empWantedTitle + "'></div>\n";
-		list += "<span class='busiNm'>" + info[i].empBusiNm + "</span><span class='clcdNm'>"+ info[i].coClcdNm+"</span>\n";
+		list += "<span class='busiNm ellipsis'>" + info[i].empBusiNm + "</span><span class='clcdNm'>"+ info[i].coClcdNm+"</span>\n";
 		list += "<span class='title ellipsis'>" + info[i].empWantedTitle + "</span>\n";
 		list += "<span class='type ellipsis'>" + info[i].empWantedTypeNm.replaceAll("|", " / ") + "</span>\n";
 

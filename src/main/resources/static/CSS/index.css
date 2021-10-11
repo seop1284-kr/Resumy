@@ -14,7 +14,8 @@ header {
 
 .heroImg {
 	text-align: center;
-	background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url(https://i.ibb.co/jRSpn1C/skyscrapers-hero-Img.jpg);
+	background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(https://i.ibb.co/jRSpn1C/skyscrapers-hero-Img.jpg);
+	background-color: black;
 	background-position: center;
     background-size: cover;
     height: 50vh;
@@ -23,7 +24,6 @@ header {
     color: #FFFFF3;
     color: var(--resumy-white);
     margin-bottom: 30px;
-    
     
     
 }
@@ -56,14 +56,16 @@ header {
 	border: 1px solid lightgray;
 	border-top : 3px solid #4876EF;
 	border-bottom : none;
+ 	border-right: none;
 	padding: 10px;
 	color: gray;
 	margin-bottom: 10px;
 }
 
-li.infoBox:nth-child(n+2) {
-	border-left: none;
-}
+ul a:nth-child(4n) li {
+	border-right: 1px solid lightgray;
+} 
+
 
 @media screen and (max-width: 991px){
 	.heroImg {
@@ -82,6 +84,14 @@ li.infoBox:nth-child(n+2) {
 		width: 50%;
 		margin-top: 65px;
 	}
+	
+	ul a:nth-child(4n) li {
+	border-right: none;
+	} 
+	
+	ul a:nth-child(3n) li {
+	border-right: 1px solid lightgray;
+	} 
 }
 
 @media screen and (max-width: 730px){
@@ -101,12 +111,25 @@ li.infoBox:nth-child(n+2) {
 		width: 50%;
 		margin-top: 65px;
 	}
+	
+	ul a:nth-child(4n) li {
+	border-right: none;
+	} 
+	
+	ul a:nth-child(3n) li {
+	border-right: none;
+	} 
+	
+	ul a:nth-child(2n) li {
+	border-right: 1px solid lightgray;
+	} 
+	
 }
 
 .infoBox:hover {
-	border: 3px solid #4876EF;
-	color: black;
-	background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1))
+	/* border: 3px solid #4876EF; */
+	/* background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)); */
+	box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
 }
 
 .infoBox .logo {
@@ -153,17 +176,16 @@ li.infoBox:nth-child(n+2) {
 	width: 100%;
 	font-size: 13px;
 	color: #a7a7a7;
-	margin-top: 3px; 
+	margin-bottom: 3px; 
 }
 
 .endt {
-	/* width: 40px; */
 	font-size: 14px;
 	text-align: center;
 	font-weight: 500;
 	color: #4876EF;
 	border: 1px solid #4876EF;
-	/* border-radius: 4px; */ 
+	border-radius: 4px;
 	padding: 0 3px;
 	float: right;
 	margin-bottom: 1px;
@@ -194,6 +216,7 @@ a#MOVE_TOP_BTN {
     z-index: 999;
     
 }
+
 
 
 .hidden {

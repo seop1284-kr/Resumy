@@ -308,10 +308,10 @@ function chkFileAndMemo() {
 
 }
 
-/*
+
 function press(f){ 
 	if(f.keyCode == 13){ 	// javascript에서는 13이 enter키를 의미함 
 		frmFile.submit(); 	// 지정할 form의 name = frmFile
 	} 
 }
-*/
+

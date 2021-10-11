@@ -10,10 +10,9 @@
 	<link href="/css/index.css" rel="stylesheet">
 
 
-
 </head>
 
-<body class="wrapper">
+<body class="wrapper" id="page-top">
 
 	<c:import url="./layout/header.jsp">
 		<c:param name="headerMenu" value="main" />
@@ -32,11 +31,20 @@
 			
 	<div class="container main-content">
 		<ul id="infoList" class="list"></ul>
-		<a id="MOVE_TOP_BTN" href="#">TOP</a>
-	</div>
 		
+	<!-- Scroll to Top Button-->
+		<a class="scroll-to-top rounded" href="#page-top"> <i
+		class="fas fa-angle-up"></i>
+		</a>
+		
+	</div>
+	
 	<c:import url="./layout/footer.jsp"></c:import>
 	<%-- 푸터 끝 --%>
+
+    <!-- Custom scripts for all pages-->
+    <script src="/assets/startbootstrap-sb-admin-2-gh-pages/js/sb-admin-2.min.js"></script>
+		
 	
 	<!-- MY JS -->
 	<script src="/JS/index.js"></script> <!-- 채용정보API -->
