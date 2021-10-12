@@ -5,6 +5,9 @@
 
 <!-- 헤드 -->
 <c:import url="../../layout/head.jsp"></c:import>
+	<!-- My CSS -->
+	<link href="/css/recruitInfo.css" rel="stylesheet">
+
 </head>
 
 <body class="wrapper">
@@ -15,12 +18,28 @@
 	</c:import>
 
 	<!-- content -->
-	<div class="container-lg main-content">
-		<iframe id="pageFrame" name="pageFrame" class="w-100" src="http://www.jobkorea.co.kr/Starter/calendar/sub/month" frameborder="0" height="1000px" scrolling="auto"></iframe>
+	<div class="container main-content">
+		<ul id="infoList" class="list"></ul>
+		
+		<!-- Scroll to Top Button-->
+		<a class="scroll-to-top rounded" href="#page-top"> <i
+		class="fas fa-angle-up"></i>
+		</a>
 	</div>
-			
+	
 	<!-- 푸터 -->
 	<c:import url="../../layout/footer.jsp"></c:import>
 	
+	<!-- Custom scripts for all pages-->
+    <script src="/assets/startbootstrap-sb-admin-2-gh-pages/js/sb-admin-2.min.js"></script>
+	
+	<!-- MY JS -->
+	<script src="/JS/recruitInfo.js"></script> <!-- 채용정보API -->
+
 </body>
 </html>
+
+
+
+
+

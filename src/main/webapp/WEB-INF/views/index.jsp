@@ -9,6 +9,76 @@
 	<!-- My CSS -->
 	<link href="/css/index.css" rel="stylesheet">
 
+<style>
+
+header {
+	/* index에서는 header margin 없애기 */
+    margin-bottom: 0;
+}
+
+.heroImg {
+	text-align: center;
+	background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(https://i.ibb.co/jRSpn1C/skyscrapers-hero-Img.jpg);
+	background-color: black;
+	background-position: center;
+    background-size: cover;
+    height: 50vh;
+    width: 100%;
+    min-height: 250px;
+    color: #FFFFF3;
+    color: var(--resumy-white);
+    margin-bottom: 30px;
+
+}
+
+.heroImg .heroImgTxt {	
+	margin-top: 110px;
+    margin-bottom: auto;
+}
+
+.heroImg div p {
+	font-size: 1.5vw;
+	text-align: center;  
+}
+
+.heroImg div h1 {
+	font-size: 3vw;
+	text-align: center;
+}
+
+.heroImg img {
+	width: 20%;
+}
+
+@media screen and (max-width: 991px){
+	.heroImg {
+		height: 300px;
+	}
+	
+	.heroImgTxt {
+		display: none;
+	}
+	
+	.heroImg img {
+		width: 50%;
+		margin-top: 65px;
+	}
+}
+
+@media screen and (max-width: 730px){
+	.heroImg {
+		height: 250px;
+	}	
+	.heroImgTxt {
+		display: none;
+	}
+
+	.heroImg img {
+		width: 50%;
+		margin-top: 65px;
+	}
+} 
+</style>
 
 </head>
 
@@ -44,7 +114,6 @@
 
     <!-- Custom scripts for all pages-->
     <script src="/assets/startbootstrap-sb-admin-2-gh-pages/js/sb-admin-2.min.js"></script>
-		
 	
 	<!-- MY JS -->
 	<script src="/JS/index.js"></script> <!-- 채용정보API -->

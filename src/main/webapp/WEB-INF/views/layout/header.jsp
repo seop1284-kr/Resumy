@@ -49,7 +49,7 @@ if (header_menu_param != null) {
 						<!-- 메뉴 -->
 					    <ul class="navbar-nav rounded-top">
 							<li class="nav-item ml-lg-5 text-md-center py-md-2 active">
-						        <a class="<%=(headerMenu.equals("company")) ? "active" : ""%>" onclick="company.submit()">기업정보</a>
+						        <a class="<%=(headerMenu.equals("company")) ? "active" : ""%>" onclick="company.submit()">채용정보</a>
 						    </li>
 						    <li class="nav-item ml-lg-5 text-md-center py-md-2">
 						        <a class="<%=(headerMenu.equals("fed")) ? "active" : ""%>" onclick="fed.submit()">자소서 게시판</a>
