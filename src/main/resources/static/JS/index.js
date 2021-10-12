@@ -3,15 +3,26 @@ $(function(){
 	ajaxRecruitBoard();
 	
 	// newsBoard
-	ajaxNewsBoard();
+	getKeyword();
 
 	// fedBoard
 	ajaxFedBoard();
 	
 	// qnaBoard
 	ajaxQnaBoard();
+	
+	// 취업뉴스 검색창 연결
+	/*$('#search_wrap').hide();*/
+	
+	$('#btn_search').click(function() {
+		$('#btn_news_it').toggle();
+		$('#btn_news_economy').toggle();
+		$('#btn_news_job').toggle();
+		$('#search_wrap').toggle();
+	});
 });
 
+// ------------------------------------------------------------------
 // recruitBoard 에 표시할 데이터
 function ajaxRecruitBoard() {
 	$.ajax({
@@ -30,19 +41,21 @@ function ajaxRecruitBoard() {
 					var dDay = to_dDay(info[i].empWantedEndt);
 					
 					if (dDay == "D-Day") { // 당일 마감되는 채용 공고만 view 에 출력
-						row += "<tr>";
+						row += "<tr onclick='linkRecruitBoard(" + '"' + info[i].empWantedHomepgDetail + '"' + ")'>";
 						// 기업명
-						row += "<td>" + info[i].empBusiNm + "</td>";
-						// 고용형태
-						row += "<td>" + info[i].empWantedTypeNm + "</td>";
+						row += "<td><div class='ellipsis'>" + info[i].empBusiNm + "</div></td>";
 						// 채용제목
-						row += "<td>" + info[i].empWantedTitle + "</td>";
+						row += "<td><div class='ellipsis'>" + info[i].empWantedTitle + "</div></td>";
 						row += "</tr>";
 						cnt++;
 					}
 					
-					if(cnt == 6) { // 상위 6개만 view 에 출력
+					if (cnt == 6) { // 상위 6개만 view 에 출력
 						break;
+					}
+					
+					if (i == info_len) { // 오늘 마감이 없을 경우
+						row += "<tr><td colspan='2' class='text-center'>없음</td></tr>";
 					}
 				} // for문 종료
 				
@@ -51,6 +64,12 @@ function ajaxRecruitBoard() {
 		}
 	}); // ajax 끝
 }
+
+function linkRecruitBoard(link) {
+	window.open(link);
+	return false;
+}
+
 function to_dDay(date_str) { // date.getTime() 으로 현재 날짜를 미리초로 반환하여 d-day 구함
 	// 오늘 날짜의 getTime()
 	var now = new Date().getTime();
@@ -78,9 +97,37 @@ function to_day(date_str) { // string -> date
     return new Date(sYear, sMonth-1, sDate);
 }
 
+// ------------------------------------------------------------------
+// 검색할 키워드 가져오기
+function getKeyword() {
+	// 처음 load될 때 실행
+	var keyword = $('#btn_news_it').data("keyword");;
+	ajaxNewsBoard(keyword);
+	
+	// IT 이슈
+	$('#btn_news_it').click(function() {
+		keyword = $('#btn_news_it').data("keyword");
+		ajaxNewsBoard(keyword);
+	});
+	// 경제 이슈
+	$('#btn_news_economy').click(function() {
+		keyword = $('#btn_news_economy').data("keyword");
+		ajaxNewsBoard(keyword);
+	});
+	// 취업 소식
+	$('#btn_news_job').click(function() {
+		keyword = $('#btn_news_job').data("keyword");
+		ajaxNewsBoard(keyword);
+	});
+	// 검색어 입력
+	$('#btn_news_search').click(function() {
+		keyword = $('#btn_news_input').val();
+		ajaxNewsBoard(keyword + " 취업");
+	});
+}
+
 // newsBoard 에 표시할 데이터
-function ajaxNewsBoard() {
-	var keyword = "IT";
+function ajaxNewsBoard(keyword) {
 	$.ajax({
 		url: "/indexAjax/news",
 		type: "POST",
@@ -88,7 +135,7 @@ function ajaxNewsBoard() {
 		data: {"keyword": keyword},
 		success: function(data, status) {
 			if (status == 'success') {
-				var item = data.channel.item; // ajax 통신을 하면 data로 Json 객체를 받아옴, 그 안에 data라는 배열을 사용자 정의
+				var item = data.channel.item;
 				var row = "";
 				var len = 6;
 				
@@ -96,18 +143,19 @@ function ajaxNewsBoard() {
 				for (var i = 0; i < len; i++) {
 					row += "<tr>";
 					// 제목
-					row += "<td>" + item[i].title  + "</td>";
-					row += "<td>" + item[i].pubDate + "</td>";
+					row += "<td><a href='" + item[i].link + "' target=_blank><div class='ellipsis'>" + item[i].title  + "</div></a></td>";
+					// 날짜
+					row += "<td><div class='ellipsis pl-2 text-right'>" + item[i].pubDate + "</div></td>";
 					row += "</tr>";
 				}
 				$('#newsBoard').html(row);
 
-			} else {
 			}
 		}
 	}); // ajax 끝
 }
 
+// ------------------------------------------------------------------
 // fedBoard 에 표시할 데이터
 function ajaxFedBoard() {
 	$.ajax({
@@ -123,24 +171,33 @@ function ajaxFedBoard() {
 				var len = 6;
 				
 				for (var i = 0; i < len; i++) {
-					row += "<tr>";
+					row += "<tr onclick='linkFedBoard(" + item[i].intro.id + ")'>";
 					// 제목
-					row += "<td>" + item[i].intro.title  + "</td>";
+					row += "<td><div class='ellipsis'>" + item[i].intro.title  + "</div></td>";
 					// 내용
-					row += "<td>" + item[i].intro.title + "/" + item[i].intro.title + "</td>";
+					row += "<td><div class='ellipsis'>" + item[i].conList[0].question + "</div></td>";
 					row += "</tr>";
 				}
 				
-				$('#fedBoard').html(row);
+				$('#fedBoard').html(row);			
 			} // parseJson 끝
 		}
 	}); // ajax 끝
 }
 
+function linkFedBoard(id) {
+	location.href = "/fedView?id=" + id;
+}
+
+
+// ------------------------------------------------------------------
 // qnaBoard 에 표시할 데이터
 function ajaxQnaBoard() {
+	var row = "";
+	var len = 7;
+			
 	$.ajax({
-		url: "/AjaxQnaBoard/1/6",
+		url: "/AjaxQnaBoard/1/" + len,
 		type: "GET",
 		cache: false,
 		success: function(data, status) {
@@ -148,15 +205,12 @@ function ajaxQnaBoard() {
 			
 			if (status == 'success') {
 				// parseJson
-				var row = "";
-				var len = 6;
-				
 				for (var i = 0; i < len; i++) {
-					row += "<tr>";
+					row += "<tr onclick='linkQnaBoard(" + item[i].qdto.id + ")'>";
 					// 제목
-					row += "<td>" + item[i].qdto.subject + "</td>";
+					row += "<td><div class='ellipsis'>" + item[i].qdto.subject + "</div></td>";
 					// 등록일
-					row += "<td>" + item[i].qdto.regdate + "</td>";
+					row += "<td><div class='ellipsis text-right'>" + item[i].qdto.regdate + "</div></td>";
 					row += "</tr>";
 				}
 				
@@ -164,4 +218,8 @@ function ajaxQnaBoard() {
 			} // parseJson 끝
 		}
 	}); // ajax 끝
+}
+
+function linkQnaBoard(id) {
+	location.href = "/main/qna/view.do?id=" + id;
 }

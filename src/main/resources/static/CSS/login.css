@@ -73,3 +73,18 @@ body {
 	margin-right: .5em;
 	font-size: 1.5em;
 }
+
+/* 로그인 구현 못 해서 추가한 form 꾸미는 코드 */
+body {
+	display: flex;
+	justify-content: center;
+}
+div.shadow {
+	padding: 3em;
+}
+div.shadow a img.mb-4 {
+	padding-bottom: 3em;
+}
+div.shadow button {
+	margin-top: 3em;
+}
