@@ -444,7 +444,7 @@ function makeCareerContent(data){
 		var careerContent ="<div class='company'><form name='career"+ i +"' id='career"+ i +"' action='' method='post'>";
 		careerContent +='<table width="100%"><tr><td width="20%">회사명</td><td width="60%"><input type="text" class="inputBox" name="company" value="" placeholder="회사명을 입력하세요" required></td>';
 		careerContent +='<td width= "20%">';
-		careerContent +="<button type='submit' style='width:80px;' class='btn btn-mint' onclick='updateCareer(\"career"+i+"\")'>수정</button></td>";
+		careerContent +="<button type='submit' style='width:90px;' class='btn btn-mint' onclick='updateCareer(\"career"+i+"\")'>내용수정</button></td>";
 		careerContent +="<td width= '10%'><button type='submit' style='width:80px;' name='btnCareerDelete' class='deleteBtn btn btn-mint' onclick='deleteCareer(\"career"+i+"\")' >삭제</button></td></tr>";
 		careerContent +='<tr><td width="15%">재직기간</td><td width="75%"><input type="text" class="inputBox" name="hiredate" value="" placeholder="ex)yyyyMMdd" required>  ~  <input type="text" class="inputBox" name="leavedate" value="" placeholder="ex)yyyyMMdd" required></td></tr>';
 		careerContent +='<tr><td width="15%">퇴사사유</td><td width="75%"><input type="text" class="inputBox2" name="lvreason" value="" placeholder="퇴사사유 입력하세요"></td></tr>';
@@ -469,7 +469,7 @@ function makeCareerContentPuls(careerIdNo){
 
 	var careerContent ="<div id='careerDelete"+ careerIdNo +"' class='company'><form name='conent_plus"+ careerIdNo +"' id='conent_plus"+ careerIdNo +"' action='' method='post'>";
 	    careerContent +='<table width="100%"><tr><td width="20%">회사명</td><td width="80%"><input type="text" class="inputBox" name="company" value="" placeholder="회사명을 입력하세요" required ></td>';
-		careerContent +="<td ><button type='submit' style='width:80px;' class='writeBtn btn btn-mint' onclick='writeCareer(\"conent_plus"+ careerIdNo +"\")' >등록</button></td>";
+		careerContent +="<td ><button type='submit' style='width:90px;' class='writeBtn btn btn-mint' onclick='writeCareer(\"conent_plus"+ careerIdNo +"\")' >신규등록</button></td>";
 		careerContent +='<td ><button type="submit" style="width:80px;" class="deleteBtn btn btn-mint" id="careerDelete" onclick="$(careerDelete'+ careerIdNo +').remove()">삭제</button></td></tr>';
 		careerContent +='<tr><td width="15%">재직기간</td><td width="80%"><input type="text" class="inputBox" name="hiredate" value="" placeholder="ex)yyyyMMdd" required >  ~  <input type="text" class="inputBox" name="leavedate" value="" placeholder="ex)yyyyMMdd" required></td></tr>';
 		careerContent +='<tr><td width="15%">퇴사사유</td><td width="80%"><input type="text" class="inputBox2" name="lvreason" value="" placeholder="퇴사사유 입력하세요"></td></tr>';
