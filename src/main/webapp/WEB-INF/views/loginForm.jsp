@@ -58,10 +58,10 @@
 <%-- loginProcessingUrl() 로 세팅한 url, 반드시 POST! --%>
 <%-- 일단 아이디/패스워드 의 name 은 'username' 과 'password' 로 하자 (시큐리티의 디폴트) --%>
 <%-- 만약 다른 name 을 사용하려면 SecurityConfig 에서 .usernameParameter("userid") 해주면 된다 --%>
-<body class="container text-center">
+<body class="container text-center bg-white">
 
 	<!-- 카카오 로그인 -->
-	<div class="shadow">
+	<div class="shadow bg-light">
 	    <form class="form-login" action="/loginOk" method="POST">
 	    
 	      <!-- logo -->

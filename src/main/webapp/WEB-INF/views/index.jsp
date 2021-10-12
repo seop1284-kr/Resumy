@@ -26,7 +26,7 @@
 				<li class="h4 mb-2">손쉬운 자소서, 이력서, 포트폴리오 관리</li>
 				<li class="h2 font-weight-bold">누구나 합격할 수 있다.</li>
 			</ul>
-			<button type="button" class="btn btn-primary border-secondary rounded-pill">이용해보기 <i class="fas fa-chevron-right fa-sm"></i></button>
+			<button type="button" onclick="location.href='/login'" class="btn btn-primary border-secondary rounded-pill">이용해보기 <i class="fas fa-chevron-right fa-sm"></i></button>
 		</div>
     </div>
 	
@@ -81,7 +81,7 @@
 						<li class="btn btn-light rounded-0 col" id="btn_news_it" data-keyword="게임 웹 앱 해킹 보안 네트워크 통신 AI 인공지능 IoT">IT 이슈</li>
 						<li class="btn btn-light rounded-0 col" id="btn_news_economy" data-keyword="경제 취업 정책">경제 이슈</li>
 						<li class="btn btn-light rounded-0 col" id="btn_news_job" data-keyword="취업시장 취업박람회 취업교육 취준생 청년">취업 소식</li>
-						<li class="input-group d-flex justify-content-end" id="search_wrap">
+						<li class="input-group justify-content-end" id="search_wrap" style="display: none;">
 							<input type="text" id="btn_news_input" placeholder="검색어 입력">
 							<span class="input-group-text"><i class="fas fa-search" id="btn_news_search"></i></span>
 						</li>
@@ -100,7 +100,7 @@
 			</li>
 			
 			<!-- 자소서 게시판 -->
-			<li class="col-lg-6 col-md-12">
+			<li class="col-lg-6 col-md-12 mb-md-5">
 				<!-- title -->
 				<div class="d-flex justify-content-between">
 					<i class="far fa-address-card mr-3"></i>

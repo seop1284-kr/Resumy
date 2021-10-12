@@ -132,13 +132,10 @@ div.hero {
 }
 
 /* 취업뉴스의 검색창 */
-.main-content ul div.table-wrap .searchBox .input-group {
-	display: none !important;
-}
 .main-content ul div.table-wrap .searchBox .input-group input,
 .main-content ul div.table-wrap .searchBox .input-group span {
 	margin: 4px 0;
-	padding: 1px 5px;
+	padding: 2px 5px;
 	font-size: 13px;
 	border: 1px solid #858796;
 }
@@ -155,3 +152,12 @@ div.hero {
 	transform: translate(2px, 1px);
 	font-size: 13px;
 }
+
+/* 링크 호버 */
+#recruitBoard tr:hover, #newsBoard tr:hover, #fedBoard tr:hover, #qnaBoard tr:hover {
+	color: var(--primary);
+	font-weight: bold;
+	cursor: pointer;
+}
+
+
