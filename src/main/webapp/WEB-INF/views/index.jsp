@@ -90,32 +90,124 @@ header {
 	<%-- 헤더 끝 --%>
 	
 	<section class="heroImg">
-        
-            <!-- 히어로 이미지 -->
-            <div class="heroImgTxt">
-            <p>손쉬운 자소서, 이력서, 포트폴리오 관리 <p>
-            <h1>누구나 합격할 수 있다</h1>
-        	</div>
-        	<img alt="RESUMY" src="/img/logo_main.png">
+		<!-- 히어로 이미지 -->
+		<div class="heroImgTxt">
+			<p>손쉬운 자소서, 이력서, 포트폴리오 관리 <p>
+			<h1>누구나 합격할 수 있다</h1>
+		</div>
+		<img alt="RESUMY" src="/img/logo_main.png">
     </section>
 			
-	<div class="container main-content">
-		<ul id="infoList" class="list"></ul>
+	<div class="container-lg main-content">
+		<!-- 공채 주간달력 -->
+		<iframe id="pageFrame" name="pageFrame" class="w-100" src="http://www.jobkorea.co.kr/Starter/calendar/sub/week" height="250px" frameborder="0" scrolling="auto"></iframe>
 		
-	<!-- Scroll to Top Button-->
-		<a class="scroll-to-top rounded" href="#page-top"> <i
-		class="fas fa-angle-up"></i>
-		</a>
+		<ul class="row">
+		
+			<!-- 채용정보 -->
+			<li class="col-lg-6 col-md-12">
+			
+				<!-- title -->
+				<div class="d-flex justify-content-between">
+					<h4>채용정보 (오늘까지 지원하세요!)</h4>
+					<a href="/companyBoard"><i class="far fa-plus-square"></i></a>
+					
+				</div>
+				<!-- content -->
+				<table>
+					<colgroup>
+					</colgroup>
+					<thead>
+						<tr>
+							<td>기업명</td>
+							<td>고용형태</td>
+							<td>제목</td>
+						</tr>
+					</thead>
+					<tbody id="recruitBoard">
+					</tbody>
+				</table>
+				
+			</li>
+			
+			<!-- 뉴스 -->
+			<li class="col-lg-6 col-md-12">
+			
+				<!-- title -->
+				<div class="d-flex justify-content-between">
+					<h4>취업뉴스 확인하기</h4>
+					<a href="#"><i class="fas fa-search-plus"></i></a>
+				</div>
+				
+				<!-- content -->
+				<table>
+					<colgroup>
+					</colgroup>
+					<thead>
+					</thead>
+					<tbody id="newsBoard">
+					</tbody>
+				</table>
+				
+			</li>
+			
+			<!-- 자소서 게시판 -->
+			<li class="col-lg-6 col-md-12">
+			
+				<!-- title -->
+				<div class="d-flex justify-content-between">
+					<h4>최신 업데이트 자소서</h4>
+					<a href="/fedBoard"><i class="far fa-plus-square"></i></a>
+				</div>
+				
+				<!-- content -->
+				<table>
+					<colgroup>
+					</colgroup>
+					<thead>
+						<tr>
+							<td>제목</td>
+							<td>내용</td>
+						</tr>
+					</thead>
+					<tbody id="fedBoard">
+					</tbody>
+				</table>
+				
+			</li>
+			
+			<!-- 고객센터 -->
+			<li class="col-lg-6 col-md-12">
+				
+				<!-- title -->
+				<div class="d-flex justify-content-between">
+					<h4>최신 고객센터 문의글</h4>
+					<a href="/main/qna/board.do"><i class="far fa-plus-square"></i></a>
+				</div>
+				
+				<!-- content -->
+				<table>
+					<colgroup>
+					</colgroup>
+					<thead>
+						<tr>
+							<td>제목</td>
+							<td>날짜</td>
+						</tr>
+					</thead>
+					<tbody id="qnaBoard">
+					</tbody>
+				</table>
+			</li>
+			
+		</ul>
 		
 	</div>
 	
 	<c:import url="./layout/footer.jsp"></c:import>
 	<%-- 푸터 끝 --%>
 
-    <!-- Custom scripts for all pages-->
-    <script src="/assets/startbootstrap-sb-admin-2-gh-pages/js/sb-admin-2.min.js"></script>
-	
 	<!-- MY JS -->
-	<script src="/JS/index.js"></script> <!-- 채용정보API -->
+	<script src="/JS/index.js"></script>
 </body>
 </html>
