@@ -2,7 +2,6 @@ footer {
     display: flex;
     justify-content: center;
     margin-top: 6em;
-    padding: 2em 0;
     clear: both;
     background-color: #f8f8f8;
     background-color: var(--footer-bgc);
@@ -10,10 +9,6 @@ footer {
 
 footer div:first-child {
     padding: 0;
-}
-
-footer div:nth-child(2) {
-    margin-left: 1em;
 }
 
 footer div:last-child {

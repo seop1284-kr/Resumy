@@ -57,8 +57,10 @@ table.tableRply .ReplyBasicInfo .regdate {
 	padding: 1em 0 0 0;
 }
 table.tableRply .ReplyContent {
-	padding: 1.5em 2em;
 	width: 4.5em;
+}
+table.tableRply .ReplyContent td {
+	padding: 1.5em 2em;
 }
 
 
