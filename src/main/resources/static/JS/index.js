@@ -78,7 +78,7 @@ function to_dDay(date_str) { // date.getTime() 으로 현재 날짜를 미리초
 	// 1일 밀리초
 	var per_day = 1000 * 60 * 60 * 24;
 	// D-day
-	var d_day = Math.floor(now/per_day) - Math.floor(empWantedEndt/per_day) - 1;
+	var d_day = Math.floor(now/per_day) - Math.floor(empWantedEndt/per_day);
 	
 	// 디데이가 0이면 D-Day 반환
 	if (d_day == 0) {
