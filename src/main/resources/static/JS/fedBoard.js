@@ -84,7 +84,7 @@ $(document).ready(function() {
 					
 					return "<a class='left ellipsis-parent' href=" + view_url + ">"
 							+'<div class="ellipsis">'
-							+ data[0].question + '/'
+							+ data[0].question + ' / '
 							+ data[0].content
 							+ '</div>';
 				}
@@ -105,7 +105,7 @@ $(document).ready(function() {
 			// 작성자 id
             { "data": "intro.userid",
 				render: function(data, row) {					
-					return '<div class="ellipsis">'
+					return '<div class="ellipsis text-center">'
 							+ data
 							+ '</div>';
 				} 

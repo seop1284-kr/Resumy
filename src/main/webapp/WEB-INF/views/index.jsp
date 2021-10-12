@@ -100,7 +100,7 @@
 			</li>
 			
 			<!-- 자소서 게시판 -->
-			<li class="col-lg-6 col-md-12 mb-md-5">
+			<li class="col-lg-6 col-md-12 mb-5">
 				<!-- title -->
 				<div class="d-flex justify-content-between">
 					<i class="far fa-address-card mr-3"></i>

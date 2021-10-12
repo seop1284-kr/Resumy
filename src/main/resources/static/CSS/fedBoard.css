@@ -6,15 +6,21 @@ header {
 .searchContainer {
 	background-color: #fffff3;
 	background-color: var(--light-color);
-	height: 25vh;
-	display: flex;
- }
+	background-repeat: no-repeat;
+	/* height: 35vh; */
+}
 .searchWrapper {
 	margin: auto;
 	text-align: center;
 }
 
 .customSearchTextField {
-	margin: auto;
 	width: 70%;
 }
+
+.banner img {
+  width: auto;
+  height: 300px;
+  object-fit: cover;
+}
+

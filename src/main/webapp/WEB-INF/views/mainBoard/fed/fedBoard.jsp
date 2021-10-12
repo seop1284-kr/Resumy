@@ -20,11 +20,19 @@
 	</c:import>
 	
 	<!-- 검색 -->
-	<div class="searchContainer">
-		<div class="searchWrapper">
-			<h5 class="searchTitle"> 무엇이든 검색해보세요. 딱 맞는 합격 자소서가 3초 안에 나옵니다.</h5>
-			<input type="text" class="customSearchTextField" id="customSearchTextField"
-				placeholder="자소서 항목, 내용, 제목, 아이디 등 키워드"/>
+	<div class="searchContainer mb-5">
+		<div class="searchWrapper container">
+			<div class="row">
+				<div class="col-7 d-flex justify-content-center align-items-center flex-column">
+					<h5 class="searchTitle mb-1 highlight"> <mark>무엇이든 검색해보세요.</mark></h5>
+					<h5 class="searchTitle mb-4"> 딱 맞는 합격 자소서가 <strong class="text-danger">1초</strong> 안에 나옵니다.</h5>					
+					<input type="text" class="customSearchTextField form-control" 
+						id="customSearchTextField" placeholder="자소서 항목, 내용, 제목, 아이디 등 키워드"/>
+				</div>
+				<div class="banner col-5">
+					<img src="/img/img_banner.png">
+				</div>
+			</div>
 		</div>
 	</div>
 

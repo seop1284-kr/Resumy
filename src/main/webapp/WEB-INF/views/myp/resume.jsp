@@ -19,10 +19,12 @@
 		<!-- 검색 -->
 		<br>
 
-		<div id="searchBox">
-			<input class="customSearchTextField" type="text" id="keyword" placeholder="자소서 제목, 항목, 내용 등 키워드"
+		<div class="input-group w-50" id="searchBox">
+			<input class="customSearchTextField form-control" type="text" id="keyword" placeholder="자소서 제목, 항목, 내용 등 키워드"
 				style="width: 25em" />
-			<button type="button" class="searchBtn btn btn-mint mb-1">검색</button>
+			<div class="input-group-prepend">
+				<button type="button" class="searchBtn btn btn-mint"><i class="fas fa-search"></i></button>
+			</div>
 		</div>
 
 		<!-- 자소서 목록 리스트 -->
