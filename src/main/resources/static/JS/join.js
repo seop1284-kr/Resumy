@@ -249,6 +249,7 @@ function checkEmailNum() {
 				// 인증성공
 				$('#chkEmailNumSuccess').show();
 				chkEmail = true;
+				submitVisiable();
 				alert('인증 완료');
 				return;
 			} else {

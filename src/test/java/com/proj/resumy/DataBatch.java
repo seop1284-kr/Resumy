@@ -31,7 +31,7 @@ class DataBatch {
    public static final String SQL_RESUMY_SPEC_INSERT = "insert into `hr_spec_info` (spec_cat_cd, spec_name, spec_area, mem_userid) values (?, ?, ?, ?)";
    
    public static final String SQL_RESUMY_FILE_INSERT = "insert into `hr_file` (file_name, file_cname, file_volume, mem_userid) values (?, ?, ?, ?)";
-   public static final String SQL_RESUMY_INTRO_INSERT = "insert into `hr_introduction` (intr_title, mem_userid, intr_public) values (?, ?, true)";
+   public static final String SQL_RESUMY_INTRO_INSERT = "insert into `hr_introduction` (intr_title, mem_userid, intr_public, intr_finish) values (?, ?, ?, ?)";
    public static final String SQL_RESUMY_INTRO_C_INSERT = "insert into `hr_introduction_c` (intr_question, intr_content, intr_id) values (?, ?, ?)";
    public static final String SQL_RESUMY_FED_INSERT = "insert into `intr_feedback` (fb_userid, fb_content, intr_id) values (?, ?, ?)";
    public static final String SQL_RESUMY_QNAQ_INSERT = "insert into `hr_qna_q` (q_subject, q_content, mem_userid) values (?, ?, ?)";
@@ -276,6 +276,22 @@ class DataBatch {
          for(int i = 0; i < NUM; i++) {
             pstmt.setString(1, RESUMY_TITLES[rand.nextInt(RESUMY_TITLES.length)]);
             pstmt.setString(2, String.format("mem%02d",  rand.nextInt(9)+1));
+            if (i % 4 == 0) {
+            	pstmt.setBoolean(3, true);
+            	pstmt.setBoolean(4, true);
+
+            } else if (i % 4 == 1) {
+            	pstmt.setBoolean(3, true);
+            	pstmt.setBoolean(4, false);
+            } else if (i % 4 == 2) {
+            	pstmt.setBoolean(3, false);
+            	pstmt.setBoolean(4, true);
+            }
+            else {
+            	pstmt.setBoolean(3, false);
+            	pstmt.setBoolean(4, false);
+
+            }
       
             cnt += pstmt.executeUpdate();
          }
