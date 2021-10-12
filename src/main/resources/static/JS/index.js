@@ -80,23 +80,32 @@ function to_day(date_str) { // string -> date
 
 // newsBoard 에 표시할 데이터
 function ajaxNewsBoard() {
-	/*$.ajax({
-		url: "https://openapi.naver.com/v1/search/news.xml?query=기업&display=10&start=1&sort=sim/",
-		beforeSend : function(xhr){
-            xhr.setRequestHeader("X-Naver-Client-Id", "2e512yp04pPGicjh6nRs");
-            xhr.setRequestHeader("X-Naver-Client-Secret","XFrkzznL5S");
-        },
-		type: "GET",
+	var keyword = "IT";
+	$.ajax({
+		url: "/indexAjax/news",
+		type: "POST",
 		cache: false,
+		data: {"keyword": keyword},
 		success: function(data, status) {
 			if (status == 'success') {
+				var item = data.channel.item; // ajax 통신을 하면 data로 Json 객체를 받아옴, 그 안에 data라는 배열을 사용자 정의
+				var row = "";
+				var len = 6;
+				
 				// parseJson
-				alert(data);
+				for (var i = 0; i < len; i++) {
+					row += "<tr>";
+					// 제목
+					row += "<td>" + item[i].title  + "</td>";
+					row += "<td>" + item[i].pubDate + "</td>";
+					row += "</tr>";
+				}
+				$('#newsBoard').html(row);
+
 			} else {
-				alert(234)
 			}
 		}
-	}); // ajax 끝*/
+	}); // ajax 끝
 }
 
 // fedBoard 에 표시할 데이터

@@ -1,10 +1,12 @@
 package com.proj.resumy.config;
 
+import com.proj.resumy.domain.NewsInfo;
 import com.proj.resumy.domain.RecruitInfo;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
+import retrofit2.http.Query;
 
 //공채 속보 API
 /*
@@ -32,6 +34,16 @@ public interface RestInterface {
 			
 	// 반환 타입은 Call<타입>의 제네릭 형태
 	@GET("opi/opi/opia/dhsOpenEmpInfoAPI.do?authKey=" + API_KEY + "&callTp=L&returnType=XML&&startPage=1&display=100&sortOrderBy=asc")
-	Call<RecruitInfo> getRcruitInfo(@Header("content-type") String contentType);
+	Call<RecruitInfo> getRecruitInfo(@Header("content-type") String contentType);
+	
+	// Context Path + String query
+	@GET("v1/search/news.xml?")
+	Call<NewsInfo> getNewsInfo(@Header("content-type") String contentType,
+			@Query("query") String query,
+            @Query("display") int display,
+            @Query("start") int start,
+            @Query("sort") String sort
+            );
+
 
 }

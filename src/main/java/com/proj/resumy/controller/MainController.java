@@ -1,6 +1,7 @@
 package com.proj.resumy.controller;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.proj.resumy.domain.MemberDTO;
+import com.proj.resumy.service.MailService;
 import com.proj.resumy.service.MemberService;
 
 @Controller
@@ -22,7 +24,7 @@ public class MainController {
 	
 	@Autowired
 	MemberService memberService;
-	
+
 	public MainController() {
 		System.out.println("MainController() 생성");
 	}
@@ -80,4 +82,6 @@ public class MainController {
 		
 		return "joinOk";
 	}
+	
+
 }

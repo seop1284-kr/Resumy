@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import retrofit2.Call;
 import retrofit2.Response;
 import com.proj.resumy.config.RestInterface;
+import com.proj.resumy.domain.NewsInfo;
 import com.proj.resumy.domain.RecruitInfo;
 
 @Service
@@ -19,18 +20,26 @@ public class APIService {
 	RestInterface indexService;
 	
 	@Autowired
-	@Qualifier("companyService")
-	RestInterface companyService;
+	@Qualifier("newsService")
+	RestInterface newsService;
 	
-	public Response<RecruitInfo> apiTest() throws Exception {
+	// 채용정보
+	public Response<RecruitInfo> recruitAPI() throws Exception {
 	
-		Call<RecruitInfo> call = indexService.getRcruitInfo(CONTENT_TYPE);
-		
+		Call<RecruitInfo> call = indexService.getRecruitInfo(CONTENT_TYPE);
 		// API 호출
 		Response<RecruitInfo> response = call.execute();
 		
 		return response;
 		
+	}
+	
+	// 뉴스정보
+	public Response<NewsInfo> newsAPI(String keyword) throws Exception {
+		Call<NewsInfo> call2 = newsService.getNewsInfo(CONTENT_TYPE, keyword, 6, 1, "sim");
+		Response<NewsInfo> response = call2.execute();
+		
+		return response;
 	}
 	
 }
