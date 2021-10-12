@@ -8,17 +8,7 @@
 	<link href="/css/buttonSize.css" rel="stylesheet">
 	<link href="/css/qnaView.css" rel="stylesheet">
 	<link href="/css/qnaWrite.css" rel="stylesheet">
-	<style>
-		@keyframes blink-effect { 50% { opacity: 0.2; } }
-		.blink { 
-			animation: blink-effect 1s;
-			animation-delay: 2s; /* 지연시간 */
-			animation-iteration-count: 2; /* 반복 횟수 */
-		}
-		.textContent textarea {
-			outline: 0;
-		}
-	</style>
+	<link href="/css/blink.css" rel="stylesheet">
 </head>
 
 <body class="text-gray-800">

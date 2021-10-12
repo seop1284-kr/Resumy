@@ -1,0 +1,157 @@
+@charset "UTF-8";
+
+:root {
+	--bg-lightyellow: #FFFCEB; /* 표에 사용되는 연노랑색 */
+	--bg-dark: #4E5562; /* 표에 사용되는 어두운 배경색 */
+	--line-dark: #212D42; /* 표에 사용되는 어두운 선색 */
+	--line-light: #d1d3e2; /* 표에 사용되는 밝은 회색선*/
+}
+
+/* index에서는 header margin 없애기 */
+header {
+    margin-bottom: 0;
+}
+
+body {
+	color: black;
+}
+
+/* 히어로 이미지 설정 */
+div.hero {
+	height: 410px;
+	background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(https://i.ibb.co/jRSpn1C/skyscrapers-hero-Img.jpg);
+	background-size: cover;
+}
+@media screen and (max-width: 471px) {
+	div.hero {
+		height: 330px;
+	}
+	div.hero ul li.h5 {
+		font-size: 14px;
+	}
+	div.hero ul li.h4 {
+		font-size: 16px;
+	}
+	div.hero ul li.h2 {
+		font-size: 23px;
+	}
+	div.hero button, div.hero button i {
+		font-size: 14px;
+	}
+}
+
+/* 주간달력 하단의 표 header */
+.main-content ul h4 { /* title */
+	color: #464646;
+	font-size: 22px;
+	font-weight: bold;
+	word-spacing: 15px;
+}
+.main-content ul i { /* 모든 아이콘 */
+	transform: translateY(5px);
+	color: #6e707e;
+	font-size: 20px;
+}
+.main-content ul div.d-flex a { /* 아이콘의 링크(부모요소) */
+	transform: translateX(-10px);
+	width: 28px;
+	height: 28px;
+}
+.main-content ul a>i { /* 링크 연결된 아이콘 */
+	transform: translate(5px, 3px);
+	color: #00D3AB;
+	color: var(--mint-color);
+}
+.main-content ul a>i:hover {
+	color: #00c29d;
+	color: var(--dk-mint-color);
+}
+
+/* 주간달력 하단의 표 body */
+.main-content ul div.table-wrap {
+	border-top: 2px solid #212D42;
+	border-top: 2px solid var(--line-dark);
+	border-bottom: 1px solid #d1d3e2;
+	border-bottom: 1px solid var(--line-light);
+}
+.main-content ul table {
+	width: 100%;
+	table-layout: fixed;
+}
+.main-content table thead td {
+	padding: 5px 0;
+	text-align: center;
+	font-size: 13px;
+	font-weight: 600;
+	background-color: #f8f8f8;
+	background-color: var(--footer-bgc);
+	border-bottom: 1px solid #d1d3e2;
+	border-bottom: 1px solid var(--line-light);
+}
+.main-content table thead td[colspan="2"] {
+	color: #ffed85;
+	background-color: #4E5562;
+	background-color: var(--bg-dark);
+	border-bottom: 1px solid #212D42;
+	border-bottom: 1px solid var(--line-dark);
+}
+.main-content table tbody {
+	height: 192px;
+}
+.main-content table tbody#recruitBoard {
+	background-color: #FFFCEB;
+	background-color: var(--bg-lightyellow);
+}
+.main-content table tbody td {
+	padding-top: 5px;
+	font-size: 15px;
+}
+.main-content table tbody tr:first-child td {
+	padding-top: 15px;
+}
+.main-content table tbody tr:last-child td {
+	padding-bottom: 15px;
+}
+.main-content table tbody td:first-child {
+	padding-left: 10px;
+}
+.main-content table tbody td:last-child {
+	padding-right: 10px;
+}
+
+
+/* 취업뉴스의 버튼 */
+.main-content ul div.table-wrap .searchBox .btn {
+	font-size: 13px;
+	font-weight: 600;
+	border: 1px solid #d1d3e2;
+	border: 1px solid var(--line-light);
+}
+.main-content ul div.table-wrap .searchBox .btn:nth-child(n+2) {
+	border-left: none;
+}
+
+/* 취업뉴스의 검색창 */
+.main-content ul div.table-wrap .searchBox .input-group {
+	display: none !important;
+}
+.main-content ul div.table-wrap .searchBox .input-group input,
+.main-content ul div.table-wrap .searchBox .input-group span {
+	margin: 4px 0;
+	padding: 1px 5px;
+	font-size: 13px;
+	border: 1px solid #858796;
+}
+.main-content ul div.table-wrap .searchBox .input-group input {
+	width: 200px;
+	border-radius: 5px 0 0 5px;
+} 
+.main-content ul div.table-wrap .searchBox .input-group span {
+	width: 28px;
+	border-left: none;
+	border-radius: 0 5px 5px 0;
+}
+.main-content ul div.table-wrap .searchBox .input-group i {
+	transform: translate(2px, 1px);
+	font-size: 13px;
+}

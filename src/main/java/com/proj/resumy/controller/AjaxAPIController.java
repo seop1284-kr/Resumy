@@ -27,8 +27,6 @@ public class AjaxAPIController {
 	
 	@PostMapping("/news")
 	public NewsInfo test2(Model model, String keyword) throws Exception {
-		
-		System.out.println(keyword);
 		Response<NewsInfo> response = commonService.newsAPI(keyword);
 		return response.body();
 	}

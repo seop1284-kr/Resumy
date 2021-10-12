@@ -1,0 +1,11 @@
+@charset "UTF-8";
+
+@keyframes blink-effect { 50% { opacity: 0.2; } }
+.blink { 
+	animation: blink-effect 1s;
+	animation-delay: 1s; /* 지연시간 */
+	animation-iteration-count: 2; /* 반복 횟수 */
+}
+.textContent textarea {
+	outline: 0;
+}

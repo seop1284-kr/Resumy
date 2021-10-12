@@ -8,78 +8,7 @@
 
 	<!-- My CSS -->
 	<link href="/css/index.css" rel="stylesheet">
-
-<style>
-
-header {
-	/* index에서는 header margin 없애기 */
-    margin-bottom: 0;
-}
-
-.heroImg {
-	text-align: center;
-	background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(https://i.ibb.co/jRSpn1C/skyscrapers-hero-Img.jpg);
-	background-color: black;
-	background-position: center;
-    background-size: cover;
-    height: 50vh;
-    width: 100%;
-    min-height: 250px;
-    color: #FFFFF3;
-    color: var(--resumy-white);
-    margin-bottom: 30px;
-
-}
-
-.heroImg .heroImgTxt {	
-	margin-top: 110px;
-    margin-bottom: auto;
-}
-
-.heroImg div p {
-	font-size: 1.5vw;
-	text-align: center;  
-}
-
-.heroImg div h1 {
-	font-size: 3vw;
-	text-align: center;
-}
-
-.heroImg img {
-	width: 20%;
-}
-
-@media screen and (max-width: 991px){
-	.heroImg {
-		height: 300px;
-	}
-	
-	.heroImgTxt {
-		display: none;
-	}
-	
-	.heroImg img {
-		width: 50%;
-		margin-top: 65px;
-	}
-}
-
-@media screen and (max-width: 730px){
-	.heroImg {
-		height: 250px;
-	}	
-	.heroImgTxt {
-		display: none;
-	}
-
-	.heroImg img {
-		width: 50%;
-		margin-top: 65px;
-	}
-} 
-</style>
-
+	<link href="/css/blink.css" rel="stylesheet">
 </head>
 
 <body class="wrapper" id="page-top">
@@ -89,120 +18,142 @@ header {
 	</c:import>
 	<%-- 헤더 끝 --%>
 	
-	<section class="heroImg">
-		<!-- 히어로 이미지 -->
-		<div class="heroImgTxt">
-			<p>손쉬운 자소서, 이력서, 포트폴리오 관리 <p>
-			<h1>누구나 합격할 수 있다</h1>
+	<!-- 히어로 이미지 -->
+	<div class="hero mb-5">
+		<div class="container pt-4">
+			<ul class="text-white my-5">
+				<li class="h5 mb-5">My Resume!</li>
+				<li class="h4 mb-2">손쉬운 자소서, 이력서, 포트폴리오 관리</li>
+				<li class="h2 font-weight-bold">누구나 합격할 수 있다.</li>
+			</ul>
+			<button type="button" class="btn btn-primary border-secondary rounded-pill">이용해보기 <i class="fas fa-chevron-right fa-sm"></i></button>
 		</div>
-		<img alt="RESUMY" src="/img/logo_main.png">
-    </section>
-			
-	<div class="container-lg main-content">
+    </div>
+	
+	<!-- Page Contents -->
+	<section class="container-lg main-content">
+	
 		<!-- 공채 주간달력 -->
-		<iframe id="pageFrame" name="pageFrame" class="w-100" src="http://www.jobkorea.co.kr/Starter/calendar/sub/week" height="250px" frameborder="0" scrolling="auto"></iframe>
+		<iframe id="pageFrame" name="pageFrame" class="w-100 mb-5" src="http://www.jobkorea.co.kr/Starter/calendar/sub/week" height="250px" frameborder="0" scrolling="auto"></iframe>
 		
+		<!-- 주간달력 하단의 정보 -->
 		<ul class="row">
 		
 			<!-- 채용정보 -->
-			<li class="col-lg-6 col-md-12">
-			
+			<li class="col-lg-6 col-md-12 mb-5">
 				<!-- title -->
 				<div class="d-flex justify-content-between">
-					<h4>채용정보 (오늘까지 지원하세요!)</h4>
-					<a href="/companyBoard"><i class="far fa-plus-square"></i></a>
-					
+					<i class="fas fa-building mr-3"></i>
+					<h4>채용정보</h4>
+					<a class="ml-auto" href="/companyBoard"><i class="far fa-plus-square"></i></a>
 				</div>
+
 				<!-- content -->
-				<table>
-					<colgroup>
-					</colgroup>
-					<thead>
-						<tr>
-							<td>기업명</td>
-							<td>고용형태</td>
-							<td>제목</td>
-						</tr>
-					</thead>
-					<tbody id="recruitBoard">
-					</tbody>
-				</table>
-				
+				<div class="table-wrap">
+					<table>
+						<colgroup>
+							<col width=30/>
+							<col width=70/>							
+						</colgroup>
+						<thead>
+							<tr>
+								<td colspan="2">오늘마감!</td>
+							</tr>
+						</thead>
+						<tbody id="recruitBoard">
+						</tbody>
+					</table>
+				</div>
 			</li>
 			
 			<!-- 뉴스 -->
-			<li class="col-lg-6 col-md-12">
-			
+			<li class="col-lg-6 col-md-12 mb-5">
 				<!-- title -->
 				<div class="d-flex justify-content-between">
-					<h4>취업뉴스 확인하기</h4>
-					<a href="#"><i class="fas fa-search-plus"></i></a>
+					<i class="far fa-newspaper mr-3"></i>
+					<h4>취업뉴스</h4>
+					<a class="ml-auto"><i class="fas fa-search-plus" id="btn_search"></i></a>
 				</div>
-				
-				<!-- content -->
-				<table>
-					<colgroup>
-					</colgroup>
-					<thead>
-					</thead>
-					<tbody id="newsBoard">
-					</tbody>
-				</table>
-				
+					
+				<!-- search button -->
+				<div class="table-wrap">
+					<ul class="d-flex searchBox">
+						<li class="btn btn-light rounded-0 col" id="btn_news_it" data-keyword="게임 웹 앱 해킹 보안 네트워크 통신 AI 인공지능 IoT">IT 이슈</li>
+						<li class="btn btn-light rounded-0 col" id="btn_news_economy" data-keyword="경제 취업 정책">경제 이슈</li>
+						<li class="btn btn-light rounded-0 col" id="btn_news_job" data-keyword="취업시장 취업박람회 취업교육 취준생 청년">취업 소식</li>
+						<li class="input-group d-flex justify-content-end" id="search_wrap">
+							<input type="text" id="btn_news_input" placeholder="검색어 입력">
+							<span class="input-group-text"><i class="fas fa-search" id="btn_news_search"></i></span>
+						</li>
+					</ul>
+					
+					<!-- content -->
+					<table>
+						<colgroup>
+							<col width=80/>							
+							<col width=20/>
+						</colgroup>
+						<tbody id="newsBoard">
+						</tbody>
+					</table>
+				</div>
 			</li>
 			
 			<!-- 자소서 게시판 -->
 			<li class="col-lg-6 col-md-12">
-			
 				<!-- title -->
 				<div class="d-flex justify-content-between">
-					<h4>최신 업데이트 자소서</h4>
-					<a href="/fedBoard"><i class="far fa-plus-square"></i></a>
+					<i class="far fa-address-card mr-3"></i>
+					<h4>자기소개서</h4>
+					<a class="ml-auto" href="/fedBoard"><i class="far fa-plus-square"></i></a>
 				</div>
-				
+					
 				<!-- content -->
-				<table>
-					<colgroup>
-					</colgroup>
-					<thead>
-						<tr>
-							<td>제목</td>
-							<td>내용</td>
-						</tr>
-					</thead>
-					<tbody id="fedBoard">
-					</tbody>
-				</table>
-				
+				<div class="table-wrap">
+					<table>
+						<colgroup>
+							<col width=30/>
+							<col width=70/>							
+						</colgroup>
+						<thead>
+							<tr>
+								<td>제목</td>
+								<td>내용</td>
+							</tr>
+						</thead>
+						<tbody id="fedBoard">
+						</tbody>
+					</table>
+				</div>
 			</li>
 			
 			<!-- 고객센터 -->
 			<li class="col-lg-6 col-md-12">
-				
 				<!-- title -->
 				<div class="d-flex justify-content-between">
-					<h4>최신 고객센터 문의글</h4>
-					<a href="/main/qna/board.do"><i class="far fa-plus-square"></i></a>
+					<i class="far fa-comment-dots mr-3"></i>
+					<h4>고객센터</h4>
+					<a class="ml-auto" href="/main/qna/board.do"><i class="far fa-plus-square"></i></a>
 				</div>
-				
+					
 				<!-- content -->
-				<table>
-					<colgroup>
-					</colgroup>
-					<thead>
-						<tr>
-							<td>제목</td>
-							<td>날짜</td>
-						</tr>
-					</thead>
-					<tbody id="qnaBoard">
-					</tbody>
-				</table>
+				<div class="table-wrap">
+					<table>
+						<colgroup>
+							<col width=70/>							
+							<col width=30/>
+						</colgroup>
+						<tbody id="qnaBoard">
+						</tbody>
+					</table>
+				</div>
 			</li>
 			
 		</ul>
+		<!-- ./주간달력 하단의 정보 -->
 		
-	</div>
+	</section>
+	<!-- ./Page Contents -->
 	
 	<c:import url="./layout/footer.jsp"></c:import>
 	<%-- 푸터 끝 --%>
