@@ -6,6 +6,7 @@ var chkEmail = false; // 이메일 인증 확인 상태 (true: 인증O, false: �
 var regexId = /^[a-zA-Z][a-zA-Z\d]{3,11}$/;
 var regexPw = /^[a-zA-Z\d]{8,16}$/;
 
+
 $(function() {
 	
 	// 아이디 확인
@@ -189,6 +190,23 @@ function checkEmail() {
 				$('#prefixEmail').attr('readonly', true);
 				$('#suffixEmail').attr('disabled', true);
 				$('#btn_chkEmail').html('주소변경'); // 인증하기 버튼을 주소변경 버튼으로 바꿈
+				
+				userEmail = prefixEmail + '@' + suffixEmail;
+				alert(userEmail + ': 인증 메일을 전송하였습니다');
+				
+				$.ajax({
+					type : "POST",
+					url : "/checkUserAjax/sendCode",
+					data : {'userEmail' : userEmail},
+					success : function(data) {
+						
+					},
+					error : function(e) {
+						alert('오류입니다. 잠시 후 다시 시도해주세요.');
+					}
+				})
+				
+				
 			}
 			break;
 		case '주소변경':
@@ -205,29 +223,54 @@ function checkEmail() {
 
 // 이메일 인증확인
 function checkEmailNum() {
+	var prefixEmail = $('#prefixEmail').val();
+	var suffixEmail = $('#suffixEmail option:selected').val();
+	var userEmail = prefixEmail + '@' + suffixEmail;
+				
 	var chkEmailNum = $('#chkEmailNum').val();
-	var sendEmailText = 'same'; // <<<<<<<<<<<<<<<<<<<<<<<<< 이메일 인증번호 가져오는 로직 추가해야 함
 
 	$('#chkEmailErrorNull').hide();
 	$('#chkEmailNumErrorNull').hide();
 	$('#chkEmailNumFail').hide();
 	$('#chkEmailNumSuccess').hide();
 	
+	
+	if (chkEmailNum == "") { // 인증번호 기입하지 않고 확인 버튼 누름
+		$('#chkEmailNumErrorNull').show();
+	}
+	
+	// 인증번호 체크
+	$.ajax({
+		type : "POST",
+		url : "/checkUserAjax/checkCode",
+		data : {'userEmail':userEmail, 'inputCode' : chkEmailNum},
+		success : function(data) {
+			if (data) {
+				// 인증성공
+				$('#chkEmailNumSuccess').show();
+				chkEmail = true;
+				alert('인증 완료');
+				return;
+			} else {
+				// 인증 실패
+				$('#chkEmailNumFail').show();
+				chkEmail = false;
+
+			}
+		},
+		error : function(e) {
+			alert('오류입니다. 잠시 후 다시 시도해주세요.');
+		}
+	})
+	
+	
 	// 인증성공
-	if (chkEmailNum == sendEmailText) {
+/*	if (chkEmailNum == sendEmailText) {
 		$('#chkEmailNumSuccess').show();
 		chkEmail = true;
 		return;
-	}
+	}*/
 	
-	// 인증실패
-	if (chkEmailNum == "") { // 인증번호 기입하지 않고 확인 버튼 누름
-		$('#chkEmailNumErrorNull').show();
-	} else if (chkEmailNum != sendEmailText) { // 인증번호가 다름
-		$('#chkEmailNumFail').show();
-	}
-	
-	chkEmail = false;
 	
 }
 

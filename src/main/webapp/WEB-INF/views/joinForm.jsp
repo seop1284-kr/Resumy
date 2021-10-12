@@ -111,7 +111,7 @@
 			    <div class="input-group-prepend">
 				  <span class="input-group-text">@</span>
 				</div>
-		        <select class="custom-select d-block" id="suffixEmail" required>
+		        <select name="email2" class="custom-select d-block" id="suffixEmail" required>
 				  <option value="-1">선택하세요</option>
 				  <option value="naver.com">naver.com</option>
 				  <option value="daum.com">daum.com</option>
@@ -128,7 +128,7 @@
 			<div class="mb-3" id="chkEmailNumBox">
 			  <label for="">이메일 인증하기</label>
 			  <div class="input-group mb-2">
-		        <input type="text" name="chkEmailNum" class="form-control mt-1" id="chkEmailNum" placeholder="인증번호 입력" required>
+		        <input type="number" name="chkEmailNum" class="form-control mt-1" id="chkEmailNum" placeholder="인증번호 입력" required>
 		        <button type="button" class="btn btn-primary ml-3" id="btn_chkEmailNum" onclick="checkEmailNum()">확인하기</button>
 	          </div>
 	          <!-- email check Success/Fail alert -->
