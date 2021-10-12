@@ -43,6 +43,30 @@ class DataBatch {
    public static final String[] CONTENTS = { "사이트 이용에 문제가 있는 것 같습니다. 개선해주세요.", "내용이 문제가 있습니다", "수업 진행에 있어 동그라미가 많습니다", "부침개는 동그랗지만 포카리는 맛있습니다" };
    public static final String[] REPLYS = { "문의 감사드립니다. 빠른 시일 내에 해결하겠습니다", "문의 감사드립니다. 언제나 이용 부탁드립니다", "기각합니다" };
    
+   public static final String[] RESUMY_TITLES = {
+		 "코리아IT아카데미",
+		 "네이버(Naver)",
+		 "엔씨소프트",
+		 "넷마블",
+		 "SAMSUNG"
+   };
+   
+   public static final String[] RESUMY_QUESTIONS = {
+		   "조직생활 중 다른 구성원들과의 갈등으로 어려움에 부딪힌 경험에 대해 간략히 설명하고, 긍정적인 변화를 이끌기 위해 본인이 기울인 노력과 그 결과에 대해 기술해 주십시오.",
+		   "최근 3년 이내 본인의 부족한 부분을 발견하고 체계적인 과정이나 절차를 통해 극복한 경험이 있다면, 그 과정과 결과에 대해 구체적으로 기술하여 주십시오.",
+		   "자기소개서",
+		   "경력 및 경험기술서"
+		   
+		   
+   };
+   
+   public static final String[] RESUMY_CONTENTS = {
+		   "노래하며 작고 얼음이 같으며, 이상의 오아이스도 인생에 위하여 것이다. 가는 천자만홍이 아름답고 충분히 듣는다. 군영과 살았으며, 하는 불어 어디 과실이 앞이 동력은 아니다. 부패를 하였으며, 귀는 유소년에게서 보이는 맺어, 보배를 장식하는 같이, 그리하였는가? 방지하는 그들은 미묘한 열매를 부패뿐이다. 내려온 대중을 따뜻한 풍부하게 열락의 어디 구하지 두기 구하기 사막이다. 가는 행복스럽고 그들의 얼음과 하여도 목숨을 곳으로 바이며, 칼이다. 무엇이 곧 관현악이며, 튼튼하며, 노래하며 때까지 새 같이, 하는 것이다. 소담스러운 얼마나 피는 열락의 내는 실로 속에 싹이 있는가?"
+		   ,"거친 우리의 힘차게 열락의 않는 이상은 황금시대다. 놀이 인생에 돋고, 오직 생의 인간은 것이다. 천지는 열락의 듣기만 사랑의 가슴에 같은 하여도 인간은 운다. 무엇을 풀밭에 생명을 용감하고 대중을 인생에 인간의 봄바람을 전인 것이다. 착목한는 바로 같은 내는 봄바람이다. 피고 맺어, 청춘에서만 위하여서, 사라지지 동산에는 못하다 칼이다. 그들의 곳으로 밥을 소금이라 위하여서, 목숨이 뼈 할지라도 아름다우냐? 청춘 어디 발휘하기 굳세게 부패를 불어 그들의 방지하는 칼이다. 열락의 이상의 뭇 거선의 아니더면, 곳이 소리다.이것은 그들의 봄바람이다. 청춘 원질이 열락의 이상은 봄날의 천고에 미묘한 힘있다."
+		   ,"과실이 풀밭에 꽃이 내는 오아이스도 것이다. 대중을 살았으며, 피는 것이다. 우리는 위하여, 인생에 싹이 트고, 얼마나 그러므로 보이는 것이다. 청춘을 부패를 목숨이 못할 끝까지 가슴에 사라지지 우리는 사는가 약동하다. 우리 우는 지혜는 사람은 부패뿐이다. 하는 하여도 얼음 피가 눈이 것은 산야에 있다. 가장 이는 같은 이것이야말로 같지 바이며, 무엇을 청춘의 이성은 봄바람이다. 심장의 같이 위하여서, 타오르고 뿐이다. 싸인 찾아다녀도, 열매를 그러므로 거선의 있는 옷을 길지 듣는다. 타오르고 스며들어 얼마나 심장은 얼음에 붙잡아 그들은 고동을 아름다우냐? 것은 따뜻한 보이는 피가 보내는 있는 바이며, 찾아다녀도, 열락의 봄바람이다."
+   };
+   
+   
    @Order(1)
    @Test
    void genData() {
@@ -250,7 +274,7 @@ class DataBatch {
          Random rand = new Random();
          
          for(int i = 0; i < NUM; i++) {
-            pstmt.setString(1, String.format("title%02d", i));
+            pstmt.setString(1, RESUMY_TITLES[rand.nextInt(RESUMY_TITLES.length)]);
             pstmt.setString(2, String.format("mem%02d",  rand.nextInt(9)+1));
       
             cnt += pstmt.executeUpdate();
@@ -276,10 +300,11 @@ class DataBatch {
          
          // 테스트용 dummy 데이터 만들기
          pstmt = conn.prepareStatement(SQL_RESUMY_INTRO_C_INSERT);
+         Random rand = new Random();
          
          for(int i = 0; i < NUM; i++) {
-            pstmt.setString(1, String.format("question%02d", i));  
-            pstmt.setString(2, String.format("content%02d", i));  
+            pstmt.setString(1, RESUMY_QUESTIONS[rand.nextInt(RESUMY_QUESTIONS.length)]);  
+            pstmt.setString(2, RESUMY_CONTENTS[rand.nextInt(RESUMY_CONTENTS.length)]);  
             pstmt.setInt(3, i + 1);
             cnt += pstmt.executeUpdate();
          }
