@@ -23,11 +23,11 @@ public class MailService {
 			// 받는 사람
 			mailHandler.setTo(userEmail);
 			// 보내는 사람
-			mailHandler.setFrom("seop12842@gmail.com");
+			mailHandler.setFrom("resumy.ggdm@gmail.com");
 			// 제목
-			mailHandler.setSubject("인증번호입니다.");
+			mailHandler.setSubject("RESUMY 회원가입 인증 메일입니다.");
 			// HTML Layout
-			String htmlContent = "<p>인증번호 : + " + result + "<p>";
+			String htmlContent = "아래의 인증번호 6자리를 인증번호 입력칸에 넣어주시고, '확인하기' 버튼을 눌러주셔야 인증이 완료됩니다.<br> 인증번호 : " + result;
 			mailHandler.setText(htmlContent, true);
 			
 			mailHandler.send();
