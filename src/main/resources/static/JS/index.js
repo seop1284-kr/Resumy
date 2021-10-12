@@ -18,7 +18,7 @@ $(function(){
 		$('#btn_news_it').toggle();
 		$('#btn_news_economy').toggle();
 		$('#btn_news_job').toggle();
-		$('#btn_news_input').toggle();
+		$('#search_wrap').toggle();
 	});
 });
 
@@ -41,7 +41,7 @@ function ajaxRecruitBoard() {
 					var dDay = to_dDay(info[i].empWantedEndt);
 					
 					if (dDay == "D-Day") { // 당일 마감되는 채용 공고만 view 에 출력
-						row += "<tr onclick='location.href=" + '"' + info[i].empWantedHomepgDetail + '"' + "'>";
+						row += "<tr onclick='linkRecruitBoard(" + '"' + info[i].empWantedHomepgDetail + '"' + ")'>";
 						// 기업명
 						row += "<td><div class='ellipsis'>" + info[i].empBusiNm + "</div></td>";
 						// 채용제목
@@ -64,6 +64,12 @@ function ajaxRecruitBoard() {
 		}
 	}); // ajax 끝
 }
+
+function linkRecruitBoard(link) {
+	window.open(link);
+	return false;
+}
+
 function to_dDay(date_str) { // date.getTime() 으로 현재 날짜를 미리초로 반환하여 d-day 구함
 	// 오늘 날짜의 getTime()
 	var now = new Date().getTime();
@@ -137,7 +143,7 @@ function ajaxNewsBoard(keyword) {
 				for (var i = 0; i < len; i++) {
 					row += "<tr>";
 					// 제목
-					row += "<td><a href='" + item[i].link + "'><div class='ellipsis'>" + item[i].title  + "</div></a></td>";
+					row += "<td><a href='" + item[i].link + "' target=_blank><div class='ellipsis'>" + item[i].title  + "</div></a></td>";
 					// 날짜
 					row += "<td><div class='ellipsis pl-2 text-right'>" + item[i].pubDate + "</div></td>";
 					row += "</tr>";
@@ -165,7 +171,7 @@ function ajaxFedBoard() {
 				var len = 6;
 				
 				for (var i = 0; i < len; i++) {
-					row += "<tr>";
+					row += "<tr onclick='linkFedBoard(" + item[i].intro.id + ")'>";
 					// 제목
 					row += "<td><div class='ellipsis'>" + item[i].intro.title  + "</div></td>";
 					// 내용
@@ -173,11 +179,16 @@ function ajaxFedBoard() {
 					row += "</tr>";
 				}
 				
-				$('#fedBoard').html(row);
+				$('#fedBoard').html(row);			
 			} // parseJson 끝
 		}
 	}); // ajax 끝
 }
+
+function linkFedBoard(id) {
+	location.href = "/fedView?id=" + id;
+}
+
 
 // ------------------------------------------------------------------
 // qnaBoard 에 표시할 데이터
@@ -195,7 +206,7 @@ function ajaxQnaBoard() {
 			if (status == 'success') {
 				// parseJson
 				for (var i = 0; i < len; i++) {
-					row += "<tr>";
+					row += "<tr onclick='linkQnaBoard(" + item[i].qdto.id + ")'>";
 					// 제목
 					row += "<td><div class='ellipsis'>" + item[i].qdto.subject + "</div></td>";
 					// 등록일
@@ -207,4 +218,8 @@ function ajaxQnaBoard() {
 			} // parseJson 끝
 		}
 	}); // ajax 끝
+}
+
+function linkQnaBoard(id) {
+	location.href = "/main/qna/view.do?id=" + id;
 }
