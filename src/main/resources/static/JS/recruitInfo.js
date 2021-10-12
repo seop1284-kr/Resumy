@@ -101,3 +101,39 @@ function parseJson(data) {
 
 }
 
+
+const quotes = [
+  {
+    "quote": "당신은 움츠리기보다 활짝 피어나도록 만들어진 존재입니다.",
+    "source": "- 오프라 윈프리 -"
+  },
+  {
+    "quote": "연은 순풍이 아니라 역풍에 가장 높이 난다.",
+    "source": "- 윈스턴 처칠 -"
+  },
+  {
+    "quote": "늘 명심하라. 성공하겠다는 너 자신의 결심이 다른 어떤 것보다 중요하다는 것을.",
+    "source": "- 에이브러햄 링컨 -"
+  },
+  {
+    "quote": "기회는 그냥 오지 않는다. 그러므로 기회가 오면 바로 잡아라.",
+    "source": "- 오드리 햅번 -"
+  },
+  {
+    "quote": "스승은 문을 열어준다. 하지만 반드시 당신 스스로 들어가야만 한다.",
+    "source": "- 중국 속담-"
+  },
+]
+
+function randomQuote(){
+  let random = quotes[Math.floor(Math.random() * quotes.length)];
+  quotation.innerText = `"${random.quote}"`;
+  source.innerText = random.source;
+}
+
+setInterval(randomQuote, 3000);
+
+
+
+
+
