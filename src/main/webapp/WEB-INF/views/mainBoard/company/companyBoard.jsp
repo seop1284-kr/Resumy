@@ -10,12 +10,21 @@
 
 </head>
 
-<body class="wrapper">
+<body class="wrapper" id="page-top">
 
 	<!-- 헤더 -->
 	<c:import url="../../layout/header.jsp">
 		<c:param name="headerMenu" value="company" />
 	</c:import>
+
+	<div class="mb">
+		<blockquote>
+			<p id="quotation">당신의 취업 성공을 언제나 응원합니다</p>
+			<div>
+				<p id="source">- RESUMY -</p>
+			</div>
+		</blockquote>
+	</div>
 
 	<!-- content -->
 	<div class="container main-content">

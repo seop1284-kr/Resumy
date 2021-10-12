@@ -7,6 +7,11 @@
 	--resumy-white: #FFFFF3;
 }
 
+header {
+	/* header margin 없애기 */
+    margin-bottom: 0;
+}
+
 .infoBox {
 	width: 25%;
 	height: 180px;
@@ -153,6 +158,36 @@ a#MOVE_TOP_BTN {
 
 .hidden {
 	display: none;
+}
+
+
+.mb { 
+/* 	
+	color: #fff; 
+	width: 100%; 
+	min-height: 30vh; 
+	margin: 0 auto 0 auto;
+	background-color: #fffff3; 
+*/
+	padding: 2em; 
+	height: 15vh;
+/* 	background-color: #fffff3;  */
+	margin-bottom: 30px;
+}
+
+p#quotation {
+	text-align: center;
+	font-size: large;
+	padding: 1em;
+	margin-bottom: 0;
+	font-weight: 700;
+}
+
+p#source {
+	text-align: center;
+	font-size: medium;
+	font-weight: 500;
+	
 }
 
 
