@@ -96,12 +96,12 @@
 						</tr>
 						<tr>
 							<td width="20%" class="subtitle">학교명</td>
-							<td width="60%"><input type="text" id="school_01" name="name" value="" required></td>
+							<td width="60%"><input type="text" maxlength="10" id="school_01" name="name" value="" required></td>
 							<td width="20%"></td>
 						</tr>
 						<tr>
 							<td width="20%" class="subtitle" style="vertical-align:top;">지역</td>
-							<td width="60%" style="vertical-align:top;"><input type="text"  id="schoolArea_01" name="area" value="" required></td>
+							<td width="60%" style="vertical-align:top;"><input type="text" maxlength="10"  id="schoolArea_01" name="area" value="" required></td>
 							<td width="20%"></td>
 						</tr>
 					</table>
@@ -113,7 +113,7 @@
 					<table width="100%" class="school" >
 						<tr>
 							<td width="80%" class="title" colspan="2"><h5><b>중학교 정보입력</b></h5></td>
-							<td width="20%" class="btnWriteUpdate"><button type="submit" style="width:90px;" class="btn btn-mint" id ="btnWriteSpec02" name ="btnWriteSpec02" >신규등록</button> <button type="submit" style="width:90px;" class="btn btn-mint" id ="btnUpdateSpec02" name ="btnUpdateSpec02" >내용수정</button></td>
+							<td width="20%" class="btnWriteUpdate"><button type="submit" maxlength="10" style="width:90px;" class="btn btn-mint" id ="btnWriteSpec02" name ="btnWriteSpec02" >신규등록</button> <button type="submit" style="width:90px;" class="btn btn-mint" id ="btnUpdateSpec02" name ="btnUpdateSpec02" >내용수정</button></td>
 						</tr>
 						<tr>
 							<td width="20%" class="subtitle">학교명</td>
@@ -122,7 +122,7 @@
 						</tr>
 						<tr>
 							<td width="20%" class="subtitle" style="vertical-align:top;">지역</td>
-							<td width="60%" style="vertical-align:top;"><input type="text" id="schoolArea_02" name="area" value="" required></td>
+							<td width="60%" style="vertical-align:top;"><input type="text" maxlength="10" id="schoolArea_02" name="area" value="" required></td>
 							<td width="20%"></td>
 						</tr>
 					</table>
@@ -138,17 +138,17 @@
 						</tr>
 						<tr>
 							<td width="20%" class="subtitle">학교명</td>
-							<td width="60%"><input type="text" id="school_03"  name="name" value="" required></td>
+							<td width="60%"><input type="text" maxlength="10" id="school_03"  name="name" value="" required></td>
 							<td width="20%"></td>
 						</tr>
 						<tr>
 							<td width="20%" height="20%" class="subtitle" style="vertical-align:top;">지역</td>
-							<td width="60%" style="vertical-align:top;"><input type="text" id="schoolArea_03"  name="area" value="" required></td>
+							<td width="60%" style="vertical-align:top;"><input type="text" maxlength="10" id="schoolArea_03"  name="area" value="" required></td>
 							<td width="20%"></td>
 						</tr>
 						<tr>
 							<td width="20%"  class="subtitle" style="vertical-align:top;">전공</td>
-							<td width="60%" style="vertical-align:top;"><input type="text" id="major_03" name="major" value=""></td>
+							<td width="60%" style="vertical-align:top;"><input type="text" maxlength="10" id="major_03" name="major" value=""></td>
 							<td width="20%"></td>
 						</tr>
 					</table>
@@ -177,17 +177,17 @@
 						</tr>
 						<tr>
 							<td width="20%" height="15%" class="subtitle" style="vertical-align:top;">학교명</td>
-							<td width="60%" height="15%" style="vertical-align:top;"><input type="text"  id ="school_04" name="name" value="" required></td>
+							<td width="60%" height="15%" style="vertical-align:top;"><input type="text" maxlength="10"  id ="school_04" name="name" value="" required></td>
 							<td width="20%"></td>
 						</tr>
 						<tr>
 							<td width="20%" height="15%" class="subtitle" style="vertical-align:top;">지역</td>
-							<td width="60%" height="15%" style="vertical-align:top;"><input type="text"  id ="schoolArea_04" name="area" value="" required></td>
+							<td width="60%" height="15%" style="vertical-align:top;"><input type="text" maxlength="10"  id ="schoolArea_04" name="area" value="" required></td>
 							<td width="20%"></td>
 						</tr>
 						<tr>
 							<td width="20%" class="subtitle" style="vertical-align:top;">전공계열</td>
-							<td width="60%" style="vertical-align:top;"><input type="text"  id ="major_04" name="major" value=""></td>
+							<td width="60%" style="vertical-align:top;"><input type="text" maxlength="10" id ="major_04" name="major" value=""></td>
 							<td width="20%"></td>
 						</tr>
 					</table>
