@@ -188,7 +188,7 @@ function updateMember(){
 		async: false,
 		success : function(data, status){
 			if(status == "success"){
-				alert("수정 성공");
+				//alert("수정 성공");
 				loadPage();
 			}
 		}
@@ -297,7 +297,7 @@ function writeSpec(formId){
 		async: false,
 		success : function(data, status){
 			if(status == "success"){
-				alert("등록 성공");
+				//alert("등록 성공");
 				//loadPage();
 				selectSpecList(sFormCatCd);
 			}
@@ -322,7 +322,7 @@ function updateSpec(formId){
 		async: false,
 		success : function(data, status){
 			if(status == "success"){
-				alert("수정 성공");
+				//alert("수정 성공");
 				//loadPage();
 				selectSpecList(sFormCatCd);
 			}
@@ -387,7 +387,7 @@ function writeCareer(formId){
 		async: false,
 		success : function(data, status){
 			if(status == "success"){
-				alert("insert 성공 ");			
+				//alert("insert 성공 ");			
 				loadPage();
 			}
 		}
@@ -406,7 +406,7 @@ function updateCareer(formId){
 		async: false,
 		success : function(data, status){
 			if(status == "success"){
-				alert("update 성공 ");
+				//alert("update 성공 ");
 				loadPage();
 			}
 		}
@@ -428,7 +428,7 @@ function deleteCareer(formId){
 		async: false,
 		success : function(data, status){
 			if(status == "success"){
-				alert("delete 성공 ");
+				//alert("delete 성공 ");
 				loadPage();
 			}
 		}
@@ -487,3 +487,7 @@ function makeCareerContentPuls(careerIdNo){
 		
 		$('#careerPuls').append(careerContent);
 }
+
+
+
+
