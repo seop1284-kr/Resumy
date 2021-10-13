@@ -62,7 +62,7 @@
 				<c:when test="${empty adto }">
 					<tr>
 						<td class="text-gray-500">
-							<i class="fas fa-spinner fa-spin mr-2"></i>
+							<i class="far fa-comment-dots fa-flip-horizontal mr-1"></i>
 							질문하신 내용에 답변을 준비하고 있습니다.
 						</td>
 					</tr>

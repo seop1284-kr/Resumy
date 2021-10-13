@@ -185,21 +185,39 @@ function ajaxFedBoard() {
 		type: "GET",
 		cache: false,
 		success: function(data, status) {
-			var item = data.data; // ajax 통신을 하면 data로 Json 객체를 받아옴, 그 안에 data라는 배열을 사용자 정의
 			
 			if (status == 'success') {
 				// parseJson
+				var item = data.data; // ajax 통신을 하면 data로 Json 객체를 받아옴, 그 안에 data라는 배열을 사용자 정의
 				var row = "";
-				var len = 6;
+				var len = item.length;
 				
-				for (var i = 0; i < len; i++) {
-					row += "<tr onclick='linkFedBoard(" + item[i].intro.id + ")'>";
-					// 제목
-					row += "<td><div class='ellipsis'>" + item[i].intro.title  + "</div></td>";
-					// 내용
-					row += "<td><div class='ellipsis'>" + item[i].conList[0].question + "</div></td>";
-					row += "</tr>";
+				if (len < 6) {
+					// 데이터가 6개 미만 일 때 공백 tr 출력
+					for (var i = 0; i < len; i++) {
+						row += "<tr onclick='linkFedBoard(" + item[i].intro.id + ")'>";
+						// 제목
+						row += "<td><div class='ellipsis'>" + item[i].intro.title  + "</div></td>";
+						// 내용
+						row += "<td><div class='ellipsis'>" + item[i].conList[0].question + "</div></td>";
+						row += "</tr>";
+					}
+					
+					for (var i = 0; i < 6 - len; i++) {
+						row += "<tr><td colspan='2' style='cusor: default;'>&nbsp;</td></tr>";
+					}
+				} else {
+					for (var i = 0; i < 6; i++) {
+						row += "<tr onclick='linkFedBoard(" + item[i].intro.id + ")'>";
+						// 제목
+						row += "<td><div class='ellipsis'>" + item[i].intro.title  + "</div></td>";
+						// 내용
+						row += "<td><div class='ellipsis'>" + item[i].conList[0].question + "</div></td>";
+						row += "</tr>";
+					}
 				}
+				
+				
 				
 				$('#fedBoard').html(row);			
 			} // parseJson 끝
@@ -214,28 +232,43 @@ function linkFedBoard(id) {
 
 // ------------------------------------------------------------------
 // qnaBoard 에 표시할 데이터
-function ajaxQnaBoard() {
-	var row = "";
-	var len = 7;
-			
+function ajaxQnaBoard() {		
 	$.ajax({
-		url: "/AjaxQnaBoard/1/" + len,
+		url: "/AjaxQnaBoard/1/7",
 		type: "GET",
 		cache: false,
 		success: function(data, status) {
+			// parseJson
 			var item = data.data; // ajax 통신을 하면 data로 Json 객체를 받아옴, 그 안에 data라는 배열을 사용자 정의
+			var row = "";
+			var len = item.length;
 			
 			if (status == 'success') {
-				// parseJson
-				for (var i = 0; i < len; i++) {
-					row += "<tr onclick='linkQnaBoard(" + item[i].qdto.id + ")'>";
-					// 제목
-					row += "<td><div class='ellipsis'>" + item[i].qdto.subject + "</div></td>";
-					// 등록일
-					row += "<td><div class='ellipsis text-right'>" + item[i].qdto.regdate + "</div></td>";
-					row += "</tr>";
+				// 데이터가 7개 미만 일 때 공백 tr 출력
+				if (len < 7) {
+					for (var i = 0; i < len; i++) {
+						row += "<tr onclick='linkQnaBoard(" + item[i].qdto.id + ")'>";
+						// 제목
+						row += "<td><div class='ellipsis'>" + item[i].qdto.subject + "</div></td>";
+						// 등록일
+						row += "<td><div class='ellipsis text-right'>" + item[i].qdto.regdate + "</div></td>";
+						row += "</tr>";
+					}
+					
+					for (var i = 0; i < 7 - len; i++) {
+						row += "<tr><td colspan='2' style='cusor: default;'>&nbsp;</td></tr>";
+					}
+				} else {
+					for (var i = 0; i < 7; i++) {
+						row += "<tr onclick='linkQnaBoard(" + item[i].qdto.id + ")'>";
+						// 제목
+						row += "<td><div class='ellipsis'>" + item[i].qdto.subject + "</div></td>";
+						// 등록일
+						row += "<td><div class='ellipsis text-right'>" + item[i].qdto.regdate + "</div></td>";
+						row += "</tr>";
+					}			
 				}
-				
+								
 				$('#qnaBoard').html(row);
 			} // parseJson 끝
 		}

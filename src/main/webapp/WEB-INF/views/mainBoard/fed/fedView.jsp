@@ -77,8 +77,9 @@
 		<sec:authorize access="isAnonymous()">
 			<h4><b>댓글</b></h4>
 			<table class="tableRply shadow" width="100%" cellspacing="0">
-				<tr>
+				<tr class="fedContent">
 					<td class="text-gray-500">
+						<i class="fas fa-lock mr-1"></i>
 						회원만 볼 수 있습니다.
 					</td>
 				</tr>
@@ -107,7 +108,7 @@
 					<c:when test="${empty introResult.fedList || fn:length(introResult.fedList) == 0 }">
 						<tr class="fedContent">
 							<td class="text-gray-500">
-								<i class="fas fa-spinner fa-spin mr-2"></i>
+								<i class="far fa-comment-dots fa-flip-horizontal mr-1"></i>
 								아직 댓글이 없습니다.
 							</td>
 						</tr>
