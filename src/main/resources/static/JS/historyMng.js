@@ -451,13 +451,13 @@ function makeCareerContent(data){
 		careerContent +='<td width= "20%">';
 		careerContent +="<button type='submit' style='width:90px;' class='btn btn-mint' onclick='updateCareer(\"career"+i+"\")'>내용수정</button></td>";
 		careerContent +="<td width= '10%'><button type='submit' style='width:80px;' name='btnCareerDelete' id='btnCareerDelete' class='deleteBtn btn btn-mint' onclick='deleteCareer(\"career"+i+"\")' >삭제</button></td></tr>";
-		careerContent +='<tr><td width="15%">재직기간</td><td width="75%"><input type="text" class="inputBox" name="hiredate" value="" placeholder="ex)yyyyMMdd" required>  ~  <input type="text" class="inputBox" name="leavedate" value="" placeholder="ex)yyyyMMdd" required></td></tr>';
+		careerContent +='<tr><td width="15%">재직기간</td><td width="75%"><input type="text" maxlength="8" class="inputBox" name="hiredate" value="" placeholder="ex)yyyyMMdd" required>  ~  <input type="text" maxlength="8" class="inputBox" name="leavedate" value="" placeholder="ex)yyyyMMdd" required></td></tr>';
 		careerContent +='<tr><td width="15%">퇴사사유</td><td width="75%"><input type="text" class="inputBox2" name="lvreason" value="" placeholder="퇴사사유 입력하세요"></td></tr>';
 		careerContent +='<tr><td width="15%">직급/직책</td><td width="75%"><input type="text" class="inputBox" name="post" value="" required></td></tr>';
 		careerContent +='<tr><td width="15%">근무부서</td><td width="75%"><input type="text" class="inputBox" name="dept" value=""></td></tr>';
 		careerContent +='<tr><td width="15%">지역</td><td width="75%"><input type="text" class="inputBox" name="companyArea" value=""></td></tr>';
 		careerContent +='<tr><td width="15%">연봉</td><td width="75%"><input type="number" class="inputBox" name="salary" value="" > 만원</td></tr>';
-		careerContent +='<tr><td width="15%">담당업무</td><td width="75%"><input type="text" style="width:100%;" class="inputBox" name="work" value=""></td></tr><tr><td colspan="4"><hr></td></tr>';
+		careerContent +='<tr><td width="15%">담당업무</td><td width="75%"><input type="text" style="width:100%;" maxlength="10" class="inputBox" name="work" value="" placeholder="ex)최대 10글자"></td></tr><tr><td colspan="4"><hr></td></tr>';
 		/* hidden setting */
 		careerContent +='<input type="hidden" id="id" name="id" value="">';
 		careerContent +='<input type="hidden" id="userid" name="userid" value="">';
@@ -476,13 +476,13 @@ function makeCareerContentPuls(careerIdNo){
 	    careerContent +='<table width="100%"><tr><td width="20%">회사명</td><td width="80%"><input type="text" class="inputBox" name="company" value="" placeholder="회사명을 입력하세요" required ></td>';
 		careerContent +="<td ><button type='submit' style='width:90px;' class='writeBtn btn btn-mint' onclick='writeCareer(\"conent_plus"+ careerIdNo +"\")' >신규등록</button></td>";
 		careerContent +='<td ><button type="submit" style="width:80px;" class="deleteBtn btn btn-mint" id="careerDelete" onclick="$(careerDelete'+ careerIdNo +').remove()">삭제</button></td></tr>';
-		careerContent +='<tr><td width="15%">재직기간</td><td width="80%"><input type="text" class="inputBox" name="hiredate" value="" placeholder="ex)yyyyMMdd" required >  ~  <input type="text" class="inputBox" name="leavedate" value="" placeholder="ex)yyyyMMdd" required></td></tr>';
+		careerContent +='<tr><td width="15%">재직기간</td><td width="80%"><input type="text" maxlength="8" class="inputBox" name="hiredate" value="" placeholder="ex)yyyyMMdd" required >  ~  <input type="text" maxlength="8" class="inputBox" name="leavedate" value="" placeholder="ex)yyyyMMdd" required></td></tr>';
 		careerContent +='<tr><td width="15%">퇴사사유</td><td width="80%"><input type="text" class="inputBox2" name="lvreason" value="" placeholder="퇴사사유 입력하세요"></td></tr>';
 		careerContent +='<tr><td width="15%">직급/직책</td><td width="80%"><input type="text" class="inputBox" name="post" value="" required></td></tr>';
 		careerContent +='<tr><td width="15%">근무부서</td><td width="80%"><input type="text" class="inputBox" name="dept" value=""></td></tr>';
 		careerContent +='<tr><td width="15%">지역</td><td width="80%"><input type="text" class="inputBox" name="companyArea" value=""></td></tr>';
 		careerContent +='<tr><td width="15%">연봉</td><td width="80%"><input type="number" class="inputBox" name="salary" value="" required> 만원</td></tr>';
-		careerContent +='<tr><td width="15%">담당업무</td><td width="80%"><input type="text" style="width:100%;" class="inputBox" name="work" value=""></td></tr><tr><td colspan="4"><hr></td></tr></tr>';
+		careerContent +='<tr><td width="15%">담당업무</td><td width="80%"><input type="text" style="width:100%;" maxlength="10" class="inputBox" name="work" value="" placeholder="ex)최대 10글자"></td></tr><tr><td colspan="4"><hr></td></tr></tr>';
 		/* hidden setting */
 		//careerContent +='<input type="hidden" id="id" name="id" value="">';
 		careerContent +='<input type="hidden"  name="userid" value= CareerDTO.getUserId>';
