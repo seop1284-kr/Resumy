@@ -13,7 +13,7 @@
 
 </head>
 
-<body class="wrapper">
+<body class="wrapper text-gray-800">
 	
 	<!-- 헤더 -->
 	<c:import url="../../layout/header.jsp">
@@ -105,7 +105,7 @@
 			<table class="tableRply shadow" width="100%" cellspacing="0">
 				<c:choose>
 					<c:when test="${empty introResult.fedList || fn:length(introResult.fedList) == 0 }">
-						<tr>
+						<tr class="fedContent">
 							<td class="text-gray-500">
 								<i class="fas fa-spinner fa-spin mr-2"></i>
 								아직 댓글이 없습니다.
@@ -116,41 +116,42 @@
 					<c:otherwise>
 						<c:forEach var="fed" items="${introResult.fedList }" varStatus="status">
 							
-							<tr class="notEmpty">
-								<td>
-									<i class="fas fa-user-circle text-gray-400" style="font-size: 1.5em;"></i>
-								</td>
-								<td>${fed.userid }</td>
-
-								<td class="text-gray-500">${fed.regdate }</td>
+								<!-- 등록 댓글 사용자 기본정보 -->
+								<tr class="notEmpty basicInfo">
+									<td>
+										<i class="fas fa-user-circle text-gray-400" style="font-size: 1.5em;"></i>
+									</td>
+									<td class="d-flex align-items-center">
+										<div class="mr-2">${fed.userid }</div>
+										<div class="text-gray-500">${fed.regdate }</div>
+									</td>
+									<td class="pr-3">
+										<form name="frm" action="fedDeleteOk" method="put">
+											<input type="hidden" name="iid" value="${introResult.intro.id }">
+											<input type="hidden" name="id" value="${fed.id}">
+											<button type=submit class="btn float-right btn-del-reply bg-danger">
+												<i class="fas fa-trash-alt text-white"></i>
+											</button>
+										</form>
+									</td>
+								</tr>
 								
-							</tr>
-							
-							<tr class="notEmpty">
-								<td colspan="3">
-									<div class="engBreakWord">${fed.content }</div>
-								</td>
-							</tr>
-							
-							<tr class="notEmpty">
-								<td colspan="4">
-									<form name="frm" action="fedDeleteOk" method="put">
-										<input type="hidden" name="iid" value="${introResult.intro.id }">
-										<input type="hidden" name="id" value="${fed.id}">
-										<button type=submit class="float-right btn btn-mint btn-sm">삭제</button>
-									</form>
-								</td>
-							</tr>
-							
-							<tr class="notEmpty">
-								<td class="pb-0 pt-0" colspan="3">
-									<c:if test="${status.last eq false}">
-										<hr>
-									</c:if>
-								</td>
-							</tr>
-							
-							
+								<!-- 댓글 내용 -->
+								<tr class="notEmpty fedContent">
+									<td colspan="3">
+										<div class="engBreakWord">${fed.content }</div>
+									</td>
+								</tr>
+								
+								<!-- 구분선 -->
+								<tr class="notEmpty lastLine">
+									<td colspan="3">
+										<c:if test="${status.last eq false}">
+											<hr class="m-0">
+										</c:if>
+									</td>
+								</tr>
+								
 						</c:forEach>
 					</c:otherwise>
 				</c:choose>
