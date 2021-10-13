@@ -84,7 +84,7 @@
 		<!-- ./답변 -->
 		
 		<div class="d-flex flex-row-reverse">
-			<button type="button" class="btn btn-mint btn_del order-3" onClick="chkDelete(${qdto.id })">삭제</button>
+			<button type="button" class="btn btn-danger btn_del order-3" onClick="chkDelete(${qdto.id })">삭제</button>
 			<button type="button" class="btn btn-mint btn_update order-2" onClick="location.href='update.do?id=${qdto.id }'">수정</button>
 			<button type="button" class="btn btn-mint btn_list order-1" onClick="location.href='board.do'">목록</button>
 		</div>
