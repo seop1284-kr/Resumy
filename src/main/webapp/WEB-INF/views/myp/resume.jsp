@@ -43,7 +43,7 @@
 				<div id="content_text_box">
 					<div id="content_text">
 						<div class="input-title-line">
-							<input class="input-title-text" type="text" placeholder="자소서 제목을 입력해주세요." name="title" maxlength=15 required>
+							<input class="input-title-text" type="text" placeholder="제목(기업명)을 입력해주세요." name="title" maxlength=15 required>
 							<input class="checkBox" type="checkbox" name="pub" value="true">공개
 							<input class="checkBox" type="checkbox" name="fin" value="true">작성완료<br>
 						</div>

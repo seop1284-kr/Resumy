@@ -14,7 +14,7 @@
 	<link href="/assets/dist/css/bootstrap.min.css" rel="stylesheet">
 	<!-- 카카오 로그인 -->
 	<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
-	<script src="/JS/login.js"></script>
+	<!-- <script src="/JS/login.js"></script> -->
 	<style>
       .bd-placeholder-img {
         font-size: 1.125rem;
