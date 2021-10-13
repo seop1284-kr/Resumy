@@ -123,11 +123,13 @@ $(document).ready(function(){
 	$("#btnCareerPuls").click(function() {
 		careerIdNo++;
 		makeCareerContentPuls(careerIdNo);
-	
   	});//경력추가+ 버튼 end
-
-
 	
+	//등록된 경력사항 삭제시 팝업
+	$("#btnCareerDelete").click(function() {
+		if (!confirm("삭제하시겠습니까?")) return false;
+		deleteCareer();
+  	});
 
 
 });
@@ -415,7 +417,10 @@ function updateCareer(formId){
 
 //경력사항 삭제
 function deleteCareer(formId){	
-	
+	if (confirm("삭제하시겠습니까?") == true){
+	}else	
+		return;
+
 	var serialData = $("#"+formId).serialize();
 	
 	//console.log("!!! serialData : "+serialData);
@@ -439,13 +444,13 @@ function deleteCareer(formId){
 
 //경력사항 보유시 해당 페이지 들어오면 출력
 function makeCareerContent(data){
-		console.log("makeCareerContent 1 ");
+		//console.log("makeCareerContent 1 ");
 	for(var i = 0; i < data.length; i++){				
 		var careerContent ="<div class='company'><form name='career"+ i +"' id='career"+ i +"' action='' method='post'>";
 		careerContent +='<table width="100%"><tr><td width="20%">회사명</td><td width="60%"><input type="text" class="inputBox" name="company" value="" placeholder="회사명을 입력하세요" required></td>';
 		careerContent +='<td width= "20%">';
 		careerContent +="<button type='submit' style='width:90px;' class='btn btn-mint' onclick='updateCareer(\"career"+i+"\")'>내용수정</button></td>";
-		careerContent +="<td width= '10%'><button type='submit' style='width:80px;' name='btnCareerDelete' class='deleteBtn btn btn-mint' onclick='deleteCareer(\"career"+i+"\")' >삭제</button></td></tr>";
+		careerContent +="<td width= '10%'><button type='submit' style='width:80px;' name='btnCareerDelete' id='btnCareerDelete' class='deleteBtn btn btn-mint' onclick='deleteCareer(\"career"+i+"\")' >삭제</button></td></tr>";
 		careerContent +='<tr><td width="15%">재직기간</td><td width="75%"><input type="text" class="inputBox" name="hiredate" value="" placeholder="ex)yyyyMMdd" required>  ~  <input type="text" class="inputBox" name="leavedate" value="" placeholder="ex)yyyyMMdd" required></td></tr>';
 		careerContent +='<tr><td width="15%">퇴사사유</td><td width="75%"><input type="text" class="inputBox2" name="lvreason" value="" placeholder="퇴사사유 입력하세요"></td></tr>';
 		careerContent +='<tr><td width="15%">직급/직책</td><td width="75%"><input type="text" class="inputBox" name="post" value="" required></td></tr>';
@@ -465,7 +470,7 @@ function makeCareerContent(data){
 }
 
 function makeCareerContentPuls(careerIdNo){
-		console.log("makeCareerContentPuls 2 ");
+		//console.log("makeCareerContentPuls 2 ");
 
 	var careerContent ="<div id='careerDelete"+ careerIdNo +"' class='company'><form name='conent_plus"+ careerIdNo +"' id='conent_plus"+ careerIdNo +"' action='' method='post'>";
 	    careerContent +='<table width="100%"><tr><td width="20%">회사명</td><td width="80%"><input type="text" class="inputBox" name="company" value="" placeholder="회사명을 입력하세요" required ></td>';
