@@ -7,7 +7,9 @@
 <c:import url="../../layout/head.jsp"></c:import>
 	<!-- My CSS -->
 	<link href="/css/recruitInfo.css" rel="stylesheet">
-
+	
+	<!-- font -->
+	<link href="https://fonts.googleapis.com/css2?family=Yeon+Sung&display=swap" rel="stylesheet">
 </head>
 
 <body class="wrapper" id="page-top">
@@ -18,11 +20,19 @@
 	</c:import>
 
 	<div class="mb">
-		<blockquote>
-			<p id="quotation">당신의 취업 성공을 언제나 응원합니다</p>
-			<div>
-				<p id="source">- RESUMY -</p>
+		<blockquote class="text-center d-flex flex-column">
+			<div class="d-flex justify-content-between">
+				<i class="fas fa-quote-left rotate-n-15"></i>
+				<span id="quotation">당신의 취업 성공을 언제나 응원합니다</span>
+				<i class="fas fa-quote-right rotate-15 justify-content-end"></i>
 			</div>
+			
+			<div class="text-right">
+				<i class="fas fa-minus"></i>
+				<span id="source"> RESUMY </span>
+				<i class="fas fa-minus"></i>
+			</div>
+			
 		</blockquote>
 	</div>
 

@@ -77,8 +77,9 @@ function parseJson(data) {
 		}
 		var date = parse(info[i].empWantedEndt);
 		var now = new Date();
+		var perDay = 1000 * 60 * 60 * 24;
 		var dday = now.getTime() - date.getTime();
-		var result = (Math.floor(dday / (1000 * 60 * 60 * 24))) * -1;
+		var result = (Math.floor(dday / perDay)) * -1;
 
 		if (result < 0) {
 			result = "종 료";
@@ -87,10 +88,10 @@ function parseJson(data) {
 			result = "D-day";
 			list += "<div class='endt blinking'>" + result + "</div>\n";
 		} else if (0 < result && result < 4) {
-			result = "D - " + (Math.floor(dday / (1000 * 60 * 60 * 24))) * -1;
+			result = "D - " + (Math.floor(dday / perDay)) * -1;
 			list += "<div class='endt endtUnder3'>" + result + "</div>\n";
 		} else {
-			result = "D - " + (Math.floor(dday / (1000 * 60 * 60 * 24))) * -1;
+			result = "D - " + (Math.floor(dday / perDay)) * -1;
 			list += "<div class='endt'>" + result + "</div>\n";
 		}
 		
@@ -105,29 +106,29 @@ function parseJson(data) {
 const quotes = [
   {
     "quote": "당신은 움츠리기보다 활짝 피어나도록 만들어진 존재입니다.",
-    "source": "- 오프라 윈프리 -"
+    "source": " 오프라 윈프리 "
   },
   {
     "quote": "연은 순풍이 아니라 역풍에 가장 높이 난다.",
-    "source": "- 윈스턴 처칠 -"
+    "source": " 윈스턴 처칠 "
   },
   {
     "quote": "늘 명심하라. 성공하겠다는 너 자신의 결심이 다른 어떤 것보다 중요하다는 것을.",
-    "source": "- 에이브러햄 링컨 -"
+    "source": " 에이브러햄 링컨 "
   },
   {
     "quote": "기회는 그냥 오지 않는다. 그러므로 기회가 오면 바로 잡아라.",
-    "source": "- 오드리 햅번 -"
+    "source": " 오드리 햅번 "
   },
   {
     "quote": "스승은 문을 열어준다. 하지만 반드시 당신 스스로 들어가야만 한다.",
-    "source": "- 중국 속담-"
+    "source": " 중국 속담 "
   },
 ]
 
 function randomQuote(){
   let random = quotes[Math.floor(Math.random() * quotes.length)];
-  quotation.innerText = `"${random.quote}"`;
+  quotation.innerText = random.quote;
   source.innerText = random.source;
 }
 

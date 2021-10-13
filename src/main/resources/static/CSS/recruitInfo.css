@@ -170,25 +170,32 @@ a#MOVE_TOP_BTN {
 	background-color: #fffff3; 
 */
 	padding: 2em; 
-	height: 15vh;
-/* 	background-color: #fffff3;  */
+	height: 300px;
+ 	background-color: #fffff3;
 	margin-bottom: 30px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
-p#quotation {
-	text-align: center;
-	font-size: large;
-	padding: 1em;
+#quotation {
+	font-size: x-large;
+	padding: 0.5em;
 	margin-bottom: 0;
 	font-weight: 700;
 }
 
-p#source {
-	text-align: center;
-	font-size: medium;
+#source {
+	font-size: large;
 	font-weight: 500;
-	
 }
 
+.rotate-n-15{transform:rotate(-15deg)}
+.rotate-15{transform:rotate(15deg)}
+
+blockquote {
+	width: fit-content;
+	font-family: 'Yeon Sung', cursive;
+}
 
 
