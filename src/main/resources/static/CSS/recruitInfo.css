@@ -186,9 +186,10 @@ a#MOVE_TOP_BTN {
 }
 
 #source {
-	font-size: large;
-	font-weight: 500;
+	font-size: 15px;
+	font-weight: bold;
 }
+
 
 .rotate-n-15{transform:rotate(-15deg)}
 .rotate-15{transform:rotate(15deg)}

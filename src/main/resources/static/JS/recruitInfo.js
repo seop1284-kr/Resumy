@@ -144,7 +144,7 @@ function randomQuote(){
   source.innerText = random.source;
 }
 
-setInterval(randomQuote, 3000);
+setInterval(randomQuote, 4000);
 
 
 
