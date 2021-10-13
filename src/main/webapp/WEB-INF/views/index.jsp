@@ -78,7 +78,7 @@
 				<!-- search button -->
 				<div class="table-wrap">
 					<ul class="d-flex searchBox">
-						<li class="btn btn-light rounded-0 col" id="btn_news_it" data-keyword="게임 웹 앱 해킹 보안 네트워크 통신 AI 인공지능 IoT">IT 이슈</li>
+						<li class="btn btn-light active rounded-0 col" id="btn_news_it" data-keyword="ICT">IT 이슈</li>
 						<li class="btn btn-light rounded-0 col" id="btn_news_economy" data-keyword="경제 취업 정책">경제 이슈</li>
 						<li class="btn btn-light rounded-0 col" id="btn_news_job" data-keyword="취업시장 취업박람회 취업교육 취준생 청년">취업 소식</li>
 						<li class="input-group justify-content-end" id="search_wrap" style="display: none;">

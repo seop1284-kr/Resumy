@@ -11,14 +11,36 @@ $(function(){
 	// qnaBoard
 	ajaxQnaBoard();
 	
-	// 취업뉴스 검색창 연결
-	/*$('#search_wrap').hide();*/
+	// 취업뉴스 버튼 누를 때 active
+	$('#btn_news_it').click(function() {
+		$('#btn_news_it').attr('class', 'btn btn-light active rounded-0 col');
+		$('#btn_news_economy').attr('class', 'btn btn-light rounded-0 col');
+		$('#btn_news_job').attr('class', 'btn btn-light rounded-0 col');
+	});
+	$('#btn_news_economy').click(function() {
+		$('#btn_news_it').attr('class', 'btn btn-light rounded-0 col');
+		$('#btn_news_economy').attr('class', 'btn btn-light active rounded-0 col');
+		$('#btn_news_job').attr('class', 'btn btn-light rounded-0 col');
+	});
+	$('#btn_news_job').click(function() {
+		$('#btn_news_it').attr('class', 'btn btn-light rounded-0 col');
+		$('#btn_news_economy').attr('class', 'btn btn-light rounded-0 col');
+		$('#btn_news_job').attr('class', 'btn btn-light active rounded-0 col');
+	});
 	
+	// 취업뉴스 검색창 연결
 	$('#btn_search').click(function() {
 		$('#btn_news_it').toggle();
 		$('#btn_news_economy').toggle();
 		$('#btn_news_job').toggle();
 		$('#search_wrap').toggle();
+	});
+	
+	// 취업뉴스 엔터 입력시 검색
+	$('#btn_news_input').keyup(function(key) {
+		if (key.keyCode == 13) {
+			$('#btn_news_search').click();
+		}
 	});
 });
 

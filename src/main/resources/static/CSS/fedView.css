@@ -42,31 +42,26 @@ table.tableRply {
 	border-top: 2px solid gray;
 	border-bottom: 2px solid gray;
 }
-table.tableRply td {
-	padding: 1em;
+table.tableRply tr.basicInfo td {
+	padding-top: 1.5em;
 }
-table.tableRply tr.notEmpty td:nth-child(1) {
-	padding: 1.5em 0 0 2em;
-	width: 4.5em;
+table.tableRply tr.basicInfo td:first-child {
+	padding-left: 2em;
+	width: 4.5em;	
 }
-table.tableRply tr.notEmpty td:nth-child(2) {
-	padding: 1em 0 0 0;
-	width: 3.6em;
-}
-table.tableRply tr.notEmpty td:nth-child(3) {
-	padding: 1em 0 0 0;
-}
-
-table.tableRply tr.notEmpty td[colspan="3"] {
+table.tableRply tr.fedContent td {
 	padding: 1.5em 2em;
 }
 
-table.tableRply tr.notEmpty td[colspan="4"] {
-	padding: 1em 0.5em 0.5em 0.5em;
-}
-
 /* ----------------------------------------- */
-/* tableRply */
-button.btn_del, button.btn_update, button.btn_list {
-	margin-left: .5em;
+/* 삭제 버튼(아이콘) 크기 설정 */
+button[type="submit"].btn-del-reply {
+	margin-right: 10px;
+	padding: 0;
+	width: 23px;
+	height: 23px;
+}
+button[type="submit"].btn-del-reply i {
+	transform: translate(0.5px, -3px);
+	font-size: 13px;
 }
