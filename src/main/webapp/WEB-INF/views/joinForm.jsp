@@ -114,7 +114,7 @@
 		        <select name="email2" class="custom-select d-block" id="suffixEmail" required>
 				  <option value="-1">선택하세요</option>
 				  <option value="naver.com">naver.com</option>
-				  <option value="daum.com">daum.com</option>
+				  <option value="daum.net">daum.net</option>
 				  <option value="gmail.com">gmail.com</option>
 				</select>
 	            <button type="button" class="btn btn-primary ml-3" id="btn_chkEmail" onclick="checkEmail()">인증하기</button>

@@ -30,8 +30,7 @@ public class MypageController {
 		if (access) {
 			return "myp/file";
 		}
-		return "errorPage";
-		
+		return "errorPage";	
 	}
 	
 	// 이력 관리 페이지
@@ -40,8 +39,7 @@ public class MypageController {
 		if (access) {
 			return "myp/historyMng";
 		}
-		return "myp/historyMng";
-		
+		return "errorPage";	
 	}
 	
 	
