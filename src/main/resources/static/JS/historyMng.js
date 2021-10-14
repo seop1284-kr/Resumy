@@ -125,11 +125,6 @@ $(document).ready(function(){
 		makeCareerContentPuls(careerIdNo);
   	});//경력추가+ 버튼 end
 	
-	//등록된 경력사항 삭제시 팝업
-	$("#btnCareerDelete").click(function() {
-		if (!confirm("삭제하시겠습니까?")) return false;
-		deleteCareer();
-  	});
 
 
 });
@@ -141,10 +136,32 @@ function loadPage(){
 	$("#btnCareerPuls").hide();
 	
 	selectMemberList(); // 기본정보
-	selectSpecList(""); // 학력
+	selectSpecList("") ; // 학력
 	selectCareerList(); // 경력
 	
 }//loadPage end
+
+function memberLoadPage(){
+	
+	selectMemberList(); // 기본정보
+	
+}//memberLoadPage end
+
+function specLoadPage(catCd){
+	
+	selectSpecList(catCd); // 학력
+	
+}//specLoadPage end
+
+function careerLoadPage(){
+
+	$("#careerContent").empty();
+	$("#careerPuls").empty();		
+	$("#btnCareerPuls").hide();
+	
+	selectCareerList(); // 경력
+	
+}//careerLoadPage end
 
 //기본정보 조회
 function selectMemberList(){
@@ -191,7 +208,7 @@ function updateMember(){
 		success : function(data, status){
 			if(status == "success"){
 				//alert("수정 성공");
-				loadPage();
+				memberLoadPage();
 			}
 		}
 	});
@@ -212,10 +229,12 @@ function selectSpecList(catCd){
 					//console.log("김 " + catCd);
 					if(	!catCd ){
 						//최종 이력 세팅
+						console.log("민 " + catCd);
 						$("#spec" + data[0].cat).show();
 						$("#btnSchool" + data[0].cat).attr("class", "btn btn-mint active");
 					}else{	
-						//등록 혹은 수정시 해당 입력 정보가 출력			
+						//등록 혹은 수정시 해당 입력 정보가 출력
+						console.log("수 " + catCd);			
 						$("#spec"+catCd).show();
 					}
 					//학력list 생성
@@ -301,7 +320,7 @@ function writeSpec(formId){
 			if(status == "success"){
 				//alert("등록 성공");
 				//loadPage();
-				selectSpecList(sFormCatCd);
+				specLoadPage(sFormCatCd);
 			}
 		}
 	});	
@@ -326,7 +345,7 @@ function updateSpec(formId){
 			if(status == "success"){
 				//alert("수정 성공");
 				//loadPage();
-				selectSpecList(sFormCatCd);
+				specLoadPage(sFormCatCd);
 			}
 		}
 	});
@@ -390,7 +409,7 @@ function writeCareer(formId){
 		success : function(data, status){
 			if(status == "success"){
 				//alert("insert 성공 ");			
-				loadPage();
+				careerLoadPage();
 			}
 		}
 	});	
@@ -408,8 +427,8 @@ function updateCareer(formId){
 		async: false,
 		success : function(data, status){
 			if(status == "success"){
-				//alert("update 성공 ");
-				loadPage();
+				alert("update 성공 ");
+				careerLoadPage();
 			}
 		}
 	});
@@ -434,7 +453,7 @@ function deleteCareer(formId){
 		success : function(data, status){
 			if(status == "success"){
 				//alert("delete 성공 ");
-				loadPage();
+				careerLoadPage();
 			}
 		}
 	});	
