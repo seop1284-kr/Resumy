@@ -27,14 +27,14 @@
 							<td class="topListBtn"><button type="submit" style="width:90px;" class="btn btn-mint" >내용수정</button></td>
 						</tr>
 						<tr>
-							<td width="10%">이름</td>
+							<td width="10%">이름 <span class="text-danger">*</span></td>
 							<td width="40%" style="text-align: left;"><input type="text"
 								name="name" required></td>
 							<td width="10%"></td>
 							<td width="40%"></td>
 						</tr>
 						<tr>
-							<td>이메일</td>
+							<td>이메일 <span class="text-danger">*</span></td>
 							<td><input type="text" name="email" value="" required></td>
 							<td>성별</td>
 							<td>
@@ -95,12 +95,12 @@
 							<td width="20%" class="btnWriteUpdate"><button type="submit" style="width:90px;" class="btn btn-mint" name ="btnWriteSpec01" id ="btnWriteSpec01" >신규등록</button> <button type="submit" style="width:90px;" class="btn btn-mint" id ="btnUpdateSpec01" name ="btnUpdateSpec01" >내용수정</button></td>
 						</tr>
 						<tr>
-							<td width="20%" class="subtitle">학교명</td>
+							<td width="20%" class="subtitle">학교명<span class="text-danger">*</span></td>
 							<td width="60%"><input type="text" maxlength="10" id="school_01" name="name" value="" required></td>
 							<td width="20%"></td>
 						</tr>
 						<tr>
-							<td width="20%" class="subtitle" style="vertical-align:top;">지역</td>
+							<td width="20%" class="subtitle" style="vertical-align:top;">지역<span class="text-danger">*</span></td>
 							<td width="60%" style="vertical-align:top;"><input type="text" maxlength="10"  id="schoolArea_01" name="area" value="" required></td>
 							<td width="20%"></td>
 						</tr>
@@ -116,12 +116,12 @@
 							<td width="20%" class="btnWriteUpdate"><button type="submit" maxlength="10" style="width:90px;" class="btn btn-mint" id ="btnWriteSpec02" name ="btnWriteSpec02" >신규등록</button> <button type="submit" style="width:90px;" class="btn btn-mint" id ="btnUpdateSpec02" name ="btnUpdateSpec02" >내용수정</button></td>
 						</tr>
 						<tr>
-							<td width="20%" class="subtitle">학교명</td>
+							<td width="20%" class="subtitle">학교명<span class="text-danger">*</span></td>
 							<td width="60%"><input type="text" id="school_02" name="name" value="" required></td>
 							<td width="20%"></td>
 						</tr>
 						<tr>
-							<td width="20%" class="subtitle" style="vertical-align:top;">지역</td>
+							<td width="20%" class="subtitle" style="vertical-align:top;">지역<span class="text-danger">*</span></td>
 							<td width="60%" style="vertical-align:top;"><input type="text" maxlength="10" id="schoolArea_02" name="area" value="" required></td>
 							<td width="20%"></td>
 						</tr>
@@ -137,12 +137,12 @@
 							<td width="20%" class="btnWriteUpdate"><button type="submit" style="width:90px;" class="btn btn-mint" id ="btnWriteSpec03" name ="btnWriteSpec03" >신규등록</button> <button type="submit" style="width:90px;" class="btn btn-mint" id ="btnUpdateSpec03" name ="btnUpdateSpec03" >내용수정</button></td>
 						</tr>
 						<tr>
-							<td width="20%" class="subtitle">학교명</td>
+							<td width="20%" class="subtitle">학교명<span class="text-danger">*</span></td>
 							<td width="60%"><input type="text" maxlength="10" id="school_03"  name="name" value="" required></td>
 							<td width="20%"></td>
 						</tr>
 						<tr>
-							<td width="20%" height="20%" class="subtitle" style="vertical-align:top;">지역</td>
+							<td width="20%" height="20%" class="subtitle" style="vertical-align:top;">지역<span class="text-danger">*</span></td>
 							<td width="60%" style="vertical-align:top;"><input type="text" maxlength="10" id="schoolArea_03"  name="area" value="" required></td>
 							<td width="20%"></td>
 						</tr>
@@ -176,12 +176,12 @@
 							<td width="20%"></td>
 						</tr>
 						<tr>
-							<td width="20%" height="15%" class="subtitle" style="vertical-align:top;">학교명</td>
+							<td width="20%" height="15%" class="subtitle" style="vertical-align:top;">학교명<span class="text-danger">*</span></td>
 							<td width="60%" height="15%" style="vertical-align:top;"><input type="text" maxlength="10"  id ="school_04" name="name" value="" required></td>
 							<td width="20%"></td>
 						</tr>
 						<tr>
-							<td width="20%" height="15%" class="subtitle" style="vertical-align:top;">지역</td>
+							<td width="20%" height="15%" class="subtitle" style="vertical-align:top;">지역<span class="text-danger">*</span></td>
 							<td width="60%" height="15%" style="vertical-align:top;"><input type="text" maxlength="10"  id ="schoolArea_04" name="area" value="" required></td>
 							<td width="20%"></td>
 						</tr>

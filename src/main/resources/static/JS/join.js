@@ -250,7 +250,6 @@ function checkEmailNum() {
 				$('#chkEmailNumSuccess').show();
 				chkEmail = true;
 				submitVisiable();
-				alert('인증 완료');
 				return;
 			} else {
 				// 인증 실패
