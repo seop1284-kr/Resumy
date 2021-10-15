@@ -58,6 +58,7 @@ function ajaxRecruitBoard() {
 				var info_len = info.length;
 				var row = ""
 				var cnt = 0; // 반복문 종료횟수 지정
+				var chkDday = false; // false : 오늘마감이 없음 true : 오늘마감이 있음
 				
 				for (var i = 0; i < info_len; i++) {
 					var dDay = to_dDay(info[i].empWantedEndt);
@@ -70,16 +71,18 @@ function ajaxRecruitBoard() {
 						row += "<td><div class='ellipsis'>" + info[i].empWantedTitle + "</div></td>";
 						row += "</tr>";
 						cnt++;
+						chkDday = true;
 					}
 					
 					if (cnt == 6) { // 상위 6개만 view 에 출력
 						break;
 					}
-					
-					if (i == info_len) { // 오늘 마감이 없을 경우
-						row += "<tr><td colspan='2' class='text-center'>없음</td></tr>";
-					}
 				} // for문 종료
+				
+				// 오늘 마감이 없을 경우 없음 출력
+				if (!chkDday) {
+						row += "<tr rowspan='6'><td colspan='2' class='text-center'>없음</td></tr>";
+					}
 				
 				$('#recruitBoard').html(row);
 			} // parseJson 끝
@@ -100,7 +103,7 @@ function to_dDay(date_str) { // date.getTime() 으로 현재 날짜를 미리초
 	// 1일 밀리초
 	var per_day = 1000 * 60 * 60 * 24;
 	// D-day
-	var d_day = Math.floor(now/per_day) - Math.floor(empWantedEndt/per_day);
+	var d_day = Math.floor((now - empWantedEndt)/per_day) * -1;
 	
 	// 디데이가 0이면 D-Day 반환
 	if (d_day == 0) {
