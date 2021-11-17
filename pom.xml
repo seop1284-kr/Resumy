@@ -17,6 +17,7 @@
 	<properties>
 		<java.version>11</java.version>
 	</properties>
+	<packaging>war</packaging>
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -178,13 +179,17 @@
 			<version>3.12.2</version>
 		</dependency>
 		
+		<!-- marked the embedded servlet container as provided -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-mail</artifactId>
+			<scope>provided</scope>
 		</dependency>
 	</dependencies>
 
 	<build>
+		<defaultGoal>install</defaultGoal>
+	
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
