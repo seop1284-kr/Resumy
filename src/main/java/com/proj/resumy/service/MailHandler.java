@@ -23,7 +23,7 @@ public class MailHandler {
 		jSender.setHost("smtp.gmail.com");
 		jSender.setPort(587);
 		jSender.setUsername("resumy.ggdm");
-		jSender.setPassword("resumy!1");
+		jSender.setPassword("mujyupmgcqwcsrlz");
 
 		/*
 		 * <prop key="mail.transport.protocol">smtp</prop> <prop

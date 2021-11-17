@@ -1,6 +1,7 @@
 package com.proj.resumy.file.controller;
 
-import org.apache.tomcat.util.http.fileupload.impl.SizeLimitExceededException;
+import javax.naming.SizeLimitExceededException;
+
 import org.hibernate.service.spi.ServiceException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
