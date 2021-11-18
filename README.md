@@ -1,5 +1,6 @@
 # Resumy
 ### 취준생을 위한 채용 도우미 사이트
+#### 홈페이지: http://seop1284.cafe24.com (테스트)
 #### 제작기간: 2021.09.15 ~ 2021.10.15 (30일)
 ![resumy-mainpage](src/main/resources/static/img/mainpage.png)
 #### [개요서](doc/개요서.pdf)
